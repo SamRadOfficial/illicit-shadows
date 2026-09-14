@@ -161,6 +161,11 @@ The ICAIE mark is `logos/icaie-square`, trimmed and recentered from `icaie-stack
 more whitespace below the wordmark than above. `.pmark.icaie` needs `flex:0 0 auto`, or as a flex
 item it shrinks in width while keeping its height and stops being square.
 
+`/about` opens with **Who we are** as one display-scale statement with the three disciplines picked
+out in white, the working detail beside it, and a one-line handoff, "That convergence has a name",
+straight into the MISTIC panels below. **MISTIC is expanded once**, in `Pillars`; the statement no
+longer repeats the expansion, which is what made the two blocks read as duplicates.
+
 `components/Pillars.jsx` is the MISTIC three-pillar section, shared by home and `/about` (14 Sep).
 Image-led panels, **one link per panel at the foot**: a card-wide link wrapping the heading, status
 and action would be invalid and unusable with a screen reader. The connector line and nodes are

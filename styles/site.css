@@ -381,6 +381,18 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .tcard .lead-title.sm{margin:6px 0 10px}
 .tcard .logline{font-size:15px;margin:0 0 14px}
 
+/* Who we are: one statement at display scale, the working detail beside it, and a one-line
+   handoff into the MISTIC panels directly below. Same square corners and hairlines as the panels. */
+.whois{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(24px,4vw,56px);align-items:start;
+  border-top:1px solid var(--line);padding-top:clamp(22px,3vw,34px)}
+.whois-lead{font-family:var(--disp);font-size:clamp(24px,3vw,40px);line-height:1.18;color:var(--text-2);
+  text-transform:uppercase;margin:0;letter-spacing:.005em}
+.whois-lead b{color:var(--text);font-weight:400}
+.whois-side{display:flex;flex-direction:column;gap:18px;border-left:1px solid var(--line);padding-left:clamp(18px,2.5vw,32px)}
+.whois-body{color:var(--text-2);font-size:16px;line-height:1.8;margin:0;max-width:44ch}
+.whois-hand{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);margin:0}
+.whois-hand::after{content:"";display:block;width:34px;height:2px;background:var(--alert);margin-top:12px}
+
 /* MISTIC, three pillars. Image-led panels, one link each at the foot. */
 .mistichead{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,56px);align-items:end;margin-bottom:34px}
 .misticname{font-family:var(--disp);font-size:clamp(46px,7vw,92px);line-height:.9;color:var(--text);text-transform:uppercase;margin:12px 0 10px}
@@ -444,7 +456,8 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
   .hero .bg img{object-position:var(--hero-pos-mobile, var(--hero-pos, right center))}
   .lead-film,.preview-top,.trailer-row,.trilogy,.helixrow{grid-template-columns:1fr}
   /* Stacked: descriptions and actions stay visible, nothing depends on hover. */
-  .mistichead,.ppanels{grid-template-columns:1fr}
+  .mistichead,.ppanels,.whois{grid-template-columns:1fr}
+  .whois-side{border-left:0;border-top:1px solid var(--line);padding:18px 0 0}
   .pconnect{display:none}
   .ppanel-img{aspect-ratio:16/9}
   .ppanel-s{margin-top:0}

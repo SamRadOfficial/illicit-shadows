@@ -28,14 +28,24 @@ export default function About() {
         <div className="cta-row"><a className="btn btn-y" href={`mailto:${site.contact}`}>Partner with us</a><Link className="btn btn-o" href="/">&#9654; See the platform</Link></div>
       </Hero>
       <Break base="/images/dividers/about-shared-expertise" alt="Researchers reviewing documents and maps together" />
-      <section className="wrap reveal" id="who">
+      <section className="wrap reveal" id="who" style={{ paddingBottom: 0 }}>
         <SectionHead label="Who we are" meta="THE INSTITUTION" />
-        <div className="mission">
-          <div><p>Illicit Shadows, LLC is a media, knowledge, and intelligence platform, where documentary-grade journalism, a public knowledge hub, and a predictive intelligence system converge under one roof.</p><p>That convergence has a name: <b style={{ color: '#fff' }}>MISTIC</b>, Illicit Shadows Media, Technology &amp; Innovation Convergence, the institute mapping the intersection of organized crime, emerging technology, and global threat networks.</p></div>
+        {/* The statement sets up the panels below rather than repeating them: MISTIC is expanded
+            once, in the Pillars block, and this hands off to it. */}
+        <div className="whois">
+          <p className="whois-lead">A media, knowledge, and intelligence platform, where{' '}
+            <b>documentary-grade journalism</b>, <b>a public knowledge hub</b>, and{' '}
+            <b>a predictive intelligence system</b> converge under one roof.</p>
+          <div className="whois-side">
+            <p className="whois-body">Illicit Shadows, LLC works with governments, international
+              organizations, industry, and civil society to expose the global shadow economy and
+              predict what it does next.</p>
+            <p className="whois-hand">That convergence has a name.</p>
+          </div>
         </div>
       </section>
 
-      <section className="wrap reveal tight" id="platform">
+      <section className="wrap reveal tight" id="platform" style={{ paddingTop: 'clamp(28px,4vw,52px)' }}>
         <Pillars />
       </section>
       <Break base="/images/break-evidence-2" />
