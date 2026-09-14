@@ -69,7 +69,7 @@ export default async function Investigation({ params }) {
           {f.segments.filter(s => s.image).map(s => (
             <div className="sgcard" key={s.n}>
               <span className="sgcard-img">
-                <VideoEmbed id={s.youtubeId} image={s.image} alt={`${s.title} title card`} title={s.title} channel={f.youtube || site.social.youtube} />
+                <VideoEmbed modal id={s.youtubeId} image={s.image} alt={`${s.title} title card`} title={s.title} channel={f.youtube || site.social.youtube} />
                 <span className="sgcard-n">{String(s.n).padStart(2, '0')}</span>
               </span>
               <span className="sgcard-t">{s.title}</span>

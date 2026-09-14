@@ -34,7 +34,7 @@ export function WorkCard({ film, segments = 3, priority = false }) {
           {shorts.slice(0, segments).map(s => (
             <div className="minicard" key={s.n}>
               <span className="minicard-img">
-                <VideoEmbed id={s.youtubeId} image={s.image} alt={`${s.title} title card`} title={s.title} channel={film.youtube || site.social.youtube} />
+                <VideoEmbed modal id={s.youtubeId} image={s.image} alt={`${s.title} title card`} title={s.title} channel={film.youtube || site.social.youtube} />
               </span>
               <Link className="minicard-t" href={`/film/${film.slug}`}>{s.title}</Link>
               {s.runtime && <span className="minicard-r">{s.runtime}</span>}

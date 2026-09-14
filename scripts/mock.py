@@ -43,90 +43,131 @@ FACES = ''.join(f'@font-face{{font-family:{fam};src:url({font(f)});font-weight:{
                                   ('IBM Plex Mono', 'IBMPlexMono-Regular.ttf', '400'),
                                   ('IBM Plex Mono', 'IBMPlexMono-Medium.ttf', '500')])
 
-IMG = img('images/museum-rotunda.jpg')
+import json as _json
 
-COPY = ('Walk the site model: the rotunda, the hall positions, and the routes between them. '
-        'Phase I opens 2027.')
-
-
-def stage(inner, cls=''):
-    return f'<div class="entershot {cls}"><img src="{IMG}" alt="The Eclipse Rotunda">{inner}</div>'
+FILMS = _json.load(open(os.path.join(ROOT, 'data/films.json')))
+CC = [f for f in FILMS if f['slug'] == 'chemical-cartels'][0]
+SEGS = [s for s in CC['segments'] if s.get('image')]
 
 
-PAGE_A = (f'<div class="head"><span class="lbl">The building</span><span class="bar"></span>'
-          f'<span class="meta">3D PROTOTYPE</span></div>'
-          + stage('<span class="enter-scrim"></span>'
-                  '<span class="enter-mid"><a class="btn btn-y btn-lg" href="#">Enter the museum</a>'
-                  '<span class="enter-note">Interactive prototype</span></span>'
-                  '<span class="badge btm">MIS &middot; CONCEPT RENDER</span>', 'is-a')
-          + f'<p class="enter-copy">{COPY}</p>')
+def head(label, meta):
+    return (f'<div class="head"><span class="lbl">{label}</span><span class="bar"></span>'
+            f'<span class="meta">{meta}</span></div>')
 
-PAGE_B = (f'<div class="head"><span class="lbl">The building</span><span class="bar"></span>'
-          f'<span class="meta">3D PROTOTYPE</span></div>'
-          + stage('<span class="enter-scrim tall"></span>'
-                  '<span class="enter-bl">'
-                  '<span class="eyebrow">Museum of Illicit Shadows &middot; concept render</span>'
-                  f'<span class="enter-h">Walk the <b>site model</b></span>'
-                  '<a class="btn btn-y" href="#">Enter the museum (prototype)</a>'
-                  '</span>', 'is-b')
-          + f'<p class="enter-copy">{COPY}</p>')
 
-PAGE_C = ('<div class="enter-wide">'
-          + stage('<span class="enter-scrim side"></span>'
-                  '<span class="enter-left">'
-                  '<span class="eyebrow">The building &middot; 3D prototype</span>'
-                  '<span class="enter-h big">Enter the <b>museum</b></span>'
-                  f'<span class="enter-sub">{COPY}</span>'
-                  '<a class="btn btn-y btn-lg" href="#">Enter the museum</a>'
-                  '<span class="enter-note">Concept render. Phase I opens 2027.</span>'
-                  '</span>', 'is-c')
-          + '</div>')
+def grid():
+    out = []
+    for s in SEGS:
+        sub = f'<span class="sgcard-s">{s["sub"]}</span>' if s.get('sub') else ''
+        run = f'<span class="sgcard-r">{s["runtime"]}</span>' if s.get('runtime') else ''
+        out.append(f'<div class="sgcard"><span class="sgcard-img">'
+                   f'<img src="{img(s["image"] + ".jpg")}" alt="">'
+                   f'<span class="pb sm">&#9654;</span>'
+                   f'<span class="sgcard-n">{s["n"]:02d}</span></span>'
+                   f'<span class="sgcard-t">{s["title"]}</span>{sub}{run}</div>')
+    return '<div class="sggrid">' + ''.join(out) + '</div>'
+
+
+def vlist():
+    rows = []
+    for s in SEGS:
+        sub = f'<span class="vrow-s">{s["sub"]}</span>' if s.get('sub') else ''
+        rows.append(f'<a class="vrow" href="#"><span class="vrow-n">{s["n"]:02d}</span>'
+                    f'<span class="vrow-img"><img src="{img(s["image"] + ".jpg")}" alt="">'
+                    f'<span class="pb sm">&#9654;</span></span>'
+                    f'<span class="vrow-body"><span class="vrow-t">{s["title"]}</span>{sub}</span>'
+                    f'<span class="vrow-r">{s.get("runtime", "")}</span></a>')
+    return '<div class="vlist">' + ''.join(rows) + '</div>'
+
+
+PAGE_A = head('Eleven short films', 'CHEMICAL CARTELS &middot; 11 PARTS') + grid()
+PAGE_B = head('Eleven short films', 'CHEMICAL CARTELS &middot; 11 PARTS') + vlist()
+
+
+def hero(ctas, note=''):
+    return ('<div class="mockhero">'
+            '<p class="eyebrow">Media &middot; Knowledge &middot; Intelligence</p>'
+            '<h1 class="disp">The dark forces shaping the <span class="y">global criminal underworld</span></h1>'
+            '<p class="hero-lede">We expose the $6 trillion shadow economy and predict what it does next.</p>'
+            + ctas + note + '</div>')
+
+
+CTA_C = hero(
+    '<div class="cta-row"><a class="btn btn-y btn-lg" href="#">Watch the films</a></div>'
+    '<form class="signup mini"><input type="email" placeholder="Email address" aria-label="Email address">'
+    '<button type="submit">Sign up</button></form>',
+    '<p class="hero-note">One thing to press, one thing to leave behind.</p>')
+
+CTA_D = hero(
+    '<div class="cta-row"><a class="btn btn-y btn-lg" href="#">Watch the films</a>'
+    '<a class="btn btn-o" href="#">Sign up for updates</a></div>',
+    '<p class="hero-note">The email field moves to its own block further down.</p>')
+
+CTA_E = hero(
+    '<form class="signup"><input type="email" placeholder="Email address" aria-label="Email address">'
+    '<button type="submit">Sign up for updates</button></form>'
+    '<p class="sub-alt">Or <a href="#">watch the films</a></p>')
 
 SHARED = """
-.entershot{position:relative;display:block;overflow:hidden;border:1px solid var(--line-2);max-width:1000px;margin:0 auto}
-.entershot img{display:block;width:100%;height:auto}
-.enter-scrim{position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 50%,rgba(0,0,0,.62),rgba(0,0,0,.28) 60%,rgba(0,0,0,.72))}
-.enter-scrim.tall{background:linear-gradient(180deg,rgba(0,0,0,.15) 30%,rgba(0,0,0,.88))}
-.enter-scrim.side{background:linear-gradient(90deg,rgba(0,0,0,.92) 32%,rgba(0,0,0,.35) 62%,rgba(0,0,0,.15))}
-.btn-lg{padding:18px 34px;font-size:15px}
-.enter-mid{position:absolute;inset:0;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center}
-/* The render is busy behind this, so the note needs its own plate rather than relying
-   on the scrim. It was unreadable without one. */
-.enter-note{align-self:start;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-2);background:rgba(0,0,0,.82);border:1px solid var(--line-2);padding:5px 10px}
-.enter-mid .enter-note{align-self:center;margin-top:4px}
-.enter-bl{position:absolute;left:0;right:0;bottom:0;padding:clamp(18px,3vw,34px);display:flex;flex-direction:column;align-items:flex-start;gap:12px}
-.enter-h{font-family:var(--disp);font-size:clamp(26px,3.4vw,42px);text-transform:uppercase;color:var(--text);line-height:1}
-.enter-h b{color:var(--signal);font-weight:400}
-.enter-h.big{font-size:clamp(30px,4vw,52px)}
-.enter-left{position:absolute;left:0;top:0;bottom:0;width:min(52%,520px);padding:clamp(20px,3vw,40px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px}
-.enter-sub{color:var(--text-2);font-size:15px;line-height:1.7;max-width:42ch}
-.enter-copy{color:var(--text-2);font-size:15px;line-height:1.7;max-width:64ch;margin:16px auto 0;max-width:1000px}
-.enter-wide .entershot{max-width:none}
+.sggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sgcard{display:block;background:var(--panel);border:1px solid var(--line)}
+.sgcard-img{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;background:#0c0c0c}
+.sgcard-img img{width:100%;height:100%;object-fit:cover;display:block}
+.sgcard-n{position:absolute;right:10px;top:10px;font-family:var(--disp);font-size:15px;color:var(--signal);background:rgba(0,0,0,.72);padding:2px 7px}
+.sgcard-t{display:block;font-weight:700;font-size:16px;color:var(--text);padding:14px 16px 0}
+.sgcard-s{display:block;color:var(--muted);font-size:13.5px;padding:4px 16px 0}
+.sgcard-r{display:block;font-family:var(--mono);font-size:11px;color:var(--dim);padding:10px 16px 16px}
+.pb.sm{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:40px;font-size:14px;box-shadow:0 0 0 5px rgba(0,0,0,.35);border-radius:50%;background:var(--signal);color:var(--ink);display:flex;align-items:center;justify-content:center;z-index:3}
+.vlist{border-top:1px solid var(--line)}
+.vrow{display:grid;grid-template-columns:38px 208px 1fr auto;gap:20px;align-items:center;padding:14px 6px;border-bottom:1px solid var(--line)}
+.vrow:hover{background:var(--panel)}
+.vrow-n{font-family:var(--disp);font-size:16px;color:var(--signal)}
+.vrow-img{position:relative;display:block;width:208px;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line)}
+.vrow-img img{width:100%;height:100%;object-fit:cover;display:block}
+.vrow-t{display:block;font-weight:700;font-size:17px;color:var(--text)}
+.vrow-s{display:block;color:var(--muted);font-size:14px;margin-top:3px}
+.vrow-r{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.mockhero{border:1px solid var(--line-2);background:var(--panel);padding:clamp(24px,4vw,48px)}
+.mockhero .disp{font-size:clamp(34px,5vw,62px);margin:10px 0 16px;max-width:18ch}
+.hero-lede{color:var(--text-2);font-size:17px;margin:0 0 24px;max-width:56ch}
+.hero-note{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:18px}
+.signup.mini{margin-top:16px;max-width:440px}
+.btn-lg{padding:16px 32px;font-size:15px}
 """
 
-RECOMMEND = 'C'
+RECOMMEND = 'B'
 
-TITLE = 'Enter the museum'
-INTRO = ('Three ways to put the way in on top of the render, replacing the current render plus a '
-         'separate button row underneath. All use the real Rotunda concept and the real button '
-         'styles. Each keeps the render labelled as a concept: the museum does not exist yet.')
+TITLE = 'Shorts layout, and the home hero'
+INTRO = ('Two decisions in one page. A and B are the eleven short films on the Chemical Cartels page '
+         'only; home and /film show three and stay as they are. C, D and E are the home hero, which '
+         'currently carries three competing calls to action.')
 
 OPTIONS = [
-    ('A', 'Centered button, cinematic scrim',
-     'The render darkens toward the middle and the button sits dead center, like a play control on '
-     'a video. Unmistakable, and it borrows an interaction people already understand. The cost is '
-     'that a vignette over an architectural render flattens the depth the image was made for.',
+    ('A', 'Shorts as a grid (what is live now)',
+     'Eleven covers three across. The artwork is the strongest asset on the page and this shows all '
+     'of it. At eleven it also becomes a wall: four rows with a stray on the last, and the titles '
+     'sit below the art where they are hard to scan.',
      PAGE_A, SHARED),
-    ('B', 'Bottom-left stack over a gradient',
-     'Headline and button sit low left over a bottom-up gradient, the same treatment as the film '
-     'heroes. Consistent with the rest of the site and it keeps the top two thirds of the render '
-     'clean. Quieter, and the button competes with the concept stamp for the same corner.',
+    ('B', 'Shorts as a vertical list  ·  MY PICK',
+     'A 208px still per row with number, title, subtitle and runtime on one line. You can read down '
+     'eleven titles in a single pass, which the grid does not allow, and the still is still large '
+     'enough to read the burned-in title. Closer to how the thing is actually used: pick the next '
+     'one.',
      PAGE_B, SHARED),
-    ('C', 'Full-bleed, copy and button on the dark left',
-     'The render runs edge to edge with a side scrim, and the headline, the line of copy and the '
-     'button sit in the dark left third the image already has. Nothing is covered that matters, the '
-     'button has room to be large, and the render reads as a place rather than a thumbnail.',
-     PAGE_C, SHARED),
+    ('C', 'Hero: one button, then email  ·  MY PICK',
+     'Watch the films as the only button, email field beneath it. One thing to press, one thing to '
+     'leave behind. YouTube subscribe drops off the hero and stays beside the signup block further '
+     'down, where it already lives.',
+     CTA_C, SHARED),
+    ('D', 'Hero: two buttons, no form',
+     'Watch the films and Sign up as equal buttons, with the field moved to its own block down the '
+     'page. Cleanest hero of the three, but it gives up the inline email capture, which is the one '
+     'thing a hero is unusually good at collecting.',
+     CTA_D, SHARED),
+    ('E', 'Hero: email first, watching as a link',
+     'The form leads and watching is a text link. Right if the list is the priority. Wrong, I think, '
+     'for a first-time visitor: asking for an address before showing any of the work is a big ask.',
+     CTA_E, SHARED),
 ]
 blocks, extra = [], []
 for key, title, note, body, rule in OPTIONS:
