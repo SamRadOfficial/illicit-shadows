@@ -189,6 +189,12 @@ reads as a photograph of one, on a site whose whole argument is that claims carr
 `.concept` does this. The hall cards inherit the same treatment through the Phase I and II headings,
 which already say 2027 and 2028.
 
+`images/hero-globe` is the hero art on home, `/about` and `/intelligence` (replaced 14 Sep). It keeps
+its subject **hard right** with a dark field left, which is where every hero headline sits, so the
+desktop crop needs nothing. Below 820px a centred crop puts the headline over the bright globe, so
+`.hero .bg img` shifts to `object-position:22% center`. Any replacement hero has to keep that
+left-dark, right-subject composition or the headline stops being readable.
+
 **Book covers** are real 2:3 covers as of 14 Sep, replacing the square 3D render: `book-umbra-circle`,
 `book-dragon-roars-forward`, `book-condor-directive`, wired through `data/books.json` and used on
 `/books`, `/books/preview`, home and `/museum`. `.book3d` and `.bookcover` share one rule now: a

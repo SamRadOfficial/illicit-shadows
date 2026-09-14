@@ -95,6 +95,22 @@ contact form.
       different lighting, different backgrounds, different crop tightness. Post-processing was tried
       and reverted; the fix is photography.
 
+- [ ] **Film dropdown in the nav**, listing each work (Chemical Cartels, Illicit Gold) with "All
+      films" at the foot. Owner wants this; my read is that it earns its place at three or four
+      released works rather than two, since `/film` is one click away and already leads with both.
+      Worth doing sooner if analytics show people landing on a short page and having no way back
+      into the other work without two hops.
+      If it is built, these are the requirements, not optional extras:
+      - Keyboard operable (Enter and Escape, arrow keys through items) and readable by screen
+        readers: a `<button aria-expanded>` plus a list, not a hover-only CSS menu. Hover alone is
+        unusable on touch and invisible to keyboards.
+      - A working destination on the parent: `Film` must stay clickable, not become a label that
+        only opens a menu.
+      - Mobile: the dropdown has to collapse into the existing hamburger panel as an indented
+        sub-list. Do not build a second mobile pattern.
+      - Decide at the same time whether Museum (halls) and Books (three titles) get the same
+        treatment. One page with a dropdown and two without reads as an oversight.
+
 - [ ] `/press` page: coverage, press kit, interview contact.
 - [ ] `/museum/[hall]` hall detail pages with the artifact orbit viewer.
 - [ ] Founder bio pages or expanded `/about` entries, if wanted.

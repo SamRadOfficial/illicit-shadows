@@ -21,7 +21,7 @@ const SERVE = {
 export default function About() {
   return (
     <>
-      <Hero img="/images/hero-globe" alt="A gold-flecked globe against black" eyebrow="About · Illicit Shadows, LLC"
+      <Hero img="/images/hero-globe" alt="A gold-lit globe on black, trade routes arcing between continents" eyebrow="About · Illicit Shadows, LLC"
             title={<>Diplomatic credibility meets <span className="y">deep-tech innovation.</span></>}
             lede="We integrate three disciplines no single player has combined, documentary reach, curated knowledge, and predictive intelligence, to expose the global shadow economy and predict what it does next.">
         <div className="cta-row"><a className="btn btn-y" href={`mailto:${site.contact}`}>Partner with us</a><Link className="btn btn-o" href="/">&#9654; See the platform</Link></div>

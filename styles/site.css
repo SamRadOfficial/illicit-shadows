@@ -396,6 +396,9 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
   .vrow-img,.vrow-body,.vrow-play{grid-column:2}
   .vrow-play{flex-direction:row;align-items:center;gap:14px;min-width:0;margin-top:2px}
   .vrow-t{font-size:17px}
+  /* The hero art keeps its subject hard right and its dark field left. A centred crop on a narrow
+     screen puts the headline over the bright globe, so pull the crop toward the dark side. */
+  .hero .bg img{object-position:22% center !important}
   .lead-film,.preview-top,.trailer-row,.trilogy{grid-template-columns:1fr}
   .tcard{grid-template-columns:110px 1fr;gap:16px;padding:16px}
   .tcard .bookcover{max-width:110px}

@@ -17,7 +17,7 @@ const s = site.stats.illicit_economy;
 export default function Home() {
   return (
     <>
-      <Hero img="/images/hero-globe" alt="A gold-flecked globe against black" eyebrow="Media · Knowledge · Intelligence"
+      <Hero img="/images/hero-globe" alt="A gold-lit globe on black, trade routes arcing between continents" eyebrow="Media · Knowledge · Intelligence"
             title={<>The dark forces shaping the <span className="y">global criminal underworld</span></>}
             lede={<>We expose the <b className="fig">{s.value}</b> shadow economy and predict what it does next.</>}>
         <p className="srcline">Annual value of global illicit economies &middot; <Link href="/sources">{s.source}</Link></p>
