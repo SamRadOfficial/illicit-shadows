@@ -194,6 +194,11 @@ which already say 2027 and 2028.
 820px. This matters: `Pic` used to set `object-position` inline, and an inline style beats the
 stylesheet, so a media query could not change the crop at all. Do not put the crop back on the image.
 
+Page heroes (14 Sep): `hero-globe` on home, `hero-about`, `hero-contact`, `hero-intelligence`,
+`hero-newsroom`, `books-trilogy-hero` on `/books`. All share the house composition, dark left and
+subject right, and each carries its own `mobilePos`. `/newsroom` gained a hero and lost the divider
+that was standing in for one, so the page does not open with two pieces of the same photography.
+
 The crop is a property of the artwork, not of heroes in general: `hero-globe` keeps its subject hard
 right with a dark field left, so it pulls to `22% center` on mobile, while `books-trilogy-hero` has
 the books centre-right and uses `68% center`. Any new hero needs its own `mobilePos`, checked at

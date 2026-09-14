@@ -9,7 +9,7 @@ export default function Intelligence() {
   return (
     <>
       <section className="hero" style={{ padding: 0 }}>
-        <div className="bg"><Pic base="/images/hero-globe" alt="A gold-lit globe on black, trade routes arcing between continents" priority pos="right center" /></div>
+        <div className="bg"><Pic base="/images/hero-intelligence" alt="An evidence wall of port photographs linked by gold string" priority pos="right center" /></div>
         <div className="veil" />
         <div className="wrap">
           <p className="eyebrow">Strategic Intelligence &middot; MISTIC</p>

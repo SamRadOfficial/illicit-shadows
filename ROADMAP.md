@@ -191,6 +191,8 @@ keeps its `illustrative` chip.
       placement guide, six upcoming covers on `/film` and home, five cascade maps as a stepper on
       `/intelligence`. Illicit Gold cover title recoloured to signal yellow. Home hero reordered to
       email first.
+- [x] **14 Sep** Page-specific heroes on `/about`, `/contact`, `/intelligence` and `/newsroom`,
+      replacing repeated evidence-wall imagery.
 - [x] **14 Sep** `/books` gets the trilogy render as its hero and 3D mockups for all three books.
       Hero crops moved to CSS variables with a per-image `mobilePos`.
 - [x] **14 Sep** Real 2:3 book covers for all three Chronicles, replacing the square 3D render.
