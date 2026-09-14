@@ -59,5 +59,7 @@ The standing checklist. Update in the same commit as the work. Items move to Don
 - [x] **14 Sep** `preview.py` fixed: CSS glob broken since the Next 16 upgrade (previews were
       rendering unstyled), and `--lite` now keeps the fonts as woff2 instead of dropping them.
 - [x] **14 Sep** `scripts/mock.py`: design options render as one HTML page, per owner instruction.
+- [x] **14 Sep** Contact CTA in the nav: solid signal yellow on desktop, and on mobile the button
+      is dropped and Contact sits at the bottom of the hamburger dropdown.
 - [x] **14 Sep** `/about` reordered to the owner's sequence: Who we are, Who's building this, Who we
       serve, Why now.

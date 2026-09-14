@@ -51,6 +51,20 @@ Next.js 16 App Router, JavaScript, `output: 'export'` to `out/`, Vercel from `ma
 ## Design system
 Tokens in `site.css`: ink `#000000` (black, not dark gray), panel `#0e0e0e`, signal `#FFD400` (look here), alert `#E11D1D` (serious only, never a hover), text/muted/dim neutral grays. No warm neutrals. Display Anton, body Archivo, metadata IBM Plex Mono. Section head = display label + patterned red rule + mono meta. Full-bleed `<Break>` image bands separate sections. Review at `/specimen` before any page work.
 
+## Nav
+Seven links plus a **solid signal-yellow Contact CTA at the right** (owner pick, 14 Sep). The button
+lives in `.navright` beside the toggle. **At or below 820px the button is hidden and the bar shows only the
+brand and the hamburger; the same yellow button appears as the last item inside the dropdown once it
+is open** (`.navmob`). Both carry `btn btn-y`, so it is the same button in both places, not a link
+that resembles one. `.navcta` and `.navmob` are pure CSS mirrors with no JavaScript deciding which
+shows, so Contact renders exactly once at any width. Verified by counting visible
+`a[href="/contact"]` in the nav at 390 (closed and open), 820, 821, 1024 and 1280; if you touch
+either rule, re-count, and include 820 and 821 because that is where the swap happens.
+
+`.brand` is `white-space:nowrap` and drops to 17px on mobile, or it wraps to two lines once the
+button takes width. The mobile dropdown opens at `top:72px` to match the nav height; it was 60px and
+overlapped the bar.
+
 ## Component inventory
 `components/Blocks.jsx` (client): `Pic` · `Nav` · `Footer` · `SectionHead` · `Break` · `Prov` · `Stat` · `Reveal` · `Hero` · `Signup` · `Donor` · `DigitalMuseum`.
 `components/Icons.jsx` (server-safe, no 'use client'): the `Icon` map of inline SVGs.
@@ -89,7 +103,10 @@ is a matched pair from one shoot, not post-processing.
 
 ## Scripts
 `python3 scripts/mock.py <out.html>` builds design options for an owner pick: **one page carrying
-every option, HTML only, never one file per option and never a set of JPGs.** Real stylesheet, fonts
+every option, HTML only, never one file per option and never a set of JPGs. Always set `RECOMMEND`
+to the option you would choose and put the reasoning in that option's note** (owner instruction,
+14 Sep); it renders as a chip on the page, and the recommendation belongs beside the work, not only
+in chat. Real stylesheet, fonts
 as woff2, images base64, so it opens anywhere. Edit `OPTIONS` per round; it is throwaway tooling and
 the chosen treatment lands in `site.css`.
 

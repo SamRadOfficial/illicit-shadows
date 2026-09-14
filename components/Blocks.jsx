@@ -28,12 +28,20 @@ export function Nav() {
     <header className="nav">
       <div className="wrap">
         <Link className="brand" href="/">ILLICIT <b>SHADOWS</b></Link>
-        <button className="navtoggle" aria-label="Toggle menu" aria-expanded={open} onClick={() => setOpen(!open)}>&#9776;</button>
         <nav className={`links${open ? ' open' : ''}`} aria-label="Primary">
           {NAV.map(([href, label]) => (
             <Link key={href} href={href} className={path === href ? 'on' : undefined} onClick={() => setOpen(false)}>{label}</Link>
           ))}
+          {/* Mobile only. CSS hides this above 820px and hides the button below it, so Contact
+              appears exactly once at any width. No JavaScript involved in either state. */}
+          <Link href="/contact" className="btn btn-y navmob" onClick={() => setOpen(false)}>Contact</Link>
         </nav>
+        {/* CTA sits outside .links on purpose: the mobile toggle collapses the menu, so above
+            820px this is the call to action and below it the dropdown carries Contact instead. */}
+        <div className="navright">
+          <Link className="btn btn-y navcta" href="/contact">Contact</Link>
+          <button className="navtoggle" aria-label="Toggle menu" aria-expanded={open} onClick={() => setOpen(!open)}>&#9776;</button>
+        </div>
       </div>
     </header>
   );
