@@ -5,8 +5,9 @@ import news from '../data/newsroom.json';
 import { Pic, SectionHead, Break, Prov, Hero, Signup, Donor, DigitalMuseum } from '../components/Blocks';
 import { Icon } from '../components/Icons';
 
-const e1 = films.find(f => f.slug === 'chemical-cartels');
-const e2 = films.find(f => f.slug === 'golden-handcuffs');
+// Select by status, not by slug or position: retitles and reordering should not break the page.
+const released = films.find(f => f.status === 'streaming');
+const inProduction = films.find(f => f.status === 'in-production');
 const s = site.stats.illicit_economy;
 
 export default function Home() {
@@ -17,7 +18,7 @@ export default function Home() {
             lede={<>We expose the <b className="fig">{s.value}</b> shadow economy and predict what it does next.</>}>
         <p className="srcline">Annual value of global illicit economies &middot; <Link href="/sources">{s.source}</Link></p>
         <Signup endpoint={site.forms?.signup} />
-        <div className="cta-row" style={{ marginTop: 16 }}><Link className="btn btn-o" href="/film">&#9654; Watch Season 1</Link></div>
+        <div className="cta-row" style={{ marginTop: 16 }}><Link className="btn btn-o" href="/film">&#9654; Watch the films</Link></div>
       </Hero>
 
       <section className="wrap reveal" id="pillars" style={{ paddingTop: 'clamp(112px,13vw,196px)' }}>
@@ -27,20 +28,20 @@ export default function Home() {
           <p className="mistic-sub" style={{ marginTop: -18 }}>Mapping the intersection of organized crime, emerging technology, and global threat networks.</p>
         </div>
         <div className="pillars">
-          <Link className="pill" href="/film"><div className="ph"><span className="pn">01 · Media</span>{Icon.film}</div><div className="s1">Investigative Docuseries</div><div className="s2">Illicit Shadows</div><hr className="rr" /><p className="pd">Documentary-grade journalism exposing the shadow systems that move drugs, money, weapons, and humans across borders.</p><p className="pd">Fiction series: Illicit Shadows Chronicles, The Umbra Circle (Book 1).</p><div className="ptag">SEASON 1 LIVE · YOUTUBE</div></Link>
+          <Link className="pill" href="/film"><div className="ph"><span className="pn">01 · Media</span>{Icon.film}</div><div className="s1">Field investigations</div><div className="s2">Illicit Shadows</div><hr className="rr" /><p className="pd">Documentary-grade journalism exposing the shadow systems that move drugs, money, weapons, and humans across borders.</p><p className="pd">Fiction: Illicit Shadows Chronicles, The Umbra Circle (Book 1).</p><div className="ptag">FIRST FILM RELEASED · YOUTUBE</div></Link>
           <Link className="pill" href="/museum"><div className="ph"><span className="pn">02 · Knowledge Hub</span>{Icon.museum}</div><div className="s1">Museum · Est 2025</div><div className="s2">Museum of Illicit Shadows (MIS)</div><hr className="rr" /><p className="pd">A first-of-its-kind virtual museum cataloguing crime convergence: research, exhibitions, and public programming.</p><div className="ptag">LAUNCHING 2027–2028</div></Link>
           <Link className="pill alert" href="/intelligence"><div className="ph"><span className="pn">03 · Intelligence</span>{Icon.network}</div><div className="s1">Predictive Convergence System</div><div className="s2">Project Helix</div><hr className="rr" /><p className="pd">Modeling how illicit networks reorganize after disruption. Strategic foresight, not discrete event forecasting.</p><div className="ptag">ENTERPRISE TECHNOLOGY</div></Link>
         </div>
       </section>
 
       <section className="wrap reveal band-light" id="film">
-        <SectionHead label="Film · Season 1" meta="NOW STREAMING" />
-        <Link className="film-feature" href={`/film/${e1.slug}`}><Pic base={e1.image} alt={`${e1.title}: ${e1.subtitle}`} /><span className="badge">S1 &middot; E01 &middot; NOW STREAMING</span><span className="pb">&#9654;</span></Link>
-        <p className="feat-syn">{e1.synopsis}</p>
+        <SectionHead label="Film" meta="NOW STREAMING" />
+        <Link className="film-feature" href={`/film/${released.slug}`}><Pic base={released.image} alt={`${released.title}: ${released.subtitle}`} /><span className="badge">{released.title.toUpperCase()} &middot; NOW STREAMING</span><span className="pb">&#9654;</span></Link>
+        <p className="feat-syn">{released.synopsis}</p>
         <div className="film-div" />
         <div className="film-row">
-          <a className="mbox" href={site.social.youtube}><span className="ic">{Icon.play}</span><div className="eb">Official Trailer</div><div className="ti">Watch the <span>trailer</span></div><div className="ds">A first look at the investigative docuseries.</div><div className="cta">&#9654; WATCH ON YOUTUBE</div></a>
-          <div className="mbox alert"><span className="ic">{Icon.clapper}</span><div className="eb">Next Episode · S1 · E02</div><div className="ti">Golden <span>Handcuffs</span></div><div className="ds">{e2.subtitle}.</div><div className="cta" style={{ color: 'var(--alert)' }}>IN PRODUCTION</div></div>
+          <a className="mbox" href={site.social.youtube}><span className="ic">{Icon.play}</span><div className="eb">Official Trailer</div><div className="ti">Watch the <span>trailer</span></div><div className="ds">A first look at the work.</div><div className="cta">&#9654; WATCH ON YOUTUBE</div></a>
+          <div className="mbox alert"><span className="ic">{Icon.clapper}</span><div className="eb">In production</div><div className="ti">Illicit <span>Gold</span></div><div className="ds">{inProduction.subtitle}.</div><div className="cta" style={{ color: 'var(--alert)' }}>IN PRODUCTION</div></div>
         </div>
       </section>
 
@@ -92,7 +93,7 @@ export default function Home() {
           <div className="tcopy">
             <p className="eyebrow">Fiction series</p>
             <h2 className="disp" style={{ fontSize: 'clamp(26px,3.6vw,40px)' }}>The Umbra Circle</h2>
-            <p>The fiction counterpart to the docuseries: a narrative descent into the same convergence the investigations trace. By Sam Rad and David M. Luna.</p>
+            <p>The fiction counterpart to the films: a narrative descent into the same convergence the investigations trace. By Sam Rad and David M. Luna.</p>
             <p className="tag">COMING LATE 2026</p>
             <div style={{ marginTop: 14 }}><Link className="btn btn-o" href="/books">Read the preview &rarr;</Link></div>
           </div>

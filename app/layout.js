@@ -4,7 +4,7 @@ import { Nav, Footer } from '../components/Blocks';
 
 export const metadata = {
   metadataBase: new URL(site.domain),
-  title: { default: 'Illicit Shadows', template: '%s — Illicit Shadows' },
+  title: { default: 'Illicit Shadows', template: '%s · Illicit Shadows' },
   description: site.boilerplate,
   openGraph: { siteName: 'Illicit Shadows', type: 'website' },
 };

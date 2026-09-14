@@ -1,0 +1,18 @@
+{
+ "_note": "Controlled vocabulary for convergence tags. Slugs are the stable key; labels can change without a data migration. Shared by films, the development slate, and (when wired) museum halls and sources, so the same idea never appears in two spellings. Three to five tags per item, never more: a tag row that lists everything says nothing. Add a term here before using it anywhere.",
+ "narcotics": "Narcotics",
+ "critical-minerals": "Critical minerals",
+ "environmental-crime": "Environmental crime",
+ "forced-labor": "Forced labor",
+ "human-trafficking": "Human trafficking",
+ "counterfeits": "Counterfeits",
+ "excise": "Illicit excise goods",
+ "arms": "Arms trafficking",
+ "cybercrime": "Cybercrime",
+ "corruption": "Corruption",
+ "money-laundering": "Money laundering",
+ "sanctions-evasion": "Sanctions evasion",
+ "terror-finance": "Terror finance",
+ "state-influence": "State-linked influence",
+ "supply-chains": "Supply chains"
+}

@@ -1,6 +1,30 @@
 [
-  {"kind":"dispatch","date":"2026-08-19","title":"Why fentanyl precursors keep slipping through free-trade zones","summary":"The regulatory blind spots cartels exploit between interdiction and the next port of call.","placeholder":true},
-  {"kind":"press","date":"2026-08-12","title":"Illicit Shadows to brief customs authorities on crime convergence","summary":"MISTIC principals join a closed-door session on cascading network behavior.","placeholder":true},
-  {"kind":"release","date":"2026-08-08","title":"Golden Handcuffs now in production","summary":"Gold trafficking and the Amazon's shadow mining empire. Colombia, Brazil, Switzerland.","placeholder":true},
-  {"kind":"dispatch","date":"2026-07-31","title":"Blood batteries: how cobalt links the DRC to your phone","summary":"A preview of a future season arc on conflict minerals.","placeholder":true}
+ {
+  "kind": "dispatch",
+  "date": "2026-08-19",
+  "title": "Why fentanyl precursors keep slipping through free-trade zones",
+  "summary": "The regulatory blind spots cartels exploit between interdiction and the next port of call.",
+  "placeholder": true
+ },
+ {
+  "kind": "press",
+  "date": "2026-08-12",
+  "title": "Illicit Shadows to brief customs authorities on crime convergence",
+  "summary": "MISTIC principals join a closed-door session on cascading network behavior.",
+  "placeholder": true
+ },
+ {
+  "kind": "release",
+  "date": "2026-08-08",
+  "title": "Illicit Gold now in production",
+  "summary": "Gold trafficking and the Amazon's shadow mining empire. Colombia, Brazil, Switzerland.",
+  "placeholder": true
+ },
+ {
+  "kind": "dispatch",
+  "date": "2026-07-31",
+  "title": "Blood batteries: how cobalt links the DRC to your phone",
+  "summary": "A subject under research: cobalt, conflict minerals, and the supply chain that ends in your pocket.",
+  "placeholder": true
+ }
 ]

@@ -5,7 +5,7 @@ const ROUTES = [
   ['Advisory & briefings', 'GOVERNMENT · INDUSTRY · INTL ORGS', 'Strategic guidance on illicit-economy exposure and convergence risk.'],
   ['Helix subscriptions', 'ENTERPRISE B2G · B2B', 'Predictive convergence intelligence platform access.'],
   ['Founding donor', 'MUSEUM OF ILLICIT SHADOWS', "Underwrite the Museum's public-good mission. For foundations and family offices."],
-  ['Executive producer', 'DOCUSERIES PARTNERSHIP', 'Co-produce on specific episodes or season arcs. EP credit and distribution.'],
+  ['Executive producer', 'FILM PARTNERSHIP', 'Co-produce on a single investigation or across the slate. EP credit and distribution.'],
 ];
 export default function Contact() {
   return (

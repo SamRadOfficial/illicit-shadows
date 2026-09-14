@@ -1,88 +1,24 @@
 [
   {
-    "slug": "chemical-cartels",
-    "season": 1,
-    "number": 1,
-    "title": "Chemical Cartels",
-    "subtitle": "How fentanyl became a weapon of war",
-    "status": "streaming",
-    "image": "/images/film-chemical-cartels",
-    "youtube": "https://www.youtube.com/@illicitshadowsdoc",
-    "synopsis": "The fentanyl supply chain from Chinese precursor companies through cartel labs in Mexico and Canada to North American streets, and the illicit financing that follows the drug every step of the way.",
-    "segments": [
-      {
-        "n": 1,
-        "title": "American Fallout",
-        "sub": "How fentanyl became a weapon of war",
-        "runtime": "2:01"
-      },
-      {
-        "n": 2,
-        "title": "The Illicit Beachhead",
-        "sub": "Canada's fentanyl frontlines",
-        "runtime": "2:12"
-      },
-      {
-        "n": 3,
-        "title": "The Invisible Source",
-        "sub": "Fentanyl precursors in China",
-        "runtime": "2:33"
-      },
-      {
-        "n": 4,
-        "title": "The Cartels",
-        "sub": "Mexico's role in the fentanyl supply chain",
-        "runtime": "2:58"
-      },
-      {
-        "n": 5,
-        "title": "The Leaky Port",
-        "sub": "Vancouver and fentanyl's maritime gateway",
-        "runtime": "2:30"
-      },
-      {
-        "n": 6,
-        "title": "The Lab Next Door",
-        "sub": "Suburban synthesis operations",
-        "runtime": "2:36"
-      },
-      {
-        "n": 7,
-        "title": "The Parcel Pipeline",
-        "sub": "How fentanyl arrives by mail",
-        "runtime": "2:42"
-      },
-      {
-        "n": 8,
-        "title": "The Syndicates",
-        "sub": "Cartels, TCOs, and Hells Angels",
-        "runtime": "2:09"
-      },
-      {
-        "n": 9,
-        "title": "Dirty Profits",
-        "sub": "Real estate, casinos, money laundering",
-        "runtime": "2:00"
-      },
-      {
-        "n": 10,
-        "title": "Arctic Frontlines",
-        "sub": "Indigenous communities and the Arctic",
-        "runtime": "1:45"
-      }
-    ]
-  },
-  {
-    "slug": "golden-handcuffs",
-    "season": 1,
-    "number": 2,
-    "title": "Golden Handcuffs",
+    "slug": "illicit-gold",
+    "oldSlug": "golden-handcuffs",
+    "title": "Illicit Gold",
     "subtitle": "Gold trafficking and the Amazon's shadow mining empire",
+    "line": "Gold from the Amazon is dug by the poor, taxed by armed groups, laundered through a refining chokepoint, and sold into markets that cannot tell where it came from. No test on earth can determine where a bar was mined.",
     "status": "in-production",
-    "image": "/images/film-golden-handcuffs",
-    "synopsis": "Gold does not rust, and it launders once. Episode 2 follows illicit gold from the mines of Colombia and the Brazilian Amazon to the refineries of Switzerland: the armed groups that now earn more from gold than from cocaine, the narcogarimpo economy of diesel and mercury, the refining chokepoint that buys in good faith, and the forensic effort to give a bar of gold a fingerprint. Thirty minutes. Three countries. Sam Rad on camera, David M. Luna as the institutional voice.",
-    "fullTitle": "Illicit Gold: The Rush to Cash in on the Criminal Shadows of El Dorado",
-    "runtime": "30 min",
+    "places": [
+      "Colombia",
+      "Brazil",
+      "Switzerland"
+    ],
+    "tags": [
+      "critical-minerals",
+      "corruption",
+      "money-laundering",
+      "environmental-crime"
+    ],
+    "image": "/images/film-illicit-gold",
+    "synopsis": "Gold does not rust, and it launders once. Illicit Gold follows the metal from the mines of Colombia and the Brazilian Amazon to the refineries of Switzerland: the armed groups that now earn more from gold than from cocaine, the narcogarimpo economy of diesel and mercury, the refining chokepoint that buys in good faith, and the forensic effort to give a bar of gold a fingerprint. Three countries. Sam Rad on camera, David M. Luna as the institutional voice.",
     "locations": [
       "Meta, Colombia",
       "Para, Brazil",
@@ -130,6 +66,117 @@
         "label": "gold per ounce, 2000 to early 2026",
         "source": "iiss-2026-06",
         "status": "cited"
+      }
+    ]
+  },
+  {
+    "slug": "chemical-cartels",
+    "title": "Chemical Cartels",
+    "subtitle": "How fentanyl became a weapon of war",
+    "line": "How fentanyl became a weapon of war: the precursor trade, the labs, the ports, and the street. Eleven short films, watchable now.",
+    "status": "streaming",
+    "form": "Eleven short films",
+    "places": [
+      "China",
+      "Mexico",
+      "Canada",
+      "United States"
+    ],
+    "tags": [
+      "narcotics",
+      "money-laundering",
+      "supply-chains",
+      "corruption"
+    ],
+    "image": "/images/film-chemical-cartels",
+    "youtube": "https://www.youtube.com/@illicitshadowsdoc",
+    "synopsis": "The fentanyl supply chain from Chinese precursor companies through cartel labs in Mexico and Canada to North American streets, and the illicit financing that follows the drug every step of the way.",
+    "segments": [
+      {
+        "n": 1,
+        "title": "American Fallout",
+        "sub": "How fentanyl became a weapon of war",
+        "runtime": "2:01",
+        "slug": "american-fallout",
+        "image": "/images/short-american-fallout"
+      },
+      {
+        "n": 2,
+        "title": "The Illicit Beachhead",
+        "sub": "Canada's fentanyl frontlines",
+        "runtime": "2:12",
+        "slug": "illicit-beachhead",
+        "image": "/images/short-illicit-beachhead"
+      },
+      {
+        "n": 3,
+        "title": "The Invisible Source",
+        "sub": "Fentanyl precursors in China",
+        "runtime": "2:33",
+        "slug": "invisible-source",
+        "image": "/images/short-invisible-source"
+      },
+      {
+        "n": 4,
+        "title": "The Cartels",
+        "sub": "Mexico's role in the fentanyl supply chain",
+        "runtime": "2:58",
+        "slug": "the-cartels",
+        "image": "/images/short-the-cartels"
+      },
+      {
+        "n": 5,
+        "title": "The Leaky Port",
+        "sub": "Vancouver and fentanyl's maritime gateway",
+        "runtime": "2:30",
+        "slug": "leaky-port",
+        "image": "/images/short-leaky-port"
+      },
+      {
+        "n": 6,
+        "title": "The Lab Next Door",
+        "sub": "Suburban synthesis operations",
+        "runtime": "2:36",
+        "slug": "lab-next-door",
+        "image": "/images/short-lab-next-door"
+      },
+      {
+        "n": 7,
+        "title": "The Parcel Pipeline",
+        "sub": "How fentanyl arrives by mail",
+        "runtime": "2:42",
+        "slug": "parcel-pipeline",
+        "image": "/images/short-parcel-pipeline"
+      },
+      {
+        "n": 8,
+        "title": "The Syndicates",
+        "sub": "Cartels, TCOs, and Hells Angels",
+        "runtime": "2:09",
+        "slug": "syndicates",
+        "image": "/images/short-syndicates"
+      },
+      {
+        "n": 9,
+        "title": "Dirty Profits",
+        "sub": "Real estate, casinos, money laundering",
+        "runtime": "2:00",
+        "slug": "dirty-profits",
+        "image": "/images/short-dirty-profits"
+      },
+      {
+        "n": 10,
+        "title": "Arctic Frontlines",
+        "sub": "Indigenous communities and the Arctic",
+        "runtime": "1:45",
+        "slug": "arctic-frontlines",
+        "image": "/images/short-arctic-frontlines"
+      },
+      {
+        "n": 11,
+        "slug": "next-wave",
+        "title": "The Next Wave",
+        "image": "/images/short-next-wave"
       }
     ]
   }

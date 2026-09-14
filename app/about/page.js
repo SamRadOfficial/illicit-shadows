@@ -32,7 +32,7 @@ export default function About() {
         <div className="mission">
           <div><p>Illicit Shadows, LLC is a media, knowledge, and intelligence platform, where documentary-grade journalism, a public knowledge hub, and a predictive intelligence system converge under one roof.</p><p>That convergence has a name: <b style={{ color: '#fff' }}>MISTIC</b>, Illicit Shadows Media, Technology &amp; Innovation Convergence, the institute mapping the intersection of organized crime, emerging technology, and global threat networks.</p></div>
           <div className="props">
-            <div className="prop"><div className="pk">01 · MEDIA</div><div className="pv">Illicit Shadows</div><div className="pm">INVESTIGATIVE DOCUSERIES · SEASON 1 LIVE</div></div>
+            <div className="prop"><div className="pk">01 · MEDIA</div><div className="pv">Illicit Shadows</div><div className="pm">FIELD INVESTIGATIONS · FIRST FILM RELEASED</div></div>
             <div className="prop"><div className="pk">02 · KNOWLEDGE</div><div className="pv">Museum of Illicit Shadows</div><div className="pm">MIS · EST 2025</div></div>
             <div className="prop"><div className="pk">03 · INTELLIGENCE</div><div className="pv">Project Helix</div><div className="pm">PREDICTIVE CONVERGENCE SYSTEM</div></div>
           </div>
@@ -62,10 +62,10 @@ export default function About() {
         <SectionHead label="Partners" meta="ICAIE + RADOC" />
         <div className="partners-big">
           <div className="pbig"><div className="pmark icaie"><Pic base="/logos/icaie-stacked" alt="ICAIE" /></div><div><div className="pd2" style={{ marginTop: 6 }}>International Coalition Against Illicit Economies. A leading coalition confronting the convergence of illicit trade, crime, and threat finance. Washington, DC.</div><a href="https://icaie.com">icaie.com &rarr;</a></div></div>
-          <div className="pbig"><div className="pmark"><span className="radoc"><b>RAD</b><em>OC</em></span></div><div><div className="pn2">RADOC</div><div className="pd2">RAD Original Creations, a meta-media studio producing the Illicit Shadows docuseries. NYC &middot; Washington, DC &middot; London.</div><a href="https://radoc.co">radoc.co &rarr;</a></div></div>
+          <div className="pbig"><div className="pmark"><span className="radoc"><b>RAD</b><em>OC</em></span></div><div><div className="pn2">RADOC</div><div className="pd2">RAD Original Creations, a meta-media studio producing the Illicit Shadows films. NYC &middot; Washington, DC &middot; London.</div><a href="https://radoc.co">radoc.co &rarr;</a></div></div>
         </div>
       </section>
-      <section className="wrap reveal"><Donor eyebrow="Work with us" title={<>Partner with <span>Illicit Shadows</span></>} copy="Advisory, Helix subscriptions, Museum founding-donor partnerships, and executive-producer collaborations across the docuseries slate." cta="Start a conversation" href={`mailto:${site.contact}`} mail={site.contact} /></section>
+      <section className="wrap reveal"><Donor eyebrow="Work with us" title={<>Partner with <span>Illicit Shadows</span></>} copy="Advisory, Helix subscriptions, Museum founding-donor partnerships, and executive-producer collaborations across the film slate." cta="Start a conversation" href={`mailto:${site.contact}`} mail={site.contact} /></section>
     </>
   );
 }

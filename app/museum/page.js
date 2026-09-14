@@ -32,7 +32,7 @@ export default function Museum() {
           <p className="eyebrow">Origins &middot; MIS</p>
           <h2 className="disp" style={{ marginTop: 14 }}>Founded in 2025 in the digital world</h2>
           <p>MIS was created by passionate humanitarians and ambassadors for good: David M. Luna, a former U.S. diplomat and national security official, and Sam Rad, a change agent, futurist, technologist, and bestselling author.</p>
-          <p>Joining forces, together they envision the Museum as a forum to shine light on the growing threats posed by illicit economies. Through exhibitions, research, dialogues, public programming, and investigative docuseries, MIS examines how crime convergence impacts all communities.</p>
+          <p>Joining forces, together they envision the Museum as a forum to shine light on the growing threats posed by illicit economies. Through exhibitions, research, dialogues, public programming, and field investigations, MIS examines how crime convergence impacts all communities.</p>
         </div>
         <div><Pic base="/images/mis-eclipse" ext="png" alt="The MIS eclipse, Museum of Illicit Shadows emblem" className="eclimg" /></div>
       </div></section>
@@ -62,10 +62,10 @@ export default function Museum() {
       <Break base="/images/break-evidence-2" />
 
       <section className="wrap reveal">
-        <SectionHead label="Illicit Shadows Theater" meta="INVESTIGATIVE DOCUSERIES" />
+        <SectionHead label="Illicit Shadows Theater" meta="FIELD INVESTIGATIONS" />
         <div className="theater">
-          <div><h3>Investigative <span>Docuseries</span></h3><p>An investigative docuseries that dives deep into the dark side of global markets, uncovering the clandestine criminal operations and illicit shadows that connect disparate hubs and nodes of seemingly unrelated activities.</p><p>From the dense forests of the Amazon to the world's bustling ports and free-trade zones, from the cyber battlegrounds of Eastern Europe to the hidden financial havens of the West.</p><div className="cta-row" style={{ marginTop: 6 }}><Link className="btn btn-o" href="/film">&#9654; Watch the docuseries</Link></div></div>
-          <div><h3>Crime <span>Convergence</span></h3><p>Each episode is a journey into the heart of a shadowy underworld, where geo-security, malign influence operations, economic manipulations, and human struggles converge with corruption and criminality.</p><p>Our goal is not just to expose the hidden dangers of the illicit shadows, but to shine a light on them so that, through understanding and awareness, we can collectively harness innovation and create solutions to prosecute the fight across borders.</p></div>
+          <div><h3>Field <span>investigations</span></h3><p>Films that dive deep into the dark side of global markets, uncovering the clandestine criminal operations and illicit shadows that connect disparate hubs and nodes of seemingly unrelated activities.</p><p>From the dense forests of the Amazon to the world's bustling ports and free-trade zones, from the cyber battlegrounds of Eastern Europe to the hidden financial havens of the West.</p><div className="cta-row" style={{ marginTop: 6 }}><Link className="btn btn-o" href="/film">&#9654; Watch the films</Link></div></div>
+          <div><h3>Crime <span>Convergence</span></h3><p>Each investigation is a journey into the heart of a shadowy underworld, where geo-security, malign influence operations, economic manipulations, and human struggles converge with corruption and criminality.</p><p>Our goal is not just to expose the hidden dangers of the illicit shadows, but to shine a light on them so that, through understanding and awareness, we can collectively harness innovation and create solutions to prosecute the fight across borders.</p></div>
         </div>
       </section>
 
@@ -73,7 +73,7 @@ export default function Museum() {
         <SectionHead label="Enter the Narrative Universe" meta="ILLICIT SHADOWS CHRONICLES" />
         <div className="umbra">
           <div style={{ display: 'flex', justifyContent: 'center' }}><Pic base="/images/book-umbra-circle" alt="The Umbra Circle, Book One" className="book3d" /></div>
-          <div><p className="eyebrow">Book 1</p><h3>The Umbra <span>Circle</span></h3><p>The fiction counterpart to the docuseries: a narrative descent into the same convergence the investigations trace. When a diplomat is assassinated in London, two founders are drawn into a web of espionage and uncover a secret network manipulating world systems for power and profit.</p><p className="tag">COMING LATE 2026 &middot; BY SAM RAD AND DAVID M. LUNA</p><div className="cta-row"><Link className="btn btn-o" href="/books">Read the preview &rarr;</Link></div></div>
+          <div><p className="eyebrow">Book 1</p><h3>The Umbra <span>Circle</span></h3><p>The fiction counterpart to the films: a narrative descent into the same convergence the investigations trace. When a diplomat is assassinated in London, two founders are drawn into a web of espionage and uncover a secret network manipulating world systems for power and profit.</p><p className="tag">COMING LATE 2026 &middot; BY SAM RAD AND DAVID M. LUNA</p><div className="cta-row"><Link className="btn btn-o" href="/books">Read the preview &rarr;</Link></div></div>
         </div>
       </section>
 

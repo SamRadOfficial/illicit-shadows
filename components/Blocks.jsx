@@ -66,8 +66,17 @@ export function Break({ base, alt = '' }) {
 }
 
 /** Evidentiary status chip. status: cited | alleged | investigating | uncleared | illustrative */
-export function Prov({ status, children }) {
-  return <span className={`prov prov--${status}`}>{children || status}</span>;
+export function Prov({ status, children, className }) {
+  return <span className={`prov prov--${status}${className ? ' ' + className : ''}`}>{children || status}</span>;
+}
+
+/** Convergence tags. Renders through the controlled vocabulary in data/tags.json, so a term
+    can only appear if it exists there and always appears in one spelling. An unknown key is
+    dropped rather than printed raw. */
+export function Tags({ keys = [], vocab }) {
+  const shown = keys.filter(k => vocab[k]);
+  if (!shown.length) return null;
+  return <div className="chips">{shown.map(k => <span className="ctag" key={k}>{vocab[k]}</span>)}</div>;
 }
 
 /** A statistic with its visible source. Never render a number without one. */

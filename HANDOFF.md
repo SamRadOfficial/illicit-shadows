@@ -51,6 +51,49 @@ Next.js 16 App Router, JavaScript, `output: 'export'` to `out/`, Vercel from `ma
 ## Design system
 Tokens in `site.css`: ink `#000000` (black, not dark gray), panel `#0e0e0e`, signal `#FFD400` (look here), alert `#E11D1D` (serious only, never a hover), text/muted/dim neutral grays. No warm neutrals. Display Anton, body Archivo, metadata IBM Plex Mono. Section head = display label + patterned red rule + mono meta. Full-bleed `<Break>` image bands separate sections. Review at `/specimen` before any page work.
 
+## Positioning: film, not series (14 Sep)
+Public pages do not use `episode`, `season`, `docuseries`, or any ordinal. The reason is eligibility,
+not taste: Academy documentary rules exclude a multi-part or limited series and episodes extracted
+from a larger series, and festival forms ask directly. Programmers read the site.
+
+- **Cardinal counters are fine** (`Ten short films`, segments `01` to `10`). **Ordinals are not**
+  (`Season 1`, `Episode 2`). Order by subject and status, never by number.
+- `films.json` has no `season` or `number`. Records carry `oldSlug` purely to document the 301s in
+  `vercel.json`: `/film/golden-handcuffs` is a permanent redirect to `/film/illicit-gold`.
+- Titles: **Illicit Gold** (was Golden Handcuffs). **Chemical Cartels keeps its name**: it is
+  released, its title card and thumbnails carry that title, and it is not chasing a festival run.
+  A Fentanyl Cartels rename was tried on 14 Sep and reverted the same day. Do not re-apply it.
+- **No runtime or format on anything unreleased.** A stated runtime reads as a TV slot. The gold
+  record's `runtime` was removed for this reason; do not restore it.
+- Pages select films by `status`, never by slug or array position, so a retitle cannot break a page.
+- `data/tags.json` is the **controlled convergence vocabulary**, shared by films and the slate and
+  intended for museum halls and sources. The `<Tags>` component renders only keys present there and
+  silently drops unknown ones, so a term cannot appear in two spellings. Three to five per item.
+- `data/slate.json` is research, not announced production. `belt-and-road` carries `title: CCP Inc`
+  with `altTitle: Port Authority` held in reserve; its slug is deliberately the subject, not the
+  title, because that title is the most likely of the six to change.
+- **The one surviving occurrence is `public/museum-viewer.html`**, which contains
+  "SEASON 2 · GOLDEN HANDCUFFS · JANUARY 2027" and "docuseries" inside the Three.js canvas text.
+  Left alone because the brief says not to touch that build. It is public markup and it names a
+  release date, so it needs a copy pass of its own.
+
+The social handle lives once, in `site.json` as `social.handle`, because it is printed in film
+credits and may change. Never hardcode it in a page.
+
+Status chips sit **bottom left** on film art (`.work-status`, and `.badge.btm` on the detail page);
+short-film numbers sit **top right** (`.sgcard-n`). Both were moved after they landed on type baked
+into the covers, the short number first showing the collision at 390px. Check new covers at 390px.
+
+`/film/[slug]` renders a short as a **card when it has an `image` and a text row when it does not**,
+so a missing cover never becomes a placeholder tile. Chemical Cartels has eleven covers, so it is
+all cards today; the fallback stays for future films.
+
+`/film` shows **three covers per film** (`SEGMENTS_ON_INDEX`, `.minigrid`) and links through to the
+full set. Owner picked this over a scrolling strip of all eleven, to keep the index calm. If a strip
+is ever revisited: a grid item defaults to `min-width:auto`, so the scroller stretches its card
+instead of scrolling unless `min-width:0` is set, and that is invisible in a screenshot. Compare
+`scrollWidth` against `clientWidth` to check.
+
 ## Nav
 Seven links plus a **solid signal-yellow Contact CTA at the right** (owner pick, 14 Sep). The button
 lives in `.navright` beside the toggle. **At or below 820px the button is hidden and the bar shows only the
@@ -154,8 +197,16 @@ GitHub/Vercel access · `/sources` review · Squarespace redirect map · the "co
 copy conflicts with Phase I 2027 (reconcile).
 
 Found in the 14 Sep review pass, not yet fixed:
-- **Em dashes ship in every `<title>`, `og:title` and `twitter:title`** via the template in
-  `app/layout.js` (`'%s — Illicit Shadows'`). Body copy is clean; metadata is not.
+- **Key art is complete and follows one pattern** (14 Sep): 16:9 at 1600x900, presenting credit top
+  left in mono, title in the left third, subject photography right, Illicit Shadows roundel bottom
+  right. **Color carries the work**: yellow is Illicit Gold, red is Chemical Cartels. Two film covers
+  (`film-illicit-gold`, `film-chemical-cartels`) and eleven short covers (`short-<subject>`), named
+  by subject rather than number so order can change without renaming.
+  Overlays must respect the art: status chips bottom left on film cards, short numbers **top right**.
+  Left and bottom-right are occupied by the credit, the title, and the roundel.
+- **The trailer carries "An Investigative Docuseries by ICAIE and RADOC" on screen** and is on
+  YouTube, so it is the strongest piece of series framing still in circulation. It sits on `/film`
+  in an archive-cut slot until it is recut.
 - **British spellings in copy:** "cataloguing" (Home, pillar 02), "catalogued" (`/intelligence`,
   Helix layer 01). `museum-viewer.html` also has "programme" and "centre".
 - **`museum-viewer.html` loads Three.js from cdnjs and Anton plus Plex from Google Fonts at runtime.**

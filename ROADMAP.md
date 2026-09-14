@@ -18,6 +18,13 @@ The standing checklist. Update in the same commit as the work. Items move to Don
 
 ## Build
 
+- [ ] **Confirm one short title against YouTube.** Cover art reads FENTANYL'S DIRTY PROFITS;
+      `films.json` says Dirty Profits. (Syndicates art was re-supplied 14 Sep and now agrees.)
+- [ ] **Subtitle and runtime for The Next Wave** (short 11). The card renders without them.
+- [ ] **Recut the trailer.** The current one is pre-gold and says "docuseries" on screen.
+- [ ] **Copy pass on `public/museum-viewer.html`**: it still says SEASON 2, GOLDEN HANDCUFFS, and
+      JANUARY 2027 inside the canvas text.
+
 - [ ] **Matched founder portraits** from a single shoot. The current pair is honest but mismatched:
       different lighting, different backgrounds, different crop tightness. Post-processing was tried
       and reverted; the fix is photography.
@@ -59,6 +66,10 @@ The standing checklist. Update in the same commit as the work. Items move to Don
 - [x] **14 Sep** `preview.py` fixed: CSS glob broken since the Next 16 upgrade (previews were
       rendering unstyled), and `--lite` now keeps the fonts as woff2 instead of dropping them.
 - [x] **14 Sep** `scripts/mock.py`: design options render as one HTML page, per owner instruction.
+- [x] **14 Sep** Key art complete: two film covers and eleven short covers, card grid on the film
+      page, color split of yellow for gold and red for Chemical Cartels.
+- [x] **14 Sep** Positioning pass: series framing retired site-wide. `/film` rebuilt as two works
+      plus a development slate with convergence tags, gold film retitled Illicit Gold, 301 added, page titles switched from em dash to middot.
 - [x] **14 Sep** Contact CTA in the nav: solid signal yellow on desktop, and on mobile the button
       is dropped and Contact sits at the bottom of the hamburger dropdown.
 - [x] **14 Sep** `/about` reordered to the owner's sequence: Who we are, Who's building this, Who we

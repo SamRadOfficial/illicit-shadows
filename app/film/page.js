@@ -1,44 +1,88 @@
 import Link from 'next/link';
 import site from '../../data/site.json';
 import films from '../../data/films.json';
-import { Pic, SectionHead, Break, Hero, Donor } from '../../components/Blocks';
+import slate from '../../data/slate.json';
+import tags from '../../data/tags.json';
+import { Pic, SectionHead, Break, Hero, Donor, Prov, Tags } from '../../components/Blocks';
 export const metadata = { title: 'Film' };
 
-const UPCOMING = [
-  { n: 'S1 · E03', title: 'Blood Batteries', sub: "Cobalt supply chains and the DRC's resource wars" },
-  { n: 'S1 · E04', title: 'The Iron Triangle', sub: 'Authoritarian influence and the new shadow economy' },
-];
+// No ordinals on public pages. Cardinal counters (ten short films, 01 to 10) are fine; Season N
+// and Episode N are not, because a film that is an episode of a series is generally ineligible
+// for documentary awards and festival forms ask directly. See HANDOFF.
+// Three covers on the index is proof the work exists; the full set lives on the film page.
+const SEGMENTS_ON_INDEX = 3;
 
 export default function Film() {
-  const e1 = films[0], e2 = films[1];
+  const [lead, released] = films;
   return (
     <>
-      <Hero img="/images/break-evidence-1" alt="An evidence wall of pinned photographs and documents" variant="filmhero" pos="center" eyebrow="Investigative Docuseries · Now Streaming"
+      <Hero img="/images/break-evidence-1" alt="An evidence wall of pinned photographs and documents" variant="filmhero" pos="center" eyebrow="Field investigations"
             title={<>The dark forces shaping the <span className="y">global criminal underworld</span></>}
-            lede="Illicit Shadows dives deep into the dark side of global markets, uncovering the clandestine operations and illicit shadows that connect disparate hubs and nodes of seemingly unrelated activities, from the Amazon to the world's busiest ports.">
-        <div className="cta-row"><a className="btn btn-y" href="#s1">Watch Season 1</a><a className="btn btn-o" href="#trailer">&#9654; Official Trailer</a></div>
+            lede="Illicit Shadows investigates the global illicit economy: where the money moves, who it pays, and what it costs the people living on top of it. Each investigation begins as field research and becomes a film, a museum hall, and a public source index.">
+        <div className="cta-row"><Link className="btn btn-y" href={`/film/${released.slug}`}>Watch now</Link><a className="btn btn-o" href="#trailer">&#9654; Trailer</a></div>
       </Hero>
       <Break base="/images/break-evidence-2" />
-      <section className="wrap reveal" id="s1">
-        <SectionHead label={`Season 1 · ${e1.title}`} meta="NOW STREAMING" />
-        <Link className="film-feature" href={`/film/${e1.slug}`}><Pic base={e1.image} alt={`${e1.title}: ${e1.subtitle}`} /><span className="badge">S1 &middot; E01 &middot; NOW STREAMING</span><span className="pb">&#9654;</span></Link>
-        <p className="feat-syn" style={{ textAlign: 'center' }}>{e1.subtitle}. {e1.synopsis}</p>
+      <section className="wrap reveal" id="films">
+        <SectionHead label="Film" meta="INVESTIGATIONS" />
+        <div className="works">
+          {films.map(f => (
+            <article className="work" key={f.slug}>
+              <Link className="work-img" href={`/film/${f.slug}`}>
+                <Pic base={f.image} alt={`${f.title}: ${f.subtitle}`} />
+                <Prov status={f.status === 'streaming' ? 'cited' : 'investigating'} className="work-status">{f.status === 'streaming' ? 'Released' : 'In production'}</Prov>
+              </Link>
+              <div className="work-body">
+                <h3 className="work-title"><Link href={`/film/${f.slug}`}>{f.title}</Link></h3>
+                <p className="work-places">{f.places.join(' · ')}</p>
+                <p className="work-line">{f.line}</p>
+                <Tags keys={f.tags} vocab={tags} />
+              </div>
+              {/* Spans both columns: the key art is typographic, so the image must keep its 16:9
+                  and never be cover-cropped to match a card grown tall by this list. */}
+              {f.segments && <div className="segwrap">
+                <p className="segcap">{f.form}</p>
+                <div className="minigrid">
+                  {f.segments.filter(s => s.image).slice(0, SEGMENTS_ON_INDEX).map(s => (
+                    <Link className="minicard" href={`/film/${f.slug}`} key={s.n}>
+                      <span className="minicard-img"><Pic base={s.image} alt={`${s.title} title card`} /></span>
+                      <span className="minicard-t">{s.title}</span>
+                      {s.runtime && <span className="minicard-r">{s.runtime}</span>}
+                    </Link>
+                  ))}
+                </div>
+                <p className="seemore"><Link href={`/film/${f.slug}`}>All {f.segments.length} &rarr;</Link></p>
+              </div>}
+            </article>
+          ))}
+        </div>
       </section>
       <section className="wrap reveal tight">
-        <SectionHead label="Episodes" meta="SEASON 1" dim />
-        <div className="eplist">
-          <Link className="ep" href={`/film/${e1.slug}`}><div className="epthumb"><Pic base={e1.image} alt="" /><span className="pb">&#9654;</span></div><div><div className="epn">S1 · E01</div><div className="ept">{e1.title}</div><div className="eps">{e1.subtitle}</div></div><div className="epmeta">NOW STREAMING</div></Link>
-          <div className="ep up"><div className="epthumb"><Pic base={e2.image} alt="" /></div><div><div className="epn">S1 · E02</div><div className="ept">{e2.title}</div><div className="eps">{e2.subtitle}</div></div><div className="epmeta">IN PRODUCTION</div></div>
-          {UPCOMING.map(u => <div className="ep up" key={u.title}><div className="epthumb soon"><span>COMING SOON</span></div><div><div className="epn">{u.n}</div><div className="ept">{u.title}</div><div className="eps">{u.sub}</div></div><div className="epmeta">UPCOMING</div></div>)}
+        <SectionHead label="In development" meta="RESEARCH AGENDA" dim />
+        <div className="slate">
+          {slate.map(s => (
+            <div className="srow" key={s.slug}>
+              <div><h4 className="stitle">{s.title}</h4><p className="ssub">{s.sub}</p></div>
+              <Tags keys={s.tags} vocab={tags} />
+            </div>
+          ))}
         </div>
       </section>
       <Break base="/images/break-evidence-3" />
       <section className="wrap reveal" id="trailer">
-        <SectionHead label="Official Trailer" meta="WATCH NOW" />
-        <a className="film-feature" href={site.social.youtube}><Pic base="/images/film-trailer" alt="Illicit Shadows official trailer" /><span className="pb">&#9654;</span></a>
+        <SectionHead label="Trailer" meta="2024 CUT" dim />
+        {/* 2024 cut. Predates the gold work and carries the old series branding on screen. Kept
+            reachable, marked as an archive cut, and deliberately not given a hero slot. */}
+        <div className="trailer-band">
+          <a className="work-img trailer-img" href={site.social.youtube}><Pic base="/images/film-trailer" alt="Illicit Shadows trailer" /><span className="pb">&#9654;</span></a>
+          <div>
+            <h3 className="work-title">Trailer</h3>
+            <p className="work-line">The 2024 cut, made before the gold work began. Kept for reference until a new cut exists.</p>
+            <Prov status="illustrative">Archive cut</Prov>
+          </div>
+        </div>
       </section>
       <section className="wrap reveal">
-        <Donor eyebrow="Now streaming" title={<>Watch on <span>YouTube</span></>} copy="New episodes and investigative segments released regularly. Subscribe to follow the investigation across borders." cta="Watch on YouTube" href={site.social.youtube} />
+        <Donor eyebrow="Now streaming" title={<>Watch on <span>YouTube</span></>} copy="New investigative segments released regularly. Subscribe to follow the work across borders." cta="Watch on YouTube" href={site.social.youtube} />
       </section>
     </>
   );
