@@ -54,7 +54,7 @@ Tokens in `site.css`: ink `#000000` (black, not dark gray), panel `#0e0e0e`, sig
 ## Component inventory
 `components/Blocks.jsx` (client): `Pic` · `Nav` · `Footer` · `SectionHead` · `Break` · `Prov` · `Stat` · `Reveal` · `Hero` · `Signup` · `Donor` · `DigitalMuseum`.
 `components/Icons.jsx` (server-safe, no 'use client'): the `Icon` map of inline SVGs.
-**Rule learned 14 Sep (reveal):** `.reveal` must never hide content unconditionally. The CSS hides only under `.js`, a class set synchronously by an inline script in `app/layout.js`. Without that, no-JS visitors, stripped standalone previews, and any failed bundle render a page with nothing but the header. If you add an animation that starts at `opacity:0`, gate it the same way.
+**Rule learned 14 Sep (reveal) — REMOVED, do not reintroduce:** the scroll-triggered fade hid every section behind `opacity:0` until JS added a class. It broke standalone previews, no-JS visitors, and then production (sections invisible on the live site even with the `.js` gate in place, most likely a hydration failure). The mechanism is gone: `.reveal` is inert, `<Reveal>` is deleted, and there is no js-gate script. Verified by rendering the built site with JavaScript fully disabled. **Never ship a default of `opacity:0` that depends on JavaScript to undo.**
 
 **Rule learned 14 Sep (client modules):** never export a non-component value (an object of JSX elements) from a `'use client'` module. Server pages receive a client-reference proxy and render nothing, silently. Components are fine; values are not.
 
@@ -69,6 +69,7 @@ All ported from the reference mockups (`reference/`). Surface decisions applied:
 `npm run build` → `node scripts/check-assets.mjs` (HTML src/srcSet/href, CSS url(), video) → `python3 scripts/preview.py <route> <out.html>` / `mobile.py` → `python3 scripts/screenshot.py <route> <png> --full` (scrolls the page first so `loading="lazy"` images and reveals fire; without that, full-page captures show blank features). Run checker before every push.
 
 ## Roadmap
+See **`ROADMAP.md`** for the live checklist. Summary:
 All routes exist; the owner now edits from the built site. Next: 1. Owner review pass per page (previews in `previews/`). 2. Wire signup + donation provider. 3. Verify and link `/sources` URLs; owner cut. 4. Licensed network-globe. 5. Founder headshots; real newsroom posts; brochure PDF and Substack links. 6. `/press`. 7. Analytics, `robots.js` (allow GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended), Squarespace redirect map, DNS.
 
 
