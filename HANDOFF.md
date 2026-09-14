@@ -234,9 +234,13 @@ repeatedly read as "the image did not update" when the build was correct. Do not
 `app/sitemap.js` and `app/robots.js` need `export const dynamic = 'force-static'` or the export build
 fails. `/specimen` is disallowed in robots.
 
-**Narration** lives in a `transcript` array (paragraphs) per segment in `films.json` and renders in
-its own section below the list (`.tx-full`, owner pick 14 Sep), with a "Narration" jump link on any
-row that has one. **Rendered at build time, never fetched on click**: the indexable text is most of
+**Every short film has its own page**: `/film/<film>/<short>`, built from `segments[].slug` (owner
+decision 14 Sep, replacing a narration section stacked below the list). Eleven subjects on eleven
+URLs beats eleven on one: each page carries its own title, description, `VideoObject` and narration,
+and each is shareable. They are in `sitemap.js`; add any new short there by adding its `slug`.
+
+**Narration** lives in a `transcript` array (paragraphs) per segment in `films.json` and renders on
+that short's page. **Rendered at build time, never fetched on click**: the indexable text is most of
 the reason to publish it. Labelled "as broadcast" so it reads as the words spoken in the film, not
 as a separate written article. Punctuation is normalized to the site style (no em dashes, straight
 quotes); wording is untouched.

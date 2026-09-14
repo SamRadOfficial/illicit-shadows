@@ -36,7 +36,8 @@ export function WorkCard({ film, segments = 3, priority = false }) {
               <span className="minicard-img">
                 <VideoEmbed modal id={s.youtubeId} image={s.image} alt={`${s.title} title card`} title={s.title} channel={film.youtube || site.social.youtube} />
               </span>
-              <Link className="minicard-t" href={`/film/${film.slug}`}>{s.title}</Link>
+              <Link className="minicard-t" href={`/film/${film.slug}/${s.slug}`}>{s.title}</Link>
+              {s.sub && <span className="minicard-s">{s.sub}</span>}
               {s.runtime && <span className="minicard-r">{s.runtime}</span>}
             </div>
           ))}

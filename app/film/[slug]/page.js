@@ -77,7 +77,9 @@ export default async function Investigation({ params }) {
               <span className="vrow-body">
                 <span className="vrow-t">{s.title}</span>
                 {s.sub && <span className="vrow-s">{s.sub}</span>}
-                {s.transcript && <a className="tx-jump" href={`#narration-${s.slug}`}>Narration &darr;</a>}
+                <Link className="tx-jump" href={`/film/${f.slug}/${s.slug}`}>
+                  {s.transcript ? 'Narration and details' : 'Details'} &rarr;
+                </Link>
               </span>
             </div>
           ))}
@@ -92,20 +94,6 @@ export default async function Investigation({ params }) {
           ))}
         </div>}
       </section>}
-      {f.segments?.some(s => s.transcript) && <section className="wrap reveal tight" id="narration">
-        <SectionHead label="Narration" meta="AS BROADCAST" dim />
-        {/* The words as spoken in the film, not a written article. Rendered at build time rather
-            than fetched, so it is indexable: that is most of the reason to publish it. */}
-        {f.segments.filter(s => s.transcript).map(s => (
-          <article className="tx-full" id={`narration-${s.slug}`} key={s.n}>
-            <h4>{String(s.n).padStart(2, '0')} &middot; {s.title}</h4>
-            {s.transcript.map((para, i) => <p key={i}>{para}</p>)}
-          </article>
-        ))}
-        <p className="tx-note">Narration transcribed from the released films. The remaining shorts
-          are being added as their text is confirmed.</p>
-      </section>}
-
       {f.locations && <section className="wrap reveal tight">
         <SectionHead label="Locations" meta="THREE COUNTRIES" dim />
         <div className="chips">{f.locations.map(l => <span className="chip-h" key={l}>{l}</span>)}</div>

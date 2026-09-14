@@ -177,7 +177,8 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .minicard:hover .minicard-img{border-color:var(--line-2)}
 .minicard-t{display:block;font-weight:700;font-size:14px;color:var(--text);margin-top:8px}
 .minicard:hover .minicard-t{color:var(--signal)}
-.minicard-r{display:block;font-family:var(--mono);font-size:10.5px;color:var(--dim);margin-top:3px}
+.minicard-s{display:block;color:var(--muted);font-size:13px;line-height:1.5;margin-top:4px}
+.minicard-r{display:block;font-family:var(--mono);font-size:10.5px;color:var(--dim);margin-top:5px}
 .seemore{margin:16px 0 4px}
 .seemore a{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);border-bottom:1px solid var(--alert);padding-bottom:3px}
 .slate{border-top:1px solid var(--line)}
@@ -357,6 +358,12 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
    roundel bottom right, so a centred button lands squarely on the words. Checked at 128px. */
 .minicard-img .vembed .pb{left:auto;right:8px;top:8px;transform:none;width:32px;height:32px;font-size:11px;box-shadow:0 0 0 4px rgba(0,0,0,.4)}
 
+.shortnav{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;padding-top:6px}
+.shortnav-a{display:block}
+.shortnav-a.right{text-align:right}
+.shortnav-t{display:block;font-family:var(--disp);font-size:20px;text-transform:uppercase;color:var(--text);margin-top:4px}
+.shortnav-a:hover .shortnav-t{color:var(--signal)}
+
 @media(max-width:820px){
   .links{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:#0a0a0a;border-bottom:2px solid var(--alert);padding:14px 24px;gap:14px}
   .links.open{display:flex}.navtoggle{display:block}
@@ -376,6 +383,8 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
   .vrow-play{flex-direction:row;align-items:center;gap:14px;min-width:0;margin-top:2px}
   .vrow-t{font-size:17px}
   .lead-film,.preview-top,.trailer-row{grid-template-columns:1fr}
+  .shortnav{grid-template-columns:1fr;gap:12px;text-align:left}
+  .shortnav-a.right{text-align:left}
   /* Below 820px the render is too small to hold copy on top of it: stack instead. The scrim and
      the absolutely positioned stamp both have to stand down, or they dim the stacked panel and
      land on the button. */

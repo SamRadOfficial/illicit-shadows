@@ -161,6 +161,8 @@ keeps its `illustrative` chip.
       placement guide, six upcoming covers on `/film` and home, five cascade maps as a stepper on
       `/intelligence`. Illicit Gold cover title recoloured to signal yellow. Home hero reordered to
       email first.
+- [x] **14 Sep** Per-short pages at `/film/<film>/<short>`, each with its own metadata, VideoObject
+      and narration, listed in the sitemap. Short descriptions added under titles on home.
 - [x] **14 Sep** Shorts play in a lightbox instead of a 250px card; eleven shorts listed vertically
       on the film page; home hero cut from three calls to action to two.
 - [x] **14 Sep** All thirteen museum hall thumbnails replaced with the supplied set.

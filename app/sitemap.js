@@ -15,5 +15,9 @@ export default function sitemap() {
                           priority: r === '' ? 1 : 0.8 })),
     ...films.map(f => ({ url: new URL(`/film/${f.slug}`, site.domain).href, lastModified: now,
                          priority: 0.9 })),
+    // One entry per short film. These are the pages carrying the narration text.
+    ...films.flatMap(f => (f.segments || []).filter(s => s.slug).map(s => ({
+      url: new URL(`/film/${f.slug}/${s.slug}`, site.domain).href, lastModified: now, priority: 0.7,
+    }))),
   ];
 }
