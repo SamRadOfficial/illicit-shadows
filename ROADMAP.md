@@ -191,6 +191,8 @@ keeps its `illustrative` chip.
       placement guide, six upcoming covers on `/film` and home, five cascade maps as a stepper on
       `/intelligence`. Illicit Gold cover title recoloured to signal yellow. Home hero reordered to
       email first.
+- [x] **14 Sep** `/intelligence` restructured: Helix as two columns, a break band before the
+      cascade, and the map's own timeline made clickable (option A, contained).
 - [x] **14 Sep** Page-specific heroes on `/about`, `/contact`, `/intelligence` and `/newsroom`,
       replacing repeated evidence-wall imagery.
 - [x] **14 Sep** `/books` gets the trilogy render as its hero and 3D mockups for all three books.

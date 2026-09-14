@@ -23,17 +23,27 @@ export default function Intelligence() {
         <SectionHead label="The Institute" meta="FUSION CENTER" />
         <div className="inst"><div className="it">MISTIC</div><div className="ie">MEDIA · TECHNOLOGY · INNOVATION CONVERGENCE</div><p>A fusion center for strategic intelligence, mapping the intersection of organized crime, emerging technology, and global threat networks, and home to Project Helix, an AI-based predictive convergence system.</p></div>
       </section>
+      {/* Helix: the art carries the idea, the layers carry the mechanism. Two columns so the
+          reader sees both at once instead of scrolling from one to the other. */}
       <section className="wrap reveal tight" id="helix">
         <SectionHead label="Project Helix" meta="PREDICTIVE CONVERGENCE SYSTEM" />
-        <div className="layers">
-          <div className="layer"><div className="ln">01 · INTELLIGENCE LAYER</div><div className="ld">MIS ingestion: assets, artifacts, and mapping catalogued into the modeling framework.</div></div>
-          <div className="layer"><div className="ln">02 · GLOBAL GRAPH</div><div className="ld">Nodes, edges, and a data lake linking actors, routes, and flows.</div></div>
-          <div className="layer"><div className="ln">03 · CAUSAL ENGINE</div><div className="ld">Helix.AI: structural causal modeling with adaptive feedback.</div></div>
-          <div className="layer"><div className="ln">04 · REINFORCEMENT</div><div className="ld">Optimization across cascading adaptation paths.</div></div>
+        <div className="helixrow">
+          <figure className="helix-art">
+            <Pic base="/images/helix-ai" alt="Helix.AI: illicit economies converging on shared nodes across the global network" />
+          </figure>
+          <div className="layers">
+            <div className="layer"><div className="ln">01 &middot; INTELLIGENCE LAYER</div><div className="ld">MIS ingestion: assets, artifacts, and mapping catalogued into the modeling framework.</div></div>
+            <div className="layer"><div className="ln">02 &middot; GLOBAL GRAPH</div><div className="ld">Nodes, edges, and a data lake linking actors, routes, and flows.</div></div>
+            <div className="layer"><div className="ln">03 &middot; CAUSAL ENGINE</div><div className="ld">Helix.AI: structural causal modeling with adaptive feedback.</div></div>
+            <div className="layer"><div className="ln">04 &middot; REINFORCEMENT</div><div className="ld">Optimization across cascading adaptation paths.</div></div>
+          </div>
         </div>
-        <figure className="helix-art" style={{ margin: '20px 0 0' }}>
-          <Pic base="/images/helix-ai" alt="Helix.AI: illicit economies converging on shared nodes across the global network" />
-        </figure>
+      </section>
+
+      <Break base="/images/break-evidence-2" />
+
+      <section className="wrap reveal" id="cascade">
+        <SectionHead label="Cascade prediction" meta="WORKED EXAMPLE" />
         <CascadeMaps />
       </section>
       <Break base="/images/break-evidence-1" />

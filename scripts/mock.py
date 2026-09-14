@@ -45,102 +45,94 @@ FACES = ''.join(f'@font-face{{font-family:{fam};src:url({font(f)});font-weight:{
 
 import json as _json
 
-HERO = img('images/hero-globe.jpg')
+def svg(name):
+    raw = open(os.path.join(PUB, 'images/cascade', name), 'rb').read()
+    return 'data:image/svg+xml;base64,' + base64.b64encode(raw).decode()
 
-# Arc geometry traced over the globe in the art: start, control, end, in a 1600x900 viewBox.
-# Endpoints kept inside the globe's disc in the artwork, roughly on lit landmass, so no arc
-# terminates in empty ocean or runs off the edge.
-ARCS = [
-    (1000, 420, 1130, 300, 1290, 370),
-    (1020, 455, 1160, 360, 1330, 450),
-    (985, 500, 1110, 470, 1270, 545),
-    (1015, 395, 1120, 285, 1245, 300),
-    (1030, 530, 1160, 575, 1300, 600),
-]
-NODES = [(1000, 420), (1290, 370), (1330, 450), (1270, 545), (1245, 300), (1300, 600)]
+MAPS = {n: svg(f'{n}.svg') for n in
+        ('00-trigger', '01-routes', '02-entities', '03-property', '04-influence')}
+STAGES = [('00-trigger', 'Trigger', 'Day 0', 'Contraband is interdicted at Rotterdam.'),
+          ('01-routes', 'Routes', 'Day 0', 'Volume shifts to Antwerp and Hamburg.'),
+          ('02-entities', 'Entities', '+11 days', 'Shell registrations spike in Lisbon, the Caribbean, offshore.'),
+          ('03-property', 'Property', '+3 months', 'Real-estate cash purchases rise in London, Miami, Dubai.'),
+          ('04-influence', 'Influence', '+12 months', 'Political funding anomalies appear in the EU and North America.')]
 
-
-def svg_layer(mode):
-    paths = ''.join(
-        f'<path class="arc arc{i}" d="M{a} {b} Q{c} {d} {e} {f}" />'
-        for i, (a, b, c, d, e, f) in enumerate(ARCS))
-    dots = ''.join(f'<circle class="node n{i}" cx="{x}" cy="{y}" r="3.5" />' for i, (x, y) in enumerate(NODES))
-    pulses = ''
-    if mode == 'travel':
-        pulses = ''.join(
-            f'<circle class="pkt" r="5"><animateMotion dur="{5 + i}s" repeatCount="indefinite" '
-            f'begin="{i * 0.7}s" path="M{a} {b} Q{c} {d} {e} {f}" /></circle>'
-            for i, (a, b, c, d, e, f) in enumerate(ARCS))
-    return (f'<svg class="heroart {mode}" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" '
-            f'aria-hidden="true">{paths}{dots}{pulses}</svg>')
+HITS = ''.join(
+    f'<button class="hit{" on" if n == 0 else ""}" style="left:{(60 + n * 299) / 16}%;width:{281 / 16}%" '
+    f'aria-label="{lab}"></button>' for n, (f, lab, lag, what) in enumerate(STAGES))
 
 
-def hero(mode, note):
-    return (f'<div class="mockhero2"><img class="heroimg" src="{HERO}" alt="">'
-            f'{svg_layer(mode) if mode else ""}<span class="heroveil"></span>'
-            f'<div class="herocopy"><p class="eyebrow">Media &middot; Knowledge &middot; Intelligence</p>'
-            f'<h1 class="disp">The dark forces shaping the <span class="y">global criminal underworld</span></h1>'
-            f'<p class="hero-lede">We expose the $6 trillion shadow economy and predict what it does next.</p>'
-            f'<div class="cta-row"><a class="btn btn-y" href="#">Watch the films</a></div></div>'
-            f'<span class="heronote">{note}</span></div>')
+def figure(active='00-trigger', cls=''):
+    active = active or '00-trigger'
+    return (f'<figure class="cfig {cls}"><img src="{MAPS[active]}" alt="">'
+            f'<div class="hits">{HITS}</div></figure>')
 
 
-PAGE_A = hero('', 'No motion. What is live now.')
-PAGE_B = hero('draw', 'Arcs draw once on load, then nodes breathe slowly.')
-PAGE_C = hero('travel', 'Arcs draw, then traffic runs along them continuously.')
+def head(label, meta):
+    return (f'<div class="head"><span class="lbl">{label}</span><span class="bar"></span>'
+            f'<span class="meta">{meta}</span></div>')
+
+
+PAGE_A = (head('Cascade prediction', 'WORKED EXAMPLE')
+          + figure() + '<p class="cfoot">The chain is the claim: disruption does not remove the '
+          'trade, it moves it, and each move surfaces in different data.</p>')
+
+PAGE_B = (head('Cascade prediction', 'WORKED EXAMPLE')
+          + '<div class="cwide">' + figure() + '</div>'
+          + '<p class="cfoot">Full-bleed. The map is the argument, so it gets the width of the screen.</p>')
+
+RAIL = ''.join(
+    f'<button class="railbtn{" on" if n == 0 else ""}"><span class="rn">{n:02d}</span>'
+    f'<span class="rl">{lab}</span><span class="rg">{lag}</span>'
+    f'<span class="rw">{what}</span></button>' for n, (f, lab, lag, what) in enumerate(STAGES))
+
+PAGE_C = (head('Cascade prediction', 'WORKED EXAMPLE')
+          + f'<div class="crail"><div class="railcol">{RAIL}</div>{figure("", "in-rail")}</div>'
+          + '<p class="cfoot">The whole chain stays visible while you move through it.</p>')
 
 SHARED = """
-.mockhero2{position:relative;overflow:hidden;border:1px solid var(--line-2);min-height:460px;display:flex;align-items:flex-end}
-.heroimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center}
-.heroveil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.95),rgba(0,0,0,.74) 38%,rgba(0,0,0,.22) 66%,rgba(0,0,0,.55))}
-.herocopy{position:relative;z-index:3;padding:clamp(22px,4vw,48px);width:100%}
-.mockhero2 .disp{font-size:clamp(30px,4.4vw,56px);margin:10px 0 14px;max-width:17ch}
-.hero-lede{color:var(--text-2);font-size:16px;margin:0 0 20px;max-width:52ch}
-.heronote{position:absolute;right:12px;bottom:12px;z-index:4;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);background:rgba(0,0,0,.8);border:1px solid var(--line-2);padding:6px 10px}
-
-/* The animated layer: vector arcs over the photographic globe. No JavaScript, a few KB. */
-.heroart{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
-.heroart .arc{fill:none;stroke:#FFD400;stroke-width:1.6;opacity:.6;filter:drop-shadow(0 0 3px rgba(255,212,0,.55));
-  stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2.4s ease-out forwards}
-.heroart .arc1{animation-delay:.25s}.heroart .arc2{animation-delay:.5s}
-.heroart .arc3{animation-delay:.75s}.heroart .arc4{animation-delay:1s}.heroart .arc5{animation-delay:1.25s}
-.heroart .node{fill:#FFD400;opacity:0;filter:drop-shadow(0 0 4px rgba(255,212,0,.7));animation:pop .6s ease-out forwards 1.6s}
-.heroart.draw .node{animation:pop .6s ease-out forwards 1.6s, breathe 4s ease-in-out infinite 2.4s}
-.heroart .pkt{fill:#fff;opacity:.9}
-@keyframes draw{to{stroke-dashoffset:0}}
-@keyframes pop{to{opacity:1}}
-@keyframes breathe{0%,100%{opacity:1;r:4}50%{opacity:.45;r:6}}
-/* Anyone who has asked their system to reduce motion gets the finished state, not the animation. */
-@media (prefers-reduced-motion:reduce){
-  .heroart .arc{animation:none;stroke-dashoffset:0}
-  .heroart .node{animation:none;opacity:1}
-  .heroart .pkt{display:none}
-}
+.cfig{position:relative;margin:0;border:1px solid var(--line-2)}
+.cfig img{display:block;width:100%;height:auto;background:#000}
+.hits{position:absolute;left:0;right:0;top:87.8%;height:6.7%}
+.hit{position:absolute;top:0;height:100%;background:none;border:1px solid transparent;border-radius:7px;cursor:pointer}
+.hit:hover{border-color:var(--signal)}
+.cfoot{font-size:12.5px;color:var(--muted);line-height:1.65;margin-top:14px;font-style:italic}
+.cwide{width:100vw;max-width:100vw;margin-left:calc(50% - 50vw)}
+.cwide .cfig{border-left:0;border-right:0}
+.crail{display:grid;grid-template-columns:300px 1fr;gap:20px;align-items:start}
+.railcol{display:flex;flex-direction:column;gap:8px}
+.railbtn{display:block;text-align:left;background:none;border:1px solid var(--line);border-left:3px solid var(--line);padding:12px 14px;cursor:pointer;font:inherit}
+.railbtn:hover{border-color:var(--line-2)}
+.railbtn.on{border-left-color:var(--signal);background:#141210}
+.rn{font-family:var(--disp);font-size:13px;color:var(--signal);margin-right:8px}
+.rl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text)}
+.rg{display:block;font-family:var(--mono);font-size:10px;color:var(--signal);margin-top:6px}
+.rw{display:block;color:var(--muted);font-size:13px;line-height:1.55;margin-top:4px}
 """
 
-RECOMMEND = 'B'
+RECOMMEND = 'A'
 
-TITLE = 'A dynamic hero'
-INTRO = ('The hero art is a raster render, so it cannot be animated as-is. What it can have is a '
-         'vector layer on top: the trade routes as SVG arcs, animated in CSS. A few KB, no '
-         'JavaScript, no runtime dependency. Open this and watch, screenshots cannot show motion. '
-         'Reload to see the entrance again.')
+TITLE = 'The cascade block'
+INTRO = ('Three ways to present the five maps, after the Helix section and its divider. In all '
+         'three the timeline the map already draws is clickable: hover a chip to see the target. '
+         'Stage 00 is shown; the real component switches the image.')
 
 OPTIONS = [
-    ('A', 'No motion (what is live now)',
-     'The photographic globe on its own. Fast, calm, and the headline is the only thing moving when '
-     'you scroll. Worth seeing next to the others before adding anything.',
+    ('A', 'Contained, timeline only  ·  MY PICK',
+     'The map at content width, nothing around it but the caveat. The graphic already carries its '
+     'own header, illustrative chip, stage strip and explanation panel, so anything added in HTML '
+     'repeats it. Reads as one considered object rather than a widget.',
      PAGE_A, SHARED),
-    ('B', 'Arcs draw once, then the nodes breathe  ·  MY PICK',
-     'Six routes draw themselves over about two seconds, then the city nodes pulse slowly. It says '
-     'the thing the site argues, that these places are connected, and then it settles. Nothing '
-     'competes with the headline after the first few seconds, which matters on a page people return '
-     'to. Roughly 4KB of SVG and CSS, no JavaScript.',
+    ('B', 'Full-bleed',
+     'The same thing edge to edge. The map labels get noticeably bigger, which is the strongest '
+     'argument for it, and the section feels like a centrepiece. It also breaks the page rhythm: '
+     'nothing else on the site runs full width except the break bands.',
      PAGE_B, SHARED),
-    ('C', 'Arcs draw, then traffic runs continuously',
-     'The same entrance, then packets travel the routes forever. More literal about flow, and the '
-     'strongest first impression. It never stops though, so it keeps pulling the eye away from the '
-     'copy and the signup, and permanent motion behind text is the thing people ask you to turn off.',
+    ('C', 'Stage rail beside the map',
+     'A list of all five stages on the left, always visible, with the map on the right. You can see '
+     'the whole chain and the current step at once, which is the one thing A and B cannot do. The '
+     'cost is duplication: the rail repeats the timeline inside the graphic, and the map shrinks to '
+     'about three quarters width, so its labels get smaller.',
      PAGE_C, SHARED),
 ]
 blocks, extra = [], []

@@ -247,7 +247,9 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .conv-lede{color:var(--text-2);font-size:16px;line-height:1.8;max-width:70ch;margin:0 0 22px}
 .band-light .conv-lede,.band-white .conv-lede{color:#3f3a32}
 .band-white .convfig figcaption,.band-light .convfig figcaption{color:#6b655b}
-.helix-art{display:block;width:100%;border:1px solid var(--line-2)}
+.helixrow{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(20px,3vw,40px);align-items:center}
+.helixrow .layers{display:flex;flex-direction:column;gap:10px}
+.helix-art{display:block;width:100%;margin:0;border:1px solid var(--line-2)}
 .helix-art img{display:block;width:100%;height:auto}
 
 .preview-top{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(24px,4vw,48px);align-items:center}
@@ -329,13 +331,14 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .cmaps{margin-top:20px}
 .cmaps-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
 .ch-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
-.cmaps-steps{list-style:none;display:flex;gap:8px;padding:0;margin:0 0 16px;flex-wrap:wrap}
-.cmaps-steps button{display:flex;align-items:baseline;gap:8px;background:none;border:1px solid var(--line);color:var(--text-2);padding:8px 12px;cursor:pointer;font:inherit}
-.cmaps-steps button:hover{border-color:var(--line-2);color:var(--text)}
-.cmaps-steps button.on{border-color:var(--signal);color:var(--text);background:#141210}
-.cs-n{font-family:var(--disp);font-size:13px;color:var(--signal)}
-.cs-l{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
-.cmaps-fig{margin:0;border:1px solid var(--line-2)}
+.cmaps-fig{position:relative;margin:0;border:1px solid var(--line-2)}
+/* Click targets over the timeline the map already draws. Transparent by default: the SVG shows
+   which stage is active, so these only need to announce themselves on hover and focus. */
+.cmaps-hit{position:absolute;left:0;right:0;top:87.8%;height:6.7%}
+.cmaps-hit button{position:absolute;top:0;height:100%;background:none;border:1px solid transparent;border-radius:7px;cursor:pointer;padding:0}
+.cmaps-hit button:hover{border-color:var(--signal)}
+.cmaps-hit button:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+.cmaps-hit button.on{cursor:default}
 .cmaps-fig img{display:block;width:100%;height:auto;background:#000}
 .cs-lag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--signal);margin-right:10px}
 .cs-what{font-weight:700;font-size:15px;color:var(--text)}
@@ -379,6 +382,10 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .tcard .logline{font-size:15px;margin:0 0 14px}
 
 @media(max-width:820px){
+  /* At 390px the map renders about 220px tall, so its drawn timeline chips are roughly 15px high:
+     too small to tap reliably. Give the targets vertical slack beyond the strip, and treat
+     Previous/Next as the primary control at this width. */
+  .cmaps-hit{top:83%;height:14%}
   .links{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:#0a0a0a;border-bottom:2px solid var(--alert);padding:14px 24px;gap:14px}
   .links.open{display:flex}.navtoggle{display:block}
   .brand{font-size:17px}
@@ -400,7 +407,7 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
      subject sits in that particular artwork. The globe keeps its subject hard right, so it pulls
      toward the dark side; the books sit centre-right and must not. Falls back to the desktop crop. */
   .hero .bg img{object-position:var(--hero-pos-mobile, var(--hero-pos, right center))}
-  .lead-film,.preview-top,.trailer-row,.trilogy{grid-template-columns:1fr}
+  .lead-film,.preview-top,.trailer-row,.trilogy,.helixrow{grid-template-columns:1fr}
   .tcard{grid-template-columns:120px 1fr;gap:14px;padding:14px}
   .tcard .bookmock{max-width:120px}
   .shortnav{grid-template-columns:1fr;gap:18px}

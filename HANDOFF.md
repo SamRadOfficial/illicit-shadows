@@ -230,7 +230,11 @@ covers already carry the title and an IN DEVELOPMENT stamp, so **the card prints
 subject line and the tags. A `slate-note` under the grid says these are subjects under research, not
 productions, because six covers make a research agenda look like a commissioned slate.
 
-**Cascade maps**, `images/cascade/`, five SVGs driven by `components/CascadeMaps.jsx`: a stepper, so
+**Cascade maps**, `images/cascade/`, five SVGs driven by `/intelligence` structure (14 Sep): hero, the Institute, **Project Helix as two columns** (the
+Helix.AI visual left, the four layers right), a break band, then the cascade in its own section.
+The divider matters: without it the worked example read as part of the Helix description.
+
+`components/CascadeMaps.jsx`: a stepper, so
 the reader always sees which stage they are on. **The site chrome deliberately adds almost nothing**:
 each map already carries the HELIX.AI header, the ILLUSTRATIVE MODEL chip, its own stage strip and
 its own explanatory panel. An earlier version repeated all of it in HTML and said everything twice.

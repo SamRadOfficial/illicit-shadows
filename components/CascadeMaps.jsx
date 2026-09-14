@@ -35,23 +35,23 @@ export function CascadeMaps() {
       {/* No label row and no caption here: each map already carries the HELIX.AI header, the
           ILLUSTRATIVE MODEL chip, its own stage strip and its own explanatory panel. Repeating
           them in site chrome was saying everything twice. */}
-      <ol className="cmaps-steps">
-        {STAGES.map((x, n) => (
-          <li key={x.file}>
-            <button type="button" className={n === i ? 'on' : undefined} onClick={() => setI(n)}
-                    aria-current={n === i ? 'step' : undefined}>
-              <span className="cs-n">{String(n).padStart(2, '0')}</span>
-              <span className="cs-l">{x.label}</span>
-            </button>
-          </li>
-        ))}
-      </ol>
-
       <figure className="cmaps-fig">
         {/* Each stage is its own SVG rather than one animated map: a static frame can be read,
             screenshotted and argued with. */}
         <img src={`/images/cascade/${s.file}.svg`} alt={`Stage ${s.n}, ${s.label}: ${s.what}`}
              width="1600" height="1000" loading={i === 0 ? 'eager' : 'lazy'} />
+        {/* The maps draw their own timeline across the bottom. Rather than repeat it in HTML, put
+            real buttons over it: the chips sit at x=60,359,658,957,1256, y=878, 281x67 in a
+            1600x1000 viewBox, so the percentages below track the image at any width. */}
+        <div className="cmaps-hit">
+          {STAGES.map((x, n) => (
+            <button type="button" key={x.file} onClick={() => setI(n)}
+                    className={n === i ? 'on' : undefined}
+                    aria-current={n === i ? 'step' : undefined}
+                    aria-label={`Stage ${n}, ${x.label}, ${x.lag}`}
+                    style={{ left: `${(60 + n * 299) / 16}%`, width: `${281 / 16}%` }} />
+          ))}
+        </div>
       </figure>
 
       <div className="cmaps-nav">
