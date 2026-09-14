@@ -152,7 +152,7 @@ export function Hero({ img, alt, eyebrow, title, lede, children, variant = '', p
 }
 
 /** Email signup. Honest placeholder until `site.forms.signup` is set: no reload, no discarded input. */
-export function Signup({ endpoint, center = false }) {
+export function Signup({ endpoint, center = false, subscribe = true }) {
   const [state, setState] = useState('');
   const onSubmit = (e) => { if (!endpoint) { e.preventDefault(); setState('Signup opens at launch. Your address was not sent anywhere.'); } };
   return (
@@ -163,10 +163,11 @@ export function Signup({ endpoint, center = false }) {
       </form>
       {state && <p className="signup-note" style={center ? { textAlign: 'center' } : undefined}>{state}</p>}
       {/* Email leads, subscribe follows. An email list is an audience you own and can take to a
-          distributor or a funder; a YouTube subscriber belongs to YouTube. */}
-      <p className={`sub-alt${center ? ' center' : ''}`}>
+          distributor or a funder; a YouTube subscriber belongs to YouTube. Off in the hero, where a
+          third call to action is a tie rather than a hierarchy. */}
+      {subscribe && <p className={`sub-alt${center ? ' center' : ''}`}>
         Or <a href={`${site.social.youtube}?sub_confirmation=1`} target="_blank" rel="noopener noreferrer">subscribe on YouTube</a>
-      </p>
+      </p>}
     </>
   );
 }

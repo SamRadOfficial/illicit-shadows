@@ -171,6 +171,8 @@ keeps its `illustrative` chip.
 - [x] **14 Sep** `preview.py` fixed: CSS glob broken since the Next 16 upgrade (previews were
       rendering unstyled), and `--lite` now keeps the fonts as woff2 instead of dropping them.
 - [x] **14 Sep** `scripts/mock.py`: design options render as one HTML page, per owner instruction.
+- [x] **14 Sep** Shorts play in a lightbox instead of a 250px card; eleven shorts listed vertically
+      on the film page; home hero cut from three calls to action to two.
 - [x] **14 Sep** All thirteen museum hall thumbnails replaced with the supplied set.
 - [x] **14 Sep** MIS eclipse mark: photographic for display, vector for small sizes and favicon
       (the site had none). Dead `DigitalMuseum` illustration and its styles removed.

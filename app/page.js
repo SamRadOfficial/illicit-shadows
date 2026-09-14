@@ -21,8 +21,9 @@ export default function Home() {
             title={<>The dark forces shaping the <span className="y">global criminal underworld</span></>}
             lede={<>We expose the <b className="fig">{s.value}</b> shadow economy and predict what it does next.</>}>
         <p className="srcline">Annual value of global illicit economies &middot; <Link href="/sources">{s.source}</Link></p>
-        <Signup endpoint={site.forms?.signup} />
-        <div className="cta-row" style={{ marginTop: 16 }}><Link className="btn btn-o" href="/film">&#9654; Watch the films</Link></div>
+        {/* One button, one field. Subscribe lives beside the signup block further down. */}
+        <div className="cta-row"><Link className="btn btn-y btn-lg" href="/film">Watch the films</Link></div>
+        <Signup endpoint={site.forms?.signup} subscribe={false} />
       </Hero>
 
       <section className="wrap reveal" id="pillars" style={{ paddingTop: 'clamp(112px,13vw,196px)' }}>

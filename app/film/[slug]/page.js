@@ -65,18 +65,18 @@ export default async function Investigation({ params }) {
         <SectionHead label={f.form || 'Segments'} meta={`${f.title.toUpperCase()} · ${f.segments.length} PARTS`} dim />
         {/* A short with artwork gets a card; one without stays a text row until its cover exists,
             so a missing image never renders as a placeholder tile. Owner pick, 14 Sep. */}
-        {f.segments.some(s => s.image) && <div className="sggrid">
+        {f.segments.some(s => s.image) && <div className="vlist">
           {f.segments.filter(s => s.image).map(s => (
-            <div className="sgcard" key={s.n}>
-              <span className="sgcard-img">
+            <div className="vrow" key={s.n}>
+              <span className="vrow-n">{String(s.n).padStart(2, '0')}</span>
+              <span className="vrow-img">
                 <VideoEmbed modal id={s.youtubeId} image={s.image} alt={`${s.title} title card`} title={s.title} channel={f.youtube || site.social.youtube} />
-                <span className="sgcard-n">{String(s.n).padStart(2, '0')}</span>
               </span>
-              <span className="sgcard-t">{s.title}</span>
-              {s.sub && <span className="sgcard-s">{s.sub}</span>}
-              {s.runtime && <span className="sgcard-r">{s.runtime}</span>}
-              <VideoJsonLd name={`${s.title} · ${f.title}`} description={s.sub || f.subtitle} image={s.image}
-                           youtubeId={s.youtubeId} runtime={s.runtime} published={s.published} />
+              <span className="vrow-body">
+                <span className="vrow-t">{s.title}</span>
+                {s.sub && <span className="vrow-s">{s.sub}</span>}
+              </span>
+              <span className="vrow-r">{s.runtime}</span>
             </div>
           ))}
         </div>}

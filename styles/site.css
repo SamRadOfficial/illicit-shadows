@@ -191,21 +191,8 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .trailer-band .work-title{font-size:26px}
 .trailer-img .pb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3}
 
-/* Short-film cards. Covers carry their own title in the art, so the card repeats it in text
-   underneath for scanning and for anyone who cannot read type baked into an image. */
-.sggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.sgcard{display:block;background:var(--panel);border:1px solid var(--line)}
-.sgcard:hover{border-color:var(--line-2)}
-.sgcard-img{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;background:#0c0c0c}
-.sgcard-img img{width:100%;height:100%;object-fit:cover;display:block}
 /* Top right: these covers run their title down the left and the roundel bottom right, so
    a number anywhere else lands on type. Checked at 390px, where the collision showed first. */
-.sgcard-n{position:absolute;right:10px;top:10px;font-family:var(--disp);font-size:15px;color:var(--signal);background:rgba(0,0,0,.72);padding:2px 7px}
-.sgcard-t{display:block;font-weight:700;font-size:16px;color:var(--text);padding:14px 16px 0}
-.sgcard-s{display:block;color:var(--muted);font-size:13.5px;padding:4px 16px 0}
-.sgcard-r{display:block;font-family:var(--mono);font-size:11px;color:var(--dim);padding:10px 16px 16px}
-.sgcard-t:last-child{padding-bottom:16px}
-.sggrid+.seglist{margin-top:22px}
 
 /* Facade video. A button, not a link: nothing navigates, the iframe replaces the poster in place.
    Reset the button chrome or it inherits a UA border and background. */
@@ -214,7 +201,7 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 /* .pb takes its size from context elsewhere, so give the facade its own. Without this it
    collapses to the glyph and the border-radius renders as a wedge. */
 .vembed .pb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;width:54px;height:54px;font-size:19px;box-shadow:0 0 0 6px rgba(0,0,0,.35)}
-.sgcard-img .vembed .pb,.minicard-img .vembed .pb{width:40px;height:40px;font-size:14px;box-shadow:0 0 0 5px rgba(0,0,0,.35)}
+.minicard-img .vembed .pb{width:40px;height:40px;font-size:14px;box-shadow:0 0 0 5px rgba(0,0,0,.35)}
 .vembed .pb--big{width:74px;height:74px;font-size:26px}
 .vembed:hover .pb{background:var(--signal);color:var(--ink)}
 .vembed:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
@@ -302,6 +289,19 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .lightbox-frame{position:relative;width:100%;aspect-ratio:16/9;max-height:calc(100vh - 140px);background:#000;border:1px solid var(--line-2)}
 .lightbox-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
+/* Eleven shorts read as a list, not a wall: one line each, still large enough to carry the art.
+   The three-up previews on home and /film keep .minigrid. */
+.vlist{border-top:1px solid var(--line)}
+.vrow{display:grid;grid-template-columns:38px 208px 1fr auto;gap:20px;align-items:center;padding:14px 6px;border-bottom:1px solid var(--line);transition:background .15s}
+.vrow:hover{background:var(--panel)}
+.vrow-n{font-family:var(--disp);font-size:16px;color:var(--signal)}
+.vrow-img{position:relative;display:block;width:208px;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line)}
+.vrow-img .vembed .pb{width:40px;height:40px;font-size:14px;box-shadow:0 0 0 5px rgba(0,0,0,.35)}
+.vrow-t{display:block;font-weight:700;font-size:17px;color:var(--text)}
+.vrow:hover .vrow-t{color:var(--signal)}
+.vrow-s{display:block;color:var(--muted);font-size:14px;margin-top:3px}
+.vrow-r{font-family:var(--mono);font-size:11px;color:var(--dim)}
+
 @media(max-width:820px){
   .links{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:#0a0a0a;border-bottom:2px solid var(--alert);padding:14px 24px;gap:14px}
   .links.open{display:flex}.navtoggle{display:block}
@@ -312,7 +312,10 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
   .segwrap{margin:4px 18px 20px}
   .work-body,.trailer-band>div{padding:0 18px 22px}
   .srow{gap:12px}.srow .chips{justify-content:flex-start;max-width:none}
-  .sggrid,.minigrid{grid-template-columns:1fr 1fr;gap:10px}
+  .minigrid{grid-template-columns:1fr 1fr;gap:10px}
+  .vrow{grid-template-columns:28px 128px 1fr;gap:12px;align-items:start}
+  .vrow-img{width:128px}
+  .vrow-r{grid-column:3;font-size:10px}
   .lead-film,.preview-top,.trailer-row{grid-template-columns:1fr}
   /* Below 820px the render is too small to hold copy on top of it: stack instead. The scrim and
      the absolutely positioned stamp both have to stand down, or they dim the stacked panel and
@@ -323,7 +326,6 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
   .entershot{display:block}
   .convscroll{overflow-x:auto;overscroll-behavior-x:contain}
   .convscroll img{width:760px;max-width:none}
-  .sgcard-t{font-size:14px}
   .cstep{grid-template-columns:26px 1fr;row-gap:2px}
   .cstep .clag{grid-column:2}
   .foot{grid-template-columns:1fr}

@@ -91,7 +91,16 @@ roundel, so those corners are never free. A `.badge` without `.btm` lands on "IC
 that shipped on the home page and up-next block before being caught 14 Sep. Both were moved after they landed on type baked
 into the covers, the short number first showing the collision at 390px. Check new covers at 390px.
 
-`/film/[slug]` renders a short as a **card when it has an `image` and a text row when it does not**,
+`/film/[slug]` lists the shorts **vertically** (`.vlist`, owner pick 14 Sep): a 208px still per row
+with number, title, subtitle and runtime on one line, so eleven titles can be read in one pass. The
+grid was tried and rejected as a wall at that count. **The three-up previews on home and `/film`
+keep `.minigrid`**; do not unify them, the two counts want different shapes.
+
+Clicking a still opens the **lightbox** (`VideoEmbed modal`), not an inline swap: a 2:09 film in a
+250px card is unwatchable and YouTube's controls stop working below roughly 400px. Escape closes,
+backdrop closes, body scroll locks, focus moves in and back out.
+
+`/film/[slug]` renders a short as a **row when it has an `image` and a text row when it does not**,
 so a missing cover never becomes a placeholder tile. Chemical Cartels has eleven covers, so it is
 all cards today; the fallback stays for future films.
 
@@ -211,6 +220,10 @@ fails. `/specimen` is disallowed in robots.
 Not done yet: **transcripts**. Eleven shorts is roughly 12,000 words of indexable text about
 precursors, ports, and laundering, and it is the highest-value SEO action left. Add a `transcript`
 field per short when the text exists.
+
+The **home hero carries exactly two actions**: a Watch the films button and the email field. It had
+three (button, form, YouTube subscribe), which is a tie rather than a hierarchy. `Signup` takes
+`subscribe={false}` to drop the YouTube line; it stays on the signup block further down the page.
 
 ## Nav
 Seven links plus a **solid signal-yellow Contact CTA at the right** (owner pick, 14 Sep). The button
