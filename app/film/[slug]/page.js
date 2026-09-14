@@ -5,11 +5,13 @@ import sources from '../../../data/sources.json';
 import { Pic, SectionHead, Break, Stat, Prov } from '../../../components/Blocks';
 
 export function generateStaticParams() { return films.map(f => ({ slug: f.slug })); }
-export function generateMetadata({ params }) { const f = films.find(x => x.slug === params.slug); return { title: f?.title }; }
+// Next 16: params is a Promise and must be awaited.
+export async function generateMetadata({ params }) { const { slug } = await params; const f = films.find(x => x.slug === slug); return { title: f?.title }; }
 const srcName = id => { const s = sources.find(x => x.id === id); return s ? `${s.publisher}, ${s.date.slice(0, 4)}` : ''; };
 
-export default function Episode({ params }) {
-  const f = films.find(x => x.slug === params.slug);
+export default async function Episode({ params }) {
+  const { slug } = await params;
+  const f = films.find(x => x.slug === slug);
   const next = films.find(x => x.number === f.number + 1);
   const live = f.status === 'streaming';
   const [a, b] = f.title.split(' ');

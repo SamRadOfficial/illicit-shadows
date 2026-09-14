@@ -26,8 +26,21 @@ Rules the owner explicitly relaxed (do not re-litigate):
 - **Counters and series framing are allowed.** "Season 1", "10 segments", "episode" are fine. Festival pieces are also short films; do not undercut that, but episode language is not banned.
 - **Signup and donation blocks stay and get wired** (provider TBD). Until wired they are visible placeholders; confirm before launch.
 
+## Deploy (read before touching Vercel)
+`public/` and `out/` are different things and the distinction has already broken one deploy.
+- **`public/` is SOURCE.** Images, fonts, logos, `museum-viewer.html`. Committed to git, never gitignored. If it is missing from the repo the build still succeeds and every image 404s.
+- **`out/` is OUTPUT.** `next build` with `output: 'export'` writes the HTML here and copies all of `public/` into it at the root. This is what Vercel serves. It is gitignored.
+- **`vercel.json` pins `outputDirectory: "out"`** so the deploy does not depend on the dashboard preset. Symptom if this is wrong: *"No Output Directory named 'public' found after the Build completed"* means the project preset is plain-static, which looks for a folder literally called `public` as the output. Fix is the pinned config, or set Framework Preset to Next.js in Project Settings.
+- `cleanUrls: true` serves `/about` from `about.html`. Long-cache headers are set for `/fonts`, `/images`, `/logos`.
+- **Deploying from the zips:** the source zip deliberately excludes `public/`, so the assets zip must be merged in (`cp -a public/. <repo>/public/`) before the first build, or there are no images.
+
+## Dependency security (14 Sep 2026)
+Upgraded **Next 15.5.2 to 16.3.5** (React 19.3.0) after Vercel flagged a vulnerable version. `npm audit --omit=dev` now reports **0 vulnerabilities**; the 15.x line could not be cleared because the advisories were in bundled `postcss` and `sharp`, and npm's only fix path was the major upgrade. Versions are pinned exactly (no `^`) so a deploy cannot silently drift.
+**Breaking change handled:** in Next 16 `params` is a Promise. `app/film/[slug]/page.js` is now `async` and awaits it, in both the component and `generateMetadata`. Any future dynamic route must do the same.
+Build verified after upgrade: 16 routes, asset checker green, home/episode/museum screenshots identical to 15.
+
 ## Stack
-Next.js 15 App Router, JavaScript, `output: 'export'` to `out/`, Vercel from `main` (every push is production; use preview branches). Three runtime deps (next, react, react-dom); analytics later. No CMS: content in `data/*.json`, one file per type. One stylesheet `styles/site.css`, tokens at top. Fonts self-hosted in `public/fonts` (Anton, Archivo variable, IBM Plex Mono; OFL from google/fonts). Three.js for `/museum/enter` (integrate `MIS_Viewer.html`, do not rebuild).
+Next.js 16 App Router, JavaScript, `output: 'export'` to `out/`, Vercel from `main` (every push is production; use preview branches). Three runtime deps (next, react, react-dom); analytics later. No CMS: content in `data/*.json`, one file per type. One stylesheet `styles/site.css`, tokens at top. Fonts self-hosted in `public/fonts` (Anton, Archivo variable, IBM Plex Mono; OFL from google/fonts). Three.js for `/museum/enter` (integrate `MIS_Viewer.html`, do not rebuild).
 
 ## Design system
 Tokens in `site.css`: ink `#000000` (black, not dark gray), panel `#0e0e0e`, signal `#FFD400` (look here), alert `#E11D1D` (serious only, never a hover), text/muted/dim neutral grays. No warm neutrals. Display Anton, body Archivo, metadata IBM Plex Mono. Section head = display label + patterned red rule + mono meta. Full-bleed `<Break>` image bands separate sections. Review at `/specimen` before any page work.
