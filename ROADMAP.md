@@ -11,7 +11,6 @@ The standing checklist. Update in the same commit as the work. Items move to Don
 - [ ] **`/sources` URLs.** Eleven published documents are listed with status chips but no links, pending the owner's verification pass. Draft, not curation, until reviewed.
 - [ ] **First pages of The Umbra Circle** for `/books/preview`. The page is built; the extract is a
       visible placeholder rather than invented text. Also the subscribe destination for that page.
-- [ ] **Hall photographs**, one per exhibition hall, to replace the stock and concept art.
 - [ ] **Covers for Books 2 and 3** (The Dragon Roars Forward, The Condor Directive). They render as
       text cards until then, not placeholder art.
 - [ ] **Brochure PDF** for the Museum download strip, and the **Substack preview link** for The Umbra Circle.
@@ -56,18 +55,27 @@ contact form.
 - [ ] **Off-site series framing.** The playlist is titled "Ep. 01 | CHEMICAL CARTELS" and ICAIE's
       posts use "Ep.1, Dispatch 1" and "an investigative docuseries". The site is clean; YouTube and
       ICAIE are where programmers will actually look. Fixing the site alone buys little.
-- [ ] **Transcripts** for the shorts. Highest-value SEO work available: eleven shorts is roughly
-      12,000 words of indexable text about precursors, ports, and laundering, on a site that
-      currently has almost none. **The scripts already exist in the YouTube description of each
-      video**, so this is a copy-across, not a transcription job. Add a `transcript` field per
-      segment in `films.json` and render it under each short. Check the descriptions for series
-      framing before pasting; the playlist and ICAIE's posts still use Ep. 1 and Dispatch N.
+- [ ] **One-line description for every video.** Ten of the eleven shorts carry a `sub` in
+      `films.json` and it renders under the title on cards and in the segment list. The Next Wave
+      has none, so its card shows a bare title. Write one line per video, the same register as the
+      existing ones ("Canada's fentanyl frontlines", "Fentanyl precursors in China"): what the film
+      covers, not what it argues. These double as the meta description if short pages are ever
+      built per video.
+- [ ] **Voice-over text for the Chemical Cartels shorts.** The narration already exists in the
+      YouTube description of each video; consolidate it per short into a `transcript` field in
+      `films.json` and render it under the film. Copy and tidy, not transcription. Two cautions:
+      strip the series framing before pasting (Ep. 1, Dispatch N, docuseries), and do the YouTube
+      description cleanup first so the two sources agree rather than diverge.
+      Why it is worth the effort: eleven shorts is roughly 12,000 words of indexable text about
+      precursors, ports, and laundering, on a site that currently has almost none. It is the
+      highest-value SEO work available, and on a site built around visible sourcing, publishing what
+      was actually said is the right instinct anyway.
 
 - [ ] **Confirm one short title.** Cover art reads FENTANYL'S DIRTY PROFITS; `films.json` says
       Dirty Profits. (Syndicates art was re-supplied 14 Sep and now agrees.)
 - [ ] **Instagram handle.** YouTube and X are both `illicit_shadows` as of 14 Sep; Instagram is
       still `illicitshadowsdoc`. Move it or accept one platform out of step.
-- [ ] **Subtitle and runtime for The Next Wave** (short 11). The card renders without them.
+- [ ] **Runtime for The Next Wave** (short 11). Its one-line description is covered above.
 - [ ] **Recut the trailer.** The current one is pre-gold and says "docuseries" on screen.
 - [ ] **Copy pass on `public/museum-viewer.html`**: it still says SEASON 2, GOLDEN HANDCUFFS, and
       JANUARY 2027 inside the canvas text.
@@ -113,6 +121,7 @@ contact form.
 - [x] **14 Sep** `preview.py` fixed: CSS glob broken since the Next 16 upgrade (previews were
       rendering unstyled), and `--lite` now keeps the fonts as woff2 instead of dropping them.
 - [x] **14 Sep** `scripts/mock.py`: design options render as one HTML page, per owner instruction.
+- [x] **14 Sep** All thirteen museum hall thumbnails replaced with the supplied set.
 - [x] **14 Sep** MIS eclipse mark: photographic for display, vector for small sizes and favicon
       (the site had none). Dead `DigitalMuseum` illustration and its styles removed.
 - [x] **14 Sep** Film card extracted to `WorkCard`, shared by `/film` and home. Museum restructured:

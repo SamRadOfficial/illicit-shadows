@@ -157,6 +157,13 @@ hand-rolled copy that fell behind within a day; do not fork it again. It renders
 the tags, and the short-film strip spanning both columns.
 
 ## Museum concept renders (14 Sep)
+**Hall thumbnails** (14 Sep) are the supplied set in `public/images/halls/`, one per hall plus the
+shop and the rotunda, all 1600x900. They are mapped to the existing slugs in `IMG` in
+`app/museum/page.js` (`narcotics`, `theater`, `fakes`, `environmental`, `history`, `trafficking`,
+`convergence`, `corruption`, `antiquities`, `tobacco`, `cybercrime`, `rotunda`, `shop`), so a new
+set can be dropped in by filename with no markup or data change. Keep that mapping.
+Per the supplier's note, the history image shows broad eras, not a dated timeline.
+
 Five concepts by Chaat, one visual identity: black glass, yellow light paths, floating artifacts.
 Placed as `museum-rotunda` (museum hero and the home museum block), `halls/narcotics` (Hall 01),
 `halls/theater` (Hall 02, and behind the field-investigations block as `museum-theater`),
