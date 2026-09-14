@@ -110,10 +110,15 @@ band**; the covers and the yellow-and-red palette fight it.
 `components/Convergence.jsx` renders `public/images/convergence-map.svg` on home, `/intelligence`
 and `/museum`, always captioned **#EverythingIsConnected**. Not on `/books`: owner removed it, the
 page is fiction and the map read as filler there. It supersedes the raster
-`convergence-wheel`. It is an SVG with real text and no embedded rasters, about 34KB gzipped, served
-through `<img>`: inlining it on four pages would repeat 220KB four times, and it carries its own
-`<title>` and `<desc>` for screen readers. The graphic is **dark-themed**, so `.convfig` frames it in
-black with a hairline; do not put it on a light mat.
+`convergence-wheel`. It is an SVG with real text and no embedded rasters, 3000x3200, about 35KB gzipped, served through
+`<img>`: inlining it on three pages would repeat 220KB three times, and it carries its own `<title>`
+and `<desc>` for screen readers. The graphic is **dark-themed**, so `.convfig` frames it in black
+with a hairline; do not put it on a light mat.
+
+It is nearly square and dense. Below 820px it would render about 350px wide with three-pixel body
+text, so `.convscroll` holds it at 760px and **pans** rather than shrinking, and the caption carries
+an "Open full size" link to the SVG itself. If the graphic is ever replaced, re-check both: the
+dimensions in `Convergence.jsx` and whether the new one is legible at 390px.
 
 `images/helix-ai` is the Helix.AI network art, used on home and `/intelligence`. It replaced
 `hero-globe` in those two slots; `hero-globe` still backs the heroes.
@@ -125,6 +130,18 @@ This has now bitten three times: `.ep-player`, `.sgcard`/`.minicard`, and `.trai
 The ICAIE mark is `logos/icaie-square`, trimmed and recentered from `icaie-stacked`, whose source had
 more whitespace below the wordmark than above. `.pmark.icaie` needs `flex:0 0 auto`, or as a flex
 item it shrinks in width while keeping its height and stops being square.
+
+## Museum concept renders (14 Sep)
+Five concepts by Chaat, one visual identity: black glass, yellow light paths, floating artifacts.
+Placed as `museum-rotunda` (museum hero and the home museum block), `halls/narcotics` (Hall 01),
+`halls/theater` (Hall 02, and behind the field-investigations block as `museum-theater`),
+`halls/environmental` (Hall 04), `halls/convergence` (Hall 07, and above the map as
+`museum-convergence`), and `halls/rotunda` (the CENTER card).
+
+**Always caption them as concepts.** The museum does not exist; an uncaptioned render of a building
+reads as a photograph of one, on a site whose whole argument is that claims carry their status.
+`.concept` does this. The hall cards inherit the same treatment through the Phase I and II headings,
+which already say 2027 and 2028.
 
 ## Video
 Films play through a **facade YouTube embed** (`components/VideoEmbed.jsx`): the cover art is the

@@ -110,6 +110,9 @@ contact form.
 - [x] **14 Sep** `preview.py` fixed: CSS glob broken since the Next 16 upgrade (previews were
       rendering unstyled), and `--lite` now keeps the fonts as woff2 instead of dropping them.
 - [x] **14 Sep** `scripts/mock.py`: design options render as one HTML page, per owner instruction.
+- [x] **14 Sep** Museum concept renders placed across `/museum` and home; home film section
+      reordered so Illicit Gold and Chemical Cartels lead and the 2024 trailer sits small beside the
+      upcoming slate; convergence section retitled Crime Convergence · #EverythingIsConnected.
 - [x] **14 Sep** Convergence map added site-wide with #EverythingIsConnected, Helix.AI art on home
       and `/intelligence`, `/books/preview` page created, founders nonfiction block removed, ICAIE
       mark trimmed and squared.

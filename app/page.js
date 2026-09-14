@@ -2,6 +2,7 @@ import Link from 'next/link';
 import site from '../data/site.json';
 import films from '../data/films.json';
 import news from '../data/newsroom.json';
+import slate from '../data/slate.json';
 import { Pic, SectionHead, Break, Prov, Hero, Signup, Donor, DigitalMuseum } from '../components/Blocks';
 import { Icon } from '../components/Icons';
 import { Cascade } from '../components/Cascade';
@@ -61,6 +62,11 @@ export default function Home() {
           <h3 className="lead-title sm">Chemical <span>Cartels</span></h3>
           <p className="lead-line">{released.line}</p>
         </div>
+        <Link className="film-feature" href={`/film/${released.slug}`}>
+          <Pic base={released.image} alt={`${released.title}: ${released.subtitle}`} />
+          <span className="badge btm">{released.title.toUpperCase()} &middot; NOW STREAMING</span>
+          <span className="pb">&#9654;</span>
+        </Link>
         <div className="minigrid home">
           {released.segments.filter(x => x.image).slice(0, 3).map(x => (
             <Link className="minicard" href={`/film/${released.slug}`} key={x.n}>
@@ -74,30 +80,30 @@ export default function Home() {
 
         <div className="film-div" />
 
-        <Link className="trailer-home" href="/film#trailer">
-          <Pic base="/images/film-trailer" alt="Illicit Shadows official trailer" />
-          <span className="pb">&#9654;</span>
-        </Link>
-      </section>
-
-      <Break base="/images/break-evidence-1" />
-
-      <section className="wrap reveal" id="intel">
-        <SectionHead label="Intelligence · Predictive Convergence System" meta="HELIX.AI" />
-        <div className="netglobe"><Pic base="/images/helix-ai" alt="Helix.AI: illicit economies converging on shared nodes, from cybercrime and corruption to arms and human trafficking" /></div>
-        <div className="teaser">
-          <div className="tcopy">
-            <p className="eyebrow">The fusion center &middot; Helix.AI</p>
-            <h2 className="disp" style={{ fontSize: 'clamp(26px,3.6vw,40px)' }}>Model what the network does next</h2>
-            <p>Helix.AI is the Predictive Convergence System at the core of MISTIC: modeling how criminal, political, and economic networks reorganize after disruption, and turning fragmented intelligence into systemic foresight.</p>
-            <Link className="btn btn-o" href="/intelligence">Explore intelligence &rarr;</Link>
+        {/* Trailer is the 2024 cut, so it gets a third of the row rather than a full-width block.
+            The slate sits beside it: what is coming matters more than what was cut two years ago. */}
+        <div className="trailer-row">
+          <Link className="trailer-home" href="/film#trailer">
+            <Pic base="/images/film-trailer" alt="Illicit Shadows official trailer" />
+            <span className="pb">&#9654;</span>
+            <span className="badge btm">TRAILER &middot; 2024 CUT</span>
+          </Link>
+          <div>
+            <p className="eyebrow">Upcoming investigations</p>
+            <ul className="upnext">
+              {slate.slice(0, 4).map(x => (
+                <li key={x.slug}><Link href="/film#development"><b>{x.title}</b><span>{x.sub}</span></Link></li>
+              ))}
+            </ul>
+            <p className="seemore"><Link href="/film#development">The full research agenda &rarr;</Link></p>
           </div>
-          <Cascade compact />
         </div>
       </section>
 
+      <Break base="/images/break-evidence-3" />
+
       <section className="wrap reveal" id="convergence">
-        <Convergence lede="Illicit economies are not separate crimes. Narcotics, trafficked humans, looted gold, conflict minerals, counterfeits, cybercrime, corruption, and money laundering move along the same routes, through the same hands, and into the same accounts. They converge across four domains at once." />
+        <Convergence label="Crime convergence" meta="#EVERYTHINGISCONNECTED" lede="Illicit economies are not separate crimes. Narcotics, trafficked humans, looted gold, conflict minerals, counterfeits, cybercrime, corruption, and money laundering move along the same routes, through the same hands, and into the same accounts. They converge across four domains at once." />
       </section>
 
       <Break base="/images/break-evidence-2" />
@@ -112,7 +118,7 @@ export default function Home() {
             <div className="chips"><span className="chip-h">Narcotics</span><span className="chip-h">Counterfeits</span><span className="chip-h">Environmental Crimes</span><span className="chip-h">Trafficking</span></div>
             <div style={{ marginTop: 18 }}><Link className="btn btn-y" href="/museum">Enter the museum</Link></div>
           </div>
-          <DigitalMuseum />
+          <Link className="film-feature" href="/museum"><Pic base="/images/museum-rotunda" alt="The Eclipse Rotunda: a suspended globe of illuminated trade routes above a circular gallery floor" /><span className="badge btm">MIS &middot; CONCEPT</span></Link>
         </div>
       </section>
 

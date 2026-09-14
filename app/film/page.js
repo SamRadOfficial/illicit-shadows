@@ -59,7 +59,7 @@ export default function Film() {
           ))}
         </div>
       </section>
-      <section className="wrap reveal tight">
+      <section className="wrap reveal tight" id="development">
         <SectionHead label="In development" meta="RESEARCH AGENDA" dim />
         <div className="slate">
           {slate.map(s => (

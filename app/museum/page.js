@@ -17,7 +17,7 @@ export default function Museum() {
   return (
     <>
       <section className="hero" style={{ padding: 0 }}>
-        <div className="bg"><Pic base="/images/museum-gallery-warm" alt="A dimly lit museum gallery of glass display cases" priority pos="center" /></div>
+        <div className="bg"><Pic base="/images/museum-rotunda" alt="The Eclipse Rotunda: a suspended globe of illuminated trade routes above a circular gallery floor" priority pos="center" /></div>
         <div className="veil" style={{ background: 'linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35) 40%,rgba(0,0,0,.92))' }} />
         <Pic base="/images/mis-eclipse" ext="png" alt="MIS eclipse emblem" className="eclbadge" />
         <div className="wrap">
@@ -45,6 +45,7 @@ export default function Museum() {
           <p className="creed" style={{ color: '#141210' }}>Everything <b style={{ color: 'var(--alert)' }}>is connected.</b></p>
           <p>Illicit economies are the lifeblood of today's bad actors, enabling kleptocrats to loot their countries, criminal organizations to co-opt states, and terrorist groups to finance attacks against our societies. They are not harmless: narcotics, trafficked humans, looted gold, conflict minerals, counterfeits, cybercrime, corruption, and money laundering converge across four domains at once.</p>
         </div>
+        <figure className="concept"><Pic base="/images/museum-convergence" alt="Threat Convergence hall: contraband artifacts suspended in linked spheres around a globe" /><figcaption>Threat Convergence, Hall 07 &middot; concept</figcaption></figure>
         <Convergence head={false} />
       </section>
 
@@ -64,6 +65,7 @@ export default function Museum() {
 
       <section className="wrap reveal">
         <SectionHead label="Illicit Shadows Theater" meta="FIELD INVESTIGATIONS" />
+        <figure className="concept"><Pic base="/images/museum-theater" alt="The Illicit Shadows Theater: a curved screen showing a port and a river system above a circular audience floor" /><figcaption>Illicit Shadows Theater &middot; concept</figcaption></figure>
         <div className="theater">
           <div><h3>Field <span>investigations</span></h3><p>Films that dive deep into the dark side of global markets, uncovering the clandestine criminal operations and illicit shadows that connect disparate hubs and nodes of seemingly unrelated activities.</p><p>From the dense forests of the Amazon to the world's bustling ports and free-trade zones, from the cyber battlegrounds of Eastern Europe to the hidden financial havens of the West.</p><div className="cta-row" style={{ marginTop: 6 }}><Link className="btn btn-o" href="/film">&#9654; Watch the films</Link></div></div>
           <div><h3>Crime <span>Convergence</span></h3><p>Each investigation is a journey into the heart of a shadowy underworld, where geo-security, malign influence operations, economic manipulations, and human struggles converge with corruption and criminality.</p><p>Our goal is not just to expose the hidden dangers of the illicit shadows, but to shine a light on them so that, through understanding and awareness, we can collectively harness innovation and create solutions to prosecute the fight across borders.</p></div>
