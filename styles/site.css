@@ -274,9 +274,19 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .concept figcaption{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:10px 12px;background:var(--panel)}
 .band-white .concept figcaption{color:#6b655b;background:#f4f1ea}
 
-.protoshot{margin-bottom:18px}
-.proto-row{display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;max-width:1000px;margin:0 auto}
-.proto-row p{color:var(--text-2);font-size:15px;line-height:1.7;max-width:56ch;margin:0}
+/* Museum entrance. The render carries its own dark left third, so the scrim only deepens it and
+   the copy sits in space the image was not using. */
+.entershot{position:relative;display:block;overflow:hidden;border:1px solid var(--line-2)}
+.entershot img{display:block;width:100%;height:auto}
+.enter-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.92) 32%,rgba(0,0,0,.35) 62%,rgba(0,0,0,.15))}
+.enter-left{position:absolute;left:0;top:0;bottom:0;width:min(52%,520px);padding:clamp(20px,3vw,44px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:12px;z-index:2}
+.enter-h{font-family:var(--disp);font-size:clamp(30px,4vw,52px);text-transform:uppercase;color:var(--text);line-height:1}
+.enter-h b{color:var(--signal);font-weight:400}
+.enter-sub{color:var(--text-2);font-size:15px;line-height:1.7;max-width:42ch}
+.btn-lg{padding:18px 40px;font-size:15px}
+/* Lower right: the left is the copy, the top right is the globe. This corner is empty floor. */
+.enter-note{position:absolute;right:14px;bottom:14px;z-index:3;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-2);background:rgba(0,0,0,.82);border:1px solid var(--line-2);padding:6px 11px}
+.entershot:hover .btn-y{background:#fff}
 
 .nextbook{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--signal);padding:26px}
 .nextbook .lead-title.sm{margin:6px 0 10px}
@@ -294,6 +304,13 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
   .srow{gap:12px}.srow .chips{justify-content:flex-start;max-width:none}
   .sggrid,.minigrid{grid-template-columns:1fr 1fr;gap:10px}
   .lead-film,.preview-top,.trailer-row{grid-template-columns:1fr}
+  /* Below 820px the render is too small to hold copy on top of it: stack instead. The scrim and
+     the absolutely positioned stamp both have to stand down, or they dim the stacked panel and
+     land on the button. */
+  .enter-left{position:static;width:auto;padding:20px 18px 24px;background:var(--panel)}
+  .enter-scrim{display:none}
+  .enter-note{position:static;display:block;width:max-content;margin:0 18px 18px}
+  .entershot{display:block}
   .convscroll{overflow-x:auto;overscroll-behavior-x:contain}
   .convscroll img{width:760px;max-width:none}
   .sgcard-t{font-size:14px}

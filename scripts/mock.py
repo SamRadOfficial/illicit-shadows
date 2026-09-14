@@ -43,140 +43,89 @@ FACES = ''.join(f'@font-face{{font-family:{fam};src:url({font(f)});font-weight:{
                                   ('IBM Plex Mono', 'IBMPlexMono-Regular.ttf', '400'),
                                   ('IBM Plex Mono', 'IBMPlexMono-Medium.ttf', '500')])
 
-import json as _json
+IMG = img('images/museum-rotunda.jpg')
 
-import json as _json
-
-FILMS = _json.load(open(os.path.join(ROOT, 'data/films.json')))
-tagvocab = _json.load(open(os.path.join(ROOT, 'data/tags.json')))
-GOLD = [f for f in FILMS if f['slug'] == 'illicit-gold'][0]
-CC = [f for f in FILMS if f['slug'] == 'chemical-cartels'][0]
-SEGS = CC['segments']
+COPY = ('Walk the site model: the rotunda, the hall positions, and the routes between them. '
+        'Phase I opens 2027.')
 
 
-def head(label, meta):
-    return (f'<div class="head"><span class="lbl">{label}</span><span class="bar"></span>'
-            f'<span class="meta">{meta}</span></div>')
+def stage(inner, cls=''):
+    return f'<div class="entershot {cls}"><img src="{IMG}" alt="The Eclipse Rotunda">{inner}</div>'
 
 
-def chips(keys):
-    return ('<div class="chips">'
-            + ''.join(f'<span class="ctag">{tagvocab[k]}</span>' for k in keys if k in tagvocab)
-            + '</div>')
+PAGE_A = (f'<div class="head"><span class="lbl">The building</span><span class="bar"></span>'
+          f'<span class="meta">3D PROTOTYPE</span></div>'
+          + stage('<span class="enter-scrim"></span>'
+                  '<span class="enter-mid"><a class="btn btn-y btn-lg" href="#">Enter the museum</a>'
+                  '<span class="enter-note">Interactive prototype</span></span>'
+                  '<span class="badge btm">MIS &middot; CONCEPT RENDER</span>', 'is-a')
+          + f'<p class="enter-copy">{COPY}</p>')
 
+PAGE_B = (f'<div class="head"><span class="lbl">The building</span><span class="bar"></span>'
+          f'<span class="meta">3D PROTOTYPE</span></div>'
+          + stage('<span class="enter-scrim tall"></span>'
+                  '<span class="enter-bl">'
+                  '<span class="eyebrow">Museum of Illicit Shadows &middot; concept render</span>'
+                  f'<span class="enter-h">Walk the <b>site model</b></span>'
+                  '<a class="btn btn-y" href="#">Enter the museum (prototype)</a>'
+                  '</span>', 'is-b')
+          + f'<p class="enter-copy">{COPY}</p>')
 
-def film_card(f, extra=''):
-    status = 'Released' if f['status'] == 'streaming' else 'In production'
-    prov = 'cited' if f['status'] == 'streaming' else 'investigating'
-    return (f'<article class="work"><a class="work-img" href="#">'
-            f'<img src="{img(f["image"] + ".jpg")}" alt="{f["title"]}">'
-            f'<span class="prov prov--{prov} work-status">{status}</span></a>'
-            f'<div class="work-body"><h3 class="work-title">{f["title"]}</h3>'
-            f'<p class="work-places">{" · ".join(f["places"])}</p>'
-            f'<p class="work-line">{f["line"]}</p>{chips(f["tags"])}</div>{extra}</article>')
-
-
-def rows(n=4):
-    out = ''.join(
-        f'<a class="seg compact" href="#"><span class="sgn">{s["n"]:02d}</span>'
-        f'<span class="sgt">{s["title"]}</span>'
-        f'<span class="sgd">{s.get("runtime", "")}</span></a>' for s in SEGS[:n])
-    return (f'<div class="segwrap"><p class="segcap">{CC["form"]}</p><div class="seglist">{out}</div>'
-            f'<p class="seemore"><a href="#">All {len(SEGS)} &rarr;</a></p></div>')
-
-
-def mini(n=3):
-    out = ''.join(
-        f'<a class="minicard" href="#"><span class="minicard-img">'
-        f'<img src="{img(s["image"] + ".jpg")}" alt=""></span>'
-        f'<span class="minicard-t">{s["title"]}</span>'
-        f'<span class="minicard-r">{s.get("runtime", "")}</span></a>' for s in SEGS[:n])
-    return (f'<div class="segwrap"><p class="segcap">{CC["form"]}</p><div class="minigrid">{out}</div>'
-            f'<p class="seemore"><a href="#">All {len(SEGS)} &rarr;</a></p></div>')
-
-
-def strip():
-    out = ''.join(
-        f'<a class="stripcard" href="#"><img src="{img(s["image"] + ".jpg")}" alt="{s["title"]}">'
-        f'<span class="stripcard-n">{s["n"]:02d}</span></a>' for s in SEGS)
-    return (f'<div class="segwrap"><p class="segcap">{CC["form"]}, scroll to see them all</p>'
-            f'<div class="strip-scroll">{out}</div>'
-            f'<p class="seemore"><a href="#">All {len(SEGS)} with summaries &rarr;</a></p></div>')
-
-
-def page(seg_block):
-    return (head('Film', 'INVESTIGATIONS')
-            + f'<div class="works">{film_card(GOLD)}{film_card(CC, seg_block)}</div>')
-
-
-PAGE_A, PAGE_B, PAGE_C = page(rows()), page(mini()), page(strip())
+PAGE_C = ('<div class="enter-wide">'
+          + stage('<span class="enter-scrim side"></span>'
+                  '<span class="enter-left">'
+                  '<span class="eyebrow">The building &middot; 3D prototype</span>'
+                  '<span class="enter-h big">Enter the <b>museum</b></span>'
+                  f'<span class="enter-sub">{COPY}</span>'
+                  '<a class="btn btn-y btn-lg" href="#">Enter the museum</a>'
+                  '<span class="enter-note">Concept render. Phase I opens 2027.</span>'
+                  '</span>', 'is-c')
+          + '</div>')
 
 SHARED = """
-.works{display:grid;gap:20px}
-.work{display:grid;grid-template-columns:1.15fr 1fr;gap:0 26px;align-items:center;background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--signal)}
-.work-img{position:relative;display:block;aspect-ratio:16/9;overflow:hidden}
-.work-img img{width:100%;height:100%;object-fit:cover;display:block}
-.work-status{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.78)}
-.work-body{padding:24px 26px 24px 0}
-.work-title{font-family:var(--disp);font-size:clamp(28px,3.2vw,42px);text-transform:uppercase;line-height:1;color:var(--text);margin:0 0 8px}
-.work-places{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--signal);text-transform:uppercase;margin:0 0 14px}
-.work-line{color:var(--text-2);font-size:15px;line-height:1.75;margin:0 0 16px}
-.ctag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-2);padding:4px 9px}
-.segwrap{grid-column:1/-1;margin:4px 26px 22px;border-top:1px solid var(--line);padding-top:6px}
-.segcap{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:10px 0 14px}
-.segwrap .seg{grid-template-columns:34px 1fr auto;padding:9px 0;gap:12px}
-.segwrap .sgt{font-size:15px;font-weight:700;color:var(--text)}
-.sgd{font-family:var(--mono);font-size:11px;color:var(--dim)}
-.seemore{margin:16px 0 4px}
-.seemore a{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);border-bottom:1px solid var(--alert);padding-bottom:3px}
-.minigrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.minicard{display:block}
-.minicard-img{display:block;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line)}
-.minicard-img img{width:100%;height:100%;object-fit:cover;display:block}
-.minicard-t{display:block;font-weight:700;font-size:14px;color:var(--text);margin-top:8px}
-.minicard-r{display:block;font-family:var(--mono);font-size:10.5px;color:var(--dim);margin-top:3px}
-/* A grid item defaults to min-width:auto, so without this the strip stretches its card
-   instead of scrolling inside it. Verified by checking scrollWidth against clientWidth. */
-.segwrap{min-width:0}
-.strip-scroll{display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding-bottom:10px}
-.strip-scroll::-webkit-scrollbar{height:6px}
-.strip-scroll::-webkit-scrollbar-thumb{background:var(--line-2)}
-.stripcard{scroll-snap-align:start}
-.stripcard{position:relative;flex:0 0 232px;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line)}
-.stripcard img{width:100%;height:100%;object-fit:cover;display:block}
-.stripcard-n{position:absolute;right:6px;top:6px;font-family:var(--disp);font-size:12px;color:var(--signal);background:rgba(0,0,0,.72);padding:1px 6px}
-/* These rules come after site.css, so its 820px block cannot win on specificity alone.
-   Restate the mobile layout here or the mock lies about small screens. */
-@media(max-width:820px){
-  .work{grid-template-columns:1fr}
-  .work-body{padding:0 18px 22px}
-  .segwrap{margin:4px 18px 20px}
-  .minigrid{grid-template-columns:1fr 1fr}
-  .stripcard{flex:0 0 186px}
-}
+.entershot{position:relative;display:block;overflow:hidden;border:1px solid var(--line-2);max-width:1000px;margin:0 auto}
+.entershot img{display:block;width:100%;height:auto}
+.enter-scrim{position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 50%,rgba(0,0,0,.62),rgba(0,0,0,.28) 60%,rgba(0,0,0,.72))}
+.enter-scrim.tall{background:linear-gradient(180deg,rgba(0,0,0,.15) 30%,rgba(0,0,0,.88))}
+.enter-scrim.side{background:linear-gradient(90deg,rgba(0,0,0,.92) 32%,rgba(0,0,0,.35) 62%,rgba(0,0,0,.15))}
+.btn-lg{padding:18px 34px;font-size:15px}
+.enter-mid{position:absolute;inset:0;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center}
+/* The render is busy behind this, so the note needs its own plate rather than relying
+   on the scrim. It was unreadable without one. */
+.enter-note{align-self:start;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-2);background:rgba(0,0,0,.82);border:1px solid var(--line-2);padding:5px 10px}
+.enter-mid .enter-note{align-self:center;margin-top:4px}
+.enter-bl{position:absolute;left:0;right:0;bottom:0;padding:clamp(18px,3vw,34px);display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.enter-h{font-family:var(--disp);font-size:clamp(26px,3.4vw,42px);text-transform:uppercase;color:var(--text);line-height:1}
+.enter-h b{color:var(--signal);font-weight:400}
+.enter-h.big{font-size:clamp(30px,4vw,52px)}
+.enter-left{position:absolute;left:0;top:0;bottom:0;width:min(52%,520px);padding:clamp(20px,3vw,40px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px}
+.enter-sub{color:var(--text-2);font-size:15px;line-height:1.7;max-width:42ch}
+.enter-copy{color:var(--text-2);font-size:15px;line-height:1.7;max-width:64ch;margin:16px auto 0;max-width:1000px}
+.enter-wide .entershot{max-width:none}
 """
 
 RECOMMEND = 'C'
 
-TITLE = 'Shorts on the film index'
-INTRO = ('How much of Chemical Cartels\' eleven short films the index should carry. The film page '
-         'keeps the full card grid in every case; this is only about the index. All three end in a '
-         'link through, and no ordinal framing returns in any of them.')
+TITLE = 'Enter the museum'
+INTRO = ('Three ways to put the way in on top of the render, replacing the current render plus a '
+         'separate button row underneath. All use the real Rotunda concept and the real button '
+         'styles. Each keeps the render labelled as a concept: the museum does not exist yet.')
 
 OPTIONS = [
-    ('A', 'Text rows, four of eleven',
-     'What is in the build now. Compact, scannable, gives runtimes, and keeps the index about the '
-     'two films. It also hides the best asset you have: the covers never appear until someone clicks.',
+    ('A', 'Centered button, cinematic scrim',
+     'The render darkens toward the middle and the button sits dead center, like a play control on '
+     'a video. Unmistakable, and it borrows an interaction people already understand. The cost is '
+     'that a vignette over an architectural render flattens the depth the image was made for.',
      PAGE_A, SHARED),
-    ('B', 'Three covers as cards',
-     'The first three shorts as small cards. Shows the artwork without much height. The weakness is '
-     'arbitrariness: three of eleven with no reason for those three, and the card shape repeats the '
-     'film card directly above it.',
+    ('B', 'Bottom-left stack over a gradient',
+     'Headline and button sit low left over a bottom-up gradient, the same treatment as the film '
+     'heroes. Consistent with the rest of the site and it keeps the top two thirds of the render '
+     'clean. Quieter, and the button competes with the concept stamp for the same corner.',
      PAGE_B, SHARED),
-    ('C', 'Scrolling strip, all eleven',
-     'Every cover in one horizontal row you can scroll. Shows the scale of the work instantly, which '
-     'four rows of text cannot, and costs about the same vertical space as option A. Drag on desktop, '
-     'swipe on mobile.',
+    ('C', 'Full-bleed, copy and button on the dark left',
+     'The render runs edge to edge with a side scrim, and the headline, the line of copy and the '
+     'button sit in the dark left third the image already has. Nothing is covered that matters, the '
+     'button has room to be large, and the render reads as a place rather than a thumbnail.',
      PAGE_C, SHARED),
 ]
 blocks, extra = [], []
@@ -208,7 +157,7 @@ html = (f'<!doctype html><html lang="en"><head><meta charset="utf-8">'
         f'<meta name="viewport" content="width=device-width,initial-scale=1">'
         f'<title>{TITLE}, options A to {OPTIONS[-1][0]}</title>'
         f'<style>{FACES}{css}{SHELL}{"".join(extra)}</style></head><body><div class="mockwrap">'
-        f'<div class="mockhead"><p class="optlbl">ILLICIT SHADOWS &middot; /FILM</p>'
+        f'<div class="mockhead"><p class="optlbl">ILLICIT SHADOWS &middot; /MUSEUM</p>'
         f'<h1>{TITLE}</h1><p>{INTRO}</p></div>{"".join(blocks)}</div></body></html>')
 os.makedirs(os.path.dirname(dest), exist_ok=True)
 open(dest, 'w').write(html)

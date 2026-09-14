@@ -35,6 +35,14 @@ contact form.
 - [ ] **Contact.** `/contact` routes four self-selecting paths to `mailto:`. A real form should keep
       the path choice as a field so enquiries arrive pre-sorted, with spam protection and a
       confirmation state. The `Signup` placeholder pattern is the model.
+- [ ] **Museum shop.** `/museum` already carries a shop card linking nowhere. Needs a storefront for
+      merchandise, publications, and founding-donor editions. Static export means no server, so use
+      a hosted cart: **Shopify** (Buy Buttons or the Storefront API against a headless store),
+      Lemon Squeezy or Gumroad for digital-only, or Stripe Payment Links if the catalogue stays tiny.
+      Shopify is the right default if there is physical stock, since it handles tax, shipping zones
+      and fulfilment, which a Payment Link does not. Decide alongside **Donate** below: one merchant
+      account, one tax treatment, one checkout look. Also decide who fulfils; print-on-demand
+      (Printful, Printify) avoids holding inventory for a small team.
 - [ ] **Donate.** Tiers on `/museum` and the donor blocks on `/` and `/about` are display-only. Use
       hosted Stripe Checkout or Payment Links, or a Stripe-backed platform (Donorbox, Givebutter,
       Every.org). **Decide first whether donations route to Illicit Shadows, LLC or a fiscal
@@ -88,6 +96,48 @@ contact form.
 - [ ] `/museum/[hall]` hall detail pages with the artifact orbit viewer.
 - [ ] Founder bio pages or expanded `/about` entries, if wanted.
 - [ ] Search or filtering on `/newsroom` once there are real posts (the filter chips are currently inert).
+
+## Replace site images
+
+An image review, in priority order. Two standing rules: anything that depicts the museum or an
+unmade film is captioned as a concept, and any diagram that is illustrative rather than measured
+keeps its `illustrative` chip.
+
+- [ ] **Home, "One platform, three pillars".** A connected graphic linking Film, Museum and
+      Intelligence with the feedback loop between them. Three text cards do not show that the
+      three parts feed each other, which is the actual claim.
+- [ ] **"Everything is connected" sections.** A simplified companion to the Venn: five category
+      symbols around a central hub, for mobile, with the full diagram kept for deeper reading. The
+      detailed map currently has to pan sideways below 820px. Reconcile the museum's "four domains"
+      wording with the graphic's five at the same time.
+- [ ] **Intelligence, cascade prediction.** Turn the Rotterdam example into a sequence of maps:
+      disruption, redirected routes, financial activity, downstream consequences. Keep the
+      illustrative label prominent; it names real cities.
+- [ ] **Intelligence, four system layers.** A clean SVG for Intelligence Layer to Global Graph to
+      Causal Engine to Reinforcement. This explains the system better than another atmospheric
+      image, and it is a diagram the site can own rather than license.
+- [ ] **Film, upcoming investigations.** Coordinated concept covers for Blood Batteries, Thread
+      Count, Smoke Screen, Cold Rush, Iron Triangle and CCP Inc, each with a recognizable subject
+      and the same yellow typography. Note the tension: these are research subjects, not commissioned
+      films, so covers make them look further along than they are. Caption accordingly or hold them
+      until the subjects are confirmed.
+- [ ] **Museum, "The building".** An illustrated, clickable museum map: rotunda, numbered halls,
+      theater and shop, with Phase I and Phase II as distinct levels. It would make the structure
+      legible before anyone enters the prototype.
+- [ ] **Museum, exhibition cards.** Use the new close-up thumbnails on the cards and keep the
+      immersive room renderings for exhibit entrances and large banners. The two formats are for
+      different viewing sizes.
+- [ ] **Founding-donor sections.** A visual showing what support buys: exhibitions, public
+      education, research, field investigations. Specific outputs make the ask tangible.
+- [ ] **Books, the trilogy.** Provisional covers for The Dragon Roars Forward and The Condor
+      Directive, plus a three-book presentation graphic, matched to the Umbra Circle cover and
+      keeping the in-development status visible.
+- [ ] **Newsroom.** Three reusable thumbnail templates for Dispatch, Press and Release: subject
+      photography, a small category label, consistent crop. Apply as real posts replace the
+      placeholders.
+- [ ] **Section dividers across the site.** The same evidence-wall images repeat. Replace selected
+      ones with distinct close-ups (ports, shipping documents, mineral samples, financial records,
+      digital infrastructure) matched to the adjacent content.
 
 ## Launch
 

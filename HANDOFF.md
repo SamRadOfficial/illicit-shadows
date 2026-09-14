@@ -157,6 +157,11 @@ hand-rolled copy that fell behind within a day; do not fork it again. It renders
 the tags, and the short-film strip spanning both columns.
 
 ## Museum concept renders (14 Sep)
+The museum entrance (`#prototype`) is a single clickable render: copy and an **Enter** button in the
+dark left third, an **Interactive prototype** stamp lower right, linking to `/museum/enter`. Below
+820px it stacks, and both the scrim and the stamp switch off there, or they dim the panel and land
+on the button.
+
 **Hall thumbnails** (14 Sep) are the supplied set in `public/images/halls/`, one per hall plus the
 shop and the rotunda, all 1600x900. They are mapped to the existing slugs in `IMG` in
 `app/museum/page.js` (`narcotics`, `theater`, `fakes`, `environmental`, `history`, `trafficking`,

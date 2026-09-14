@@ -40,17 +40,21 @@ export default function Museum() {
 
       <Break base="/images/break-evidence-1" />
 
+      {/* Option C, owner pick 14 Sep. The render already has a dark left third; the copy and the
+          way in live there, so nothing that matters in the image is covered. */}
       <section className="wrap reveal" id="prototype">
-        <SectionHead label="The building" meta="3D PROTOTYPE" />
-        <Link className="film-feature protoshot" href="/museum/enter">
+        <Link className="entershot" href="/museum/enter">
           <Pic base="/images/museum-rotunda" alt="The Eclipse Rotunda: a suspended globe of illuminated trade routes above a circular gallery floor" />
-          <span className="badge btm">MIS &middot; CONCEPT RENDER</span>
+          <span className="enter-scrim" />
+          <span className="enter-left">
+            <span className="eyebrow">The building &middot; 3D prototype</span>
+            <span className="enter-h">Enter the <b>museum</b></span>
+            <span className="enter-sub">Walk the site model: the rotunda, the hall positions, and
+              the routes between them. Phase I opens 2027.</span>
+            <span className="btn btn-y btn-lg">Enter</span>
+          </span>
+          <span className="enter-note">Interactive prototype</span>
         </Link>
-        <div className="proto-row">
-          <p>Walk the site model: the rotunda, the hall positions, and the routes between them.
-            Phase I opens 2027.</p>
-          <Link className="btn btn-y" href="/museum/enter">Enter the museum (prototype)</Link>
-        </div>
       </section>
 
       <section className="wrap reveal" id="halls">
