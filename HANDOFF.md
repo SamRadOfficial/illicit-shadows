@@ -254,9 +254,9 @@ this clean: at 320px even the ICAIE and RADOC line at the top of each cover beco
 
 Below 820px the still goes full width and the control drops beneath it beside the runtime.
 
-Elsewhere (the three-up `.minicard` previews) the play button still overlays, **top right**: the
-covers run their title down the left and the roundel bottom right, so a centred button lands on the
-words.
+On the three-up `.minicard` previews the button overlays **centred** (owner pick): those cards run
+about 320px, where a centred control reads as a player without burying the title. It is the small
+list thumbnails that failed that test, and the list now carries its control outside the artwork.
 
 Still outstanding: **the other ten narrations**. Eleven shorts is roughly 12,000 words of indexable text about
 precursors, ports, and laundering, and it is the highest-value SEO action left. Add a `transcript`

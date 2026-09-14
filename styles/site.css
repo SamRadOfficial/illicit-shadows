@@ -356,7 +356,10 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 
 /* Play buttons sit top right on small posters. The covers run their title down the left and the
    roundel bottom right, so a centred button lands squarely on the words. Checked at 128px. */
-.minicard-img .vembed .pb{left:auto;right:8px;top:8px;transform:none;width:32px;height:32px;font-size:11px;box-shadow:0 0 0 4px rgba(0,0,0,.4)}
+/* Centred on the three-up previews (owner pick): those cards run about 325px wide, where a
+   centred button reads as a player control without burying the title. The 208px list rows were
+   the case that failed, and those now carry the control outside the artwork entirely. */
+.minicard-img .vembed .pb{width:44px;height:44px;font-size:15px;box-shadow:0 0 0 5px rgba(0,0,0,.35)}
 
 .shortnav{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;padding-top:6px}
 .shortnav-a{display:block}
