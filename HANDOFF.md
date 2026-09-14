@@ -234,7 +234,18 @@ repeatedly read as "the image did not update" when the build was correct. Do not
 `app/sitemap.js` and `app/robots.js` need `export const dynamic = 'force-static'` or the export build
 fails. `/specimen` is disallowed in robots.
 
-Not done yet: **transcripts**. Eleven shorts is roughly 12,000 words of indexable text about
+**Narration** lives in a `transcript` array (paragraphs) per segment in `films.json` and renders in
+its own section below the list (`.tx-full`, owner pick 14 Sep), with a "Narration" jump link on any
+row that has one. **Rendered at build time, never fetched on click**: the indexable text is most of
+the reason to publish it. Labelled "as broadcast" so it reads as the words spoken in the film, not
+as a separate written article. Punctuation is normalized to the site style (no em dashes, straight
+quotes); wording is untouched.
+
+Play buttons on small posters sit **top right**, not centred: the covers run their title down the
+left and the roundel bottom right, so a centred button lands on the words. 32px on desktop, 26px
+below 820px. Checked against a 128px thumbnail.
+
+Still outstanding: **the other ten narrations**. Eleven shorts is roughly 12,000 words of indexable text about
 precursors, ports, and laundering, and it is the highest-value SEO action left. Add a `transcript`
 field per short when the text exists.
 

@@ -69,9 +69,9 @@ contact form.
       existing ones ("Canada's fentanyl frontlines", "Fentanyl precursors in China"): what the film
       covers, not what it argues. These double as the meta description if short pages are ever
       built per video.
-- [ ] **Voice-over text for the Chemical Cartels shorts.** The narration already exists in the
-      YouTube description of each video; consolidate it per short into a `transcript` field in
-      `films.json` and render it under the film. Copy and tidy, not transcription. Two cautions:
+- [ ] **Voice-over text for the remaining ten shorts.** American Fallout landed 14 Sep; the section
+      and the data shape exist, so each new one is a paste into `transcript` in `films.json`. The
+      narration is in the YouTube description of each video. Copy and tidy, not transcription. Two cautions:
       strip the series framing before pasting (Ep. 1, Dispatch N, docuseries), and do the YouTube
       description cleanup first so the two sources agree rather than diverge.
       Why it is worth the effort: eleven shorts is roughly 12,000 words of indexable text about
