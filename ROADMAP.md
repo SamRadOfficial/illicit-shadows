@@ -83,7 +83,7 @@ contact form.
       Dirty Profits. (Syndicates art was re-supplied 14 Sep and now agrees.)
 - [ ] **Instagram handle.** YouTube and X are both `illicit_shadows` as of 14 Sep; Instagram is
       still `illicitshadowsdoc`. Move it or accept one platform out of step.
-- [ ] **Runtime for The Next Wave** (short 11). Its one-line description is covered above.
+- [ ] **Runtime for The Next Wave** (short 11). Its description landed 14 Sep.
 - [ ] **Recut the trailer.** The current one is pre-gold and says "docuseries" on screen.
 - [ ] **Copy pass on `public/museum-viewer.html`**: it still says SEASON 2, GOLDEN HANDCUFFS, and
       JANUARY 2027 inside the canvas text.
@@ -110,17 +110,9 @@ keeps its `illustrative` chip.
       symbols around a central hub, for mobile, with the full diagram kept for deeper reading. The
       detailed map currently has to pan sideways below 820px. Reconcile the museum's "four domains"
       wording with the graphic's five at the same time.
-- [ ] **Intelligence, cascade prediction.** Turn the Rotterdam example into a sequence of maps:
-      disruption, redirected routes, financial activity, downstream consequences. Keep the
-      illustrative label prominent; it names real cities.
 - [ ] **Intelligence, four system layers.** A clean SVG for Intelligence Layer to Global Graph to
       Causal Engine to Reinforcement. This explains the system better than another atmospheric
       image, and it is a diagram the site can own rather than license.
-- [ ] **Film, upcoming investigations.** Coordinated concept covers for Blood Batteries, Thread
-      Count, Smoke Screen, Cold Rush, Iron Triangle and CCP Inc, each with a recognizable subject
-      and the same yellow typography. Note the tension: these are research subjects, not commissioned
-      films, so covers make them look further along than they are. Caption accordingly or hold them
-      until the subjects are confirmed.
 - [ ] **Museum, "The building".** An illustrated, clickable museum map: rotunda, numbered halls,
       theater and shop, with Phase I and Phase II as distinct levels. It would make the structure
       legible before anyone enters the prototype.
@@ -135,12 +127,6 @@ keeps its `illustrative` chip.
 - [ ] **Newsroom.** Three reusable thumbnail templates for Dispatch, Press and Release: subject
       photography, a small category label, consistent crop. Apply as real posts replace the
       placeholders.
-- [ ] **Section dividers across the site.** The same evidence-wall images repeat. Replace selected
-      ones with distinct close-ups (ports, shipping documents, mineral samples, financial records,
-      digital infrastructure) matched to the adjacent content.
-
-## Launch
-
 - [ ] **Confirm the AI crawler stance in `robots.js`.** It currently allows everything except
       `/specimen`, which permits GPTBot, ClaudeBot, PerplexityBot and Google-Extended by default.
       For a body of work that wants to be cited, that is probably right, but it should be a decision.
@@ -171,6 +157,10 @@ keeps its `illustrative` chip.
 - [x] **14 Sep** `preview.py` fixed: CSS glob broken since the Next 16 upgrade (previews were
       rendering unstyled), and `--lite` now keeps the fonts as woff2 instead of dropping them.
 - [x] **14 Sep** `scripts/mock.py`: design options render as one HTML page, per owner instruction.
+- [x] **14 Sep** Three supplied packages integrated: eleven section dividers placed per the
+      placement guide, six upcoming covers on `/film` and home, five cascade maps as a stepper on
+      `/intelligence`. Illicit Gold cover title recoloured to signal yellow. Home hero reordered to
+      email first.
 - [x] **14 Sep** Shorts play in a lightbox instead of a 250px card; eleven shorts listed vertically
       on the film page; home hero cut from three calls to action to two.
 - [x] **14 Sep** All thirteen museum hall thumbnails replaced with the supplied set.

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import site from '../../data/site.json';
 import { Pic, SectionHead, Break, Prov, Donor } from '../../components/Blocks';
-import { Cascade } from '../../components/Cascade';
+import { CascadeMaps } from '../../components/CascadeMaps';
 import { Convergence } from '../../components/Convergence';
 export const metadata = { title: 'Intelligence · MISTIC and Project Helix' };
 
@@ -18,7 +18,7 @@ export default function Intelligence() {
           <div className="cta-row"><a className="btn btn-y" href={`mailto:${site.contact}`}>Request a briefing</a><a className="btn btn-o" href="#helix">Helix subscriptions</a></div>
         </div>
       </section>
-      <Break base="/images/break-evidence-2" />
+      <Break base="/images/dividers/intelligence-network-analysis" alt="Layered network model with branching paths" />
       <section className="wrap reveal">
         <SectionHead label="The Institute" meta="FUSION CENTER" />
         <div className="inst"><div className="it">MISTIC</div><div className="ie">MEDIA · TECHNOLOGY · INNOVATION CONVERGENCE</div><p>A fusion center for strategic intelligence, mapping the intersection of organized crime, emerging technology, and global threat networks, and home to Project Helix, an AI-based predictive convergence system.</p></div>
@@ -34,7 +34,7 @@ export default function Intelligence() {
         <figure className="helix-art" style={{ margin: '20px 0 0' }}>
           <Pic base="/images/helix-ai" alt="Helix.AI: illicit economies converging on shared nodes across the global network" />
         </figure>
-        <Cascade />
+        <CascadeMaps />
       </section>
       <Break base="/images/break-evidence-1" />
       <section className="wrap reveal">

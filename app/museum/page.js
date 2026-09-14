@@ -38,7 +38,7 @@ export default function Museum() {
         <div><Pic base="/images/mis-eclipse" ext="png" alt="The MIS eclipse, Museum of Illicit Shadows emblem" className="eclimg" /></div>
       </div></section>
 
-      <Break base="/images/break-evidence-1" />
+      <Break base="/images/dividers/museum-artifacts-and-discovery" alt="Conservation tools, stone artifact, and mineral samples" />
 
       {/* Option C, owner pick 14 Sep. The render already has a dark left third; the copy and the
           way in live there, so nothing that matters in the image is covered. */}

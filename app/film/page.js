@@ -23,7 +23,7 @@ export default function Film() {
             lede="Illicit Shadows investigates the global illicit economy: where the money moves, who it pays, and what it costs the people living on top of it. Each investigation begins as field research and becomes a film, a museum hall, and a public source index.">
         <div className="cta-row"><Link className="btn btn-y" href={`/film/${released.slug}`}>Watch now</Link><a className="btn btn-o" href="#trailer">&#9654; Trailer</a></div>
       </Hero>
-      <Break base="/images/break-evidence-2" />
+      <Break base="/images/dividers/film-field-investigations" alt="Documentary camera and field notebook at a port" />
       <section className="wrap reveal" id="films">
         <SectionHead label="Film" meta="INVESTIGATIONS" />
         <div className="works">
@@ -32,14 +32,21 @@ export default function Film() {
       </section>
       <section className="wrap reveal tight" id="development">
         <SectionHead label="In development" meta="RESEARCH AGENDA" dim />
-        <div className="slate">
-          {slate.map(s => (
-            <div className="srow" key={s.slug}>
-              <div><h4 className="stitle">{s.title}</h4><p className="ssub">{s.sub}</p></div>
-              <Tags keys={s.tags} vocab={tags} />
-            </div>
+        <div className="slategrid">
+          {slate.map(x => (
+            <article className="scard" key={x.slug}>
+              <Pic base={x.image} alt={`${x.title}: concept cover`} />
+              {/* No title text here: the cover carries the title and the IN DEVELOPMENT stamp
+                  already. The card adds only what the art cannot say. */}
+              <div className="scard-body">
+                <p className="ssub">{x.sub}</p>
+                <Tags keys={x.tags} vocab={tags} />
+              </div>
+            </article>
           ))}
         </div>
+        <p className="slate-note">Concept covers for subjects under research. Nothing here is in
+          production, and no film is promised until it is shot.</p>
       </section>
       <Break base="/images/break-evidence-3" />
       <section className="wrap reveal" id="trailer">

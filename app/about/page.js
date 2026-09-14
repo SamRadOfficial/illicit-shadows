@@ -26,7 +26,7 @@ export default function About() {
             lede="We integrate three disciplines no single player has combined, documentary reach, curated knowledge, and predictive intelligence, to expose the global shadow economy and predict what it does next.">
         <div className="cta-row"><a className="btn btn-y" href={`mailto:${site.contact}`}>Partner with us</a><Link className="btn btn-o" href="/">&#9654; See the platform</Link></div>
       </Hero>
-      <Break base="/images/break-evidence-1" />
+      <Break base="/images/dividers/about-shared-expertise" alt="Researchers reviewing documents and maps together" />
       <section className="wrap reveal" id="who">
         <SectionHead label="Who we are" meta="THE INSTITUTION" />
         <div className="mission">

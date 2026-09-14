@@ -21,9 +21,10 @@ export default function Home() {
             title={<>The dark forces shaping the <span className="y">global criminal underworld</span></>}
             lede={<>We expose the <b className="fig">{s.value}</b> shadow economy and predict what it does next.</>}>
         <p className="srcline">Annual value of global illicit economies &middot; <Link href="/sources">{s.source}</Link></p>
-        {/* One button, one field. Subscribe lives beside the signup block further down. */}
-        <div className="cta-row"><Link className="btn btn-y btn-lg" href="/film">Watch the films</Link></div>
+        {/* Email first: the point of the hero is to keep people here and capture the address.
+            Watching is a text link under it, not a competing button. */}
         <Signup endpoint={site.forms?.signup} subscribe={false} />
+        <p className="sub-alt"><Link href="/film">&#9654; Watch the films</Link></p>
       </Hero>
 
       <section className="wrap reveal" id="pillars" style={{ paddingTop: 'clamp(112px,13vw,196px)' }}>
@@ -64,7 +65,10 @@ export default function Home() {
             <p className="eyebrow">Upcoming investigations</p>
             <ul className="upnext">
               {slate.slice(0, 4).map(x => (
-                <li key={x.slug}><Link href="/film#development"><b>{x.title}</b><span>{x.sub}</span></Link></li>
+                <li key={x.slug}><Link href="/film#development">
+                  <span className="upthumb"><Pic base={x.image} alt="" /></span>
+                  <span><b>{x.title}</b><span>{x.sub}</span></span>
+                </Link></li>
               ))}
             </ul>
             <p className="seemore"><Link href="/film#development">The full research agenda &rarr;</Link></p>
@@ -72,7 +76,7 @@ export default function Home() {
         </div>
       </section>
 
-      <Break base="/images/break-evidence-3" />
+      <Break base="/images/dividers/home-global-trade" alt="Nighttime cargo port and container ship" />
 
       <section className="wrap reveal" id="convergence">
         <Convergence label="Crime convergence" meta="#EVERYTHINGISCONNECTED" lede="Illicit economies are not separate crimes. Narcotics, trafficked humans, looted gold, conflict minerals, counterfeits, cybercrime, corruption, and money laundering move along the same routes, through the same hands, and into the same accounts. They converge across five domains at once." />

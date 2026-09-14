@@ -189,6 +189,23 @@ reads as a photograph of one, on a site whose whole argument is that claims carr
 `.concept` does this. The hall cards inherit the same treatment through the Phase I and II headings,
 which already say 2027 and 2028.
 
+## Supplied asset packages (14 Sep)
+**Section dividers**, `images/dividers/`, eleven 3:1 panoramas, one per page, placed per the
+supplied `Placement-Guide.csv` with its alt text. They replace the first generic `break-evidence`
+band on each page; the remaining generic bands stay, since eleven dividers cannot cover every break.
+
+**Upcoming covers**, `images/upcoming/`, six landscape concepts wired through `slate.json`. The
+covers already carry the title and an IN DEVELOPMENT stamp, so **the card prints neither**: only the
+subject line and the tags. A `slate-note` under the grid says these are subjects under research, not
+productions, because six covers make a research agenda look like a commissioned slate.
+
+**Cascade maps**, `images/cascade/`, five SVGs driven by `components/CascadeMaps.jsx`: a stepper, so
+the reader always sees which stage they are on. **The site chrome deliberately adds almost nothing**:
+each map already carries the HELIX.AI header, the ILLUSTRATIVE MODEL chip, its own stage strip and
+its own explanatory panel. An earlier version repeated all of it in HTML and said everything twice.
+
+All three packages are generated concept art, not documentary evidence. Keep them captioned that way.
+
 ## Video
 Films play through a **facade YouTube embed** (`components/VideoEmbed.jsx`): the cover art is the
 poster and the `youtube-nocookie` iframe is only injected on click. Verified: **zero** requests to
@@ -221,7 +238,9 @@ Not done yet: **transcripts**. Eleven shorts is roughly 12,000 words of indexabl
 precursors, ports, and laundering, and it is the highest-value SEO action left. Add a `transcript`
 field per short when the text exists.
 
-The **home hero carries exactly two actions**: a Watch the films button and the email field. It had
+The **home hero carries exactly two actions, email first**: the signup field, then a small text link
+to the films. The point of the hero is to keep people on the page and capture the address; watching
+is one click away everywhere else. It had
 three (button, form, YouTube subscribe), which is a tie rather than a hierarchy. `Signup` takes
 `subscribe={false}` to drop the YouTube line; it stays on the signup block further down the page.
 

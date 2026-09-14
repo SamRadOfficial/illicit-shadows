@@ -1,39 +1,69 @@
 [
- {
-  "slug": "blood-batteries",
-  "title": "Blood Batteries",
-  "sub": "Cobalt and the resource wars of the DRC",
-  "tags": ["critical-minerals", "forced-labor", "environmental-crime"]
- },
- {
-  "slug": "thread-count",
-  "title": "Thread Count",
-  "sub": "Cotton, garments, and the labor behind the label",
-  "tags": ["forced-labor", "supply-chains", "counterfeits"]
- },
- {
-  "slug": "smoke-screen",
-  "title": "Smoke Screen",
-  "sub": "The illicit tobacco trade and what it funds",
-  "tags": ["excise", "terror-finance", "corruption"]
- },
- {
-  "slug": "cold-rush",
-  "title": "Cold Rush",
-  "sub": "The Arctic opens, and the scramble begins",
-  "tags": ["environmental-crime", "critical-minerals", "state-influence"]
- },
- {
-  "slug": "iron-triangle",
-  "title": "Iron Triangle",
-  "sub": "Where states, corporations, and criminal networks meet",
-  "tags": ["state-influence", "arms", "corruption"]
- },
- {
-  "slug": "belt-and-road",
-  "title": "CCP Inc",
-  "altTitle": "Port Authority",
-  "sub": "Infrastructure lending and the leverage it buys",
-  "tags": ["state-influence", "corruption", "supply-chains"]
- }
+  {
+    "slug": "blood-batteries",
+    "title": "Blood Batteries",
+    "sub": "Cobalt and the resource wars of the DRC",
+    "tags": [
+      "critical-minerals",
+      "forced-labor",
+      "environmental-crime"
+    ],
+    "image": "/images/upcoming/blood-batteries"
+  },
+  {
+    "slug": "thread-count",
+    "title": "Thread Count",
+    "sub": "Cotton, garments, and the labor behind the label",
+    "tags": [
+      "forced-labor",
+      "supply-chains",
+      "counterfeits"
+    ],
+    "image": "/images/upcoming/thread-count"
+  },
+  {
+    "slug": "smoke-screen",
+    "title": "Smoke Screen",
+    "sub": "The illicit tobacco trade and what it funds",
+    "tags": [
+      "excise",
+      "terror-finance",
+      "corruption"
+    ],
+    "image": "/images/upcoming/smoke-screen"
+  },
+  {
+    "slug": "cold-rush",
+    "title": "Cold Rush",
+    "sub": "The Arctic opens, and the scramble begins",
+    "tags": [
+      "environmental-crime",
+      "critical-minerals",
+      "state-influence"
+    ],
+    "image": "/images/upcoming/cold-rush"
+  },
+  {
+    "slug": "iron-triangle",
+    "title": "Iron Triangle",
+    "sub": "Where states, corporations, and criminal networks meet",
+    "tags": [
+      "state-influence",
+      "arms",
+      "corruption"
+    ],
+    "image": "/images/upcoming/iron-triangle"
+  },
+  {
+    "slug": "belt-and-road",
+    "title": "CCP Inc",
+    "altTitle": "Port Authority",
+    "sub": "Infrastructure lending and the leverage it buys",
+    "tags": [
+      "state-influence",
+      "corruption",
+      "supply-chains"
+    ],
+    "image": "/images/upcoming/ccp-inc"
+  }
 ]

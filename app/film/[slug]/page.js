@@ -37,7 +37,9 @@ export default async function Investigation({ params }) {
       </section>
       <VideoJsonLd type="Movie" name={f.title} description={f.synopsis} image={f.image}
                    youtubeId={f.youtubeId} published={f.published} />
-      <Break base="/images/break-evidence-3" />
+      {f.slug === 'chemical-cartels'
+        ? <Break base="/images/dividers/chemical-cartels-precursor-trade" alt="Sealed industrial drums, sample vials, and container seal" />
+        : <Break base="/images/dividers/illicit-gold-mine-to-market" alt="Gold-bearing rock, panning dish, and refined gold" />}
       <section className="wrap reveal">
         <SectionHead label="About this investigation" meta="SYNOPSIS" />
         <div className="ep-about">

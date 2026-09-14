@@ -32,7 +32,7 @@ export default function Books() {
         </div>
       </section>
 
-      <Break base="/images/break-evidence-3" />
+      <Break base="/images/dividers/books-narrative-universe" alt="Open book and pen beside a rainy city window" />
 
       <section className="wrap reveal">
         <SectionHead label="The trilogy" meta="BOOKS TWO AND THREE" dim />
