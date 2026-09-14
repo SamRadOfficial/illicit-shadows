@@ -2,6 +2,7 @@ import Link from 'next/link';
 import site from '../../data/site.json';
 import { Pic, SectionHead, Break, Prov, Donor } from '../../components/Blocks';
 import { Cascade } from '../../components/Cascade';
+import { Convergence } from '../../components/Convergence';
 export const metadata = { title: 'Intelligence · MISTIC and Project Helix' };
 
 export default function Intelligence() {
@@ -30,9 +31,16 @@ export default function Intelligence() {
           <div className="layer"><div className="ln">03 · CAUSAL ENGINE</div><div className="ld">Helix.AI: structural causal modeling with adaptive feedback.</div></div>
           <div className="layer"><div className="ln">04 · REINFORCEMENT</div><div className="ld">Optimization across cascading adaptation paths.</div></div>
         </div>
+        <figure className="helix-art" style={{ margin: '20px 0 0' }}>
+          <Pic base="/images/helix-ai" alt="Helix.AI: illicit economies converging on shared nodes across the global network" />
+        </figure>
         <Cascade />
       </section>
       <Break base="/images/break-evidence-1" />
+      <section className="wrap reveal">
+        <Convergence label="Everything is connected" meta="WHAT HELIX MODELS" lede="Helix models the system the map describes: how pressure on one domain moves activity into another." />
+      </section>
+      <Break base="/images/break-evidence-2" />
       <section className="wrap reveal"><Donor eyebrow="Enterprise" title={<>Advisory, briefings, and <span>Helix access</span></>} copy="Governments, international organizations, and industry on illicit-economy exposure. Enterprise B2G and B2B intelligence platform access." cta="Request a briefing" href={`mailto:${site.contact}`} mail={site.contact} /></section>
     </>
   );

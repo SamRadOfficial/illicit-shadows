@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import site from '../../data/site.json';
 import halls from '../../data/halls.json';
+import { Convergence } from '../../components/Convergence';
 import { Pic, SectionHead, Break, Donor } from '../../components/Blocks';
 export const metadata = { title: 'Museum of Illicit Shadows (MIS)' };
 
@@ -44,7 +45,7 @@ export default function Museum() {
           <p className="creed" style={{ color: '#141210' }}>Everything <b style={{ color: 'var(--alert)' }}>is connected.</b></p>
           <p>Illicit economies are the lifeblood of today's bad actors, enabling kleptocrats to loot their countries, criminal organizations to co-opt states, and terrorist groups to finance attacks against our societies. They are not harmless: narcotics, trafficked humans, looted gold, conflict minerals, counterfeits, cybercrime, corruption, and money laundering converge across four domains at once.</p>
         </div>
-        <Pic base="/images/convergence-wheel" alt="Illicit Economies of the Shadowverse: a map of crime convergence across economic, governance, criminal, and environmental domains" className="wheel-img" />
+        <Convergence head={false} />
       </section>
 
       <div className="quoteband reveal"><Pic base="/images/museum-gallery-dark" alt="" /><div className="veil" /><div className="wrap"><blockquote>The shadows are all around us. <span>They know no borders.</span></blockquote></div></div>
@@ -73,7 +74,7 @@ export default function Museum() {
         <SectionHead label="Enter the Narrative Universe" meta="ILLICIT SHADOWS CHRONICLES" />
         <div className="umbra">
           <div style={{ display: 'flex', justifyContent: 'center' }}><Pic base="/images/book-umbra-circle" alt="The Umbra Circle, Book One" className="book3d" /></div>
-          <div><p className="eyebrow">Book 1</p><h3>The Umbra <span>Circle</span></h3><p>The fiction counterpart to the films: a narrative descent into the same convergence the investigations trace. When a diplomat is assassinated in London, two founders are drawn into a web of espionage and uncover a secret network manipulating world systems for power and profit.</p><p className="tag">COMING LATE 2026 &middot; BY SAM RAD AND DAVID M. LUNA</p><div className="cta-row"><Link className="btn btn-o" href="/books">Read the preview &rarr;</Link></div></div>
+          <div><p className="eyebrow">Book 1</p><h3>The Umbra <span>Circle</span></h3><p>The fiction counterpart to the films: a narrative descent into the same convergence the investigations trace. When a diplomat is assassinated in London, two founders are drawn into a web of espionage and uncover a secret network manipulating world systems for power and profit.</p><p className="tag">COMING LATE 2026 &middot; BY SAM RAD AND DAVID M. LUNA</p><div className="cta-row"><Link className="btn btn-o" href="/books/preview">Read the preview &rarr;</Link></div></div>
         </div>
       </section>
 

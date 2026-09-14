@@ -100,10 +100,31 @@ instead of scrolling unless `min-width:0` is set, and that is invisible in a scr
 
 ## Home film section (14 Sep)
 Illicit Gold leads with the cover, a description, and what is being filmed; Chemical Cartels sits
-under it as three short covers with a link to all eleven; the trailer closes the section. The section
-sits on `.band-light`, the cream band, which **inverts every default color**. New elements need an
-explicit override there or white display type lands on cream: see the `.band-light .lead-title`
-block in `site.css`. Check anything added to this section against the cream background.
+under it as three short covers with a link to all eleven; the trailer closes the section. The section sits on
+`.band-raised`, the grey panel band, and keeps the site palette: white display type, signal yellow
+and alert red. It was briefly on `.band-light`, the cream band, which inverts every default color
+and forced a set of one-off overrides. Owner reverted it. **Do not put this section on the cream
+band**; the covers and the yellow-and-red palette fight it.
+
+## Convergence map and Helix art (14 Sep)
+`components/Convergence.jsx` renders `public/images/convergence-map.svg` on home, `/intelligence`
+and `/museum`, always captioned **#EverythingIsConnected**. Not on `/books`: owner removed it, the
+page is fiction and the map read as filler there. It supersedes the raster
+`convergence-wheel`. It is an SVG with real text and no embedded rasters, about 34KB gzipped, served
+through `<img>`: inlining it on four pages would repeat 220KB four times, and it carries its own
+`<title>` and `<desc>` for screen readers. The graphic is **dark-themed**, so `.convfig` frames it in
+black with a hairline; do not put it on a light mat.
+
+`images/helix-ai` is the Helix.AI network art, used on home and `/intelligence`. It replaced
+`hero-globe` in those two slots; `hero-globe` still backs the heroes.
+
+`.pb`, the play button, has **no intrinsic size**. Every context that uses it must set width, height
+and font-size, or it collapses to the glyph and the border-radius renders as a wedge, or vanishes.
+This has now bitten three times: `.ep-player`, `.sgcard`/`.minicard`, and `.trailer-home`.
+
+The ICAIE mark is `logos/icaie-square`, trimmed and recentered from `icaie-stacked`, whose source had
+more whitespace below the wordmark than above. `.pmark.icaie` needs `flex:0 0 auto`, or as a flex
+item it shrinks in width while keeping its height and stops being square.
 
 ## Video
 Films play through a **facade YouTube embed** (`components/VideoEmbed.jsx`): the cover art is the

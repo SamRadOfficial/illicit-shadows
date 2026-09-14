@@ -119,7 +119,7 @@ export function Footer({ site }) {
           <div>
             <h5>Partners</h5>
             <div className="partner">
-              <div className="pmark icaie"><Pic base="/logos/icaie-stacked" alt="ICAIE, International Coalition Against Illicit Economies" /></div>
+              <div className="pmark icaie"><Pic base="/logos/icaie-square" alt="ICAIE, International Coalition Against Illicit Economies" /></div>
               <div><div className="ds">International Coalition Against Illicit Economies · Washington, DC</div><a href="https://icaie.com">icaie.com</a></div>
             </div>
             <div className="partner">

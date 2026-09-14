@@ -9,6 +9,8 @@ The standing checklist. Update in the same commit as the work. Items move to Don
 - [ ] **Newsletter, subscription, contact, donate.** Moved to Parked below.
 - [ ] **Licensed network-globe image.** The stock file supplied is watermarked; per the brief it is not shipped and the watermark is not cropped out. `hero-globe` stands in on the Intelligence section.
 - [ ] **`/sources` URLs.** Eleven published documents are listed with status chips but no links, pending the owner's verification pass. Draft, not curation, until reviewed.
+- [ ] **First pages of The Umbra Circle** for `/books/preview`. The page is built; the extract is a
+      visible placeholder rather than invented text. Also the subscribe destination for that page.
 - [ ] **Brochure PDF** for the Museum download strip, and the **Substack preview link** for The Umbra Circle.
 - [ ] **Real newsroom posts.** Current entries are flagged placeholders in `data/newsroom.json`.
 - [ ] **Square footage of the hold list.** Confirm nothing held (HUNTER BILL, Proporo, Mesetas, Madre de Dios, StoneX) has crept into copy before launch.
@@ -108,6 +110,9 @@ contact form.
 - [x] **14 Sep** `preview.py` fixed: CSS glob broken since the Next 16 upgrade (previews were
       rendering unstyled), and `--lite` now keeps the fonts as woff2 instead of dropping them.
 - [x] **14 Sep** `scripts/mock.py`: design options render as one HTML page, per owner instruction.
+- [x] **14 Sep** Convergence map added site-wide with #EverythingIsConnected, Helix.AI art on home
+      and `/intelligence`, `/books/preview` page created, founders nonfiction block removed, ICAIE
+      mark trimmed and squared.
 - [x] **14 Sep** Home rebuilt around Illicit Gold, with three Chemical Cartels covers, the new
       trailer art, and cream-band contrast fixed for the new elements.
 - [x] **14 Sep** Helix cascade rebuilt as a causal chain with lags and reasons, shared by home and

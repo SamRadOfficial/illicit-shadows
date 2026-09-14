@@ -5,6 +5,7 @@ import news from '../data/newsroom.json';
 import { Pic, SectionHead, Break, Prov, Hero, Signup, Donor, DigitalMuseum } from '../components/Blocks';
 import { Icon } from '../components/Icons';
 import { Cascade } from '../components/Cascade';
+import { Convergence } from '../components/Convergence';
 
 // Select by status, not by slug or position: retitles and reordering should not break the page.
 const released = films.find(f => f.status === 'streaming');
@@ -35,7 +36,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="wrap reveal band-light" id="film">
+      <section className="wrap reveal band-raised" id="film">
         <SectionHead label="Film" meta="INVESTIGATIONS" />
 
         {/* The work in production leads. It is the reason to come back, and the released film is
@@ -83,7 +84,7 @@ export default function Home() {
 
       <section className="wrap reveal" id="intel">
         <SectionHead label="Intelligence · Predictive Convergence System" meta="HELIX.AI" />
-        <div className="netglobe"><Pic base="/images/hero-globe" alt="A gold-flecked globe: the world Helix.AI models" pos="center 35%" /></div>
+        <div className="netglobe"><Pic base="/images/helix-ai" alt="Helix.AI: illicit economies converging on shared nodes, from cybercrime and corruption to arms and human trafficking" /></div>
         <div className="teaser">
           <div className="tcopy">
             <p className="eyebrow">The fusion center &middot; Helix.AI</p>
@@ -93,6 +94,10 @@ export default function Home() {
           </div>
           <Cascade compact />
         </div>
+      </section>
+
+      <section className="wrap reveal" id="convergence">
+        <Convergence lede="Illicit economies are not separate crimes. Narcotics, trafficked humans, looted gold, conflict minerals, counterfeits, cybercrime, corruption, and money laundering move along the same routes, through the same hands, and into the same accounts. They converge across four domains at once." />
       </section>
 
       <Break base="/images/break-evidence-2" />
@@ -122,7 +127,7 @@ export default function Home() {
             <h2 className="disp" style={{ fontSize: 'clamp(26px,3.6vw,40px)' }}>The Umbra Circle</h2>
             <p>The fiction counterpart to the films: a narrative descent into the same convergence the investigations trace. By Sam Rad and David M. Luna.</p>
             <p className="tag">COMING LATE 2026</p>
-            <div style={{ marginTop: 14 }}><Link className="btn btn-o" href="/books">Read the preview &rarr;</Link></div>
+            <div style={{ marginTop: 14 }}><Link className="btn btn-o" href="/books/preview">Read the preview &rarr;</Link></div>
           </div>
         </div>
       </section>

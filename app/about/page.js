@@ -61,7 +61,7 @@ export default function About() {
       <section className="wrap reveal" id="partners">
         <SectionHead label="Partners" meta="ICAIE + RADOC" />
         <div className="partners-big">
-          <div className="pbig"><div className="pmark icaie"><Pic base="/logos/icaie-stacked" alt="ICAIE" /></div><div><div className="pd2" style={{ marginTop: 6 }}>International Coalition Against Illicit Economies. A leading coalition confronting the convergence of illicit trade, crime, and threat finance. Washington, DC.</div><a href="https://icaie.com">icaie.com &rarr;</a></div></div>
+          <div className="pbig"><div className="pmark icaie"><Pic base="/logos/icaie-square" alt="ICAIE" /></div><div><div className="pd2" style={{ marginTop: 6 }}>International Coalition Against Illicit Economies. A leading coalition confronting the convergence of illicit trade, crime, and threat finance. Washington, DC.</div><a href="https://icaie.com">icaie.com &rarr;</a></div></div>
           <div className="pbig"><div className="pmark"><span className="radoc"><b>RAD</b><em>OC</em></span></div><div><div className="pn2">RADOC</div><div className="pd2">RAD Original Creations, a meta-media studio producing the Illicit Shadows films. NYC &middot; Washington, DC &middot; London.</div><a href="https://radoc.co">radoc.co &rarr;</a></div></div>
         </div>
       </section>

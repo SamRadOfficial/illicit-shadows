@@ -5,7 +5,7 @@ export const dynamic = 'force-static';
 import site from '../data/site.json';
 
 /** Static sitemap. Next writes sitemap.xml into the export. Add a route here when you add a page. */
-const ROUTES = ['', '/film', '/intelligence', '/museum', '/museum/enter', '/books', '/newsroom',
+const ROUTES = ['', '/film', '/intelligence', '/museum', '/museum/enter', '/books', '/books/preview', '/newsroom',
                 '/about', '/contact', '/sources'];
 
 export default function sitemap() {
