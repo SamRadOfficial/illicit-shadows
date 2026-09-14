@@ -258,7 +258,12 @@ On the three-up `.minicard` previews the button overlays **centred** (owner pick
 about 320px, where a centred control reads as a player without burying the title. It is the small
 list thumbnails that failed that test, and the list now carries its control outside the artwork.
 
-Still outstanding: **the other ten narrations**. Eleven shorts is roughly 12,000 words of indexable text about
+All eleven narrations are in (14 Sep). Two editorial rules were applied and should be kept for any
+future transcript: the **"Next Dispatch" trailers are dropped**, since that is the retired series
+framing and each page already links to the next short; and **punctuation is normalized** to site
+style (no em dashes, straight quotes), with wording otherwise verbatim. A check script pattern worth
+reusing: after writing transcripts, grep the built text for `Next Dispatch`, `docuseries`, `Season`,
+`Episode`, the hold list, and smart punctuation before shipping. Eleven shorts is roughly 12,000 words of indexable text about
 precursors, ports, and laundering, and it is the highest-value SEO action left. Add a `transcript`
 field per short when the text exists.
 

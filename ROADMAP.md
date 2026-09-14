@@ -69,9 +69,14 @@ contact form.
       existing ones ("Canada's fentanyl frontlines", "Fentanyl precursors in China"): what the film
       covers, not what it argues. These double as the meta description if short pages are ever
       built per video.
-- [ ] **Voice-over text for the remaining ten shorts.** American Fallout landed 14 Sep; the section
-      and the data shape exist, so each new one is a paste into `transcript` in `films.json`. The
-      narration is in the YouTube description of each video. Copy and tidy, not transcription. Two cautions:
+- [ ] **Check the narration against the films.** All eleven are in as of 14 Sep, transcribed from
+      the supplied scripts. Two things were changed and should be confirmed against what is actually
+      spoken: the "Next Dispatch" trailers were dropped (retired framing, and the site links to the
+      next short anyway), and punctuation was normalized to site style. Wording is otherwise verbatim.
+- [ ] **Sources for the narration claims.** The text carries specific figures (50,000 Canadian
+      fentanyl deaths since 2016, $45-113bn laundered annually, 775% CBSA increase, TD Bank's $3bn
+      penalty). On a site with a `/sources` index and a chip on every statistic, narration quoting
+      numbers without visible sourcing is the one place that standard currently lapses. Copy and tidy, not transcription. Two cautions:
       strip the series framing before pasting (Ep. 1, Dispatch N, docuseries), and do the YouTube
       description cleanup first so the two sources agree rather than diverge.
       Why it is worth the effort: eleven shorts is roughly 12,000 words of indexable text about
@@ -161,6 +166,7 @@ keeps its `illustrative` chip.
       placement guide, six upcoming covers on `/film` and home, five cascade maps as a stepper on
       `/intelligence`. Illicit Gold cover title recoloured to signal yellow. Home hero reordered to
       email first.
+- [x] **14 Sep** All eleven narrations published, 101 paragraphs across the short pages.
 - [x] **14 Sep** Per-short pages at `/film/<film>/<short>`, each with its own metadata, VideoObject
       and narration, listed in the sitemap. Short descriptions added under titles on home.
 - [x] **14 Sep** Shorts play in a lightbox instead of a 250px card; eleven shorts listed vertically
