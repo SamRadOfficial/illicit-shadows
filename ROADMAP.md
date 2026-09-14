@@ -6,20 +6,62 @@ The standing checklist. Update in the same commit as the work. Items move to Don
 
 ## Blocked on assets or decisions from the owner
 
-- [ ] **Signup provider.** Formspree, Mailchimp, Buttondown, other. Forms are visible placeholders that show a notice and never silently discard an address. Set `site.forms.signup` in `data/site.json` to wire them.
-- [ ] **Donation box, Stripe-compatible.** Tiers on `/museum` and the donor blocks on `/` and `/about` are display-only. Wire to Stripe directly (Payment Links or Checkout) or a Stripe-backed platform (Donorbox, Givebutter, Every.org). Static export means no server, so use hosted Checkout or Payment Links rather than a server-side session endpoint, unless a serverless function is added. Decide whether donations route to Illicit Shadows, LLC or a fiscal sponsor for tax treatment; that changes the copy on the founding-donor block.
-- [ ] **Contact form.** `/contact` currently routes to `mailto:sam@illicitshadows.com` through four self-selecting paths (advisory, Helix, founding donor, EP). Replace with a real form that captures which path was chosen. Same static constraint: Formspree, Basin, or a Vercel serverless function. Include spam protection and a confirmation state; the `Signup` component's honest-placeholder pattern is the model.
+- [ ] **Newsletter, subscription, contact, donate.** Moved to Parked below.
 - [ ] **Licensed network-globe image.** The stock file supplied is watermarked; per the brief it is not shipped and the watermark is not cropped out. `hero-globe` stands in on the Intelligence section.
 - [ ] **`/sources` URLs.** Eleven published documents are listed with status chips but no links, pending the owner's verification pass. Draft, not curation, until reviewed.
 - [ ] **Brochure PDF** for the Museum download strip, and the **Substack preview link** for The Umbra Circle.
 - [ ] **Real newsroom posts.** Current entries are flagged placeholders in `data/newsroom.json`.
-- [ ] **Episode 2 title.** Deck says *Golden Handcuffs* and is canonical; the trailer script says *Illicit Gold: The Rush to Cash in on the Criminal Shadows of El Dorado*, stored as `fullTitle`. Flip if it releases under the full title.
 - [ ] **Square footage of the hold list.** Confirm nothing held (HUNTER BILL, Proporo, Mesetas, Madre de Dios, StoneX) has crept into copy before launch.
+
+## Parked: audience and money systems
+
+Four systems, parked by the owner 14 Sep. They share one constraint: **static export means no
+server**, so each needs a hosted endpoint or a serverless function. Worth deciding the provider set
+once rather than four times, since a single platform can often cover signup, donations, and the
+contact form.
+
+- [ ] **Newsletter.** The `Signup` component is wired and honest: with no `site.forms.signup`
+      endpoint it shows a notice and never silently discards an address. Needs a provider
+      (Buttondown, Mailchimp, Kit, Formspree as a relay) and then one line in `data/site.json`.
+      Decide whether the list lives with Illicit Shadows or ICAIE, since that affects consent
+      language and who can mail it.
+- [ ] **Subscription.** Two different things share this word. Free: the YouTube subscribe link,
+      already live beside the signup. Paid: Helix enterprise access on `/intelligence`, which is a
+      sales conversation and a login, not a checkout button. Decide which is meant before building.
+- [ ] **Contact.** `/contact` routes four self-selecting paths to `mailto:`. A real form should keep
+      the path choice as a field so enquiries arrive pre-sorted, with spam protection and a
+      confirmation state. The `Signup` placeholder pattern is the model.
+- [ ] **Donate.** Tiers on `/museum` and the donor blocks on `/` and `/about` are display-only. Use
+      hosted Stripe Checkout or Payment Links, or a Stripe-backed platform (Donorbox, Givebutter,
+      Every.org). **Decide first whether donations route to Illicit Shadows, LLC or a fiscal
+      sponsor**: that is a tax question, it changes the copy on the founding-donor block, and it is
+      harder to change after the first donation than before.
 
 ## Build
 
-- [ ] **Confirm one short title against YouTube.** Cover art reads FENTANYL'S DIRTY PROFITS;
-      `films.json` says Dirty Profits. (Syndicates art was re-supplied 14 Sep and now agrees.)
+- [ ] **Publish dates for the eleven shorts.** Ids are in (14 Sep). `uploadDate` is still null, and
+      Google wants it for video rich results. One date per short, from YouTube.
+- [ ] **YouTube title and description cleanup, to match the site.** Titles and descriptions still
+      carry the old framing: the playlist is "Ep. 01 | CHEMICAL CARTELS", videos use "Ep.1,
+      Dispatch N", and the channel description opens "ILLICIT SHADOWS is a docuseries". Bring them
+      in line with the site: subject titles, no ordinals, no "docuseries", handle `@illicit_shadows`,
+      link to illicitshadows.com. Do this **before** the transcripts are copied across, or the old
+      framing walks back onto the site inside the descriptions. Check the two title mismatches at the
+      same time (FENTANYL'S DIRTY PROFITS, and The Next Wave's subtitle and runtime).
+- [ ] **Off-site series framing.** The playlist is titled "Ep. 01 | CHEMICAL CARTELS" and ICAIE's
+      posts use "Ep.1, Dispatch 1" and "an investigative docuseries". The site is clean; YouTube and
+      ICAIE are where programmers will actually look. Fixing the site alone buys little.
+- [ ] **Transcripts** for the shorts. Highest-value SEO work available: eleven shorts is roughly
+      12,000 words of indexable text about precursors, ports, and laundering, on a site that
+      currently has almost none. **The scripts already exist in the YouTube description of each
+      video**, so this is a copy-across, not a transcription job. Add a `transcript` field per
+      segment in `films.json` and render it under each short. Check the descriptions for series
+      framing before pasting; the playlist and ICAIE's posts still use Ep. 1 and Dispatch N.
+
+- [ ] **Confirm one short title.** Cover art reads FENTANYL'S DIRTY PROFITS; `films.json` says
+      Dirty Profits. (Syndicates art was re-supplied 14 Sep and now agrees.)
+- [ ] **Instagram handle.** YouTube and X are both `illicit_shadows` as of 14 Sep; Instagram is
+      still `illicitshadowsdoc`. Move it or accept one platform out of step.
 - [ ] **Subtitle and runtime for The Next Wave** (short 11). The card renders without them.
 - [ ] **Recut the trailer.** The current one is pre-gold and says "docuseries" on screen.
 - [ ] **Copy pass on `public/museum-viewer.html`**: it still says SEASON 2, GOLDEN HANDCUFFS, and
@@ -31,14 +73,14 @@ The standing checklist. Update in the same commit as the work. Items move to Don
 
 - [ ] `/press` page: coverage, press kit, interview contact.
 - [ ] `/museum/[hall]` hall detail pages with the artifact orbit viewer.
-- [ ] Wire real video URLs on episode and segment rows, currently pointing at the channel.
 - [ ] Founder bio pages or expanded `/about` entries, if wanted.
 - [ ] Search or filtering on `/newsroom` once there are real posts (the filter chips are currently inert).
 
 ## Launch
 
-- [ ] `robots.js` allowing GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended. For a body of work that wants to be cited, being readable by the systems that cite is the point.
-- [ ] `sitemap.xml`.
+- [ ] **Confirm the AI crawler stance in `robots.js`.** It currently allows everything except
+      `/specimen`, which permits GPTBot, ClaudeBot, PerplexityBot and Google-Extended by default.
+      For a body of work that wants to be cited, that is probably right, but it should be a decision.
 - [ ] Analytics.
 - [ ] OG images per page (currently inherits the default).
 - [ ] Squarespace redirect map, so no existing URL 404s. Check `next.config.js` for shadowing rules before adding routes.
@@ -66,6 +108,10 @@ The standing checklist. Update in the same commit as the work. Items move to Don
 - [x] **14 Sep** `preview.py` fixed: CSS glob broken since the Next 16 upgrade (previews were
       rendering unstyled), and `--lite` now keeps the fonts as woff2 instead of dropping them.
 - [x] **14 Sep** `scripts/mock.py`: design options render as one HTML page, per owner instruction.
+- [x] **14 Sep** All eleven shorts wired to real YouTube ids; the film player embeds the playlist
+      in order. Handle moved to `@illicit_shadows` on YouTube and X.
+- [x] **14 Sep** Video: facade YouTube embeds (no third-party request until click), VideoObject and
+      Movie JSON-LD, sitemap.xml, robots.txt, and a subscribe link beside the email signup.
 - [x] **14 Sep** Key art complete: two film covers and eleven short covers, card grid on the film
       page, color split of yellow for gold and red for Chemical Cartels.
 - [x] **14 Sep** Positioning pass: series framing retired site-wide. `/film` rebuilt as two works

@@ -1,4 +1,5 @@
 'use client';
+import site from '../data/site.json';
 // Shared blocks. Pages compose these; new page types reuse them rather than inventing a fourth treatment.
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -161,6 +162,11 @@ export function Signup({ endpoint, center = false }) {
         <button type="submit">Sign up for updates</button>
       </form>
       {state && <p className="signup-note" style={center ? { textAlign: 'center' } : undefined}>{state}</p>}
+      {/* Email leads, subscribe follows. An email list is an audience you own and can take to a
+          distributor or a funder; a YouTube subscriber belongs to YouTube. */}
+      <p className={`sub-alt${center ? ' center' : ''}`}>
+        Or <a href={`${site.social.youtube}?sub_confirmation=1`} target="_blank" rel="noopener noreferrer">subscribe on YouTube</a>
+      </p>
     </>
   );
 }

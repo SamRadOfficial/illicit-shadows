@@ -67,7 +67,9 @@
         "source": "iiss-2026-06",
         "status": "cited"
       }
-    ]
+    ],
+    "youtubeId": null,
+    "published": null
   },
   {
     "slug": "chemical-cartels",
@@ -89,7 +91,7 @@
       "corruption"
     ],
     "image": "/images/film-chemical-cartels",
-    "youtube": "https://www.youtube.com/@illicitshadowsdoc",
+    "youtube": "https://www.youtube.com/playlist?list=PLD3tUQtH932e__mUjWLvor4rH0XCVr8Oz",
     "synopsis": "The fentanyl supply chain from Chinese precursor companies through cartel labs in Mexico and Canada to North American streets, and the illicit financing that follows the drug every step of the way.",
     "segments": [
       {
@@ -98,7 +100,9 @@
         "sub": "How fentanyl became a weapon of war",
         "runtime": "2:01",
         "slug": "american-fallout",
-        "image": "/images/short-american-fallout"
+        "image": "/images/short-american-fallout",
+        "youtubeId": "vt9S1lEpFv8",
+        "published": null
       },
       {
         "n": 2,
@@ -106,7 +110,9 @@
         "sub": "Canada's fentanyl frontlines",
         "runtime": "2:12",
         "slug": "illicit-beachhead",
-        "image": "/images/short-illicit-beachhead"
+        "image": "/images/short-illicit-beachhead",
+        "youtubeId": "zKrvfUUTSEo",
+        "published": null
       },
       {
         "n": 3,
@@ -114,7 +120,9 @@
         "sub": "Fentanyl precursors in China",
         "runtime": "2:33",
         "slug": "invisible-source",
-        "image": "/images/short-invisible-source"
+        "image": "/images/short-invisible-source",
+        "youtubeId": "M3HgYp-WgYk",
+        "published": null
       },
       {
         "n": 4,
@@ -122,7 +130,9 @@
         "sub": "Mexico's role in the fentanyl supply chain",
         "runtime": "2:58",
         "slug": "the-cartels",
-        "image": "/images/short-the-cartels"
+        "image": "/images/short-the-cartels",
+        "youtubeId": "pDnvwQZ8Ejs",
+        "published": null
       },
       {
         "n": 5,
@@ -130,7 +140,9 @@
         "sub": "Vancouver and fentanyl's maritime gateway",
         "runtime": "2:30",
         "slug": "leaky-port",
-        "image": "/images/short-leaky-port"
+        "image": "/images/short-leaky-port",
+        "youtubeId": "ElrDqCaapxs",
+        "published": null
       },
       {
         "n": 6,
@@ -138,7 +150,9 @@
         "sub": "Suburban synthesis operations",
         "runtime": "2:36",
         "slug": "lab-next-door",
-        "image": "/images/short-lab-next-door"
+        "image": "/images/short-lab-next-door",
+        "youtubeId": "xHNn7feTpi4",
+        "published": null
       },
       {
         "n": 7,
@@ -146,7 +160,9 @@
         "sub": "How fentanyl arrives by mail",
         "runtime": "2:42",
         "slug": "parcel-pipeline",
-        "image": "/images/short-parcel-pipeline"
+        "image": "/images/short-parcel-pipeline",
+        "youtubeId": "-jgtf8B6LC4",
+        "published": null
       },
       {
         "n": 8,
@@ -154,7 +170,9 @@
         "sub": "Cartels, TCOs, and Hells Angels",
         "runtime": "2:09",
         "slug": "syndicates",
-        "image": "/images/short-syndicates"
+        "image": "/images/short-syndicates",
+        "youtubeId": "L3M0PUEUDIk",
+        "published": null
       },
       {
         "n": 9,
@@ -162,7 +180,9 @@
         "sub": "Real estate, casinos, money laundering",
         "runtime": "2:00",
         "slug": "dirty-profits",
-        "image": "/images/short-dirty-profits"
+        "image": "/images/short-dirty-profits",
+        "youtubeId": "PLkm-271W4U",
+        "published": null
       },
       {
         "n": 10,
@@ -170,14 +190,21 @@
         "sub": "Indigenous communities and the Arctic",
         "runtime": "1:45",
         "slug": "arctic-frontlines",
-        "image": "/images/short-arctic-frontlines"
+        "image": "/images/short-arctic-frontlines",
+        "youtubeId": "Go8qltzPKWA",
+        "published": null
       },
       {
         "n": 11,
         "slug": "next-wave",
         "title": "The Next Wave",
-        "image": "/images/short-next-wave"
+        "image": "/images/short-next-wave",
+        "youtubeId": "xzhe6ZEZ0kw",
+        "published": null
       }
-    ]
+    ],
+    "youtubeId": null,
+    "published": null,
+    "playlist": "PLD3tUQtH932e__mUjWLvor4rH0XCVr8Oz"
   }
 ]

@@ -78,7 +78,8 @@ from a larger series, and festival forms ask directly. Programmers read the site
   release date, so it needs a copy pass of its own.
 
 The social handle lives once, in `site.json` as `social.handle`, because it is printed in film
-credits and may change. Never hardcode it in a page.
+credits and may change. Never hardcode it in a page. It is `@illicit_shadows` (YouTube and X, 14 Sep);
+Instagram is still `illicitshadowsdoc`.
 
 Status chips sit **bottom left** on film art (`.work-status`, and `.badge.btm` on the detail page);
 short-film numbers sit **top right** (`.sgcard-n`). Both were moved after they landed on type baked
@@ -93,6 +94,29 @@ full set. Owner picked this over a scrolling strip of all eleven, to keep the in
 is ever revisited: a grid item defaults to `min-width:auto`, so the scroller stretches its card
 instead of scrolling unless `min-width:0` is set, and that is invisible in a screenshot. Compare
 `scrollWidth` against `clientWidth` to check.
+
+## Video
+Films play through a **facade YouTube embed** (`components/VideoEmbed.jsx`): the cover art is the
+poster and the `youtube-nocookie` iframe is only injected on click. Verified: **zero** requests to
+YouTube on page load, one after a click. That matters on a page carrying eleven videos.
+
+Each film and each short has a `youtubeId` and a `published` date in `films.json`. The eleven shorts
+have ids as of 14 Sep; `published` is still null. A **film** has no single id: Chemical Cartels
+carries `playlist`, and the hero player embeds `videoseries` so the shorts play in order. **Null is a switch, not a gap**: with no id the poster renders as a link to the channel and
+no `VideoObject` markup is emitted. Never add an id for a film that must not be publicly viewable.
+Public internet availability before a qualifying theatrical release is what costs festival and awards
+eligibility, so **Illicit Gold must have no id and no embed** until that question is settled. Screeners
+go through password-protected Vimeo or signed Mux URLs, off this site.
+
+`components/Schema.jsx` emits `VideoObject` (and `Movie` for a film), with `duration` derived from
+the runtime string. Type is never `TVEpisode` or `TVSeries`.
+
+`app/sitemap.js` and `app/robots.js` need `export const dynamic = 'force-static'` or the export build
+fails. `/specimen` is disallowed in robots.
+
+Not done yet: **transcripts**. Eleven shorts is roughly 12,000 words of indexable text about
+precursors, ports, and laundering, and it is the highest-value SEO action left. Add a `transcript`
+field per short when the text exists.
 
 ## Nav
 Seven links plus a **solid signal-yellow Contact CTA at the right** (owner pick, 14 Sep). The button

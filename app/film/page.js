@@ -4,6 +4,7 @@ import films from '../../data/films.json';
 import slate from '../../data/slate.json';
 import tags from '../../data/tags.json';
 import { Pic, SectionHead, Break, Hero, Donor, Prov, Tags } from '../../components/Blocks';
+import { VideoEmbed } from '../../components/VideoEmbed';
 export const metadata = { title: 'Film' };
 
 // No ordinals on public pages. Cardinal counters (ten short films, 01 to 10) are fine; Season N
@@ -43,11 +44,13 @@ export default function Film() {
                 <p className="segcap">{f.form}</p>
                 <div className="minigrid">
                   {f.segments.filter(s => s.image).slice(0, SEGMENTS_ON_INDEX).map(s => (
-                    <Link className="minicard" href={`/film/${f.slug}`} key={s.n}>
-                      <span className="minicard-img"><Pic base={s.image} alt={`${s.title} title card`} /></span>
-                      <span className="minicard-t">{s.title}</span>
+                    <div className="minicard" key={s.n}>
+                      <span className="minicard-img">
+                        <VideoEmbed id={s.youtubeId} image={s.image} alt={`${s.title} title card`} title={s.title} channel={f.youtube || site.social.youtube} />
+                      </span>
+                      <Link className="minicard-t" href={`/film/${f.slug}`}>{s.title}</Link>
                       {s.runtime && <span className="minicard-r">{s.runtime}</span>}
-                    </Link>
+                    </div>
                   ))}
                 </div>
                 <p className="seemore"><Link href={`/film/${f.slug}`}>All {f.segments.length} &rarr;</Link></p>

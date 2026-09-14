@@ -4,6 +4,8 @@ import films from '../../../data/films.json';
 import sources from '../../../data/sources.json';
 import tags from '../../../data/tags.json';
 import { Pic, SectionHead, Break, Stat, Prov, Tags } from '../../../components/Blocks';
+import { VideoEmbed } from '../../../components/VideoEmbed';
+import { VideoJsonLd } from '../../../components/Schema';
 
 export function generateStaticParams() { return films.map(f => ({ slug: f.slug })); }
 // Next 16: params is a Promise and must be awaited.
@@ -23,7 +25,9 @@ export default async function Investigation({ params }) {
         <div className="crumb"><Link href="/film">Film</Link> &nbsp;/&nbsp; <b>{f.title}</b></div>
         <h1 className="ep-title">{a} <span>{b}</span></h1>
         <p className="ep-sub">{f.subtitle}.</p>
-        <a className="ep-player" href={f.youtube || site.social.youtube}><Pic base={f.image} alt={`${f.title} title card`} priority />{live && <span className="pb">&#9654;</span>}{!live && <span className="badge red btm">IN PRODUCTION</span>}</a>
+        {live
+          ? <VideoEmbed className="ep-player" id={f.youtubeId} list={f.playlist} image={f.image} alt={`${f.title} title card`} title={f.title} channel={f.youtube || site.social.youtube} big />
+          : <div className="ep-player"><Pic base={f.image} alt={`${f.title} title card`} priority /><span className="badge red btm">IN PRODUCTION</span></div>}
         <div className="ep-meta">
           {live ? <span className="live">&#9679; NOW STREAMING</span> : <span className="live">&#9679; IN PRODUCTION</span>}
           {f.form && <span>{f.form.toUpperCase()}</span>}
@@ -31,6 +35,8 @@ export default async function Investigation({ params }) {
           {live && <a href={f.youtube || site.social.youtube}>Watch on YouTube &rarr;</a>}
         </div>
       </section>
+      <VideoJsonLd type="Movie" name={f.title} description={f.synopsis} image={f.image}
+                   youtubeId={f.youtubeId} published={f.published} />
       <Break base="/images/break-evidence-3" />
       <section className="wrap reveal">
         <SectionHead label="About this investigation" meta="SYNOPSIS" />
@@ -61,12 +67,17 @@ export default async function Investigation({ params }) {
             so a missing image never renders as a placeholder tile. Owner pick, 14 Sep. */}
         {f.segments.some(s => s.image) && <div className="sggrid">
           {f.segments.filter(s => s.image).map(s => (
-            <a className="sgcard" href={f.youtube || site.social.youtube} key={s.n}>
-              <span className="sgcard-img"><Pic base={s.image} alt={`${s.title} title card`} /><span className="sgcard-n">{String(s.n).padStart(2, '0')}</span></span>
+            <div className="sgcard" key={s.n}>
+              <span className="sgcard-img">
+                <VideoEmbed id={s.youtubeId} image={s.image} alt={`${s.title} title card`} title={s.title} channel={f.youtube || site.social.youtube} />
+                <span className="sgcard-n">{String(s.n).padStart(2, '0')}</span>
+              </span>
               <span className="sgcard-t">{s.title}</span>
               {s.sub && <span className="sgcard-s">{s.sub}</span>}
               {s.runtime && <span className="sgcard-r">{s.runtime}</span>}
-            </a>
+              <VideoJsonLd name={`${s.title} · ${f.title}`} description={s.sub || f.subtitle} image={s.image}
+                           youtubeId={s.youtubeId} runtime={s.runtime} published={s.published} />
+            </div>
           ))}
         </div>}
         {f.segments.some(s => !s.image) && <div className="seglist">
