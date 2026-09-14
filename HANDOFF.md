@@ -161,6 +161,13 @@ The ICAIE mark is `logos/icaie-square`, trimmed and recentered from `icaie-stack
 more whitespace below the wordmark than above. `.pmark.icaie` needs `flex:0 0 auto`, or as a flex
 item it shrinks in width while keeping its height and stops being square.
 
+`components/Pillars.jsx` is the MISTIC three-pillar section, shared by home and `/about` (14 Sep).
+Image-led panels, **one link per panel at the foot**: a card-wide link wrapping the heading, status
+and action would be invalid and unusable with a screen reader. The connector line and nodes are
+`aria-hidden`, since the panels say the same thing in words. Hover zoom is 1.04 and switched off
+under `prefers-reduced-motion`. Below 820px the panels stack, the connector is hidden, and every
+description and action stays visible without hover.
+
 `components/WorkCard.jsx` is **the** film card, used by `/film` and home. Home previously had a
 hand-rolled copy that fell behind within a day; do not fork it again. It renders the identifier line,
 the tags, and the short-film strip spanning both columns.

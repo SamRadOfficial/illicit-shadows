@@ -32,7 +32,7 @@ export default function Intelligence() {
             <Pic base="/images/helix-ai" alt="Helix.AI: illicit economies converging on shared nodes across the global network" />
           </figure>
           <div className="layers">
-            <div className="layer"><div className="ln">01 &middot; INTELLIGENCE LAYER</div><div className="ld">MIS ingestion: assets, artifacts, and mapping catalogued into the modeling framework.</div></div>
+            <div className="layer"><div className="ln">01 &middot; INTELLIGENCE LAYER</div><div className="ld">MIS ingestion: assets, artifacts, and mapping cataloged into the modeling framework.</div></div>
             <div className="layer"><div className="ln">02 &middot; GLOBAL GRAPH</div><div className="ld">Nodes, edges, and a data lake linking actors, routes, and flows.</div></div>
             <div className="layer"><div className="ln">03 &middot; CAUSAL ENGINE</div><div className="ld">Helix.AI: structural causal modeling with adaptive feedback.</div></div>
             <div className="layer"><div className="ln">04 &middot; REINFORCEMENT</div><div className="ld">Optimization across cascading adaptation paths.</div></div>

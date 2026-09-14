@@ -136,9 +136,10 @@ keeps its `illustrative` chip.
         rotation and is a much larger job.
       - Keep it behind the text, never over it, and do not let it delay the hero image loading.
 
-- [ ] **Home, "One platform, three pillars".** A connected graphic linking Film, Museum and
-      Intelligence with the feedback loop between them. Three text cards do not show that the
-      three parts feed each other, which is the actual claim.
+- [ ] **Home, the three pillars: the loop.** The panels landed 14 Sep, image-led and shared with
+      `/about`. What the connector still does not show is the **feedback loop**: that investigations
+      feed the museum and the museum feeds the model. A line with three nodes reads as "three
+      things", not "three things that feed each other".
 - [ ] **"Everything is connected" sections.** A simplified companion to the Venn: five category
       symbols around a central hub, for mobile, with the full diagram kept for deeper reading. The
       detailed map currently has to pan sideways below 820px. Reconcile the museum's "four domains"
@@ -191,6 +192,7 @@ keeps its `illustrative` chip.
       placement guide, six upcoming covers on `/film` and home, five cascade maps as a stepper on
       `/intelligence`. Illicit Gold cover title recoloured to signal yellow. Home hero reordered to
       email first.
+- [x] **14 Sep** MISTIC three pillars redesigned as image-led panels, shared by home and `/about`.
 - [x] **14 Sep** `/intelligence` restructured: Helix as two columns, a break band before the
       cascade, and the map's own timeline made clickable (option A, contained).
 - [x] **14 Sep** Page-specific heroes on `/about`, `/contact`, `/intelligence` and `/newsroom`,

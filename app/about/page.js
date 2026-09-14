@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import site from '../../data/site.json';
 import team from '../../data/team.json';
+import { Pillars } from '../../components/Pillars';
 import { Pic, SectionHead, Break, Hero, Donor } from '../../components/Blocks';
 import { Icon } from '../../components/Icons';
 export const metadata = { title: 'About' };
@@ -31,12 +32,11 @@ export default function About() {
         <SectionHead label="Who we are" meta="THE INSTITUTION" />
         <div className="mission">
           <div><p>Illicit Shadows, LLC is a media, knowledge, and intelligence platform, where documentary-grade journalism, a public knowledge hub, and a predictive intelligence system converge under one roof.</p><p>That convergence has a name: <b style={{ color: '#fff' }}>MISTIC</b>, Illicit Shadows Media, Technology &amp; Innovation Convergence, the institute mapping the intersection of organized crime, emerging technology, and global threat networks.</p></div>
-          <div className="props">
-            <div className="prop"><div className="pk">01 · MEDIA</div><div className="pv">Illicit Shadows</div><div className="pm">FIELD INVESTIGATIONS · FIRST FILM RELEASED</div></div>
-            <div className="prop"><div className="pk">02 · KNOWLEDGE</div><div className="pv">Museum of Illicit Shadows</div><div className="pm">MIS · EST 2025</div></div>
-            <div className="prop"><div className="pk">03 · INTELLIGENCE</div><div className="pv">Project Helix</div><div className="pm">PREDICTIVE CONVERGENCE SYSTEM</div></div>
-          </div>
         </div>
+      </section>
+
+      <section className="wrap reveal tight" id="platform">
+        <Pillars />
       </section>
       <Break base="/images/break-evidence-2" />
       <section className="wrap reveal" id="team">

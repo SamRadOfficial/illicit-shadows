@@ -5,7 +5,7 @@ import news from '../data/newsroom.json';
 import slate from '../data/slate.json';
 import { Pic, SectionHead, Break, Prov, Hero, Signup, Donor } from '../components/Blocks';
 import { Icon } from '../components/Icons';
-import { Cascade } from '../components/Cascade';
+import { Pillars } from '../components/Pillars';
 import { WorkCard } from '../components/WorkCard';
 import { Convergence } from '../components/Convergence';
 
@@ -28,16 +28,7 @@ export default function Home() {
       </Hero>
 
       <section className="wrap reveal" id="pillars" style={{ paddingTop: 'clamp(112px,13vw,196px)' }}>
-        <div style={{ marginBottom: 34 }}>
-          <p className="eyebrow" style={{ marginBottom: 14 }}>MISTIC &middot; Illicit Shadows Media, Technology &amp; Innovation Convergence</p>
-          <SectionHead label="One Platform · Three Pillars" meta="MISTIC" />
-          <p className="mistic-sub" style={{ marginTop: -18 }}>Mapping the intersection of organized crime, emerging technology, and global threat networks.</p>
-        </div>
-        <div className="pillars">
-          <Link className="pill" href="/film"><div className="ph"><span className="pn">01 · Media</span>{Icon.film}</div><div className="s1">Field investigations</div><div className="s2">Illicit Shadows</div><hr className="rr" /><p className="pd">Documentary-grade journalism exposing the shadow systems that move drugs, money, weapons, and humans across borders.</p><p className="pd">Fiction: Illicit Shadows Chronicles, The Umbra Circle (Book 1).</p><div className="ptag">FIRST FILM RELEASED · YOUTUBE</div></Link>
-          <Link className="pill" href="/museum"><div className="ph"><span className="pn">02 · Knowledge Hub</span>{Icon.museum}</div><div className="s1">Museum · Est 2025</div><div className="s2">Museum of Illicit Shadows (MIS)</div><hr className="rr" /><p className="pd">A first-of-its-kind virtual museum cataloguing crime convergence: research, exhibitions, and public programming.</p><div className="ptag">LAUNCHING 2027–2028</div></Link>
-          <Link className="pill alert" href="/intelligence"><div className="ph"><span className="pn">03 · Intelligence</span>{Icon.network}</div><div className="s1">Predictive Convergence System</div><div className="s2">Project Helix</div><hr className="rr" /><p className="pd">Modeling how illicit networks reorganize after disruption. Strategic foresight, not discrete event forecasting.</p><div className="ptag">ENTERPRISE TECHNOLOGY</div></Link>
-        </div>
+        <Pillars intro="Mapping the intersection of organized crime, emerging technology, and global threat networks: one platform, three ways in." />
       </section>
 
       <section className="wrap reveal band-raised" id="film">
