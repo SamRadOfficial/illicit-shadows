@@ -1,0 +1,8 @@
+[
+  {"phase":1,"year":2027,"level":"1st Digital Matrix Level","halls":[
+    {"n":"01","title":"Narcotics & Chemical Cartels"},{"n":"02","title":"Illicit Shadows Theater"},{"n":"03","title":"Fakes! Counterfeits & Pirated Goods"},
+    {"n":"04","title":"Environmental Crimes"},{"n":"05","title":"History & Evolution of Illicit Markets"},{"n":"CENTER","title":"Rotunda"}]},
+  {"phase":2,"year":2028,"level":"2nd Digital Matrix Level","halls":[
+    {"n":"06","title":"Human Trafficking & Forced Labor"},{"n":"07","title":"Threat Convergence"},{"n":"08","title":"Corruption & Money Laundering"},
+    {"n":"09","title":"Stolen Antiquities & Cultural Heritage"},{"n":"10","title":"Illegal Tobacco & Alcohol"},{"n":"11","title":"Cybercrime & Online Scams"}]}
+]

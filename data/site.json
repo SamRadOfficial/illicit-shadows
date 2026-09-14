@@ -1,0 +1,15 @@
+{
+  "name": "Illicit Shadows",
+  "entity": "Illicit Shadows, LLC",
+  "domain": "https://illicitshadows.com",
+  "tagline": "The dark forces shaping the global criminal underworld",
+  "boilerplate": "A media, knowledge, and intelligence platform exposing the global shadow economy and predicting what it does next.",
+  "hashtag": "#EverythingIsConnected",
+  "contact": "sam@illicitshadows.com",
+  "social": {
+    "youtube": "https://www.youtube.com/@illicitshadowsdoc",
+    "x": "https://x.com/illicit_Shadows",
+    "instagram": "https://www.instagram.com/illicitshadowsdoc"
+  },
+  "stats": { "illicit_economy": { "value": "$6 trillion+", "source": "ICAIE, 2026" } }
+}

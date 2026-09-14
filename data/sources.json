@@ -1,0 +1,143 @@
+[
+  {
+    "id": "iiss-2026-06",
+    "title": "Mapping Risk and Resilience in the Global Illicit Gold Economy",
+    "publisher": "IISS",
+    "date": "2026-06",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "golden-handcuffs"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "iiss-2026-09",
+    "title": "From Illegal Garimpo to Gold Governance",
+    "publisher": "IISS",
+    "date": "2026-09",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "golden-handcuffs"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "jgga-2026",
+    "title": "Illegal Mining Report",
+    "publisher": "JGGA / JG Global Advisory",
+    "date": "2026",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "golden-handcuffs"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "nyt-2026-04-mint",
+    "title": "U.S. Mint Buys Drug Cartel Gold and Sells It as American",
+    "publisher": "The New York Times",
+    "date": "2026-04",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "golden-handcuffs"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "treasury-ig-2024",
+    "title": "Audit of U.S. Mint gold sourcing",
+    "publisher": "U.S. Treasury Office of Inspector General",
+    "date": "2024",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "golden-handcuffs"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "oecd-2025",
+    "title": "Illicit Flows of Gold Concentrates",
+    "publisher": "OECD",
+    "date": "2025",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "golden-handcuffs"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "umiami-2024",
+    "title": "The Parts That Don't Glitter: A Comparative Analysis (Switzerland and gold refining)",
+    "publisher": "University of Miami International & Comparative Law Review",
+    "date": "2024",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "golden-handcuffs"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "fact-coalition",
+    "title": "Gold-mining policy report (Ouro Alvo isotopic fingerprinting, citing Mongabay 2023)",
+    "publisher": "FACT Coalition",
+    "date": "2023",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "golden-handcuffs"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "canning-house-2026",
+    "title": "LatAm Outlook 2026 (cited via IISS, June 2026)",
+    "publisher": "Canning House",
+    "date": "2026",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "golden-handcuffs"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "unodc-interpol",
+    "title": "Illegal mining valuation (cited via IISS, June 2026; UNODC 2023 via OECD)",
+    "publisher": "UNODC / INTERPOL",
+    "date": "2023",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "golden-handcuffs"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "icaie-2026",
+    "title": "Global illicit economy valuation ($6 trillion+)",
+    "publisher": "ICAIE",
+    "date": "2026",
+    "url": "https://icaie.com",
+    "status": "cited",
+    "films": [],
+    "public": true,
+    "verify_url": false
+  }
+]
