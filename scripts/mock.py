@@ -45,73 +45,102 @@ FACES = ''.join(f'@font-face{{font-family:{fam};src:url({font(f)});font-weight:{
 
 import json as _json
 
-FILMS = _json.load(open(os.path.join(ROOT, 'data/films.json')))
-CC = [f for f in FILMS if f['slug'] == 'chemical-cartels'][0]
-SEGS = [s for s in CC['segments'] if s.get('image')][:4]
+HERO = img('images/hero-globe.jpg')
+
+# Arc geometry traced over the globe in the art: start, control, end, in a 1600x900 viewBox.
+# Endpoints kept inside the globe's disc in the artwork, roughly on lit landmass, so no arc
+# terminates in empty ocean or runs off the edge.
+ARCS = [
+    (1000, 420, 1130, 300, 1290, 370),
+    (1020, 455, 1160, 360, 1330, 450),
+    (985, 500, 1110, 470, 1270, 545),
+    (1015, 395, 1120, 285, 1245, 300),
+    (1030, 530, 1160, 575, 1300, 600),
+]
+NODES = [(1000, 420), (1290, 370), (1330, 450), (1270, 545), (1245, 300), (1300, 600)]
 
 
-def row(s, variant):
-    sub = f'<span class="vrow-s">{s["sub"]}</span>' if s.get('sub') else ''
-    tx = '<a class="tx-jump" href="#">Narration &darr;</a>' if s.get('transcript') else ''
-    overlay = '<span class="pb sm">&#9654;</span>' if variant == 'overlay' else ''
-    thumb = (f'<span class="vrow-img">'
-             f'<img src="{img(s["image"] + ".jpg")}" alt="">{overlay}</span>')
-    body = f'<span class="vrow-body"><span class="vrow-t">{s["title"]}</span>{sub}{tx}</span>'
-    if variant == 'overlay':
-        right = f'<span class="vrow-r">{s.get("runtime", "")}</span>'
-    else:
-        right = (f'<span class="vrow-play"><button type="button" class="playbtn" aria-label="Play {s["title"]}">'
-                 f'<span class="playbtn-ico">&#9654;</span><span class="playbtn-txt">Play</span></button>'
-                 f'<span class="vrow-r">{s.get("runtime", "")}</span></span>')
-    return f'<div class="vrow">{f"<span class=\'vrow-n\'>{s['n']:02d}</span>"}{thumb}{body}{right}</div>'
+def svg_layer(mode):
+    paths = ''.join(
+        f'<path class="arc arc{i}" d="M{a} {b} Q{c} {d} {e} {f}" />'
+        for i, (a, b, c, d, e, f) in enumerate(ARCS))
+    dots = ''.join(f'<circle class="node n{i}" cx="{x}" cy="{y}" r="3.5" />' for i, (x, y) in enumerate(NODES))
+    pulses = ''
+    if mode == 'travel':
+        pulses = ''.join(
+            f'<circle class="pkt" r="5"><animateMotion dur="{5 + i}s" repeatCount="indefinite" '
+            f'begin="{i * 0.7}s" path="M{a} {b} Q{c} {d} {e} {f}" /></circle>'
+            for i, (a, b, c, d, e, f) in enumerate(ARCS))
+    return (f'<svg class="heroart {mode}" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" '
+            f'aria-hidden="true">{paths}{dots}{pulses}</svg>')
 
 
-PAGE_A = '<div class="vlist v-320">' + ''.join(row(s, 'overlay') for s in SEGS) + '</div>'
-PAGE_B = '<div class="vlist v-320 v-side">' + ''.join(row(s, 'side') for s in SEGS) + '</div>'
-PAGE_C = '<div class="vlist v-440 v-side">' + ''.join(row(s, 'side') for s in SEGS) + '</div>'
+def hero(mode, note):
+    return (f'<div class="mockhero2"><img class="heroimg" src="{HERO}" alt="">'
+            f'{svg_layer(mode) if mode else ""}<span class="heroveil"></span>'
+            f'<div class="herocopy"><p class="eyebrow">Media &middot; Knowledge &middot; Intelligence</p>'
+            f'<h1 class="disp">The dark forces shaping the <span class="y">global criminal underworld</span></h1>'
+            f'<p class="hero-lede">We expose the $6 trillion shadow economy and predict what it does next.</p>'
+            f'<div class="cta-row"><a class="btn btn-y" href="#">Watch the films</a></div></div>'
+            f'<span class="heronote">{note}</span></div>')
+
+
+PAGE_A = hero('', 'No motion. What is live now.')
+PAGE_B = hero('draw', 'Arcs draw once on load, then nodes breathe slowly.')
+PAGE_C = hero('travel', 'Arcs draw, then traffic runs along them continuously.')
 
 SHARED = """
-.vlist{border-top:1px solid var(--line)}
-.vrow{display:grid;gap:22px;align-items:center;padding:18px 6px;border-bottom:1px solid var(--line)}
-.v-320 .vrow{grid-template-columns:38px 320px 1fr auto}
-.v-440 .vrow{grid-template-columns:38px 440px 1fr auto}
-.vrow-n{font-family:var(--disp);font-size:16px;color:var(--signal);align-self:start;padding-top:4px}
-.vrow-img{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line)}
-.vrow-img img{width:100%;height:100%;object-fit:cover;display:block}
-.pb.sm{position:absolute;right:10px;top:10px;width:36px;height:36px;font-size:12px;border-radius:50%;background:var(--signal);color:var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px rgba(0,0,0,.4)}
-.vrow-t{display:block;font-weight:700;font-size:19px;color:var(--text)}
-.vrow-s{display:block;color:var(--muted);font-size:14.5px;margin-top:4px}
-.tx-jump{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);border-bottom:1px solid var(--alert);padding-bottom:2px}
-.vrow-r{font-family:var(--mono);font-size:11px;color:var(--dim)}
-.vrow-play{display:flex;flex-direction:column;align-items:center;gap:10px;min-width:96px}
-.playbtn{display:flex;align-items:center;gap:9px;background:var(--signal);color:var(--ink);border:0;padding:12px 18px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
-.playbtn:hover{background:#fff}
-.playbtn-ico{font-size:12px}
+.mockhero2{position:relative;overflow:hidden;border:1px solid var(--line-2);min-height:460px;display:flex;align-items:flex-end}
+.heroimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center}
+.heroveil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.95),rgba(0,0,0,.74) 38%,rgba(0,0,0,.22) 66%,rgba(0,0,0,.55))}
+.herocopy{position:relative;z-index:3;padding:clamp(22px,4vw,48px);width:100%}
+.mockhero2 .disp{font-size:clamp(30px,4.4vw,56px);margin:10px 0 14px;max-width:17ch}
+.hero-lede{color:var(--text-2);font-size:16px;margin:0 0 20px;max-width:52ch}
+.heronote{position:absolute;right:12px;bottom:12px;z-index:4;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);background:rgba(0,0,0,.8);border:1px solid var(--line-2);padding:6px 10px}
+
+/* The animated layer: vector arcs over the photographic globe. No JavaScript, a few KB. */
+.heroart{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.heroart .arc{fill:none;stroke:#FFD400;stroke-width:1.6;opacity:.6;filter:drop-shadow(0 0 3px rgba(255,212,0,.55));
+  stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2.4s ease-out forwards}
+.heroart .arc1{animation-delay:.25s}.heroart .arc2{animation-delay:.5s}
+.heroart .arc3{animation-delay:.75s}.heroart .arc4{animation-delay:1s}.heroart .arc5{animation-delay:1.25s}
+.heroart .node{fill:#FFD400;opacity:0;filter:drop-shadow(0 0 4px rgba(255,212,0,.7));animation:pop .6s ease-out forwards 1.6s}
+.heroart.draw .node{animation:pop .6s ease-out forwards 1.6s, breathe 4s ease-in-out infinite 2.4s}
+.heroart .pkt{fill:#fff;opacity:.9}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{opacity:1}}
+@keyframes breathe{0%,100%{opacity:1;r:4}50%{opacity:.45;r:6}}
+/* Anyone who has asked their system to reduce motion gets the finished state, not the animation. */
+@media (prefers-reduced-motion:reduce){
+  .heroart .arc{animation:none;stroke-dashoffset:0}
+  .heroart .node{animation:none;opacity:1}
+  .heroart .pkt{display:none}
+}
 """
 
 RECOMMEND = 'B'
 
-TITLE = 'Short-film thumbnails'
-INTRO = ('Bigger stills, and the play control moved off the artwork. Four of the eleven rows shown. '
-         'The covers exist nowhere else on the site, so the question is how large they can be before '
-         'the list stops being a list.')
+TITLE = 'A dynamic hero'
+INTRO = ('The hero art is a raster render, so it cannot be animated as-is. What it can have is a '
+         'vector layer on top: the trade routes as SVG arcs, animated in CSS. A few KB, no '
+         'JavaScript, no runtime dependency. Open this and watch, screenshots cannot show motion. '
+         'Reload to see the entrance again.')
 
 OPTIONS = [
-    ('A', '320px still, play overlaid top right',
-     'The current arrangement at 320px instead of 208. Titles are readable and the covers finally '
-     'have presence. The play button still sits on the artwork, which is exactly what you asked to '
-     'get away from, even in the corner.',
+    ('A', 'No motion (what is live now)',
+     'The photographic globe on its own. Fast, calm, and the headline is the only thing moving when '
+     'you scroll. Worth seeing next to the others before adding anything.',
      PAGE_A, SHARED),
-    ('B', '320px still, play control at the right  ·  MY PICK',
-     'Nothing on the artwork at all: a labelled Play button in its own column with the runtime under '
-     'it. The cover is never obscured, the control is larger and easier to hit than a 32px circle, '
-     'and the word Play removes any doubt about what the row does. Eleven of these runs roughly '
-     '2,400px, which still reads as a list.',
+    ('B', 'Arcs draw once, then the nodes breathe  ·  MY PICK',
+     'Six routes draw themselves over about two seconds, then the city nodes pulse slowly. It says '
+     'the thing the site argues, that these places are connected, and then it settles. Nothing '
+     'competes with the headline after the first few seconds, which matters on a page people return '
+     'to. Roughly 4KB of SVG and CSS, no JavaScript.',
      PAGE_B, SHARED),
-    ('C', '440px still, play control at the right',
-     'The showcase version. The covers are almost poster-sized and every element of the artwork is '
-     'legible. It costs length: eleven rows run past 3,000px, and the subtitle column gets narrow '
-     'enough that longer lines wrap to three.',
+    ('C', 'Arcs draw, then traffic runs continuously',
+     'The same entrance, then packets travel the routes forever. More literal about flow, and the '
+     'strongest first impression. It never stops though, so it keeps pulling the eye away from the '
+     'copy and the signup, and permanent motion behind text is the thing people ask you to turn off.',
      PAGE_C, SHARED),
 ]
 blocks, extra = [], []

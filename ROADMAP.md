@@ -122,6 +122,20 @@ An image review, in priority order. Two standing rules: anything that depicts th
 unmade film is captioned as a concept, and any diagram that is illustrative rather than measured
 keeps its `illustrative` chip.
 
+- [ ] **Animated hero.** The hero art is a raster render and cannot be animated as-is. The cheap
+      version is an SVG layer over it: six trade routes that draw themselves in about two seconds,
+      then city nodes that pulse slowly. Roughly 4KB of SVG and CSS, no JavaScript, no new
+      dependency. Mocked 14 Sep in three levels (none, draw-then-settle, continuous traffic); the
+      draw-then-settle version is the one to build, since permanent motion behind a headline is what
+      people ask to turn off. Requirements if it is built:
+      - **`prefers-reduced-motion` gets the finished state immediately**, no draw-on, no pulsing.
+      - Arcs must move with the mobile crop (`object-position:22% center` below 820px) or they will
+        float off the globe.
+      - The arcs in the mock are traced by hand over the artwork: decorative, not geographic. Either
+        accept that or build a real vector globe with true coordinates, which needs JavaScript for
+        rotation and is a much larger job.
+      - Keep it behind the text, never over it, and do not let it delay the hero image loading.
+
 - [ ] **Home, "One platform, three pillars".** A connected graphic linking Film, Museum and
       Intelligence with the feedback loop between them. Three text cards do not show that the
       three parts feed each other, which is the actual claim.
@@ -140,8 +154,6 @@ keeps its `illustrative` chip.
       different viewing sizes.
 - [ ] **Founding-donor sections.** A visual showing what support buys: exhibitions, public
       education, research, field investigations. Specific outputs make the ask tangible.
-- [ ] **Books, a three-book presentation graphic.** Covers landed 14 Sep; a single image showing
-      the trilogy together is still worth having for the deck and for social.
 - [ ] **Newsroom.** Three reusable thumbnail templates for Dispatch, Press and Release: subject
       photography, a small category label, consistent crop. Apply as real posts replace the
       placeholders.
@@ -179,6 +191,8 @@ keeps its `illustrative` chip.
       placement guide, six upcoming covers on `/film` and home, five cascade maps as a stepper on
       `/intelligence`. Illicit Gold cover title recoloured to signal yellow. Home hero reordered to
       email first.
+- [x] **14 Sep** `/books` gets the trilogy render as its hero and 3D mockups for all three books.
+      Hero crops moved to CSS variables with a per-image `mobilePos`.
 - [x] **14 Sep** Real 2:3 book covers for all three Chronicles, replacing the square 3D render.
       Next-film cover card on each short page.
 - [x] **14 Sep** All eleven narrations published, 101 paragraphs across the short pages.

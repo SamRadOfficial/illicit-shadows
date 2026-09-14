@@ -136,10 +136,13 @@ export function Footer({ site }) {
 
 /* ---------- page blocks ---------- */
 
-export function Hero({ img, alt, eyebrow, title, lede, children, variant = '', pos = 'right center' }) {
+/* Crops come from CSS variables, not an inline object-position on the image: an inline style beats
+   the stylesheet, so a media query could never change the crop on a narrow screen. */
+export function Hero({ img, alt, eyebrow, title, lede, children, variant = '', pos = 'right center', mobilePos }) {
   return (
-    <section className={`hero ${variant}`} style={{ padding: 0 }}>
-      <div className="bg"><Pic base={img} alt={alt} priority pos={pos} /></div>
+    <section className={`hero ${variant}`}
+             style={{ padding: 0, '--hero-pos': pos, '--hero-pos-mobile': mobilePos || pos }}>
+      <div className="bg"><Pic base={img} alt={alt} priority /></div>
       <div className="veil" />
       <div className="wrap">
         {eyebrow && <p className="eyebrow">{eyebrow}</p>}

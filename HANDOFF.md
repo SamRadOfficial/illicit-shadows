@@ -189,11 +189,21 @@ reads as a photograph of one, on a site whose whole argument is that claims carr
 `.concept` does this. The hall cards inherit the same treatment through the Phase I and II headings,
 which already say 2027 and 2028.
 
-`images/hero-globe` is the hero art on home, `/about` and `/intelligence` (replaced 14 Sep). It keeps
-its subject **hard right** with a dark field left, which is where every hero headline sits, so the
-desktop crop needs nothing. Below 820px a centred crop puts the headline over the bright globe, so
-`.hero .bg img` shifts to `object-position:22% center`. Any replacement hero has to keep that
-left-dark, right-subject composition or the headline stops being readable.
+**Hero crops are CSS variables, never inline styles.** `Hero` takes `pos` and `mobilePos` and writes
+`--hero-pos` and `--hero-pos-mobile`; the stylesheet reads them, with the mobile value applying below
+820px. This matters: `Pic` used to set `object-position` inline, and an inline style beats the
+stylesheet, so a media query could not change the crop at all. Do not put the crop back on the image.
+
+The crop is a property of the artwork, not of heroes in general: `hero-globe` keeps its subject hard
+right with a dark field left, so it pulls to `22% center` on mobile, while `books-trilogy-hero` has
+the books centre-right and uses `68% center`. Any new hero needs its own `mobilePos`, checked at
+390px.
+
+`/books` uses the **3D mockups** (`book-*-3d`) and the trilogy render as its hero. The mockups carry
+their own lighting, shadow and black field, so `.bookmock` adds no border and no cast shadow: framing
+a photograph that already sits on black just doubles it. The **flat covers** (`image` in
+`books.json`) stay on home, `/museum` and `/books/preview`, where the cover reads better than the
+object.
 
 **Book covers** are real 2:3 covers as of 14 Sep, replacing the square 3D render: `book-umbra-circle`,
 `book-dragon-roars-forward`, `book-condor-directive`, wired through `data/books.json` and used on
