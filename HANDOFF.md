@@ -241,9 +241,18 @@ the reason to publish it. Labelled "as broadcast" so it reads as the words spoke
 as a separate written article. Punctuation is normalized to the site style (no em dashes, straight
 quotes); wording is untouched.
 
-Play buttons on small posters sit **top right**, not centred: the covers run their title down the
-left and the roundel bottom right, so a centred button lands on the words. 32px on desktop, 26px
-below 820px. Checked against a 128px thumbnail.
+**Nothing sits on the short-film artwork** (owner pick 14 Sep). The list uses 320px stills with a
+labelled **Play** control in its own column and the runtime under it; both the poster and the button
+open the same lightbox. `VideoEmbed variant="row"` returns the poster and the control as siblings in
+a fragment so the parent grid can place them in separate columns, and `.vrow-body` uses `order:3` to
+sit between them. The covers appear nowhere else on the site, which is why they are this large and
+this clean: at 320px even the ICAIE and RADOC line at the top of each cover becomes legible.
+
+Below 820px the still goes full width and the control drops beneath it beside the runtime.
+
+Elsewhere (the three-up `.minicard` previews) the play button still overlays, **top right**: the
+covers run their title down the left and the roundel bottom right, so a centred button lands on the
+words.
 
 Still outstanding: **the other ten narrations**. Eleven shorts is roughly 12,000 words of indexable text about
 precursors, ports, and laundering, and it is the highest-value SEO action left. Add a `transcript`

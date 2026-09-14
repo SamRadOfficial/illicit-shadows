@@ -292,14 +292,23 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 /* Eleven shorts read as a list, not a wall: one line each, still large enough to carry the art.
    The three-up previews on home and /film keep .minigrid. */
 .vlist{border-top:1px solid var(--line)}
-.vrow{display:grid;grid-template-columns:38px 208px 1fr auto;gap:20px;align-items:center;padding:14px 6px;border-bottom:1px solid var(--line);transition:background .15s}
+/* 320px stills with nothing over the artwork: the covers appear nowhere else on the site, and the
+   play control lives in its own column. DOM order is number, poster, control, body; `order` puts
+   the body back in the middle so the poster and its control can be siblings in one fragment. */
+.vrow{display:grid;grid-template-columns:38px 320px 1fr auto;gap:22px;align-items:center;padding:18px 6px;border-bottom:1px solid var(--line);transition:background .15s}
 .vrow:hover{background:var(--panel)}
-.vrow-n{font-family:var(--disp);font-size:16px;color:var(--signal)}
-.vrow-img{position:relative;display:block;width:208px;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line)}
-.vrow-img .vembed .pb{width:40px;height:40px;font-size:14px;box-shadow:0 0 0 5px rgba(0,0,0,.35)}
-.vrow-t{display:block;font-weight:700;font-size:17px;color:var(--text)}
+.vrow-n{order:1;font-family:var(--disp);font-size:16px;color:var(--signal);align-self:start;padding-top:4px}
+.vrow-img{order:2;position:relative;display:block;width:100%;padding:0;border:1px solid var(--line);background:none;cursor:pointer}
+.vrow-img img{width:100%;height:auto;display:block}
+.vrow-body{order:3}
+.vrow-play{order:4;display:flex;flex-direction:column;align-items:center;gap:10px;min-width:96px}
+.playbtn{display:flex;align-items:center;gap:9px;background:var(--signal);color:var(--ink);border:0;padding:12px 18px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.playbtn:hover{background:#fff}
+.playbtn:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.playbtn-ico{font-size:12px}
+.vrow-t{display:block;font-weight:700;font-size:19px;color:var(--text)}
 .vrow:hover .vrow-t{color:var(--signal)}
-.vrow-s{display:block;color:var(--muted);font-size:14px;margin-top:3px}
+.vrow-s{display:block;color:var(--muted);font-size:14.5px;margin-top:4px}
 .vrow-r{font-family:var(--mono);font-size:11px;color:var(--dim)}
 
 /* Development slate: the covers carry their own title and status, so the card adds only the
@@ -346,7 +355,7 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 
 /* Play buttons sit top right on small posters. The covers run their title down the left and the
    roundel bottom right, so a centred button lands squarely on the words. Checked at 128px. */
-.vrow-img .vembed .pb,.minicard-img .vembed .pb{left:auto;right:8px;top:8px;transform:none;width:32px;height:32px;font-size:11px;box-shadow:0 0 0 4px rgba(0,0,0,.4)}
+.minicard-img .vembed .pb{left:auto;right:8px;top:8px;transform:none;width:32px;height:32px;font-size:11px;box-shadow:0 0 0 4px rgba(0,0,0,.4)}
 
 @media(max-width:820px){
   .links{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:#0a0a0a;border-bottom:2px solid var(--alert);padding:14px 24px;gap:14px}
@@ -359,10 +368,13 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
   .work-body,.trailer-band>div{padding:0 18px 22px}
   .srow{gap:12px}.srow .chips{justify-content:flex-start;max-width:none}
   .minigrid,.slategrid{grid-template-columns:1fr 1fr;gap:10px}
-  .vrow{grid-template-columns:28px 128px 1fr;gap:12px;align-items:start}
-  .vrow-img .vembed .pb,.minicard-img .vembed .pb{width:26px;height:26px;font-size:9px;right:6px;top:6px;box-shadow:0 0 0 3px rgba(0,0,0,.4)}
-  .vrow-img{width:128px}
-  .vrow-r{grid-column:3;font-size:10px}
+  /* Below 820px the still goes full width and the control sits under it, beside the runtime.
+     Poster and body share column 2 and stack; the number keeps its own narrow column. */
+  .vrow{grid-template-columns:28px 1fr;gap:10px 14px;align-items:start}
+  .vrow-n{padding-top:0}
+  .vrow-img,.vrow-body,.vrow-play{grid-column:2}
+  .vrow-play{flex-direction:row;align-items:center;gap:14px;min-width:0;margin-top:2px}
+  .vrow-t{font-size:17px}
   .lead-film,.preview-top,.trailer-row{grid-template-columns:1fr}
   /* Below 820px the render is too small to hold copy on top of it: stack instead. The scrim and
      the absolutely positioned stamp both have to stand down, or they dim the stacked panel and

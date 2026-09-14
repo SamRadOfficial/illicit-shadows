@@ -47,106 +47,71 @@ import json as _json
 
 FILMS = _json.load(open(os.path.join(ROOT, 'data/films.json')))
 CC = [f for f in FILMS if f['slug'] == 'chemical-cartels'][0]
-SEGS = [s for s in CC['segments'] if s.get('image')]
-
-TRANSCRIPT = [
-    "What if the deadliest war in America isn't being fought overseas, but right here on our streets?",
-    "Across the country, a chemical weapon is claiming lives faster than any bullet. It's not launched by missiles or drones. It's packaged, shipped, and sold, one dose at a time.",
-    "That weapon is fentanyl.",
-    "The fentanyl trade has unleashed a humanitarian crisis: a synthetic storm of addiction, grief, and collapse.",
-    "From San Francisco's Tenderloin to Philadelphia's Kensington to the coal towns of West Virginia, and all across the United States and North America, the numbers tell the story: one American dies every seven minutes.",
-    "Border agents intercept nearly 98% of the illicit fentanyl crossing from Mexico. But the devastation proves that the remaining two percent is enough to poison an entire nation.",
-    "And while the southern border dominates headlines, few are asking a more uncomfortable question: what's happening to the north?",
-    "Canadian shipments account for less than one percent of total fentanyl seized in the U.S., yet whispers from ports, labs, and financial hubs suggest something deeper, quieter, and far more organized.",
-    "Because what we see on our streets is only the final act of a transnational operation, one that hijacks legitimate supply chains, weaponizes global commerce, and turns chemistry into asymmetrical mass destruction and human misery.",
-    "To understand today's fentanyl scourge and related crime convergence, we have to trace the trail back to its source, within the illicit economies of the criminal underworld and into the shadows.",
-]
-
-PARAS = ''.join(f'<p>{t}</p>' for t in TRANSCRIPT)
+SEGS = [s for s in CC['segments'] if s.get('image')][:4]
 
 
-def row(s, inner='', cls=''):
+def row(s, variant):
     sub = f'<span class="vrow-s">{s["sub"]}</span>' if s.get('sub') else ''
-    return (f'<div class="vrow {cls}"><span class="vrow-n">{s["n"]:02d}</span>'
-            f'<span class="vrow-img"><img src="{img(s["image"] + ".jpg")}" alt="">'
-            f'<span class="pb sm">&#9654;</span></span>'
-            f'<span class="vrow-body"><span class="vrow-t">{s["title"]}</span>{sub}{inner}</span>'
-            f'<span class="vrow-r">{s.get("runtime", "")}</span></div>')
+    tx = '<a class="tx-jump" href="#">Narration &darr;</a>' if s.get('transcript') else ''
+    overlay = '<span class="pb sm">&#9654;</span>' if variant == 'overlay' else ''
+    thumb = (f'<span class="vrow-img">'
+             f'<img src="{img(s["image"] + ".jpg")}" alt="">{overlay}</span>')
+    body = f'<span class="vrow-body"><span class="vrow-t">{s["title"]}</span>{sub}{tx}</span>'
+    if variant == 'overlay':
+        right = f'<span class="vrow-r">{s.get("runtime", "")}</span>'
+    else:
+        right = (f'<span class="vrow-play"><button type="button" class="playbtn" aria-label="Play {s["title"]}">'
+                 f'<span class="playbtn-ico">&#9654;</span><span class="playbtn-txt">Play</span></button>'
+                 f'<span class="vrow-r">{s.get("runtime", "")}</span></span>')
+    return f'<div class="vrow">{f"<span class=\'vrow-n\'>{s['n']:02d}</span>"}{thumb}{body}{right}</div>'
 
 
-# A: disclosure under the row
-A_INNER = (f'<details class="tx"><summary>Read the narration</summary>'
-           f'<div class="tx-body">{PARAS}</div></details>')
-PAGE_A = ('<div class="vlist">' + row(SEGS[0], A_INNER, 'has-tx')
-          + ''.join(row(s, '<details class="tx"><summary>Read the narration</summary>'
-                           '<div class="tx-body"><p class="tx-pending">Narration pending.</p></div></details>')
-                    for s in SEGS[1:3]) + '</div>')
-
-# B: always open, beside the row
-PAGE_B = ('<div class="vlist wide">' + row(SEGS[0], f'<div class="tx-open">{PARAS}</div>', 'has-tx')
-          + ''.join(row(s, '<div class="tx-open"><p class="tx-pending">Narration pending.</p></div>')
-                    for s in SEGS[1:3]) + '</div>')
-
-# C: list stays clean, transcripts collected below
-PAGE_C = ('<div class="vlist">'
-          + ''.join(row(s, '<a class="tx-jump" href="#narration">Narration &darr;</a>') for s in SEGS[:3])
-          + '</div>'
-          + '<div class="head" style="margin-top:44px"><span class="lbl">Narration</span>'
-            '<span class="bar"></span><span class="meta">FULL TEXT</span></div>'
-          + f'<article class="tx-full" id="narration"><h4>01 &middot; American Fallout</h4>{PARAS}</article>'
-          + '<article class="tx-full"><h4>02 &middot; The Illicit Beachhead</h4>'
-            '<p class="tx-pending">Narration pending.</p></article>')
+PAGE_A = '<div class="vlist v-320">' + ''.join(row(s, 'overlay') for s in SEGS) + '</div>'
+PAGE_B = '<div class="vlist v-320 v-side">' + ''.join(row(s, 'side') for s in SEGS) + '</div>'
+PAGE_C = '<div class="vlist v-440 v-side">' + ''.join(row(s, 'side') for s in SEGS) + '</div>'
 
 SHARED = """
 .vlist{border-top:1px solid var(--line)}
-.vrow{display:grid;grid-template-columns:38px 208px 1fr auto;gap:20px;align-items:start;padding:16px 6px;border-bottom:1px solid var(--line)}
-.vrow-n{font-family:var(--disp);font-size:16px;color:var(--signal);padding-top:2px}
-.vrow-img{position:relative;display:block;width:208px;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line)}
+.vrow{display:grid;gap:22px;align-items:center;padding:18px 6px;border-bottom:1px solid var(--line)}
+.v-320 .vrow{grid-template-columns:38px 320px 1fr auto}
+.v-440 .vrow{grid-template-columns:38px 440px 1fr auto}
+.vrow-n{font-family:var(--disp);font-size:16px;color:var(--signal);align-self:start;padding-top:4px}
+.vrow-img{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line)}
 .vrow-img img{width:100%;height:100%;object-fit:cover;display:block}
-.pb.sm{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:40px;font-size:14px;border-radius:50%;background:var(--signal);color:var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px rgba(0,0,0,.35)}
-.vrow-t{display:block;font-weight:700;font-size:17px;color:var(--text)}
-.vrow-s{display:block;color:var(--muted);font-size:14px;margin-top:3px}
-.vrow-r{font-family:var(--mono);font-size:11px;color:var(--dim);padding-top:4px}
-.tx{margin-top:10px}
-.tx summary{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);cursor:pointer;padding:6px 0}
-.tx summary::marker{color:var(--alert)}
-.tx-body,.tx-open{border-left:2px solid var(--alert);padding:4px 0 4px 16px;margin-top:8px;max-width:68ch}
-.tx-body p,.tx-open p,.tx-full p{color:var(--text-2);font-size:15.5px;line-height:1.85;margin:0 0 13px}
-.tx-body p:first-child,.tx-open p:first-child,.tx-full p:first-child{color:var(--text);font-size:17px}
-.tx-pending{color:var(--muted);font-style:italic}
-.tx-open{margin-top:12px}
+.pb.sm{position:absolute;right:10px;top:10px;width:36px;height:36px;font-size:12px;border-radius:50%;background:var(--signal);color:var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px rgba(0,0,0,.4)}
+.vrow-t{display:block;font-weight:700;font-size:19px;color:var(--text)}
+.vrow-s{display:block;color:var(--muted);font-size:14.5px;margin-top:4px}
 .tx-jump{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);border-bottom:1px solid var(--alert);padding-bottom:2px}
-.tx-full{border-top:1px solid var(--line);padding:22px 0}
-.tx-full h4{font-family:var(--disp);font-size:20px;text-transform:uppercase;color:var(--text);margin:0 0 14px}
-.tx-full p{max-width:72ch}
+.vrow-r{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.vrow-play{display:flex;flex-direction:column;align-items:center;gap:10px;min-width:96px}
+.playbtn{display:flex;align-items:center;gap:9px;background:var(--signal);color:var(--ink);border:0;padding:12px 18px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.playbtn:hover{background:#fff}
+.playbtn-ico{font-size:12px}
 """
 
-RECOMMEND = 'A'
+RECOMMEND = 'B'
 
-TITLE = 'Where the narration goes'
-INTRO = ('The American Fallout narration, set three ways on the Chemical Cartels page. Real text, '
-         'real list layout. Rows two and three show how each option handles the ten that have no '
-         'narration yet. In every case the text is in the page source, not fetched on click, so it '
-         'is indexable: that is most of the point.')
+TITLE = 'Short-film thumbnails'
+INTRO = ('Bigger stills, and the play control moved off the artwork. Four of the eleven rows shown. '
+         'The covers exist nowhere else on the site, so the question is how large they can be before '
+         'the list stops being a list.')
 
 OPTIONS = [
-    ('A', 'Collapsed under each row  ·  MY PICK',
-     'A "Read the narration" toggle under each title, closed by default. The list stays scannable '
-     'at eleven items, anyone who wants the words is one click away, and a film without narration '
-     'yet degrades to a short note instead of a gap. Uses a native details element, so it works '
-     'without JavaScript and search engines read the closed text.',
+    ('A', '320px still, play overlaid top right',
+     'The current arrangement at 320px instead of 208. Titles are readable and the covers finally '
+     'have presence. The play button still sits on the artwork, which is exactly what you asked to '
+     'get away from, even in the corner.',
      PAGE_A, SHARED),
-    ('B', 'Always open, in the row',
-     'The narration sits under the title, permanently. Nothing to discover and the strongest signal '
-     'that the site publishes what was said. It also turns an eleven-item list into a very long '
-     'read: this page would run to about 4,000 words of narration with the film itself pushed far '
-     'off screen.',
+    ('B', '320px still, play control at the right  ·  MY PICK',
+     'Nothing on the artwork at all: a labelled Play button in its own column with the runtime under '
+     'it. The cover is never obscured, the control is larger and easier to hit than a 32px circle, '
+     'and the word Play removes any doubt about what the row does. Eleven of these runs roughly '
+     '2,400px, which still reads as a list.',
      PAGE_B, SHARED),
-    ('C', 'Collected below the list',
-     'The list stays exactly as it is now, with a Narration link per row jumping to a full-text '
-     'section underneath. Cleanest list and the nicest reading experience for the text itself. The '
-     'cost is that the words are separated from the film they belong to, and you are asking the '
-     'reader to jump back and forth.',
+    ('C', '440px still, play control at the right',
+     'The showcase version. The covers are almost poster-sized and every element of the artwork is '
+     'legible. It costs length: eleven rows run past 3,000px, and the subtitle column gets narrow '
+     'enough that longer lines wrap to three.',
      PAGE_C, SHARED),
 ]
 blocks, extra = [], []

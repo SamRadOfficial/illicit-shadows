@@ -71,15 +71,14 @@ export default async function Investigation({ params }) {
           {f.segments.filter(s => s.image).map(s => (
             <div className="vrow" key={s.n}>
               <span className="vrow-n">{String(s.n).padStart(2, '0')}</span>
-              <span className="vrow-img">
-                <VideoEmbed modal id={s.youtubeId} image={s.image} alt={`${s.title} title card`} title={s.title} channel={f.youtube || site.social.youtube} />
-              </span>
+              <VideoEmbed modal variant="row" className="vrow-img" meta={s.runtime}
+                          id={s.youtubeId} image={s.image} alt={`${s.title} title card`}
+                          title={s.title} channel={f.youtube || site.social.youtube} />
               <span className="vrow-body">
                 <span className="vrow-t">{s.title}</span>
                 {s.sub && <span className="vrow-s">{s.sub}</span>}
                 {s.transcript && <a className="tx-jump" href={`#narration-${s.slug}`}>Narration &darr;</a>}
               </span>
-              <span className="vrow-r">{s.runtime}</span>
             </div>
           ))}
         </div>}

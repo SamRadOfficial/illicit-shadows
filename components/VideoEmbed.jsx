@@ -14,7 +14,7 @@ import { Pic } from './Blocks';
  * poster is small: a 2:09 documentary playing inside a 250px card is unwatchable, and YouTube's own
  * controls become unusable below roughly 400px wide.
  */
-export function VideoEmbed({ id, list, image, alt, title, channel, className = '', big = false, modal = false }) {
+export function VideoEmbed({ id, list, image, alt, title, channel, className = '', big = false, modal = false, variant, meta }) {
   const [playing, setPlaying] = useState(false);
   const closeRef = useRef(null);
   const openerRef = useRef(null);
@@ -52,14 +52,28 @@ export function VideoEmbed({ id, list, image, alt, title, channel, className = '
     <button type="button" ref={openerRef} className={`vembed ${className}`}
             onClick={() => setPlaying(true)} aria-label={`Play ${title}`}>
       <Pic base={image} alt={alt} />
-      <span className={`pb${big ? ' pb--big' : ''}`} aria-hidden="true">&#9654;</span>
+      {variant !== 'row' && <span className={`pb${big ? ' pb--big' : ''}`} aria-hidden="true">&#9654;</span>}
     </button>
   );
+
+  /* Row variant: nothing sits on the artwork. The poster and a labelled Play control are returned
+     as siblings in a fragment so the parent grid can place them in different columns, and both
+     open the same lightbox. Covers are the only place this art appears on the site. */
+  const control = variant === 'row' ? (
+    <span className="vrow-play">
+      <button type="button" className="playbtn" onClick={() => setPlaying(true)} aria-label={`Play ${title}`}>
+        <span className="playbtn-ico" aria-hidden="true">&#9654;</span>
+        <span className="playbtn-txt">Play</span>
+      </button>
+      {meta && <span className="vrow-r">{meta}</span>}
+    </span>
+  ) : null;
 
   if (modal) {
     return (
       <>
         {poster}
+        {control}
         {playing && (
           <div className="lightbox" role="dialog" aria-modal="true" aria-label={title}
                onClick={e => { if (e.target === e.currentTarget) setPlaying(false); }}>
