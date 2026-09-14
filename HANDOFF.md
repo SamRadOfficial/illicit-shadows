@@ -57,14 +57,10 @@ not taste: Academy documentary rules exclude a multi-part or limited series and 
 from a larger series, and festival forms ask directly. Programmers read the site.
 
 - **Cardinal counters are fine** (`Eleven short films`, segments `01` to `10`).
-- **`investigation` and `years` in `films.json` are owner-set identifiers** (14 Sep): Chemical
-  Cartels is Investigation 01, 2025-2026; Illicit Gold is Investigation 02, 2026-2027. They render
-  as "Investigation 01 · 2025-2026" above each title. Numbered by when the work was made, not by
-  display order, so Illicit Gold leads the page as 02.
-  **Know the tradeoff**: this is an ordinal, and it is the category of label festival forms ask
-  about. It is milder than Season or Episode, and the year ranges do most of the work of separating
-  the two, but if eligibility becomes the priority the fix is to drop the number and keep the years.
-  One line in `app/film/page.js` and `app/page.js`.
+- **`years` in `films.json` dates each work**: Chemical Cartels 2025-2026, Illicit Gold 2026-2027.
+  Rendered as "Investigation · 2025-2026" above each title (`.work-id`). A numbered version was
+  tried on 14 Sep and dropped the same day: a date distinguishes two works without an ordinal, and
+  ordinals are the category festival forms ask about. **Do not reintroduce a number here.**
 - `films.json` has no `season` or `number`. Records carry `oldSlug` purely to document the 301s in
   `vercel.json`: `/film/golden-handcuffs` is a permanent redirect to `/film/illicit-gold`.
 - Titles: **Illicit Gold** (was Golden Handcuffs). **Chemical Cartels keeps its name**: it is
@@ -115,7 +111,8 @@ band**; the covers and the yellow-and-red palette fight it.
 
 ## Convergence map and Helix art (14 Sep)
 `components/Convergence.jsx` renders `public/images/convergence-map.svg` on home, `/intelligence`
-and `/museum`, always captioned **#EverythingIsConnected**. Not on `/books`: owner removed it, the
+and `/museum`, always captioned **#EverythingIsConnected**, credited to **ICAIE and Illicit Shadows,
+LLC**. Five domains, not four. On `/museum` it sits at the **bottom**: the museum leads with itself. Not on `/books`: owner removed it, the
 page is fiction and the map read as filler there. It supersedes the raster
 `convergence-wheel`. It is an SVG with real text and no embedded rasters, 3000x3200, about 35KB gzipped, served through
 `<img>`: inlining it on three pages would repeat 220KB three times, and it carries its own `<title>`
@@ -137,6 +134,10 @@ This has now bitten three times: `.ep-player`, `.sgcard`/`.minicard`, and `.trai
 The ICAIE mark is `logos/icaie-square`, trimmed and recentered from `icaie-stacked`, whose source had
 more whitespace below the wordmark than above. `.pmark.icaie` needs `flex:0 0 auto`, or as a flex
 item it shrinks in width while keeping its height and stops being square.
+
+`components/WorkCard.jsx` is **the** film card, used by `/film` and home. Home previously had a
+hand-rolled copy that fell behind within a day; do not fork it again. It renders the identifier line,
+the tags, and the short-film strip spanning both columns.
 
 ## Museum concept renders (14 Sep)
 Five concepts by Chaat, one visual identity: black glass, yellow light paths, floating artifacts.

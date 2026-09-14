@@ -11,6 +11,9 @@ The standing checklist. Update in the same commit as the work. Items move to Don
 - [ ] **`/sources` URLs.** Eleven published documents are listed with status chips but no links, pending the owner's verification pass. Draft, not curation, until reviewed.
 - [ ] **First pages of The Umbra Circle** for `/books/preview`. The page is built; the extract is a
       visible placeholder rather than invented text. Also the subscribe destination for that page.
+- [ ] **Hall photographs**, one per exhibition hall, to replace the stock and concept art.
+- [ ] **Covers for Books 2 and 3** (The Dragon Roars Forward, The Condor Directive). They render as
+      text cards until then, not placeholder art.
 - [ ] **Brochure PDF** for the Museum download strip, and the **Substack preview link** for The Umbra Circle.
 - [ ] **Real newsroom posts.** Current entries are flagged placeholders in `data/newsroom.json`.
 - [ ] **Square footage of the hold list.** Confirm nothing held (HUNTER BILL, Proporo, Mesetas, Madre de Dios, StoneX) has crept into copy before launch.
@@ -110,6 +113,11 @@ contact form.
 - [x] **14 Sep** `preview.py` fixed: CSS glob broken since the Next 16 upgrade (previews were
       rendering unstyled), and `--lite` now keeps the fonts as woff2 instead of dropping them.
 - [x] **14 Sep** `scripts/mock.py`: design options render as one HTML page, per owner instruction.
+- [x] **14 Sep** Film card extracted to `WorkCard`, shared by `/film` and home. Museum restructured:
+      3D prototype block high, halls below, impacts map moved to the bottom. New MIS logo. Books
+      becomes a three-book trilogy from `data/books.json`.
+- [x] **14 Sep** Works dated rather than numbered: "Investigation · 2025-2026". Numbered labels
+      were tried and dropped, no ordinals anywhere on the site.
 - [x] **14 Sep** Museum concept renders placed across `/museum` and home; home film section
       reordered so Illicit Gold and Chemical Cartels lead and the 2024 trailer sits small beside the
       upcoming slate; convergence section retitled Crime Convergence · #EverythingIsConnected.

@@ -147,7 +147,7 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 
 /* /film index: works, convergence tags, development slate, archive trailer band.
    Replaces the old .eplist season layout. Ordinals are gone from copy by design; see HANDOFF. */
-.works{display:grid;gap:56px;margin-bottom:52px}
+.works{display:grid;gap:clamp(64px,8vw,104px);margin-bottom:52px}
 .work{display:grid;grid-template-columns:1.15fr 1fr;gap:0 26px;align-items:center;background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--signal)}
 /* Key art is typographic, so it keeps 16:9 and is never cover-cropped to fill a taller card.
    The segment list spans both columns underneath instead. */
@@ -273,6 +273,14 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .concept img{display:block;width:100%;height:auto}
 .concept figcaption{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:10px 12px;background:var(--panel)}
 .band-white .concept figcaption{color:#6b655b;background:#f4f1ea}
+
+.protoshot{margin-bottom:18px}
+.proto-row{display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;max-width:1000px;margin:0 auto}
+.proto-row p{color:var(--text-2);font-size:15px;line-height:1.7;max-width:56ch;margin:0}
+
+.nextbook{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--signal);padding:26px}
+.nextbook .lead-title.sm{margin:6px 0 10px}
+.nextbook .logline{font-size:16px;margin:0 0 16px}
 
 @media(max-width:820px){
   .links{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:#0a0a0a;border-bottom:2px solid var(--alert);padding:14px 24px;gap:14px}

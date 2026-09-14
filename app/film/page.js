@@ -5,6 +5,7 @@ import slate from '../../data/slate.json';
 import tags from '../../data/tags.json';
 import { Pic, SectionHead, Break, Hero, Donor, Prov, Tags } from '../../components/Blocks';
 import { VideoEmbed } from '../../components/VideoEmbed';
+import { WorkCard } from '../../components/WorkCard';
 export const metadata = { title: 'Film' };
 
 // No ordinals on public pages. Cardinal counters (ten short films, 01 to 10) are fine; Season N
@@ -26,38 +27,7 @@ export default function Film() {
       <section className="wrap reveal" id="films">
         <SectionHead label="Film" meta="INVESTIGATIONS" />
         <div className="works">
-          {films.map(f => (
-            <article className="work" key={f.slug}>
-              <Link className="work-img" href={`/film/${f.slug}`}>
-                <Pic base={f.image} alt={`${f.title}: ${f.subtitle}`} />
-                <Prov status={f.status === 'streaming' ? 'cited' : 'investigating'} className="work-status">{f.status === 'streaming' ? 'Released' : 'In production'}</Prov>
-              </Link>
-              <div className="work-body">
-                <p className="work-id">Investigation {String(f.investigation).padStart(2, '0')} &middot; {f.years}</p>
-                <h3 className="work-title"><Link href={`/film/${f.slug}`}>{f.title}</Link></h3>
-                <p className="work-places">{f.places.join(' · ')}</p>
-                <p className="work-line">{f.line}</p>
-                <Tags keys={f.tags} vocab={tags} />
-              </div>
-              {/* Spans both columns: the key art is typographic, so the image must keep its 16:9
-                  and never be cover-cropped to match a card grown tall by this list. */}
-              {f.segments && <div className="segwrap">
-                <p className="segcap">{f.form}</p>
-                <div className="minigrid">
-                  {f.segments.filter(s => s.image).slice(0, SEGMENTS_ON_INDEX).map(s => (
-                    <div className="minicard" key={s.n}>
-                      <span className="minicard-img">
-                        <VideoEmbed id={s.youtubeId} image={s.image} alt={`${s.title} title card`} title={s.title} channel={f.youtube || site.social.youtube} />
-                      </span>
-                      <Link className="minicard-t" href={`/film/${f.slug}`}>{s.title}</Link>
-                      {s.runtime && <span className="minicard-r">{s.runtime}</span>}
-                    </div>
-                  ))}
-                </div>
-                <p className="seemore"><Link href={`/film/${f.slug}`}>All {f.segments.length} &rarr;</Link></p>
-              </div>}
-            </article>
-          ))}
+          {films.map(f => <WorkCard film={f} key={f.slug} segments={SEGMENTS_ON_INDEX} />)}
         </div>
       </section>
       <section className="wrap reveal tight" id="development">

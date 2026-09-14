@@ -40,16 +40,18 @@ export default function Museum() {
 
       <Break base="/images/break-evidence-1" />
 
-      <section className="wrap reveal band-white">
-        <div className="conv-top">
-          <p className="creed" style={{ color: '#141210' }}>Everything <b style={{ color: 'var(--alert)' }}>is connected.</b></p>
-          <p>Illicit economies are the lifeblood of today's bad actors, enabling kleptocrats to loot their countries, criminal organizations to co-opt states, and terrorist groups to finance attacks against our societies. They are not harmless: narcotics, trafficked humans, looted gold, conflict minerals, counterfeits, cybercrime, corruption, and money laundering converge across four domains at once.</p>
+      <section className="wrap reveal" id="prototype">
+        <SectionHead label="The building" meta="3D PROTOTYPE" />
+        <Link className="film-feature protoshot" href="/museum/enter">
+          <Pic base="/images/museum-rotunda" alt="The Eclipse Rotunda: a suspended globe of illuminated trade routes above a circular gallery floor" />
+          <span className="badge btm">MIS &middot; CONCEPT RENDER</span>
+        </Link>
+        <div className="proto-row">
+          <p>Walk the site model: the rotunda, the hall positions, and the routes between them.
+            Phase I opens 2027.</p>
+          <Link className="btn btn-y" href="/museum/enter">Enter the museum (prototype)</Link>
         </div>
-        <figure className="concept"><Pic base="/images/museum-convergence" alt="Threat Convergence hall: contraband artifacts suspended in linked spheres around a globe" /><figcaption>Threat Convergence, Hall 07 &middot; concept</figcaption></figure>
-        <Convergence head={false} />
       </section>
-
-      <div className="quoteband reveal"><Pic base="/images/museum-gallery-dark" alt="" /><div className="veil" /><div className="wrap"><blockquote>The shadows are all around us. <span>They know no borders.</span></blockquote></div></div>
 
       <section className="wrap reveal" id="halls">
         <SectionHead label="Exhibition Halls · Phase I" meta={`${p1.year} · ${p1.level.toUpperCase()}`} />
@@ -81,6 +83,17 @@ export default function Museum() {
       </section>
 
       <section className="wrap reveal tight"><div className="strip"><div><h4>Informational brochure</h4><p>The full MIS overview: concept, exhibition halls, and vision for the digital museum.</p></div><a className="btn btn-y" href="#">Download the PDF</a></div></section>
+
+      <section className="wrap reveal band-white">
+        <div className="conv-top">
+          <p className="creed" style={{ color: '#141210' }}>Everything <b style={{ color: 'var(--alert)' }}>is connected.</b></p>
+          <p>Illicit economies are the lifeblood of today's bad actors, enabling kleptocrats to loot their countries, criminal organizations to co-opt states, and terrorist groups to finance attacks against our societies. They are not harmless: narcotics, trafficked humans, looted gold, conflict minerals, counterfeits, cybercrime, corruption, and money laundering converge across four domains at once.</p>
+        </div>
+        <figure className="concept"><Pic base="/images/museum-convergence" alt="Threat Convergence hall: contraband artifacts suspended in linked spheres around a globe" /><figcaption>Threat Convergence, Hall 07 &middot; concept</figcaption></figure>
+        <Convergence head={false} />
+      </section>
+
+      <div className="quoteband reveal"><Pic base="/images/museum-gallery-dark" alt="" /><div className="veil" /><div className="wrap"><blockquote>The shadows are all around us. <span>They know no borders.</span></blockquote></div></div>
 
       <section className="wrap reveal" id="donor">
         <Donor title={<>Become a founding <span>donor</span></>} copy="The digital museum opens in phases from 2027. Underwrite the Museum's public-good mission and join as a founding donor today. Institutional partnerships available for foundations and family offices." tiers={['$100', '$500', '$1,000', '$10,000', '$25,000']} href={`mailto:${site.contact}`} mail={site.contact} />

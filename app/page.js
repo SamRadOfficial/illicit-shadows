@@ -6,6 +6,7 @@ import slate from '../data/slate.json';
 import { Pic, SectionHead, Break, Prov, Hero, Signup, Donor, DigitalMuseum } from '../components/Blocks';
 import { Icon } from '../components/Icons';
 import { Cascade } from '../components/Cascade';
+import { WorkCard } from '../components/WorkCard';
 import { Convergence } from '../components/Convergence';
 
 // Select by status, not by slug or position: retitles and reordering should not break the page.
@@ -40,50 +41,11 @@ export default function Home() {
       <section className="wrap reveal band-raised" id="film">
         <SectionHead label="Film" meta="INVESTIGATIONS" />
 
-        {/* Both films use the same shape: art left, copy right, identifier line above the title.
-            The in-production work leads; the released one carries its short films underneath. */}
-        <div className="lead-film">
-          <Link className="film-feature" href={`/film/${inProduction.slug}`}>
-            <Pic base={inProduction.image} alt={`${inProduction.title}: ${inProduction.subtitle}`} priority />
-            <span className="badge red btm">IN PRODUCTION</span>
-          </Link>
-          <div className="lead-copy">
-            <p className="work-id">Investigation {String(inProduction.investigation).padStart(2, '0')} &middot; {inProduction.years}</p>
-            <h3 className="lead-title">Illicit <span>Gold</span></h3>
-            <p className="work-places">{inProduction.places.join(' · ')}</p>
-            <p className="lead-line">{inProduction.line}</p>
-            <p className="lead-note">Filming across three countries with the International Coalition Against Illicit Economies. Sam Rad on camera, David M. Luna as the institutional voice.</p>
-            <Link className="btn btn-y" href={`/film/${inProduction.slug}`}>About the investigation</Link>
-          </div>
+        {/* Same card as /film, shared so the two pages cannot drift. */}
+        <div className="works">
+          <WorkCard film={inProduction} priority />
+          <WorkCard film={released} segments={3} />
         </div>
-
-        <div className="film-div" />
-
-        <div className="lead-film">
-          <Link className="film-feature" href={`/film/${released.slug}`}>
-            <Pic base={released.image} alt={`${released.title}: ${released.subtitle}`} />
-            <span className="badge btm">NOW STREAMING</span>
-            <span className="pb">&#9654;</span>
-          </Link>
-          <div className="lead-copy">
-            <p className="work-id">Investigation {String(released.investigation).padStart(2, '0')} &middot; {released.years}</p>
-            <h3 className="lead-title">Chemical <span>Cartels</span></h3>
-            <p className="work-places">{released.places.join(' · ')}</p>
-            <p className="lead-line">{released.line}</p>
-            <Link className="btn btn-y" href={`/film/${released.slug}`}>Watch the films</Link>
-          </div>
-        </div>
-
-        <div className="minigrid home">
-          {released.segments.filter(x => x.image).slice(0, 3).map(x => (
-            <Link className="minicard" href={`/film/${released.slug}`} key={x.n}>
-              <span className="minicard-img"><Pic base={x.image} alt={`${x.title} title card`} /><span className="pb sm">&#9654;</span></span>
-              <span className="minicard-t">{x.title}</span>
-              {x.runtime && <span className="minicard-r">{x.runtime}</span>}
-            </Link>
-          ))}
-        </div>
-        <p className="seemore"><Link href={`/film/${released.slug}`}>All {released.segments.length} short films &rarr;</Link></p>
 
         <div className="film-div" />
 
@@ -112,7 +74,7 @@ export default function Home() {
       <Break base="/images/break-evidence-3" />
 
       <section className="wrap reveal" id="convergence">
-        <Convergence label="Crime convergence" meta="#EVERYTHINGISCONNECTED" lede="Illicit economies are not separate crimes. Narcotics, trafficked humans, looted gold, conflict minerals, counterfeits, cybercrime, corruption, and money laundering move along the same routes, through the same hands, and into the same accounts. They converge across four domains at once." />
+        <Convergence label="Crime convergence" meta="#EVERYTHINGISCONNECTED" lede="Illicit economies are not separate crimes. Narcotics, trafficked humans, looted gold, conflict minerals, counterfeits, cybercrime, corruption, and money laundering move along the same routes, through the same hands, and into the same accounts. They converge across five domains at once." />
       </section>
 
       <Break base="/images/break-evidence-2" />
@@ -164,7 +126,7 @@ export default function Home() {
 
       <section className="wrap reveal" id="connect" style={{ textAlign: 'center' }}>
         <h2 className="disp" style={{ fontSize: 'clamp(30px,5vw,54px)' }}>Everything <span className="y">is connected.</span></h2>
-        <p className="connect-sub">Sign up to receive news, dispatches, and updates from the Shadowverse.</p>
+        <p className="connect-sub">Sign up to receive news, dispatches, and updates from the investigations.</p>
         <Signup endpoint={site.forms?.signup} center />
       </section>
     </>

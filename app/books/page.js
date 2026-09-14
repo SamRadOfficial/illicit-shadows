@@ -1,18 +1,51 @@
 import Link from 'next/link';
-import { Pic, SectionHead, Break } from '../../components/Blocks';
+import books from '../../data/books.json';
+import { Pic, SectionHead, Break, Prov } from '../../components/Blocks';
 export const metadata = { title: 'Books' };
+
 export default function Books() {
+  const [one, ...rest] = books;
   return (
     <>
       <section className="wrap" style={{ paddingTop: 'clamp(48px,7vw,88px)' }}>
         <p className="eyebrow">The publishing arm</p>
         <h1 className="disp" style={{ marginTop: 14 }}>Read the <span className="y">shadows</span></h1>
+        <p className="lead-line" style={{ marginTop: 18 }}>A trilogy tracing one system: the network
+          that built itself inside legitimate institutions, the state that comes to collect, and the
+          older alliance that wakes up to both.</p>
       </section>
+
       <section className="wrap reveal tight">
         <SectionHead label="Fiction series" meta="ILLICIT SHADOWS CHRONICLES" />
         <div className="umbra">
-          <div style={{ display: 'flex', justifyContent: 'center' }}><Pic base="/images/book-umbra-circle" alt="The Umbra Circle, Book One" className="book3d" priority /></div>
-          <div><p className="eyebrow">Book 1</p><h3>The Umbra <span>Circle</span></h3><p>Two investigative founders establish the world's first museum dedicated to unveiling the hidden architecture of global crime convergence, merging education, intelligence, and storytelling from Washington, D.C. to London, Rome, and Mexico City.</p><p>When a diplomat is assassinated in London, they are drawn into a web of espionage and uncover The Umbra Circle, a secret network of politicians, financiers, and organized-crime groups manipulating world systems for power and profit.</p><p className="tag">COMING LATE 2026 &middot; BY SAM RAD AND DAVID M. LUNA</p><div className="cta-row"><a className="btn btn-y" href="/books/preview">Read the preview</a></div></div>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <Pic base={one.image} alt={`${one.title}, Book One`} className="book3d" priority />
+          </div>
+          <div>
+            <p className="eyebrow">Book {one.n}</p>
+            <h3>The Umbra <span>Circle</span></h3>
+            <p className="logline">{one.logline}</p>
+            <p>{one.blurb}</p>
+            <p className="meta" style={{ margin: '14px 0 18px' }}>{one.status.toUpperCase()} &middot; BY SAM RAD AND DAVID M. LUNA</p>
+            <Link className="btn btn-y" href={one.preview}>Read the preview</Link>
+          </div>
+        </div>
+      </section>
+
+      <Break base="/images/break-evidence-3" />
+
+      <section className="wrap reveal">
+        <SectionHead label="The trilogy" meta="BOOKS TWO AND THREE" dim />
+        {/* No covers yet, so these are text cards rather than placeholder art. */}
+        <div className="grid2">
+          {rest.map(b => (
+            <article className="nextbook" key={b.slug}>
+              <p className="eyebrow">Book {b.n}</p>
+              <h3 className="lead-title sm">{b.title}</h3>
+              <p className="logline">{b.logline}</p>
+              <Prov status="investigating">{b.status}</Prov>
+            </article>
+          ))}
         </div>
       </section>
     </>
