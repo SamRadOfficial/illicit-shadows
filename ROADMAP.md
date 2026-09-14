@@ -6,9 +6,9 @@ The standing checklist. Update in the same commit as the work. Items move to Don
 
 ## Blocked on assets or decisions from the owner
 
-- [ ] **Founder headshots.** Requested 14 Sep; the upload did not come through, no image files arrived. Needed: David M. Luna and Sam Rad. Sam's to be cropped square with the head aligned to the top of the frame. Until then `/about` shows DL / SR monograms.
 - [ ] **Signup provider.** Formspree, Mailchimp, Buttondown, other. Forms are visible placeholders that show a notice and never silently discard an address. Set `site.forms.signup` in `data/site.json` to wire them.
-- [ ] **Donation processing.** Tiers on `/museum` are display-only. Needs Stripe, a donor platform, or a routed mailto.
+- [ ] **Donation box, Stripe-compatible.** Tiers on `/museum` and the donor blocks on `/` and `/about` are display-only. Wire to Stripe directly (Payment Links or Checkout) or a Stripe-backed platform (Donorbox, Givebutter, Every.org). Static export means no server, so use hosted Checkout or Payment Links rather than a server-side session endpoint, unless a serverless function is added. Decide whether donations route to Illicit Shadows, LLC or a fiscal sponsor for tax treatment; that changes the copy on the founding-donor block.
+- [ ] **Contact form.** `/contact` currently routes to `mailto:sam@illicitshadows.com` through four self-selecting paths (advisory, Helix, founding donor, EP). Replace with a real form that captures which path was chosen. Same static constraint: Formspree, Basin, or a Vercel serverless function. Include spam protection and a confirmation state; the `Signup` component's honest-placeholder pattern is the model.
 - [ ] **Licensed network-globe image.** The stock file supplied is watermarked; per the brief it is not shipped and the watermark is not cropped out. `hero-globe` stands in on the Intelligence section.
 - [ ] **`/sources` URLs.** Eleven published documents are listed with status chips but no links, pending the owner's verification pass. Draft, not curation, until reviewed.
 - [ ] **Brochure PDF** for the Museum download strip, and the **Substack preview link** for The Umbra Circle.
@@ -17,6 +17,10 @@ The standing checklist. Update in the same commit as the work. Items move to Don
 - [ ] **Square footage of the hold list.** Confirm nothing held (HUNTER BILL, Proporo, Mesetas, Madre de Dios, StoneX) has crept into copy before launch.
 
 ## Build
+
+- [ ] **Matched founder portraits** from a single shoot. The current pair is honest but mismatched:
+      different lighting, different backgrounds, different crop tightness. Post-processing was tried
+      and reverted; the fix is photography.
 
 - [ ] `/press` page: coverage, press kit, interview contact.
 - [ ] `/museum/[hall]` hall detail pages with the artifact orbit viewer.
@@ -50,3 +54,10 @@ The standing checklist. Update in the same commit as the work. Items move to Don
 - [x] **14 Sep** Hero stat reads as a sentence again, attribution on its own line.
 - [x] **14 Sep** Scroll-reveal removed entirely. Content renders with JavaScript disabled, verified. Never reintroduce an `opacity:0` default.
 - [x] **14 Sep** Typography scaled up: logo, nav, body, and card copy.
+- [x] **14 Sep** Founder headshots shipped: originals, square-cropped, WebP plus JPEG, full-width
+      1:1 photo on the `/about` founder cards, replacing the DL / SR monograms.
+- [x] **14 Sep** `preview.py` fixed: CSS glob broken since the Next 16 upgrade (previews were
+      rendering unstyled), and `--lite` now keeps the fonts as woff2 instead of dropping them.
+- [x] **14 Sep** `scripts/mock.py`: design options render as one HTML page, per owner instruction.
+- [x] **14 Sep** `/about` reordered to the owner's sequence: Who we are, Who's building this, Who we
+      serve, Why now.

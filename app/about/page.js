@@ -39,23 +39,23 @@ export default function About() {
         </div>
       </section>
       <Break base="/images/break-evidence-2" />
-      <section className="wrap reveal" id="whynow">
-        <SectionHead label="Why now" meta="FOUR CONVERGING FORCES" />
-        <p className="sec-sub">Four converging forces, and a market with no incumbent.</p>
-        <div className="whynow">{WHY.map(([ic, t, p]) => <div className="wn" key={t}>{Icon[ic]}<h3>{t}</h3><p>{p}</p></div>)}</div>
-      </section>
-      <Break base="/images/break-evidence-3" />
       <section className="wrap reveal" id="team">
         <SectionHead label="Who's building this" meta="FOUNDERS" />
         <p className="sec-sub">Diplomatic credibility meets deep-tech innovation.</p>
-        <div className="founders">{team.map(t => <div className="fcard" key={t.slug}><div className="fhead"><div className="favatar">{t.initials}</div><div><div className="fname">{t.name}</div><div className="frole">{t.role.toUpperCase()}</div></div></div><div className="fanchor">{t.anchor}</div><p>{t.bio}</p></div>)}</div>
+        <div className="founders">{team.map(t => <div className={`fcard${t.photo ? ' haspic' : ''}`} key={t.slug}><div className="fhead"><div className="favatar">{t.photo ? <Pic base={t.photo} alt={`${t.name}, ${t.role}, Illicit Shadows`} /> : t.initials}</div><div className="fmeta"><div className="fname">{t.name}</div><div className="frole">{t.role.toUpperCase()}</div></div></div><div className="fanchor">{t.anchor}</div><p>{t.bio}</p></div>)}</div>
         <p className="team-note">IN PARTNERSHIP WITH <b>ICAIE</b> + <b>RADOC</b></p>
       </section>
-      <Break base="/images/break-evidence-1" />
+      <Break base="/images/break-evidence-3" />
       <section className="wrap reveal" id="serve">
         <SectionHead label="Who we serve" meta="CLIENTS & PARTNERS" />
         <p className="sec-sub">Every player exposed to global supply chains, sanctions risk, or illicit-economy contamination.</p>
         <div className="serve">{Object.entries(SERVE).map(([h, rows]) => <div className="scol" key={h}><div className="sh">{h}</div>{rows.map(r => <div className="row" key={r}>{r}</div>)}</div>)}</div>
+      </section>
+      <Break base="/images/break-evidence-1" />
+      <section className="wrap reveal" id="whynow">
+        <SectionHead label="Why now" meta="FOUR CONVERGING FORCES" />
+        <p className="sec-sub">Four converging forces, and a market with no incumbent.</p>
+        <div className="whynow">{WHY.map(([ic, t, p]) => <div className="wn" key={t}>{Icon[ic]}<h3>{t}</h3><p>{p}</p></div>)}</div>
       </section>
       <Break base="/images/break-evidence-2" />
       <section className="wrap reveal" id="partners">

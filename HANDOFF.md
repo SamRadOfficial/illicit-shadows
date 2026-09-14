@@ -61,11 +61,45 @@ Tokens in `site.css`: ink `#000000` (black, not dark gray), panel `#0e0e0e`, sig
 ## Verified content facts
 Entity: Illicit Shadows, LLC. Founders: Sam Rad, David M. Luna. Partners: ICAIE (DC), RADOC (NYC/DC/London). Socials: @illicitshadowsdoc (YouTube, Instagram), @illicit_Shadows (X). Contact: sam@illicitshadows.com. Season 1: E01 Chemical Cartels (streaming, 10 segments with runtimes in `data/films.json`), E02 Golden Handcuffs (in production). Museum halls in `data/halls.json`.
 
+`/about` section order is owner-set (14 Sep): Who we are, Who's building this, Who we serve, Why now,
+Partners, work-with-us. Founders sit directly after the institution and before the audience and the
+market case. `<Break>` bands alternate 1-2-3-1-2 between them; keep that alternation when reordering.
+
 ## Pages (build count: 13 routes + 404; expect 16 in "Generating static pages")
 `/` `/film` `/film/[slug]` (chemical-cartels, golden-handcuffs; from `data/films.json`) `/museum` `/museum/enter` (iframes `public/museum-viewer.html`, the Three.js build) `/about` `/intelligence` `/books` `/newsroom` `/contact` `/sources` `/specimen`.
 All ported from the reference mockups (`reference/`). Surface decisions applied: black base and neutral panels per brief; the cream Film band on Home kept as the owner's chosen accent; the watermarked network globe replaced by `hero-globe` on Home's Intelligence section (licensed image still required). Signup forms are honest placeholders (`Signup` shows a notice, never reloads) until `site.forms.signup` is set. Newsroom entries are flagged placeholders in `data/newsroom.json`.
 
+## Founder headshots (shipped 14 Sep)
+`public/images/team-david-luna.{jpg,webp}` (1200px) and `team-sam-rad.{jpg,webp}` (1020px, the
+source's native size, not upscaled). Both are **untouched originals**, square-cropped: David on the
+face, Sam from the top of the frame so her head sits where it does in the source. `data/team.json`
+carries a `photo` field; `/about` renders `<Pic>` when it is present and falls back to the monogram
+when it is not, so a third founder without a photo still works.
+
+Treatment: `.fcard.haspic` runs the photo as a 1:1 square at full card width, name and role beneath.
+Owner picked square over the 300px band, and the originals over composited versions. **A previous
+round cut both founders out and placed them on a generated backdrop to unify the lighting; the owner
+reverted it.** Do not re-composite, re-grade, or swap backgrounds without asking: the photos are the
+only images on the site that could be constructed, and on a site arguing evidentiary rigor that
+matters. Cutouts are not kept in the repo.
+
+Known and accepted: the two photos were shot in different conditions, so a bright white exterior sits
+beside a pale blue studio, and David's head reads larger because his is a tighter shot. The real fix
+is a matched pair from one shoot, not post-processing.
+
 ## Scripts
+`python3 scripts/mock.py <out.html>` builds design options for an owner pick: **one page carrying
+every option, HTML only, never one file per option and never a set of JPGs.** Real stylesheet, fonts
+as woff2, images base64, so it opens anywhere. Edit `OPTIONS` per round; it is throwaway tooling and
+the chosen treatment lands in `site.css`.
+
+**`preview.py` fixes (14 Sep):** the CSS glob was `out/_next/static/css/*.css`, but Next 16 emits to
+`static/chunks/`, so every preview since the 15 to 16 upgrade rendered unstyled. It now globs
+recursively under `out/_next` and exits loudly if it finds nothing. `--lite` no longer drops the
+fonts; it re-encodes them to woff2 (1.1MB of TTF to about 320KB) and strips the `format("truetype")`
+hints, which browsers trust over the actual bytes and which would otherwise fail the faces silently.
+Verify a preview by screenshotting the preview file itself, not the built page.
+
 `npm run build` → `node scripts/check-assets.mjs` (HTML src/srcSet/href, CSS url(), video) → `python3 scripts/preview.py <route> <out.html>` / `mobile.py` → `python3 scripts/screenshot.py <route> <png> --full` (scrolls the page first so `loading="lazy"` images and reveals fire; without that, full-page captures show blank features). Run checker before every push.
 
 ## Roadmap
@@ -98,4 +132,21 @@ Source document: `ILLICIT_GOLD_Trailer_v6.pdf`. **Working draft, not for distrib
 **Trailer script text** (~540 words, first person) stays out of the site entirely. It contains uncleared names inline and is marked not for distribution.
 
 ## Open items
-Licensed network-globe image · `/sources` links to verify and owner cut · signup/donation provider · GitHub/Vercel access · founder headshots · `/sources` review · Squarespace redirect map · the "coming 2026" museum donor copy conflicts with Phase I 2027 (reconcile).
+Licensed network-globe image · `/sources` links to verify and owner cut · signup/donation provider ·
+GitHub/Vercel access · `/sources` review · Squarespace redirect map · the "coming 2026" museum donor
+copy conflicts with Phase I 2027 (reconcile).
+
+Found in the 14 Sep review pass, not yet fixed:
+- **Em dashes ship in every `<title>`, `og:title` and `twitter:title`** via the template in
+  `app/layout.js` (`'%s — Illicit Shadows'`). Body copy is clean; metadata is not.
+- **British spellings in copy:** "cataloguing" (Home, pillar 02), "catalogued" (`/intelligence`,
+  Helix layer 01). `museum-viewer.html` also has "programme" and "centre".
+- **`museum-viewer.html` loads Three.js from cdnjs and Anton plus Plex from Google Fonts at runtime.**
+  The only live CDN dependency on the site and the only place Google Fonts is still used. Vendor
+  `three.min.js` into `public/`.
+- **Hall 05 on `/museum`:** white title over a near-white image, scrim too weak to read.
+- **Dead vertical space:** ~200px of black between the trailer and the YouTube box on `/film`, and
+  above the donor blocks on `/` and `/museum`.
+- **`/books`:** the two founder-title thumbnails (Radical Next, Bitcoin Pizza) are empty black boxes.
+- **Episodes 03 and 04** (Blood Batteries, Iron Triangle) are listed with no placeholder marker;
+  `CONTENT-INVENTORY.md` flags them as owner-to-confirm. Same for the Blood Batteries newsroom entry.
