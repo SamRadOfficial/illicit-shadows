@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "check": "node scripts/check-assets.mjs",
+    "build:export": "EXPORT=1 next build",
+    "check": "npm run build:export && node scripts/check-assets.mjs",
     "preview": "python3 scripts/preview.py",
     "shot": "python3 scripts/screenshot.py"
   },
