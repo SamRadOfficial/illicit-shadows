@@ -71,16 +71,26 @@ export default async function Short({ params }) {
 
       <section className="wrap reveal tight">
         <SectionHead label={film.form} meta={film.title.toUpperCase()} dim />
+        {/* The next short gets its cover: this is the strongest place to send someone next, and
+            the covers exist nowhere else. Previous stays a text link so the next one leads. */}
         <nav className="shortnav">
           {prev
             ? <Link className="shortnav-a" href={`/film/${film.slug}/${prev.slug}`}>
-                <span className="meta">Previous</span><span className="shortnav-t">{prev.title}</span></Link>
-            : <span />}
-          <Link className="btn btn-o" href={`/film/${film.slug}`}>All {list.length}</Link>
-          {next
-            ? <Link className="shortnav-a right" href={`/film/${film.slug}/${next.slug}`}>
-                <span className="meta">Next</span><span className="shortnav-t">{next.title}</span></Link>
-            : <span />}
+                <span className="meta">Previous</span>
+                <span className="shortnav-t">{prev.title}</span>
+              </Link>
+            : <Link className="shortnav-a" href={`/film/${film.slug}`}>
+                <span className="meta">Back</span>
+                <span className="shortnav-t">All {list.length}</span>
+              </Link>}
+          {next && <Link className="nextcard" href={`/film/${film.slug}/${next.slug}`}>
+            <Pic base={next.image} alt={`${next.title} title card`} />
+            <span className="nextcard-body">
+              <span className="meta">Next &middot; {String(next.n).padStart(2, '0')} of {list.length}</span>
+              <span className="nextcard-t">{next.title}</span>
+              {next.sub && <span className="nextcard-s">{next.sub}</span>}
+            </span>
+          </Link>}
         </nav>
       </section>
     </>

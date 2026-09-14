@@ -37,13 +37,16 @@ export default function Books() {
       <section className="wrap reveal">
         <SectionHead label="The trilogy" meta="BOOKS TWO AND THREE" dim />
         {/* No covers yet, so these are text cards rather than placeholder art. */}
-        <div className="grid2">
+        <div className="trilogy">
           {rest.map(b => (
-            <article className="nextbook" key={b.slug}>
-              <p className="eyebrow">Book {b.n}</p>
-              <h3 className="lead-title sm">{b.title}</h3>
-              <p className="logline">{b.logline}</p>
-              <Prov status="investigating">{b.status}</Prov>
+            <article className="tcard" key={b.slug}>
+              <Pic base={b.image} alt={`${b.title}, Book ${b.n}`} className="bookcover" />
+              <div className="tcard-body">
+                <p className="eyebrow">Book {b.n}</p>
+                <h3 className="lead-title sm">{b.title}</h3>
+                <p className="logline">{b.logline}</p>
+                <Prov status="investigating">{b.status}</Prov>
+              </div>
             </article>
           ))}
         </div>

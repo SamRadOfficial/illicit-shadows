@@ -11,8 +11,6 @@ The standing checklist. Update in the same commit as the work. Items move to Don
 - [ ] **`/sources` URLs.** Eleven published documents are listed with status chips but no links, pending the owner's verification pass. Draft, not curation, until reviewed.
 - [ ] **First pages of The Umbra Circle** for `/books/preview`. The page is built; the extract is a
       visible placeholder rather than invented text. Also the subscribe destination for that page.
-- [ ] **Covers for Books 2 and 3** (The Dragon Roars Forward, The Condor Directive). They render as
-      text cards until then, not placeholder art.
 - [ ] **Brochure PDF** for the Museum download strip, and the **Substack preview link** for The Umbra Circle.
 - [ ] **Real newsroom posts.** Current entries are flagged placeholders in `data/newsroom.json`.
 - [ ] **Square footage of the hold list.** Confirm nothing held (HUNTER BILL, Proporo, Mesetas, Madre de Dios, StoneX) has crept into copy before launch.
@@ -126,9 +124,8 @@ keeps its `illustrative` chip.
       different viewing sizes.
 - [ ] **Founding-donor sections.** A visual showing what support buys: exhibitions, public
       education, research, field investigations. Specific outputs make the ask tangible.
-- [ ] **Books, the trilogy.** Provisional covers for The Dragon Roars Forward and The Condor
-      Directive, plus a three-book presentation graphic, matched to the Umbra Circle cover and
-      keeping the in-development status visible.
+- [ ] **Books, a three-book presentation graphic.** Covers landed 14 Sep; a single image showing
+      the trilogy together is still worth having for the deck and for social.
 - [ ] **Newsroom.** Three reusable thumbnail templates for Dispatch, Press and Release: subject
       photography, a small category label, consistent crop. Apply as real posts replace the
       placeholders.
@@ -166,6 +163,8 @@ keeps its `illustrative` chip.
       placement guide, six upcoming covers on `/film` and home, five cascade maps as a stepper on
       `/intelligence`. Illicit Gold cover title recoloured to signal yellow. Home hero reordered to
       email first.
+- [x] **14 Sep** Real 2:3 book covers for all three Chronicles, replacing the square 3D render.
+      Next-film cover card on each short page.
 - [x] **14 Sep** All eleven narrations published, 101 paragraphs across the short pages.
 - [x] **14 Sep** Per-short pages at `/film/<film>/<short>`, each with its own metadata, VideoObject
       and narration, listed in the sitemap. Short descriptions added under titles on home.

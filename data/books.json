@@ -1,26 +1,28 @@
 [
- {
-  "n": 1,
-  "slug": "the-umbra-circle",
-  "title": "The Umbra Circle",
-  "logline": "A criminal board of directors, exposed through the museum itself.",
-  "status": "Coming late 2026",
-  "image": "/images/book-umbra-circle",
-  "preview": "/books/preview",
-  "blurb": "Two investigative founders build the world's first museum of crime convergence. When a diplomat is assassinated in London, they are drawn into a web of espionage and uncover The Umbra Circle: a network of politicians, financiers, and organized-crime groups manipulating world systems for power and profit."
- },
- {
-  "n": 2,
-  "slug": "the-dragon-roars-forward",
-  "title": "The Dragon Roars Forward",
-  "logline": "The state actor that let them build it steps in to collect.",
-  "status": "In development"
- },
- {
-  "n": 3,
-  "slug": "the-condor-directive",
-  "title": "The Condor Directive",
-  "logline": "An older, colder alliance of intelligence services wakes south of the equator.",
-  "status": "In development"
- }
+  {
+    "n": 1,
+    "slug": "the-umbra-circle",
+    "title": "The Umbra Circle",
+    "logline": "A criminal board of directors, exposed through the museum itself.",
+    "status": "Coming late 2026",
+    "image": "/images/book-umbra-circle",
+    "preview": "/books/preview",
+    "blurb": "Two investigative founders build the world's first museum of crime convergence. When a diplomat is assassinated in London, they are drawn into a web of espionage and uncover The Umbra Circle: a network of politicians, financiers, and organized-crime groups manipulating world systems for power and profit."
+  },
+  {
+    "n": 2,
+    "slug": "the-dragon-roars-forward",
+    "title": "The Dragon Roars Forward",
+    "logline": "The state actor that let them build it steps in to collect.",
+    "status": "In development",
+    "image": "/images/book-dragon-roars-forward"
+  },
+  {
+    "n": 3,
+    "slug": "the-condor-directive",
+    "title": "The Condor Directive",
+    "logline": "An older, colder alliance of intelligence services wakes south of the equator.",
+    "status": "In development",
+    "image": "/images/book-condor-directive"
+  }
 ]

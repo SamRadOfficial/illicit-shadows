@@ -189,6 +189,16 @@ reads as a photograph of one, on a site whose whole argument is that claims carr
 `.concept` does this. The hall cards inherit the same treatment through the Phase I and II headings,
 which already say 2027 and 2028.
 
+**Book covers** are real 2:3 covers as of 14 Sep, replacing the square 3D render: `book-umbra-circle`,
+`book-dragon-roars-forward`, `book-condor-directive`, wired through `data/books.json` and used on
+`/books`, `/books/preview`, home and `/museum`. `.book3d` and `.bookcover` share one rule now: a
+border and a cast shadow, since the old `drop-shadow` filter was tuned to the transparent render's
+alpha and does nothing useful on a flat rectangle.
+
+Short pages end with a **next-film cover card** rather than a text link. The covers appear nowhere
+else, and the next short is the strongest thing to offer someone who just watched one. Previous
+stays a text link so the two do not compete; on the first short it becomes "Back, all eleven".
+
 ## Supplied asset packages (14 Sep)
 **Section dividers**, `images/dividers/`, eleven 3:1 panoramas, one per page, placed per the
 supplied `Placement-Guide.csv` with its alt text. They replace the first generic `break-evidence`
