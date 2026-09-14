@@ -131,6 +131,23 @@ dimensions in `Convergence.jsx` and whether the new one is legible at 390px.
 and font-size, or it collapses to the glyph and the border-radius renders as a wedge, or vanishes.
 This has now bitten three times: `.ep-player`, `.sgcard`/`.minicard`, and `.trailer-home`.
 
+**MIS eclipse mark, three files supplied, two shipped** (14 Sep):
+- `images/mis-eclipse.png` + `.webp` (photographic, 900px) for **display sizes**. The corona is the
+  whole idea and it only survives above roughly 120px.
+  **Both carry alpha.** The supplied art is a glow on an opaque black plate, which showed as a black
+  square over photography. The eclipse disk is kept fully opaque (so its dark centre survives on any
+  background) and only the corona outside the ring fades with its own brightness. The corona is also
+  **unpremultiplied**: it was painted over black, so dividing by alpha recovers the colour, without
+  which it reads as a grey smudge on light backgrounds. The ring radius is found from a radial
+  brightness profile, not a scan through the centre, which hits the "I" of MIS and gives 99px
+  instead of 440px. If the art is ever re-exported, redo this; do not ship the plated version.
+- `logos/mis-eclipse.svg` (vector, 6KB) for **small sizes** and as `app/icon.svg`, the site favicon,
+  which did not exist before. Its black background rect is removed, so the favicon is not a square
+  on light browser chrome. The corona simplifies to a clean ring, which reads at 32px where the
+  photographic version turns to mud.
+- The supplied **photographic SVG is not shipped**: it is the same PNG wrapped in an SVG at 1.4MB,
+  strictly worse than the PNG at every size.
+
 The ICAIE mark is `logos/icaie-square`, trimmed and recentered from `icaie-stacked`, whose source had
 more whitespace below the wordmark than above. `.pmark.icaie` needs `flex:0 0 auto`, or as a flex
 item it shrinks in width while keeping its height and stops being square.

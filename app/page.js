@@ -3,7 +3,7 @@ import site from '../data/site.json';
 import films from '../data/films.json';
 import news from '../data/newsroom.json';
 import slate from '../data/slate.json';
-import { Pic, SectionHead, Break, Prov, Hero, Signup, Donor, DigitalMuseum } from '../components/Blocks';
+import { Pic, SectionHead, Break, Prov, Hero, Signup, Donor } from '../components/Blocks';
 import { Icon } from '../components/Icons';
 import { Cascade } from '../components/Cascade';
 import { WorkCard } from '../components/WorkCard';

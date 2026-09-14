@@ -113,6 +113,8 @@ contact form.
 - [x] **14 Sep** `preview.py` fixed: CSS glob broken since the Next 16 upgrade (previews were
       rendering unstyled), and `--lite` now keeps the fonts as woff2 instead of dropping them.
 - [x] **14 Sep** `scripts/mock.py`: design options render as one HTML page, per owner instruction.
+- [x] **14 Sep** MIS eclipse mark: photographic for display, vector for small sizes and favicon
+      (the site had none). Dead `DigitalMuseum` illustration and its styles removed.
 - [x] **14 Sep** Film card extracted to `WorkCard`, shared by `/film` and home. Museum restructured:
       3D prototype block high, halls below, impacts map moved to the bottom. New MIS logo. Books
       becomes a three-book trilogy from `data/books.json`.

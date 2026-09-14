@@ -185,29 +185,3 @@ export function Donor({ eyebrow = 'Make an impact', title, copy, tiers, cta = 'B
 }
 
 
-/** The digital-museum scene: perspective grid, holographic exhibit panels, real eclipse at the vanishing point. */
-export function DigitalMuseum() {
-  const VPx = 320, VPy = 214;
-  const verts = []; for (let x = -80; x <= 760; x += 80) verts.push(<line key={'v' + x} x1={x} y1="480" x2={VPx} y2={VPy} />);
-  const horiz = [250, 296, 352, 420, 478].map(yy => { const t = (yy - VPy) / (480 - VPy); return <line key={'h' + yy} x1={VPx - 320 * t} y1={yy} x2={VPx + 320 * t} y2={yy} />; });
-  const panel = (x, y, w, h, k) => (<g key={k}><rect x={x} y={y} width={w} height={h} fill="#141210" stroke="#E0A33B" strokeOpacity=".65" /><line x1={x + 8} y1={y + h - 10} x2={x + w - 8} y2={y + h - 10} stroke="#E0A33B" strokeOpacity=".35" /><line x1={x + 8} y1={y + 12} x2={x + w * .55} y2={y + 12} stroke="#6FC3CE" strokeOpacity=".4" /></g>);
-  return (
-    <div className="dmuseum">
-      <svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Museum of Illicit Shadows, a virtual digital museum, with exhibits receding toward a glowing eclipse">
-        <defs>
-          <radialGradient id="bgg" cx="50%" cy="40%" r="72%"><stop offset="0%" stopColor="#1b1613" /><stop offset="55%" stopColor="#0d0b09" /><stop offset="100%" stopColor="#000" /></radialGradient>
-          <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stopColor="#E0A33B" stopOpacity=".55" /><stop offset="60%" stopColor="#E0A33B" stopOpacity=".08" /><stop offset="100%" stopColor="#E0A33B" stopOpacity="0" /></radialGradient>
-        </defs>
-        <rect width="640" height="480" fill="url(#bgg)" />
-        <g stroke="#3a3226" strokeWidth="1" opacity=".55">{verts}{horiz}</g>
-        <ellipse cx="320" cy="200" rx="250" ry="130" fill="url(#glow)" />
-        {panel(64, 96, 120, 84, 'a')}{panel(52, 214, 108, 74, 'b')}{panel(456, 96, 120, 84, 'c')}{panel(480, 214, 108, 74, 'd')}
-        <ellipse cx="250" cy="404" rx="10" ry="4" fill="#000" opacity=".5" /><rect x="245" y="360" width="10" height="46" rx="5" fill="#0a0a0a" />
-        <ellipse cx="398" cy="430" rx="12" ry="5" fill="#000" opacity=".5" /><rect x="392" y="380" width="12" height="52" rx="6" fill="#0a0a0a" />
-        <circle cx="320" cy="188" r="96" fill="url(#glow)" />
-        <image href="/images/mis-eclipse.png" x="238" y="106" width="164" height="164" />
-        <rect x="0" y="0" width="640" height="480" fill="none" stroke="#2a2620" strokeWidth="1" />
-      </svg>
-    </div>
-  );
-}
