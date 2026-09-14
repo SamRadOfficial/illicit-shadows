@@ -33,6 +33,7 @@ export default function Film() {
                 <Prov status={f.status === 'streaming' ? 'cited' : 'investigating'} className="work-status">{f.status === 'streaming' ? 'Released' : 'In production'}</Prov>
               </Link>
               <div className="work-body">
+                <p className="work-id">Investigation {String(f.investigation).padStart(2, '0')} &middot; {f.years}</p>
                 <h3 className="work-title"><Link href={`/film/${f.slug}`}>{f.title}</Link></h3>
                 <p className="work-places">{f.places.join(' · ')}</p>
                 <p className="work-line">{f.line}</p>

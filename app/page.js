@@ -40,16 +40,17 @@ export default function Home() {
       <section className="wrap reveal band-raised" id="film">
         <SectionHead label="Film" meta="INVESTIGATIONS" />
 
-        {/* The work in production leads. It is the reason to come back, and the released film is
-            one click away below it. */}
+        {/* Both films use the same shape: art left, copy right, identifier line above the title.
+            The in-production work leads; the released one carries its short films underneath. */}
         <div className="lead-film">
           <Link className="film-feature" href={`/film/${inProduction.slug}`}>
             <Pic base={inProduction.image} alt={`${inProduction.title}: ${inProduction.subtitle}`} priority />
             <span className="badge red btm">IN PRODUCTION</span>
           </Link>
           <div className="lead-copy">
-            <p className="eyebrow">In production &middot; {inProduction.places.join(' · ')}</p>
+            <p className="work-id">Investigation {String(inProduction.investigation).padStart(2, '0')} &middot; {inProduction.years}</p>
             <h3 className="lead-title">Illicit <span>Gold</span></h3>
+            <p className="work-places">{inProduction.places.join(' · ')}</p>
             <p className="lead-line">{inProduction.line}</p>
             <p className="lead-note">Filming across three countries with the International Coalition Against Illicit Economies. Sam Rad on camera, David M. Luna as the institutional voice.</p>
             <Link className="btn btn-y" href={`/film/${inProduction.slug}`}>About the investigation</Link>
@@ -58,15 +59,21 @@ export default function Home() {
 
         <div className="film-div" />
 
-        <div className="released-head">
-          <h3 className="lead-title sm">Chemical <span>Cartels</span></h3>
-          <p className="lead-line">{released.line}</p>
+        <div className="lead-film">
+          <Link className="film-feature" href={`/film/${released.slug}`}>
+            <Pic base={released.image} alt={`${released.title}: ${released.subtitle}`} />
+            <span className="badge btm">NOW STREAMING</span>
+            <span className="pb">&#9654;</span>
+          </Link>
+          <div className="lead-copy">
+            <p className="work-id">Investigation {String(released.investigation).padStart(2, '0')} &middot; {released.years}</p>
+            <h3 className="lead-title">Chemical <span>Cartels</span></h3>
+            <p className="work-places">{released.places.join(' · ')}</p>
+            <p className="lead-line">{released.line}</p>
+            <Link className="btn btn-y" href={`/film/${released.slug}`}>Watch the films</Link>
+          </div>
         </div>
-        <Link className="film-feature" href={`/film/${released.slug}`}>
-          <Pic base={released.image} alt={`${released.title}: ${released.subtitle}`} />
-          <span className="badge btm">{released.title.toUpperCase()} &middot; NOW STREAMING</span>
-          <span className="pb">&#9654;</span>
-        </Link>
+
         <div className="minigrid home">
           {released.segments.filter(x => x.image).slice(0, 3).map(x => (
             <Link className="minicard" href={`/film/${released.slug}`} key={x.n}>
@@ -79,6 +86,8 @@ export default function Home() {
         <p className="seemore"><Link href={`/film/${released.slug}`}>All {released.segments.length} short films &rarr;</Link></p>
 
         <div className="film-div" />
+
+        <SectionHead label="Trailer" meta="2024 CUT" dim />
 
         {/* Trailer is the 2024 cut, so it gets a third of the row rather than a full-width block.
             The slate sits beside it: what is coming matters more than what was cut two years ago. */}

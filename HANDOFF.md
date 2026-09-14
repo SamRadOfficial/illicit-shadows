@@ -56,8 +56,15 @@ Public pages do not use `episode`, `season`, `docuseries`, or any ordinal. The r
 not taste: Academy documentary rules exclude a multi-part or limited series and episodes extracted
 from a larger series, and festival forms ask directly. Programmers read the site.
 
-- **Cardinal counters are fine** (`Ten short films`, segments `01` to `10`). **Ordinals are not**
-  (`Season 1`, `Episode 2`). Order by subject and status, never by number.
+- **Cardinal counters are fine** (`Eleven short films`, segments `01` to `10`).
+- **`investigation` and `years` in `films.json` are owner-set identifiers** (14 Sep): Chemical
+  Cartels is Investigation 01, 2025-2026; Illicit Gold is Investigation 02, 2026-2027. They render
+  as "Investigation 01 · 2025-2026" above each title. Numbered by when the work was made, not by
+  display order, so Illicit Gold leads the page as 02.
+  **Know the tradeoff**: this is an ordinal, and it is the category of label festival forms ask
+  about. It is milder than Season or Episode, and the year ranges do most of the work of separating
+  the two, but if eligibility becomes the priority the fix is to drop the number and keep the years.
+  One line in `app/film/page.js` and `app/page.js`.
 - `films.json` has no `season` or `number`. Records carry `oldSlug` purely to document the 301s in
   `vercel.json`: `/film/golden-handcuffs` is a permanent redirect to `/film/illicit-gold`.
 - Titles: **Illicit Gold** (was Golden Handcuffs). **Chemical Cartels keeps its name**: it is
@@ -163,6 +170,10 @@ It names real cities, so without that label a demonstration reads as an allegati
 
 `components/Schema.jsx` emits `VideoObject` (and `Movie` for a film), with `duration` derived from
 the runtime string. Type is never `TVEpisode` or `TVSeries`.
+
+`preview.py` writes a **timestamped filename** (`home-195121.html`). Previews were previously always
+`home.html`, and a viewer holding the previous file under the same name showed stale artwork, which
+repeatedly read as "the image did not update" when the build was correct. Do not remove the stamp.
 
 `app/sitemap.js` and `app/robots.js` need `export const dynamic = 'force-static'` or the export build
 fails. `/specimen` is disallowed in robots.

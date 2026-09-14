@@ -7,7 +7,7 @@ Layout and typefaces are identical; only image and font bytes differ.
 
 CSS is globbed recursively under out/_next. Next 16 emits the stylesheet to static/chunks/, not the
 static/css/ of Next 15. A fixed path silently produced unstyled previews after the upgrade."""
-import re, base64, mimetypes, os, sys, glob, io
+import re, base64, mimetypes, os, sys, glob, io, datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'out'); PUB = os.path.join(ROOT, 'public')
 LITE = '--lite' in sys.argv
@@ -55,5 +55,11 @@ css  = re.sub(r'url\((["\']?)(' + ASSET + r'[^)"\']+)\1\)', lambda m: 'url(' + b
 # honor it over the actual bytes, so the face silently fails to load. Strip the hints; they sniff.
 if LITE: css = re.sub(r'\s*format\((["\']?)[^)]*\1\)', '', css)
 html = html.replace('</head>', '<style>' + css + '</style></head>', 1)
+# Cache-bust the filename. Previews were always written as home.html, museum.html and so on, so
+# a viewer or browser holding the previous file under the same name shows stale artwork, which
+# repeatedly read as "the image did not update" when the build was in fact correct.
+stamp = datetime.datetime.now().strftime('%H%M%S')
+root, ext = os.path.splitext(dest)
+dest = f'{root}-{stamp}{ext}'
 open(dest, 'w').write(html)
 print(dest, len(html) // 1024, 'KB', ('MISSING: ' + ', '.join(missing)) if missing else 'all assets inlined')
