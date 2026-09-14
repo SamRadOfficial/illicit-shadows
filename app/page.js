@@ -4,6 +4,7 @@ import films from '../data/films.json';
 import news from '../data/newsroom.json';
 import { Pic, SectionHead, Break, Prov, Hero, Signup, Donor, DigitalMuseum } from '../components/Blocks';
 import { Icon } from '../components/Icons';
+import { Cascade } from '../components/Cascade';
 
 // Select by status, not by slug or position: retitles and reordering should not break the page.
 const released = films.find(f => f.status === 'streaming');
@@ -35,14 +36,47 @@ export default function Home() {
       </section>
 
       <section className="wrap reveal band-light" id="film">
-        <SectionHead label="Film" meta="NOW STREAMING" />
-        <Link className="film-feature" href={`/film/${released.slug}`}><Pic base={released.image} alt={`${released.title}: ${released.subtitle}`} /><span className="badge">{released.title.toUpperCase()} &middot; NOW STREAMING</span><span className="pb">&#9654;</span></Link>
-        <p className="feat-syn">{released.synopsis}</p>
-        <div className="film-div" />
-        <div className="film-row">
-          <a className="mbox" href={site.social.youtube}><span className="ic">{Icon.play}</span><div className="eb">Official Trailer</div><div className="ti">Watch the <span>trailer</span></div><div className="ds">A first look at the work.</div><div className="cta">&#9654; WATCH ON YOUTUBE</div></a>
-          <div className="mbox alert"><span className="ic">{Icon.clapper}</span><div className="eb">In production</div><div className="ti">Illicit <span>Gold</span></div><div className="ds">{inProduction.subtitle}.</div><div className="cta" style={{ color: 'var(--alert)' }}>IN PRODUCTION</div></div>
+        <SectionHead label="Film" meta="INVESTIGATIONS" />
+
+        {/* The work in production leads. It is the reason to come back, and the released film is
+            one click away below it. */}
+        <div className="lead-film">
+          <Link className="film-feature" href={`/film/${inProduction.slug}`}>
+            <Pic base={inProduction.image} alt={`${inProduction.title}: ${inProduction.subtitle}`} priority />
+            <span className="badge red btm">IN PRODUCTION</span>
+          </Link>
+          <div className="lead-copy">
+            <p className="eyebrow">In production &middot; {inProduction.places.join(' · ')}</p>
+            <h3 className="lead-title">Illicit <span>Gold</span></h3>
+            <p className="lead-line">{inProduction.line}</p>
+            <p className="lead-note">Filming across three countries with the International Coalition Against Illicit Economies. Sam Rad on camera, David M. Luna as the institutional voice.</p>
+            <Link className="btn btn-y" href={`/film/${inProduction.slug}`}>About the investigation</Link>
+          </div>
         </div>
+
+        <div className="film-div" />
+
+        <div className="released-head">
+          <h3 className="lead-title sm">Chemical <span>Cartels</span></h3>
+          <p className="lead-line">{released.line}</p>
+        </div>
+        <div className="minigrid home">
+          {released.segments.filter(x => x.image).slice(0, 3).map(x => (
+            <Link className="minicard" href={`/film/${released.slug}`} key={x.n}>
+              <span className="minicard-img"><Pic base={x.image} alt={`${x.title} title card`} /><span className="pb sm">&#9654;</span></span>
+              <span className="minicard-t">{x.title}</span>
+              {x.runtime && <span className="minicard-r">{x.runtime}</span>}
+            </Link>
+          ))}
+        </div>
+        <p className="seemore"><Link href={`/film/${released.slug}`}>All {released.segments.length} short films &rarr;</Link></p>
+
+        <div className="film-div" />
+
+        <Link className="trailer-home" href="/film#trailer">
+          <Pic base="/images/film-trailer" alt="Illicit Shadows official trailer" />
+          <span className="pb">&#9654;</span>
+        </Link>
       </section>
 
       <Break base="/images/break-evidence-1" />
@@ -57,14 +91,7 @@ export default function Home() {
             <p>Helix.AI is the Predictive Convergence System at the core of MISTIC: modeling how criminal, political, and economic networks reorganize after disruption, and turning fragmented intelligence into systemic foresight.</p>
             <Link className="btn btn-o" href="/intelligence">Explore intelligence &rarr;</Link>
           </div>
-          <div className="cascade">
-            <div className="ch"><span>CASCADE PREDICTION</span><Prov status="illustrative">illustrative model</Prov></div>
-            <div className="cq">IF contraband is interdicted in Rotterdam&hellip;</div>
-            <div className="cs"><b>+11d</b><span>Shift to Antwerp and Hamburg</span></div>
-            <div className="cs red"><b>&rarr;</b><span>Shell registrations &middot; Lisbon, Caribbean</span></div>
-            <div className="cs red"><b>&rarr;</b><span>Real-estate cash &middot; London, Miami, Dubai</span></div>
-            <div className="cs red"><b>&rarr;</b><span>Political funding anomalies &middot; EU, N. America</span></div>
-          </div>
+          <Cascade compact />
         </div>
       </section>
 

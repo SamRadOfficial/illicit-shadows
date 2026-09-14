@@ -97,7 +97,7 @@ export default async function Investigation({ params }) {
       </section>}
       {other && <><Break base="/images/break-evidence-2" /><section className="wrap reveal">
         <SectionHead label="Also from Illicit Shadows" meta={other.places.join(' · ').toUpperCase()} />
-        <Link className="film-feature" href={`/film/${other.slug}`}><Pic base={other.image} alt={other.title} /><span className="badge red">{other.title.toUpperCase()} &middot; {other.status === 'streaming' ? 'RELEASED' : 'IN PRODUCTION'}</span></Link>
+        <Link className="film-feature" href={`/film/${other.slug}`}><Pic base={other.image} alt={other.title} /><span className="badge red btm">{other.title.toUpperCase()} &middot; {other.status === 'streaming' ? 'RELEASED' : 'IN PRODUCTION'}</span></Link>
       </section></>}
     </>
   );

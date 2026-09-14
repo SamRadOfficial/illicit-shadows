@@ -81,8 +81,11 @@ The social handle lives once, in `site.json` as `social.handle`, because it is p
 credits and may change. Never hardcode it in a page. It is `@illicit_shadows` (YouTube and X, 14 Sep);
 Instagram is still `illicitshadowsdoc`.
 
-Status chips sit **bottom left** on film art (`.work-status`, and `.badge.btm` on the detail page);
-short-film numbers sit **top right** (`.sgcard-n`). Both were moved after they landed on type baked
+**Every stamp over key art sits bottom left**: `.work-status` on film cards, and `.badge` **always
+paired with `.btm`** on `.film-feature` and `.ep-player` (home, up-next, and the detail hero). Short
+numbers sit **top right** (`.sgcard-n`). Top left is the presenting credit and bottom right is the
+roundel, so those corners are never free. A `.badge` without `.btm` lands on "ICAIE & RADOC PRESENT";
+that shipped on the home page and up-next block before being caught 14 Sep. Both were moved after they landed on type baked
 into the covers, the short number first showing the collision at 390px. Check new covers at 390px.
 
 `/film/[slug]` renders a short as a **card when it has an `image` and a text row when it does not**,
@@ -94,6 +97,13 @@ full set. Owner picked this over a scrolling strip of all eleven, to keep the in
 is ever revisited: a grid item defaults to `min-width:auto`, so the scroller stretches its card
 instead of scrolling unless `min-width:0` is set, and that is invisible in a screenshot. Compare
 `scrollWidth` against `clientWidth` to check.
+
+## Home film section (14 Sep)
+Illicit Gold leads with the cover, a description, and what is being filmed; Chemical Cartels sits
+under it as three short covers with a link to all eleven; the trailer closes the section. The section
+sits on `.band-light`, the cream band, which **inverts every default color**. New elements need an
+explicit override there or white display type lands on cream: see the `.band-light .lead-title`
+block in `site.css`. Check anything added to this section against the cream background.
 
 ## Video
 Films play through a **facade YouTube embed** (`components/VideoEmbed.jsx`): the cover art is the
@@ -107,6 +117,11 @@ no `VideoObject` markup is emitted. Never add an id for a film that must not be 
 Public internet availability before a qualifying theatrical release is what costs festival and awards
 eligibility, so **Illicit Gold must have no id and no embed** until that question is settled. Screeners
 go through password-protected Vimeo or signed Mux URLs, off this site.
+
+`components/Cascade.jsx` is the Helix worked example, shared by home (`compact`) and `/intelligence`,
+so the two cannot drift. It reads as a chain rather than a list: a trigger, then numbered steps each
+carrying a lag and **why that step follows from the one above**. Always keeps the illustrative chip.
+It names real cities, so without that label a demonstration reads as an allegation.
 
 `components/Schema.jsx` emits `VideoObject` (and `Movie` for a film), with `duration` derived from
 the runtime string. Type is never `TVEpisode` or `TVSeries`.

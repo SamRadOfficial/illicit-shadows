@@ -72,15 +72,15 @@ export default function Film() {
       </section>
       <Break base="/images/break-evidence-3" />
       <section className="wrap reveal" id="trailer">
-        <SectionHead label="Trailer" meta="2024 CUT" dim />
-        {/* 2024 cut. Predates the gold work and carries the old series branding on screen. Kept
-            reachable, marked as an archive cut, and deliberately not given a hero slot. */}
+        <SectionHead label="Trailer" meta="OFFICIAL" dim />
+        {/* New key art, 14 Sep. The cut itself still predates the gold shoot, so the copy says so
+            rather than implying it represents the current work. */}
         <div className="trailer-band">
           <a className="work-img trailer-img" href={site.social.youtube}><Pic base="/images/film-trailer" alt="Illicit Shadows trailer" /><span className="pb">&#9654;</span></a>
           <div>
             <h3 className="work-title">Trailer</h3>
-            <p className="work-line">The 2024 cut, made before the gold work began. Kept for reference until a new cut exists.</p>
-            <Prov status="illustrative">Archive cut</Prov>
+            <p className="work-line">A first look at the work. Cut before the gold shoot, so it covers the fentanyl investigation.</p>
+            <Prov status="illustrative">2024 cut</Prov>
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import site from '../../data/site.json';
 import { Pic, SectionHead, Break, Prov, Donor } from '../../components/Blocks';
+import { Cascade } from '../../components/Cascade';
 export const metadata = { title: 'Intelligence · MISTIC and Project Helix' };
 
 export default function Intelligence() {
@@ -29,15 +30,7 @@ export default function Intelligence() {
           <div className="layer"><div className="ln">03 · CAUSAL ENGINE</div><div className="ld">Helix.AI: structural causal modeling with adaptive feedback.</div></div>
           <div className="layer"><div className="ln">04 · REINFORCEMENT</div><div className="ld">Optimization across cascading adaptation paths.</div></div>
         </div>
-        <div className="cascade" style={{ marginTop: 20 }}>
-          <div className="ch"><span>CASCADE PREDICTION · WORKED EXAMPLE</span><Prov status="illustrative">illustrative model</Prov></div>
-          <div className="cq">IF contraband is interdicted in Rotterdam&hellip;</div>
-          <div className="cs"><b>+11d</b><span>Shift to Antwerp and Hamburg; trace-back of illicit chain flows</span></div>
-          <div className="cs red"><b>&rarr;</b><span>Spike in shell registrations &middot; Lisbon, Caribbean, offshores</span></div>
-          <div className="cs red"><b>&rarr;</b><span>Real-estate cash spikes &middot; London, Miami, Dubai, Paris</span></div>
-          <div className="cs red"><b>&rarr;</b><span>Political funding anomalies &middot; EU, North America, South Asia</span></div>
-          <p style={{ fontStyle: 'italic', color: 'var(--muted)', fontSize: 12, marginTop: 12 }}>Systemic foresight, not discrete event forecasting. The sequence above is a modeled scenario, not a reported event.</p>
-        </div>
+        <Cascade />
       </section>
       <Break base="/images/break-evidence-1" />
       <section className="wrap reveal"><Donor eyebrow="Enterprise" title={<>Advisory, briefings, and <span>Helix access</span></>} copy="Governments, international organizations, and industry on illicit-economy exposure. Enterprise B2G and B2B intelligence platform access." cta="Request a briefing" href={`mailto:${site.contact}`} mail={site.contact} /></section>

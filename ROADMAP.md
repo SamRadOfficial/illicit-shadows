@@ -108,6 +108,11 @@ contact form.
 - [x] **14 Sep** `preview.py` fixed: CSS glob broken since the Next 16 upgrade (previews were
       rendering unstyled), and `--lite` now keeps the fonts as woff2 instead of dropping them.
 - [x] **14 Sep** `scripts/mock.py`: design options render as one HTML page, per owner instruction.
+- [x] **14 Sep** Home rebuilt around Illicit Gold, with three Chemical Cartels covers, the new
+      trailer art, and cream-band contrast fixed for the new elements.
+- [x] **14 Sep** Helix cascade rebuilt as a causal chain with lags and reasons, shared by home and
+      `/intelligence`. Book cover on `/books` enlarged.
+- [x] **14 Sep** All stamps moved clear of the key art: `.badge` now always pairs with `.btm`.
 - [x] **14 Sep** All eleven shorts wired to real YouTube ids; the film player embeds the playlist
       in order. Handle moved to `@illicit_shadows` on YouTube and X.
 - [x] **14 Sep** Video: facade YouTube embeds (no third-party request until click), VideoObject and
