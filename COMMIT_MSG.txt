@@ -1,18 +1,18 @@
-Contact: add the Washington DC map
+Fix black-on-black surfaces, and the repeated title on the shorts section
 
-- Live Google Maps embed beside the address on /contact, keyless output=embed
-  form so no API key or billing account is needed. Heading reads "Find us in
-  Washington, DC"; the address block carries the street.
-- Open in Google Maps and Directions links alongside, both rel=noopener.
-- Map is lazy-loaded and slightly desaturated so Google's palette does not fight
-  the site.
-- Fix: removed a legacy .direct rule from the pre-editorial contact page that
-  painted a dark background over the yellow band, leaving colour only at the
-  viewport edges.
+- Surface layer no longer uses z-index:-1. A negative layer disappears behind
+  any ancestor that creates a stacking context, which is why the cream reading
+  section on /film/chemical-cartels rendered as black text on a black page once
+  deployed while looking correct in local preview. Sections are now
+  isolation:isolate, the ::before sits at z-index 0, and content is lifted to 1.
+- Removed legacy .credits, .direct and .reading rules left from the
+  pre-editorial layout. They carried a dark panel background and painted over
+  the cream surfaces; the credits block on the investigation pages was the
+  visible case.
+- The short-films section repeated the film title as its kicker directly under
+  the page title. It now reads the form ("Eleven short films").
 
-Note: this embed is the one place on the site that loads a third party on page
-view; the film players remain facades. Recorded in HANDOFF, with a roadmap item
-to decide the consent story.
-
-Verified: build 30 pages, 100 asset references present. Heading, lazy loading
-and zero horizontal overflow checked; section rendered at 1440 and 390.
+Verified: build 30 pages, 100 asset references present. Contrast audited across
+fourteen routes, every paragraph, heading, list and definition item against its
+resolved background: zero below 4.5:1. Lightbox still covers the full viewport
+after the layering change.

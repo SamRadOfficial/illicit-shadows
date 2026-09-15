@@ -61,7 +61,7 @@ export default async function Investigation({ params }) {
       </section>
 
       {shorts.length > 0 && <section className="wrap s s-ink" id="shorts">
-        <span className="kicker">{f.title}</span>
+        <span className="kicker">{f.form}</span>
         <h2>{f.form === 'Eleven short films' ? 'Eleven ways into the story.' : 'The short films.'}</h2>
         {/* Rows keep the 320px still and the labelled Play control outside the artwork (owner
             decision, 14 Sep): the covers appear nowhere else and their titles are burned in. */}

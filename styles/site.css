@@ -538,8 +538,12 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
    Surface variants are semantic classes on sections, never nth-child.
    White text on dark, black text on cream and yellow, no grey body copy.
    ============================================================ */
-section.wrap.s{position:relative;padding-top:clamp(44px,5.5vw,64px);padding-bottom:clamp(44px,5.5vw,64px)}
-.s::before{content:"";position:absolute;inset:0 50% 0 50%;width:100vw;transform:translateX(-50%);z-index:-1;background:var(--sbg)}
+section.wrap.s{position:relative;isolation:isolate;padding-top:clamp(44px,5.5vw,64px);padding-bottom:clamp(44px,5.5vw,64px)}
+/* Full-bleed surface. NOT z-index:-1: a negative layer disappears behind any ancestor that creates
+   a stacking context, leaving black text on a black page. It sits at 0 inside an isolated section
+   and the content is lifted above it. */
+.s::before{content:"";position:absolute;inset:0 50% 0 50%;width:100vw;transform:translateX(-50%);z-index:0;background:var(--sbg)}
+.s > *{position:relative;z-index:1}
 section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .s-ink{--sbg:var(--ink);--fg:#fff;--ac:var(--signal);--rule:#343b3b;color:var(--fg)}
 .s-slate{--sbg:var(--slate);--fg:#fff;--ac:var(--signal);--rule:#4c5b63;color:var(--fg)}
@@ -1073,7 +1077,7 @@ a.mbox:hover{transform:translateY(-3px)}.mbox.alert{border-top-color:var(--alert
 .ep-player::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.35))}.ep-player .pb{width:74px;height:74px;font-size:26px}
 .ep-meta{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;margin-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--dim)}.ep-meta .live{color:var(--alert)}.ep-meta a{color:var(--signal);margin-left:auto}
 .ep-about{display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(30px,5vw,56px);align-items:start}.ep-about p{color:var(--text-2);font-size:16.5px;line-height:1.8;margin-bottom:14px}
-.credits{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--signal);padding:22px 24px}.credits h4{font-family:var(--disp);font-size:15px;color:var(--text);text-transform:uppercase;margin-bottom:14px}
+.credits h4{font-family:var(--disp);font-size:15px;color:var(--text);text-transform:uppercase;margin-bottom:14px}
 .credits .cr{padding:9px 0;border-top:1px solid var(--line)}.credits .cr:first-of-type{border-top:0}.credits .ck{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--dim)}.credits .cv{color:var(--text);font-size:13px;font-weight:600;margin-top:2px}
 .statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
 .statcell{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--signal);padding:16px 18px}.statcell .lb{color:var(--text-2);font-size:12.5px;margin-top:6px;line-height:1.4}

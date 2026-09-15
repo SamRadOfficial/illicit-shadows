@@ -273,6 +273,14 @@ file about the earlier layout (card grids, `.head` section bars, `band-raised`, 
 breaks, the multi-column footer) describes components that are now either unused or retained only
 where a page still needs them. The system:
 
+- **The surface layer must not use `z-index:-1`.** A negative layer vanishes behind any ancestor
+  that creates a stacking context, which is how `/film/chemical-cartels` shipped with black text on
+  a black page after deploy while rendering correctly in local preview. `.s` is `isolation:isolate`,
+  `.s::before` sits at `z-index:0`, and `.s > *` is lifted to `1`. Do not "simplify" this back.
+- **Legacy class-name collisions.** Several editorial names (`.credits`, `.direct`, `.reading`)
+  also existed in the pre-editorial stylesheet with a dark panel background, which painted over the
+  cream surfaces. Those specific rules are removed. When adding a class, grep the stylesheet for
+  the name first; the old layout's rules are still in the file until the dead-CSS pass runs.
 - **Surfaces are semantic classes on sections**, never positional: `section.wrap.s.s-ink`,
   `.s-paper`, `.s-slate`, `.s-yellow`, plus `.compact`. Each sets `--sbg`, `--fg`, `--ac`, `--rule`.
   Body text is **white on dark and black on cream and yellow**; there is no grey body copy in the
