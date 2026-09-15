@@ -97,9 +97,16 @@ export default async function Investigation({ params }) {
         </div>
       </section>}
 
-      <section className="wrap s s-slate compact next-strip">
-        <div><span className="kicker">Continue exploring</span><h2>{other.title}</h2><p>{other.status === 'streaming' ? 'Now streaming' : 'In production'} · {other.years}</p></div>
-        <Link className="ed-link" href={`/film/${other.slug}`}>Explore the investigation {Arrow.upRight}</Link>
+      <section className="wrap s s-slate compact">
+        <div className="nextfilm">
+          <Link href={`/film/${other.slug}`}><Pic base={other.image} alt={`${other.title}: ${other.subtitle}`} /></Link>
+          <div>
+            <span className="kicker">Continue exploring / {other.status === 'streaming' ? 'Now streaming' : 'In production'} · {other.years}</span>
+            <h2>{other.title}</h2>
+            <p>{other.line}</p>
+            <Link className="ed-link" href={`/film/${other.slug}`}>Explore the investigation {Arrow.upRight}</Link>
+          </div>
+        </div>
       </section>
     </>
   );

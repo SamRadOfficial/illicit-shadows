@@ -597,13 +597,30 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .text-hero{padding:clamp(56px,7vw,88px) 0 clamp(36px,5vw,56px)}
 .text-hero h1{max-width:16ch}
 
+/* Museum hero: the vector eclipse, no plate, top right. Hidden below 820px where it would sit on the copy. */
+.hero-mark{position:absolute;right:clamp(20px,4vw,56px);top:clamp(20px,4vw,48px);width:clamp(84px,9vw,132px);z-index:3;pointer-events:none}
+.hero-mark img{width:100%;height:auto;display:block}
+/* Books hero: the art is dark left by nature; a lighter veil keeps the window in the frame. */
+.hero.soft .veil{background:linear-gradient(90deg,rgba(8,9,9,.78) 0%,rgba(8,9,9,.42) 34%,rgba(8,9,9,.04) 70%)}
+.hero.soft .bg img{opacity:.9}
+/* Sector lists on /about, restored from the original page. */
+.sectors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;margin-top:30px}
+.sector{border-top:1px solid var(--rule);padding-top:14px}
+.sector h3{font-size:22px;margin-bottom:12px}
+.sector ul{list-style:none;padding:0;margin:0}
+.sector li{font-size:14px;line-height:1.7;padding:3px 0;border-bottom:1px solid var(--rule)}
+.sector li:last-child{border-bottom:0}
+/* Next-film card on the investigation page. */
+.nextfilm{display:grid;grid-template-columns:360px 1fr;gap:28px;align-items:center}
+.nextfilm picture img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+
 /* Nav */
 .nav .wrap{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px}
-.nav .links{display:flex;justify-content:center;gap:20px;font-size:12px}
+.nav .links{display:flex;justify-content:center;gap:24px;font-size:14.5px}
 .nav .links a{padding:5px 0;border-bottom:1px solid transparent;color:#fff;font-weight:500}
 .nav .links a.on{color:var(--signal);border-color:var(--signal)}
-.nav .navcta{margin:0;font-size:12px;white-space:nowrap;min-height:0;padding:0 0 4px}
-.nav .navcta svg{width:13px;height:13px}
+.nav .navcta{margin:0;font-size:13.5px;white-space:nowrap;min-height:0;padding:0 0 4px}
+.nav .navcta svg{width:14px;height:14px}
 .navmob{display:none}
 
 /* Footer */
@@ -808,6 +825,9 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
   .nav .navcta{display:none}
   .navmob{display:inline-flex;margin-top:8px}
   .intro{flex-direction:column;align-items:flex-start;gap:16px}
+  .hero-mark{display:none}
+  .sectors{grid-template-columns:1fr 1fr}
+  .nextfilm{grid-template-columns:1fr}
   .pillar-grid,.pair,.feature,.feature.reverse,.two,.museum-feature,.reading-pair,.three,.upcoming,.method,.halls-ed,.origins,.two-features,.book-feature,.sequels,.signup-band,.founders,.partners,.contact-layout,.reading,.nextcard-ed{grid-template-columns:1fr}
   .pair article:nth-child(2){padding-top:0}
   .wire-teaser{border-left:0;padding-left:0;border-top:1px solid var(--rule);padding-top:28px}

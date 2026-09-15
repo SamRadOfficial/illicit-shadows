@@ -10,19 +10,15 @@ export default function Books() {
   return (
     <>
       {/* The owner's books hero (15 Sep) is newer than the package's trilogy render, so it stays. */}
-      <Hero img="/images/books-hero" alt="" mobilePos="62% center"
+      <Hero img="/images/books-hero" alt="" mobilePos="62% center" pos="58% center" variant="soft"
             eyebrow="Illicit Shadows Chronicles / Fiction"
             title={<>Read<br /><span className="y">the shadows.</span></>}
             lede="A hidden network. A state that comes to collect. An older alliance that wakes to both.">
         <div className="actions"><a className="ed-btn" href="#trilogy">Discover the trilogy {Arrow.down}</a></div>
       </Hero>
 
-      <section className="wrap s s-paper" id="trilogy" style={{ paddingBottom: 24 }}>
-        <Pic base="/images/books-trilogy-hero" className="trishot" alt="The three Illicit Shadows Chronicles novels standing on a wet street at night" />
-      </section>
-
-      <section className="wrap s s-paper book-feature" style={{ paddingTop: 24 }}>
-        <div className="book-stage"><Pic base={one.mockup} alt={`${one.title} book mockup`} /></div>
+      <section className="wrap s s-paper book-feature" id="trilogy">
+        <div className="book-stage"><Pic base={one.mockup} alt={`${one.title} book mockup`} priority /></div>
         <div>
           <span className="kicker">Book 1 / {one.status}</span>
           <h2>The Umbra<br /><em>Circle</em></h2>
@@ -33,12 +29,16 @@ export default function Books() {
         </div>
       </section>
 
-      <section className="wrap s s-ink">
-        <div className="intro">
-          <div><span className="kicker">The story continues</span><h2>The circle <em>widens.</em></h2></div>
-          <p>Books two and three are in development.</p>
+      <section className="wrap s s-ink" id="widens">
+        <div className="feature reverse">
+          <div>
+            <span className="kicker">The story continues</span>
+            <h2>The circle<br /><em>widens.</em></h2>
+            <p>Books two and three are in development: the state actor that let them build it, and an older, colder alliance waking south of the equator.</p>
+          </div>
+          <Pic base="/images/books-trilogy-hero" className="trishot" alt="The three Illicit Shadows Chronicles novels standing on a wet street at night" />
         </div>
-        <div className="sequels">
+        <div className="sequels" style={{ marginTop: 44 }}>
           {rest.map(b => (
             <article key={b.slug}>
               <div className="book-stage"><Pic base={b.mockup} alt={`${b.title} book mockup`} /></div>

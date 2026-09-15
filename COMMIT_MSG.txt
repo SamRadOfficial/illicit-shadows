@@ -1,18 +1,32 @@
-Fix black-on-black surfaces, and the repeated title on the shorts section
+Owner review pass: film, nav, museum, books, about, investigation page
 
-- Surface layer no longer uses z-index:-1. A negative layer disappears behind
-  any ancestor that creates a stacking context, which is why the cream reading
-  section on /film/chemical-cartels rendered as black text on a black page once
-  deployed while looking correct in local preview. Sections are now
-  isolation:isolate, the ::before sits at z-index 0, and content is lifted to 1.
-- Removed legacy .credits, .direct and .reading rules left from the
-  pre-editorial layout. They carried a dark panel background and painted over
-  the cream surfaces; the credits block on the investigation pages was the
-  visible case.
-- The short-films section repeated the film title as its kicker directly under
-  the page title. It now reads the form ("Eleven short films").
+Film
+- Three-up strip now carries "All 11 films" with the form as its kicker, so the
+  route to the full list is visible without listing eleven on the index.
 
-Verified: build 30 pages, 100 asset references present. Contrast audited across
-fourteen routes, every paragraph, heading, list and definition item against its
-resolved background: zero below 4.5:1. Lightbox still covers the full viewport
-after the layering change.
+Nav
+- Links 14.5px (was 12), contact link 13.5px.
+
+Museum
+- "Make the invisible undeniable."
+- Vector eclipse mark, transparent, top right of the hero.
+- Gift-shop band: "Shop MIS", opening with Phase I, enquiries to /contact.
+- Giving levels removed from the donor band.
+
+Books
+- Umbra Circle leads; the trilogy render follows as a header with "The circle
+  widens" on the left, then the two sequels.
+- Hero uses a lighter veil so the art's dark left reads as the art, not a fault.
+
+About
+- Statement routes read MEDIA · KNOWLEDGE · INTELLIGENCE; the pillars keep
+  WATCH · EXPLORE · MODEL.
+- Pillars on cream as on home; who-we-work-with on black.
+- The original four sector lists restored (Government, International
+  organizations, Industry, Civil society).
+
+Investigation page
+- "Continue exploring" shows the other film's cover, not a text strip.
+
+Verified: build 30 pages, 101 asset references present. Surfaces, routes and
+nav size read back from the DOM; changed areas rendered at 1440.

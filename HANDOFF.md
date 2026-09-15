@@ -322,6 +322,13 @@ where a page still needs them. The system:
   until clicked. The embed uses the keyless `output=embed` form, so there is no API key or billing
   account involved. If a cookie or consent notice is ever added, this iframe is the thing it is
   about.
+- `/about` states the platform as nouns (MEDIA · KNOWLEDGE · INTELLIGENCE) and the pillars below as
+  verbs (WATCH · EXPLORE · MODEL); one describes what it is, the other what you do. The four sector
+  lists under "Who we work with" are the original page's, restored 15 Sep.
+- `/museum` hero carries the vector eclipse (`/logos/mis-eclipse.svg`) as a transparent mark, top
+  right, via a plain `<img>`: `Pic` emits a WebP source for every base and an SVG has none.
+- `/books` hero uses `variant="soft"`, a lighter veil, because the art is dark on its left by
+  nature and the standard gradient made it read as a rendering fault.
 - `HallsEd` is the phase toggle over `halls.json`; `NewsIndex` is the newsroom filter. Both are
   small client components; everything else is server-rendered.
 

@@ -5,8 +5,6 @@ import { Convergence } from '../../components/Convergence';
 import { HallsEd } from '../../components/HallsEd';
 export const metadata = { title: 'Museum of Illicit Shadows' };
 
-const TIERS = ['$100', '$500', '$1,000', '$10,000', '$25,000'];
-
 export default function Museum() {
   return (
     <>
@@ -18,10 +16,11 @@ export default function Museum() {
           <a className="ed-btn" href="#halls">Explore the halls {Arrow.down}</a>
           <Link className="ed-link" href="/museum/enter">Enter the prototype {Arrow.upRight}</Link>
         </div>
+        <div className="hero-mark"><img src="/logos/mis-eclipse.svg" alt="" width="132" height="132" /></div>
       </Hero>
 
       <section className="wrap s s-paper two">
-        <div><span className="kicker">The idea</span><h2>Make the invisible<br /><em>understandable.</em></h2></div>
+        <div><span className="kicker">The idea</span><h2>Make the invisible<br /><em>undeniable.</em></h2></div>
         <div>
           <p className="deck">A counterfeit medicine. A stolen artifact. A gold bar. Each has a story that reaches far beyond the object itself.</p>
           <p>Through exhibitions, research, and public programming, MIS explores how illicit economies converge, and how their effects reach communities around the world.</p>
@@ -79,14 +78,13 @@ export default function Museum() {
           <span className="kicker">Founding donors</span>
           <h2>Help open the doors.</h2>
           <p>Support the museum's public mission and its phased opening from 2027. Institutional partnerships are available.</p>
-          <p className="fine">Giving levels: {TIERS.join(' · ')}</p>
         </div>
         <Link className="ed-btn" href="/contact">Become a founding donor {Arrow.upRight}</Link>
       </section>
 
-      <section className="wrap s s-paper compact cta-band">
-        <div><h3>Take the vision with you.</h3><p>The museum overview and publications bring the collection beyond the galleries. The overview brochure is not yet published here; contact the team for a copy.</p></div>
-        <Link className="ed-link" href="/contact">Museum enquiries {Arrow.upRight}</Link>
+      <section className="wrap s s-paper compact cta-band" id="shop">
+        <div><span className="kicker">Gift shop</span><h2>Shop MIS.</h2><p>Merchandise, publications, and founding-donor editions. The shop opens with Phase I; enquiries are welcome now.</p></div>
+        <Link className="ed-btn" href="/contact">Shop enquiries {Arrow.upRight}</Link>
       </section>
     </>
   );

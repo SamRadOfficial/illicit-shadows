@@ -5,6 +5,13 @@ import { Arrow } from '../../components/Icons';
 import { Pillars } from '../../components/Pillars';
 export const metadata = { title: 'About' };
 
+const SECTORS = [
+  ['Government', ['National security agencies', 'Law enforcement', 'Customs authorities', 'Financial intelligence units', 'Diplomatic missions']],
+  ['International organizations', ['United Nations', 'World Bank · IMF', 'OECD · WTO · WCO', 'INTERPOL', 'APEC · ASEAN · GCC', 'OAS · EU · NATO', 'ICC', 'World Economic Forum', 'Munich Security Conference']],
+  ['Industry', ['Pharmaceuticals', 'Luxury retail', 'Automotive', 'Food, alcohol, tobacco', 'Electronics and e-commerce', 'Media and entertainment', 'Sports and frontier tech', 'Industry associations', 'Chambers of commerce']],
+  ['Civil society', ['NGOs', 'Think tanks', 'Universities', 'Academic centers', 'Foundations']],
+];
+
 const WHY = [
   ['Crime crosses categories.', 'Cartels, kleptocrats, and state-linked actors operate through shared supply chains, banks, and platforms.'],
   ['Trade routes carry more than trade.', 'Ports, free-trade zones, e-commerce, and shipping networks are exploited at scale.'],
@@ -28,9 +35,9 @@ export default function About() {
           <p className="deck">Illicit Shadows, LLC brings together the reach of documentary journalism, the depth of a knowledge institution, and the foresight of a modeling system.</p>
           <p>That convergence has a name: MISTIC, Illicit Shadows Media, Technology &amp; Innovation Convergence.</p>
           <div className="text-routes">
-            <Link href="/film">WATCH {Arrow.upRight}</Link>
-            <Link href="/museum">EXPLORE {Arrow.upRight}</Link>
-            <Link href="/intelligence">MODEL {Arrow.upRight}</Link>
+            <Link href="/film">MEDIA {Arrow.upRight}</Link>
+            <Link href="/museum">KNOWLEDGE {Arrow.upRight}</Link>
+            <Link href="/intelligence">INTELLIGENCE {Arrow.upRight}</Link>
           </div>
         </div>
       </section>
@@ -49,7 +56,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="wrap s s-ink" id="platform" style={{ paddingTop: 0 }}>
+      <section className="wrap s s-paper" id="platform">
         <div className="intro"><div><span className="kicker">One platform</span><h2>Three <em>ways in.</em></h2></div></div>
         <Pillars compact />
       </section>
@@ -64,12 +71,16 @@ export default function About() {
         </div>
       </section>
 
-      <section className="wrap s s-paper" id="partners">
+      <section className="wrap s s-ink" id="partners">
         <div className="intro">
           <div><span className="kicker">Who we work with</span><h2>Across sectors.<br /><em>Across borders.</em></h2></div>
-          <p>Governments, international organizations, industry, and civil society facing illicit-economy exposure and convergence risk.</p>
+          <p>Every player exposed to global supply chains, sanctions risk, or illicit-economy contamination.</p>
         </div>
-        <div className="audience"><span>Government</span><span>International organizations</span><span>Industry</span><span>Civil society</span></div>
+        <div className="sectors">
+          {SECTORS.map(([name, items]) => (
+            <div className="sector" key={name}><h3>{name}</h3><ul>{items.map(i => <li key={i}>{i}</li>)}</ul></div>
+          ))}
+        </div>
         <div className="partners">
           <article>
             <Pic base="/logos/icaie-square" className="plogo" alt="ICAIE, International Coalition Against Illicit Economies" />

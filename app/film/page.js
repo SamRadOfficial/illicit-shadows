@@ -36,7 +36,11 @@ export default function Film() {
             <Link className="ed-link" href={`/film/${released.slug}`}>Explore the investigation {Arrow.upRight}</Link>
           </div>
         </div>
-        <div className="three">
+        <div className="intro" style={{ marginTop: 38, marginBottom: 0 }}>
+          <div><span className="kicker">{released.form}</span></div>
+          <Link className="ed-link" href={`/film/${released.slug}#shorts`}>All {released.segments.length} films {Arrow.upRight}</Link>
+        </div>
+        <div className="three" style={{ marginTop: 18 }}>
           {shorts.map(s => (
             <Link className="tile" href={`/film/${released.slug}/${s.slug}`} key={s.slug}>
               <Pic base={s.image} alt={`${s.title} title card`} />
