@@ -684,7 +684,9 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .pillar picture img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;margin-bottom:20px}
 .pillar h3{font-size:37px;display:flex;justify-content:space-between;align-items:center;text-transform:uppercase}
 .pillar h3 svg{width:22px;height:22px;color:var(--ac)}
+.pillar-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);margin:10px 0 0}
 .pillar p{font-size:14px;margin:12px 0 22px}
+.pillar .pillar-label+p{margin-top:8px}
 .pillar .entry{font-size:12px;border-top:1px solid var(--rule);padding-top:12px;margin-top:auto}
 .pillar:hover h3{color:var(--ac)}
 .platform-exp{margin-top:26px;max-width:none}
@@ -703,7 +705,9 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .play-marker{position:absolute;left:16px;bottom:16px;background:var(--signal);color:#000;font-size:12px;line-height:1.4;padding:10px 14px;display:inline-flex;gap:8px;align-items:center}
 .play-marker svg{width:14px;height:14px}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
-.museum-feature{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.museum-feature{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,4vw,52px);align-items:center}
+/* The museum's name is the headline here, so it carries hero weight. */
+.mis-title{font-size:clamp(34px,4.6vw,56px)!important;line-height:1.02}
 .museum-photo{position:relative;display:block}
 .museum-photo img{width:100%;aspect-ratio:1.15;object-fit:cover;display:block}
 .photo-cap{position:absolute;bottom:0;left:0;right:0;background:rgba(8,9,9,.8);color:#fff;font-size:11px;padding:12px 16px}

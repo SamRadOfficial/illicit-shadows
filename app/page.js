@@ -58,8 +58,11 @@ export default function Home() {
           <span className="photo-cap">Digital museum concept · Phase I planned for 2027</span>
         </Link>
         <div>
-          <span className="kicker">Museum of Illicit Shadows</span>
-          <h2>Step inside<br /><em>the hidden world.</em></h2>
+          <span className="kicker">Step inside the hidden world</span>
+          <h2 className="mis-title">Museum of<br /><em>Illicit Shadows</em></h2>
+          <p className="deck">MIS is a first-of-its-kind virtual museum dedicated to educating global
+            communities on the harms and impacts to international security of crime convergence and
+            illicit economies around the world.</p>
           <p>Explore the connections between illicit economies, the communities they affect, and the systems that sustain them.</p>
           <Link className="ed-link" href="/museum">Explore the museum {Arrow.upRight}</Link>
         </div>
@@ -69,9 +72,10 @@ export default function Home() {
         <article className="book-teaser">
           <Pic base={bookOne.image} alt={`${bookOne.title} book cover`} />
           <div>
-            <span className="kicker">Illicit Shadows Chronicles</span>
+            <span className="kicker">Illicit Shadows Chronicles &middot; Fiction</span>
             <h2>{bookOne.title}</h2>
-            <p>{bookOne.logline}</p>
+            <p>When a Mexican diplomat is assassinated in London, Santiago and Samira are drawn into
+              a high-stakes web of espionage and intrigue.</p>
             <p className="fine">Sam Rad &amp; David M. Luna · {bookOne.status}</p>
             <Link className="ed-link" href="/books">Enter the trilogy {Arrow.upRight}</Link>
           </div>
