@@ -39,23 +39,24 @@ export default function Intelligence() {
           the brief's word "influence" (reads as interference rather than analysis), the explicit
           data-source list including telecom metadata, and any claim about reward or governance
           mechanisms, which the brief marks TBD. */}
-      <section className="wrap s s-slate" id="what">
-        <div className="intro">
-          <div>
-            <span className="kicker">Project Helix &middot; Predictive Convergence System</span>
-            <h2>A system for<br /><em>the next move.</em></h2>
-          </div>
+      {/* Two columns: the claim and the question on the left, the explanation on the right. A
+          single measure left half the section empty. */}
+      <section className="wrap s s-slate two" id="what">
+        <div>
+          <span className="kicker">Project Helix &middot; Predictive Convergence System</span>
+          <h2>A system for<br /><em>the next move.</em></h2>
+          <figure className="pullq">
+            <blockquote>If a disruption occurs at one node, how do the others reorganize to compensate?</blockquote>
+            <figcaption>The modeling question behind the system</figcaption>
+          </figure>
         </div>
-        <p className="deck">Project Helix is a predictive convergence system: it models how criminal,
-          political, and economic networks reorganize when something disrupts them.</p>
-        <p>Most intelligence systems forecast discrete events: a shipment, a transfer, an attack.
-          Helix models the adaptation that follows. The question it asks is not what happens next,
-          but what the system does about it.</p>
-
-        <figure className="pullq">
-          <blockquote>If a disruption occurs at one node, how do the others reorganize to compensate?</blockquote>
-          <figcaption>The modeling question behind the system</figcaption>
-        </figure>
+        <div>
+          <p className="deck">Project Helix is a predictive convergence system: it models how
+            criminal, political, and economic networks reorganize when something disrupts them.</p>
+          <p>Most intelligence systems forecast discrete events: a shipment, a transfer, an attack.
+            Helix models the adaptation that follows. The question it asks is not what happens next,
+            but what the system does about it.</p>
+        </div>
       </section>
 
       <section className="wrap s s-paper" id="helix">

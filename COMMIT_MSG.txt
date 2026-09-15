@@ -1,13 +1,11 @@
-Home: pillar labels, museum emphasis, books teaser copy
+Intelligence: two columns for "What it is"
 
-- Pillars lose the intro deck and the MISTIC expansion line. Each pillar gains
-  its discipline under the action word: Field investigations, Public knowledge,
-  Predictive convergence system.
-- Museum block leads with "Museum of Illicit Shadows" at headline weight (56px)
-  with "Step inside the hidden world" as the kicker, and carries the MIS
-  mission sentence above the existing line.
-- Books teaser: kicker gains "Fiction"; the logline is replaced by the London
-  assassination hook.
+- The section used a single measure, leaving the right half of the page empty.
+  It is now two columns: the kicker, headline and the modeling question on the
+  left, the explanation on the right.
+- Pull quote sized for a narrower column (34ch, smaller display size) so it sits
+  as a block rather than a six-line ladder.
+- Stacks on mobile as before.
 
-Verified: build 30 pages, 107 asset references present. Removed strings and the
-three pillar labels read back from the DOM.
+Verified: build 30 pages, 107 asset references present. Grid columns confirmed
+497.5px each; section checked at 1440 and 390.

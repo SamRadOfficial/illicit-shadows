@@ -730,8 +730,8 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .upcoming{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 24px}
 .upcoming picture img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;margin-bottom:14px}
 /* Helix description (15 Sep). */
-.pullq{margin:34px 0;border-left:3px solid var(--ac);padding:4px 0 4px 26px;max-width:46ch}
-.pullq blockquote{margin:0;font-family:var(--disp);font-size:clamp(24px,3vw,34px);line-height:1.15;text-transform:uppercase;color:var(--fg)}
+.pullq{margin:32px 0 0;border-left:3px solid var(--ac);padding:4px 0 4px 24px;max-width:34ch}
+.pullq blockquote{margin:0;font-family:var(--disp);font-size:clamp(21px,2.3vw,27px);line-height:1.18;text-transform:uppercase;color:var(--fg)}
 .pullq figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;margin-top:14px;color:var(--fg);opacity:.75}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:38px;margin-top:34px;border-top:1px solid var(--rule);padding-top:26px}
 .tick{list-style:none;padding:0;margin:14px 0}
