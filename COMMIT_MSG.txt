@@ -1,7 +1,8 @@
-Film: "All 11 films" link moves below the three covers
+Signup: field and button share one width everywhere
 
-- The link now sits under The Invisible Source at the foot of the strip, the
-  natural next step after the three previews, rather than in a header row
-  above them. The kicker row is gone.
+- .signup stacks vertically at every viewport; input and button are both 100%
+  of the form's width (420px desktop, 354px at 390). Removed the mobile-only
+  wrap rules the stack makes redundant. Button gets a 44px minimum height.
 
-Verified: build 30 pages, 103 asset references present.
+Verified: build 30 pages, 103 asset references present. Widths measured on
+home, books and newsroom at 1440 and 390: input and button equal on each.

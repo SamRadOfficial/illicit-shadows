@@ -563,6 +563,7 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .kicker .kmuted{color:var(--fg)}
 .fine{font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--fg)}
 .deck{font-size:20px;line-height:1.55;letter-spacing:-.01em}
+.s strong{font-weight:700;color:var(--fg)}
 .actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:26px}
 .actions .ed-link{margin-top:0}
 
@@ -656,8 +657,7 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .pillar:hover h3{color:var(--ac)}
 .platform-exp{margin-top:26px;max-width:none}
 
-.pair{display:grid;grid-template-columns:1.25fr 1fr;gap:32px;align-items:start}
-.pair article:nth-child(2){padding-top:54px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
 .cover{display:block;position:relative;margin-bottom:20px}
 .cover img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
 .cover-cap{display:flex;align-items:baseline;justify-content:space-between;gap:18px}
@@ -676,8 +676,8 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .museum-photo img{width:100%;aspect-ratio:1.15;object-fit:cover;display:block}
 .photo-cap{position:absolute;bottom:0;left:0;right:0;background:rgba(8,9,9,.8);color:#fff;font-size:11px;padding:12px 16px}
 .reading-pair{display:grid;grid-template-columns:1.15fr 1fr;gap:40px}
-.book-teaser{display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:start}
-.book-teaser picture img{width:100%;aspect-ratio:2/3;object-fit:contain;background:#111;display:block}
+.book-teaser{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:start}
+.book-teaser picture img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;border:1px solid var(--rule)}
 .book-teaser h2{font-size:30px}
 .book-teaser p{font-size:13px}
 .wire-teaser{border-left:1px solid var(--rule);padding-left:40px}
@@ -749,7 +749,9 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .argument h3{font-size:24px}
 .argument p{font-size:14px;margin:0}
 .audience{display:flex;flex-wrap:wrap;gap:12px 30px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:20px 0;font-size:14px}
-.partners{display:grid;grid-template-columns:1fr 1fr;gap:45px;margin-top:40px}
+.partners{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.partners article{border:1px solid var(--rule);padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column}
+.partners article .ed-link{margin-top:auto;align-self:flex-start;padding-top:18px}
 .partners .plogo{width:72px;height:72px;object-fit:contain;margin-bottom:18px;display:block;background:#fff}
 .partners p{font-size:14px}
 .contact-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start}
@@ -823,9 +825,6 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
   .nav .links.open{display:flex}
   .maprow{grid-template-columns:1fr}
   .gmap{min-height:300px}
-  .signup{flex-wrap:wrap}
-  .signup input{min-width:0;flex:1 1 100%}
-  .signup button{flex:1 1 100%}
   .news-item{grid-template-columns:1fr;gap:8px}
   .news-item h3{font-size:22px}
   .nav .navcta{display:none}
@@ -833,9 +832,9 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
   .intro{flex-direction:column;align-items:flex-start;gap:16px}
   .hero-mark{display:none}
   .sectors{grid-template-columns:1fr 1fr}
+  .book-teaser{grid-template-columns:130px 1fr}
   .nextfilm{grid-template-columns:1fr}
   .pillar-grid,.pair,.feature,.feature.reverse,.two,.museum-feature,.reading-pair,.three,.upcoming,.method,.halls-ed,.origins,.two-features,.book-feature,.sequels,.signup-band,.founders,.partners,.contact-layout,.reading,.nextcard-ed{grid-template-columns:1fr}
-  .pair article:nth-child(2){padding-top:0}
   .wire-teaser{border-left:0;padding-left:0;border-top:1px solid var(--rule);padding-top:28px}
   .cta-band,.next-strip{flex-direction:column;align-items:flex-start}
   .argument article{grid-template-columns:36px 1fr}
@@ -1011,10 +1010,11 @@ a.mbox:hover{transform:translateY(-3px)}.mbox.alert{border-top-color:var(--alert
 .tiers{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:22px}
 .tier{font-family:var(--mono);font-size:13px;color:var(--text);border:1px solid #5a4b00;padding:9px 16px;cursor:pointer}.tier:hover{border-color:var(--signal);color:var(--signal)}
 .donor .mail{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:16px}.donor .mail a{color:var(--signal)}
-.signup{display:flex;gap:10px;margin-top:22px;max-width:470px}.signup.center{margin:0 auto;justify-content:center}
-.signup input{flex:1;min-width:0;background:rgba(0,0,0,.55);border:1px solid #4a4436;color:var(--text);padding:12px 14px;font-family:var(--body);font-size:13px}
+/* Stacked at every width: the field and the button share one width. */
+.signup{display:flex;flex-direction:column;gap:10px;margin-top:22px;max-width:420px}.signup.center{margin:0 auto}
+.signup input{width:100%;min-width:0;background:rgba(0,0,0,.55);border:1px solid #4a4436;color:var(--text);padding:12px 14px;font-family:var(--body);font-size:13px}
 .signup input::placeholder{color:#8a857b}
-.signup button{background:transparent;border:2px solid var(--signal);color:var(--signal);font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:0 18px;cursor:pointer;white-space:nowrap}
+.signup button{width:100%;min-height:44px;background:transparent;border:2px solid var(--signal);color:var(--signal);font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:12px 18px;cursor:pointer;white-space:nowrap}
 .signup button:hover{background:var(--signal);color:var(--ink)}
 .sub-alt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:12px}
 .sub-alt.center{text-align:center}

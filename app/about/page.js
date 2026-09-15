@@ -6,9 +6,9 @@ import { Pillars } from '../../components/Pillars';
 export const metadata = { title: 'About' };
 
 const SECTORS = [
-  ['Government', ['National security agencies', 'Law enforcement', 'Customs authorities', 'Financial intelligence units', 'Diplomatic missions']],
-  ['International organizations', ['United Nations', 'World Bank · IMF', 'OECD · WTO · WCO', 'INTERPOL', 'APEC · ASEAN · GCC', 'OAS · EU · NATO', 'ICC', 'World Economic Forum', 'Munich Security Conference']],
   ['Industry', ['Pharmaceuticals', 'Luxury retail', 'Automotive', 'Food, alcohol, tobacco', 'Electronics and e-commerce', 'Media and entertainment', 'Sports and frontier tech', 'Industry associations', 'Chambers of commerce']],
+  ['International organizations', ['United Nations', 'World Bank · IMF', 'OECD · WTO · WCO', 'INTERPOL', 'APEC · ASEAN · GCC', 'OAS · EU · NATO', 'ICC', 'World Economic Forum', 'Munich Security Conference']],
+  ['Government', ['National security agencies', 'Law enforcement', 'Customs authorities', 'Financial intelligence units', 'Diplomatic missions']],
   ['Civil society', ['NGOs', 'Think tanks', 'Universities', 'Academic centers', 'Foundations']],
 ];
 
@@ -33,7 +33,7 @@ export default function About() {
         <div><span className="kicker">The institution</span><h2>See the connections.<br /><em>Make them matter.</em></h2></div>
         <div>
           <p className="deck">Illicit Shadows, LLC brings together the reach of documentary journalism, the depth of a knowledge institution, and the foresight of a modeling system.</p>
-          <p>That convergence has a name: MISTIC, Illicit Shadows Media, Technology &amp; Innovation Convergence.</p>
+          <p>That convergence has a name: <strong>Illicit Shadows Media, Technology, &amp; Innovation Convergence (MISTIC)</strong>.</p>
           <div className="text-routes">
             <Link href="/film">MEDIA {Arrow.upRight}</Link>
             <Link href="/museum">KNOWLEDGE {Arrow.upRight}</Link>
@@ -84,6 +84,10 @@ export default function About() {
             <div className="sector" key={name}><h3>{name}</h3><ul>{items.map(i => <li key={i}>{i}</li>)}</ul></div>
           ))}
         </div>
+      </section>
+
+      <section className="wrap s s-ink" id="partner-orgs" style={{ paddingTop: 0 }}>
+        <div className="intro"><div><span className="kicker">Partners</span><h2>Built with<br /><em>ICAIE and RADOC.</em></h2></div></div>
         <div className="partners">
           <article>
             <Pic base="/logos/icaie-square" className="plogo" alt="ICAIE, International Coalition Against Illicit Economies" />

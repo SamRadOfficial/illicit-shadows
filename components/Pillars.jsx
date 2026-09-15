@@ -38,7 +38,7 @@ export function Pillars({ compact = false }) {
           </Link>
         ))}
       </div>
-      {!compact && <p className="fine platform-exp">Illicit Shadows Media, Technology &amp; Innovation Convergence</p>}
+      {!compact && <p className="fine platform-exp">Illicit Shadows Media, Technology, &amp; Innovation Convergence</p>}
     </>
   );
 }

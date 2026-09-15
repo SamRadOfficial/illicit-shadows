@@ -30,7 +30,7 @@ export default function Intelligence() {
       <section className="wrap s s-paper two" id="mistic">
         <div><span className="kicker">MISTIC / The institute</span><h2>A fusion center for<br /><em>the shadow economy.</em></h2></div>
         <div>
-          <p className="deck">MISTIC, Illicit Shadows Media, Technology &amp; Innovation Convergence, is the institute behind the platform: a fusion center where field investigations, the museum's research, and predictive modeling are brought together.</p>
+          <p className="deck"><strong>Illicit Shadows Media, Technology, &amp; Innovation Convergence (MISTIC)</strong> is the institute behind the platform: a fusion center where field investigations, the museum's research, and predictive modeling are brought together.</p>
           <p>It works the way an intelligence fusion center works. Evidence gathered in the field and cataloged in the museum is connected and modeled, so what is learned in one place informs the others.</p>
           <p>Helix.AI is one of its projects: the predictive convergence system that examines how criminal, political, and economic networks reorganize after disruption.</p>
         </div>
