@@ -18,7 +18,7 @@ export default function Contact() {
       <Hero img="/images/hero-contact" pos="70% 88%" mobilePos="82% 90%" alt="David M. Luna and Sam Rad walking beside the Reflecting Pool, the Washington Monument ahead"
             eyebrow="Work with us"
             title={<>Start a<br /><span className="y">conversation.</span></>}
-            lede="Support our mission, join our cause, bring us a question, a collaboration, or a challenge." />
+            lede="Support our mission and join our cause." />
 
       <section className="wrap s s-paper contact-layout">
         <div>
@@ -39,7 +39,7 @@ export default function Contact() {
             third party on page load; the film players stay facades. */}
         <div className="maprow">
           <iframe className="gmap" title="Map showing the Illicit Shadows office at 1455 Pennsylvania Avenue NW, Washington DC"
-                  src="https://maps.google.com/maps?q=1455+Pennsylvania+Ave+NW+Suite+400,+Washington,+DC+20004&z=16&output=embed"
+                  src="https://maps.google.com/maps?q=1455+Pennsylvania+Ave+NW+Suite+400,+Washington,+DC+20004&z=15&output=embed"
                   loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
           <div className="mapcopy">
             <span className="kicker">Washington, DC</span>

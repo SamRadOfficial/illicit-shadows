@@ -36,6 +36,52 @@ export default function Intelligence() {
         </div>
       </section>
 
+      {/* Option C. Drawn from the February brief. Three things are deliberately not published:
+          the brief's word "influence" (reads as interference rather than analysis), the explicit
+          data-source list including telecom metadata, and any claim about reward or governance
+          mechanisms, which the brief marks TBD. */}
+      <section className="wrap s s-paper" id="what">
+        <div className="intro"><div><span className="kicker">What it is</span><h2>A system for<br /><em>the next move.</em></h2></div></div>
+        <p className="deck">Project Helix is a predictive convergence system: it models how criminal,
+          political, and economic networks reorganize when something disrupts them.</p>
+        <p>Most intelligence systems forecast discrete events: a shipment, a transfer, an attack.
+          Helix models the adaptation that follows. The question it asks is not what happens next,
+          but what the system does about it.</p>
+
+        <figure className="pullq">
+          <blockquote>If a disruption occurs at one node, how do the others reorganize to compensate?</blockquote>
+          <figcaption>The modeling question behind the system</figcaption>
+        </figure>
+
+        <div className="two-col">
+          <div>
+            <span className="kicker">What goes in</span>
+            <ul className="tick">
+              <li>Artifacts, mapping and research cataloged by the museum</li>
+              <li>Open-source reporting and case histories</li>
+              <li>Trade, corporate and sanctions records</li>
+            </ul>
+            <p className="fine">Each input is tagged three ways: who is connected, how money moves, and how the story is told.</p>
+          </div>
+          <div>
+            <span className="kicker">What comes out</span>
+            <ul className="tick">
+              <li>Where activity is likely to move after a disruption</li>
+              <li>Which actors and routes absorb it</li>
+              <li>Where the effects surface in other domains</li>
+            </ul>
+            <p className="fine">Strategic foresight for decisions, not a prediction of a dated event.</p>
+          </div>
+        </div>
+
+        <div className="gov">
+          <span className="kicker">Governance</span>
+          <p>Helix is built to inform decisions, not to make them. Its usefulness depends on
+            governance that keeps optimization subordinate to the rule of law, and on human judgment
+            at every point where the model meets a decision.</p>
+        </div>
+      </section>
+
       <section className="wrap s s-ink" id="helix" style={{ paddingTop: 'clamp(44px,5.5vw,64px)' }}>
         <div className="intro">
           <div><span className="kicker">Project Helix / How it works</span><h2>From fragments<br /><em>to a system.</em></h2></div>

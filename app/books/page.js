@@ -12,18 +12,18 @@ export default function Books() {
       {/* The owner's books hero (15 Sep) is newer than the package's trilogy render, so it stays. */}
       <Hero img="/images/books-hero" alt="" mobilePos="62% center" pos="58% center" variant="soft"
             eyebrow="Illicit Shadows Chronicles / Fiction"
-            title={<>Read<br /><span className="y">the shadows.</span></>}
-            lede="A hidden network. A state that comes to collect. An older alliance that wakes to both.">
+            title={<>Enter the<br /><span className="y">narrative universe.</span></>}
+            lede="Read the Illicit Shadows Chronicles. Geopolitical crime fiction exploring the hidden shadow systems that shape our world.">
         <div className="actions"><a className="ed-btn" href="#trilogy">Discover the trilogy {Arrow.down}</a></div>
       </Hero>
 
-      <section className="wrap s s-paper book-feature" id="trilogy">
-        <div className="book-stage"><Pic base={one.mockup} alt={`${one.title} book mockup`} priority /></div>
+      <section className="wrap s s-ink book-feature" id="trilogy">
+        {/* Cut out and shown large: the flagship gets the object, not a box. */}
+        <Pic base={one.cutout} ext="png" className="book-hero" alt={`${one.title} book cover`} priority />
         <div>
           <span className="kicker">Book 1 / {one.status}</span>
           <h2>The Umbra<br /><em>Circle</em></h2>
-          <p className="deck">The museum was built to expose a hidden world. Then that world came looking.</p>
-          <p>{one.blurb}</p>
+          {one.blurb.split(/\n{2,}/).map((t, i) => <p key={i}>{t}</p>)}
           <p className="byline">By Sam Rad and David M. Luna</p>
           <Link className="ed-link" href={one.preview}>Explore the book {Arrow.upRight}</Link>
         </div>

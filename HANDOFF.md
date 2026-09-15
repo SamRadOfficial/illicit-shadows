@@ -350,6 +350,16 @@ where a page still needs them. The system:
   art did not release anything.
 - The Helix graphic is a **conceptual system view**. Its caption says so and offers a full-size
   link; never describe its connections as measured data or a validated forecast.
+- `/intelligence` carries a "What it is" section drawn from the February Project Helix brief.
+  **Three things from that brief are deliberately not on the site**: the word "influence" (the brief
+  says Helix is designed to model, anticipate and influence convergence; published, that reads as
+  interference rather than analysis), the explicit data-source list including telecom metadata, and
+  any claim about reward or governance mechanisms, which the brief marks TBD. The governance
+  paragraph states the brief's own principle instead. Keep it that way unless the owner decides
+  otherwise.
+- **Unresolved**: the brief's Rotterdam example puts the real-estate spike in Vancouver; the cascade
+  maps on the same page say London, Miami and Dubai. Same illustrative scenario, two different
+  claims.
 - `HallsEd` is the phase toggle over `halls.json`; `NewsIndex` is the newsroom filter. Both are
   small client components; everything else is server-rendered.
 

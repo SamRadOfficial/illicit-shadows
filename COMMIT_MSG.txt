@@ -1,18 +1,26 @@
-Illicit Gold: full synopsis, new subtitle, and its own next-film section
+Helix description, books rework, and copy fixes
 
-- films.json: subtitle becomes "The rush to cash in on the criminal shadows of
-  El Dorado"; the synopsis is the owner's three-paragraph copy, verbatim apart
-  from punctuation normalised to house style. The "voice" credit (David M. Luna
-  as institutional voice) is removed from the data and the credits block.
-- The investigation template splits the synopsis on real paragraph breaks
-  rather than guessing at sentence boundaries, and sets the subtitle as a deck
-  without a trailing period.
-- "Continue exploring" becomes its own titled section on the ink surface, with
-  a heading, a line on why the two investigations belong together, the other
-  film's cover, and its status as a chip.
-- Stats grid uses auto-fit columns; four fixed columns mangled the figures at
-  390px ("$12 to $48 billion a year" broke one word per line).
+Intelligence
+- New "What it is" section after the fusion-center block (option C): the claim,
+  the modeling question as a pull quote, what goes in and what comes out, and a
+  governance note. Drawn from the February Project Helix brief.
+- Not published from that brief, on purpose: the word "influence", the explicit
+  data-source list including telecom metadata, and any claim about reward or
+  governance mechanisms the brief marks TBD.
 
-Verified: build 30 pages, 103 asset references present. Three paragraphs
-rendered, credits confirmed without the voice line, both investigation pages
-checked at 1440 and 390 with no horizontal overflow.
+Books
+- Hero: "Enter the narrative universe", with the Chronicles subtitle.
+- The Umbra Circle carries the full four-paragraph description and loses the
+  "then that world came looking" line.
+- Book one is a cut-out cover shown large (no box); books two and three sit in
+  black boxes.
+
+Elsewhere
+- Illicit Gold: removed the linking sentence from Continue exploring.
+- Contact: lede reads "Support our mission and join our cause."; map zoomed out
+  one step so the White House is in frame.
+- Newsroom: "News from the shadows."
+- Nav and footer: "Get in touch" becomes "Contact".
+
+Verified: build 30 pages, 105 asset references present. Umbra paragraphs, cover
+file and nav label read back from the DOM.

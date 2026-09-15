@@ -696,6 +696,16 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .tile:hover h3{color:var(--ac)}
 .upcoming{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 24px}
 .upcoming picture img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;margin-bottom:14px}
+/* Helix description (15 Sep). */
+.pullq{margin:34px 0;border-left:3px solid var(--ac);padding:4px 0 4px 26px;max-width:46ch}
+.pullq blockquote{margin:0;font-family:var(--disp);font-size:clamp(24px,3vw,34px);line-height:1.15;text-transform:uppercase;color:var(--fg)}
+.pullq figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;margin-top:14px;color:var(--fg);opacity:.75}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:38px;margin-top:34px;border-top:1px solid var(--rule);padding-top:26px}
+.tick{list-style:none;padding:0;margin:14px 0}
+.tick li{font-size:15px;line-height:1.6;padding:9px 0 9px 20px;border-bottom:1px solid var(--rule);position:relative;color:var(--fg)}
+.tick li:before{content:"";position:absolute;left:0;top:17px;width:8px;height:1px;background:var(--ac)}
+.gov{margin-top:34px;border-top:1px solid var(--rule);padding-top:20px;max-width:62ch}
+
 .status-chip{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);border:1px solid var(--rule);padding:4px 9px;margin:0 0 10px}
 .upcoming h3{font-size:22px}
 .upcoming p{font-size:13px;margin-top:8px}
@@ -719,11 +729,15 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .two-features picture img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;margin-bottom:16px}
 .two-features h3{font-size:24px}
 .two-features p{font-size:14px;margin-top:10px}
-.book-feature{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center}
-.book-stage{background:#111515;display:flex;align-items:center;justify-content:center;padding:22px}
+.book-feature{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(28px,4vw,56px);align-items:center}
+.book-hero{width:100%;max-width:520px;height:auto;display:block;margin:0 auto;filter:drop-shadow(0 30px 60px rgba(0,0,0,.75))}
+/* Books sit in black boxes. The lead title's mockup is cut out, so its box is the backdrop. */
+.book-stage{background:#000;display:flex;align-items:center;justify-content:center;padding:26px}
+.book-stage.lead{padding:18px}
+.book-stage.lead img{height:460px}
 .book-stage img{height:360px;width:auto;object-fit:contain}
 .sequels{display:grid;grid-template-columns:1fr 1fr;gap:45px}
-.sequels .book-stage{margin-bottom:22px;background:#171c1c}
+.sequels .book-stage{margin-bottom:22px;background:#000}
 .sequels .book-stage img{height:300px}
 .sequels p{font-size:14px}
 .byline{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-top:16px}
@@ -844,12 +858,15 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
   .wire-teaser{border-left:0;padding-left:0;border-top:1px solid var(--rule);padding-top:28px}
   .cta-band,.next-strip{flex-direction:column;align-items:flex-start}
   .method,.method.stats{grid-template-columns:1fr 1fr;gap:20px}
+  .two-col{grid-template-columns:1fr;gap:24px}
   .argument article{grid-template-columns:36px 1fr}
   .argument article p{grid-column:2}
   .short-row{grid-template-columns:28px 1fr;gap:10px 14px;align-items:start}
   .short-row .vembed,.short-row .vrow-body,.short-row .vrow-play{grid-column:2}
   .short-row .vrow-play{flex-direction:row;min-width:0}
   .book-stage img{height:280px}
+  .book-hero{max-width:320px}
+  .book-stage.lead img{height:330px}
   .foot-top{flex-direction:column}
 }
 

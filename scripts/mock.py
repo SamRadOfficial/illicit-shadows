@@ -45,97 +45,99 @@ FACES = ''.join(f'@font-face{{font-family:{fam};src:url({font(f)});font-weight:{
 
 import json as _json
 
-ARROW = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>'
+ARROW = ('<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" '
+         'stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+         '<path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>')
 
-ADDR = "1455 Pennsylvania Ave NW, Ste 400, Washington, DC 20004"
-Q = "1455+Pennsylvania+Ave+NW+Suite+400,+Washington,+DC+20004"
-EMBED = f"https://maps.google.com/maps?q={Q}&z=16&output=embed"
-LINK = f"https://www.google.com/maps/search/?api=1&query={Q}"
-DIR = f"https://www.google.com/maps/dir/?api=1&destination={Q}"
+def head(k, h, deck=''):
+    return (f'<div class="intro"><div><span class="kicker">{k}</span><h2>{h}</h2></div>'
+            f'{f"<p>{deck}</p>" if deck else ""}</div>')
 
-def details(tone='dark'):
-    return (f'<p class="kicker">Washington, DC</p><h2>Find us<br><em>on Pennsylvania Avenue.</em></h2>'
-            f'<p class="addr">1455 Pennsylvania Ave NW<br>Suite 400<br>Washington, DC 20004<br>United States</p>'
-            f'<p class="fine">Two blocks east of the White House, between 14th and 15th.</p>'
-            f'<div class="actions"><a class="ed-link" href="{LINK}" target="_blank" rel="noopener">Open in Google Maps {ARROW}</a>'
-            f'<a class="ed-link" href="{DIR}" target="_blank" rel="noopener">Directions {ARROW}</a></div>')
+STATEMENT = ('<p class="deck">Project Helix is a predictive convergence system: it models how '
+             'criminal, political, and economic networks reorganize when something disrupts them.</p>'
+             '<p>Most intelligence systems forecast discrete events: a shipment, a transfer, an '
+             'attack. Helix models the adaptation that follows. The question it asks is not what '
+             'happens next, but what the system does about it.</p>')
 
-IFRAME = (f'<iframe class="gmap" src="{EMBED}" title="Map showing 1455 Pennsylvania Avenue NW, Washington DC" '
-          f'loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>')
+QUESTION = ('<figure class="pullq"><blockquote>If a disruption occurs at one node, how do the '
+            'others reorganize to compensate?</blockquote>'
+            '<figcaption>The modeling question behind the system</figcaption></figure>')
 
-PAGE_A = '<div class="s s-ink" style="padding:0">' + f'<div class="maprow">{IFRAME}<div class="mapcopy">{details()}</div></div></div>'
+IO = ('<div class="two-col">'
+      '<div><span class="kicker">What goes in</span>'
+      '<ul class="tick"><li>Artifacts, mapping and research cataloged by the museum</li>'
+      '<li>Open-source reporting and case histories</li>'
+      '<li>Trade, corporate and sanctions records</li></ul>'
+      '<p class="fine">Each input is tagged three ways: who is connected, how money moves, and how '
+      'the story is told.</p></div>'
+      '<div><span class="kicker">What comes out</span>'
+      '<ul class="tick"><li>Where activity is likely to move after a disruption</li>'
+      '<li>Which actors and routes absorb it</li>'
+      '<li>Where the effects surface in other domains</li></ul>'
+      '<p class="fine">Strategic foresight for decisions, not a prediction of a dated event.</p></div>'
+      '</div>')
 
-PAGE_B = (f'<div class="mapcopy" style="max-width:640px;margin-bottom:26px">{details()}</div>'
-          f'<div class="mapwide">{IFRAME}</div></div>')
+LAYERS = ('<ol class="method">'
+          '<li><span class="n">01</span><h3>Intelligence layer</h3><p>Museum assets, artifacts and '
+          'mapping enter the modeling framework, each tagged by network, economy and narrative.</p></li>'
+          '<li><span class="n">02</span><h3>Global graph</h3><p>People, companies, ports, banks and '
+          'offices as nodes; money, directorships, contracts and co-location as the edges between '
+          'them.</p></li>'
+          '<li><span class="n">03</span><h3>Causal engine</h3><p>Structural causal modeling rather '
+          'than pattern matching: graph topology, temporal sequence, and probabilistic cascades.</p></li>'
+          '<li><span class="n">04</span><h3>Reinforcement</h3><p>Simulated adaptation paths, tested '
+          'against how networks have actually behaved.</p></li></ol>')
 
-PAGE_C = ('<div class="s s-ink" style="padding:0">' + f'<div class="maprow"><div class="mapfacade" id="facade">'
-          f'<div class="facade-grid"></div>'
-          f'<span class="pin"></span>'
-          f'<span class="pinlabel">Illicit Shadows<br><b>1455 Pennsylvania Ave NW</b></span>'
-          f'<span class="wh">The White House</span>'
-          f'<span class="facade-cta"><button class="ed-btn" type="button" data-showmap>Show the map {ARROW}</button>'
-          f'<span class="facade-note">Nothing loads from Google until you press it</span></span>'
-          f'</div><div class="mapcopy">{details()}</div></div></div>')
+GOV = ('<div class="gov"><span class="kicker">Governance</span>'
+       '<p>Helix is built to inform decisions, not to make them. Its usefulness depends on '
+       'governance that keeps optimization subordinate to the rule of law, and on human judgment '
+       'at every point where the model meets a decision.</p></div>')
+
+def wrap(inner, surface='s-paper'):
+    # Must be a real section.wrap.s: that selector carries position/isolation, without which the
+    # surface pseudo-element never paints and the copy renders dark on dark.
+    return f'<section class="wrap s {surface}">{inner}</section>'
+
+PAGE_A = wrap(head('What it is', 'A system for<br><em>the next move.</em>') + STATEMENT + QUESTION + GOV)
+PAGE_B = wrap(head('What it is', 'A system for<br><em>the next move.</em>',
+                   'Four layers, from catalogued evidence to simulated adaptation.') + STATEMENT + LAYERS + GOV)
+PAGE_C = wrap(head('What it is', 'A system for<br><em>the next move.</em>') + STATEMENT + QUESTION + IO + GOV)
 
 SHARED = """
-.maprow{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(22px,3vw,44px);align-items:stretch}
-.gmap{width:100%;min-height:420px;height:100%;border:1px solid var(--rule,#343b3b);display:block;filter:grayscale(.15) contrast(1.05)}
-.mapwide .gmap{min-height:380px}
-.mapcopy{display:flex;flex-direction:column;justify-content:center}
-.addr{font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.9;margin:16px 0 10px}
-.mapcopy .actions{gap:26px}
-/* Facade: nothing loads from Google until the button is pressed. Drawn with CSS, no image. */
-.mapfacade{position:relative;min-height:420px;border:1px solid var(--rule,#343b3b);background:#0d1116;overflow:hidden}
-.facade-grid{position:absolute;inset:0;background-image:linear-gradient(#182029 1px,transparent 1px),linear-gradient(90deg,#182029 1px,transparent 1px);background-size:46px 46px;opacity:.9}
-.facade-grid:after{content:"";position:absolute;left:0;right:0;top:54%;height:14px;background:#141b22;transform:rotate(-8deg)}
-.pin{position:absolute;left:52%;top:34%;width:14px;height:14px;border-radius:50%;background:#FFD400;box-shadow:0 0 0 6px rgba(255,212,0,.18)}
-.pinlabel{position:absolute;left:52%;top:34%;transform:translate(18px,-8px);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(8,9,9,.82);padding:7px 10px;line-height:1.5}
-.pinlabel b{color:#FFD400;font-weight:500}
-.wh{position:absolute;left:16%;top:56%;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#8b969f}
-.facade-cta{position:absolute;left:0;right:0;bottom:22px;display:flex;flex-direction:column;align-items:center;gap:10px}
-.facade-note{position:relative;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8b969f}
-.mapfacade .ed-btn{position:relative}
-@media(max-width:820px){.maprow{grid-template-columns:1fr}.gmap,.mapfacade{min-height:320px}}
-"""
-
-EXTRA_JS = """
-// Facade: build the iframe only when asked, the same way the film players do.
-document.addEventListener('click', e => {
-  const btn = e.target.closest('[data-showmap]'); if (!btn) return;
-  const box = btn.closest('.mapfacade');
-  const f = document.createElement('iframe');
-  f.className = 'gmap'; f.title = 'Map showing 1455 Pennsylvania Avenue NW, Washington DC';
-  f.loading = 'lazy'; f.referrerPolicy = 'no-referrer-when-downgrade'; f.allowFullscreen = true;
-  f.src = MAP_SRC;
-  box.replaceWith(f);
-});
+.pullq{margin:34px 0;border-left:3px solid var(--ac);padding:4px 0 4px 26px;max-width:46ch}
+.pullq blockquote{margin:0;font-family:var(--disp);font-size:clamp(24px,3vw,34px);line-height:1.15;text-transform:uppercase}
+.pullq figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;margin-top:14px;opacity:.75}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:38px;margin-top:34px;border-top:1px solid var(--rule);padding-top:26px}
+.tick{list-style:none;padding:0;margin:14px 0 14px}
+.tick li{font-size:15px;line-height:1.6;padding:9px 0 9px 20px;border-bottom:1px solid var(--rule);position:relative}
+.tick li:before{content:"";position:absolute;left:0;top:17px;width:8px;height:1px;background:var(--ac)}
+.gov{margin-top:34px;border-top:1px solid var(--rule);padding-top:20px;max-width:62ch}
+.method li h3{font-size:22px}
+@media(max-width:820px){.two-col{grid-template-columns:1fr}.method{grid-template-columns:1fr 1fr}}
 """
 
 RECOMMEND = 'C'
 
-TITLE = 'A map on the contact page'
-INTRO = ('The office at 1455 Pennsylvania Avenue NW, two blocks from the White House. Open this in a '
-         'browser with a connection: options A and B load a live Google map, C loads one when you '
-         'press the button. All three use the same address, the same links out, and the same '
-         'surfaces as the rest of the contact page.')
+TITLE = 'What Project Helix is'
+INTRO = ('A description section for /intelligence, after the fusion-center block and before the '
+         'four-layer method grid. Drawn from the February brief. Three depths, same surface and '
+         'type as the rest of the page.')
 
 OPTIONS = [
-    ('A', 'Map beside the address',
-     'A live Google embed filling the left two thirds, the address and links beside it. Reads as '
-     'part of the page rather than an attachment, and the surrounding blocks (the White House, the '
-     'Treasury, Freedom Plaza) are visible at this zoom without labelling them ourselves.',
+    ('A', 'Statement and the question',
+     'The claim, the distinction from event forecasting, the modeling question as a pull quote, and '
+     'the governance line. Shortest and least technical. It says what Helix is without describing '
+     'how it is built, which the page already covers in the layer grid below.',
      PAGE_A, SHARED),
-    ('B', 'Address above, map full width',
-     'The address leads, the map runs the width of the content column underneath. Gives the map the '
-     'most room and works best if you later want a wider view of the federal core. It also pushes '
-     'the map below the fold on a laptop, where it is the thing people came for.',
+    ('B', 'Statement and the architecture',
+     'The claim, then the four layers expanded with the graph and tagging detail from the brief. '
+     'Most informative for an evaluator. It also duplicates the Gather / Connect / Model / Test grid '
+     'that already follows on the page, so one of the two would have to go.',
      PAGE_B, SHARED),
-    ('C', 'Placeholder, map on request  ·  MY PICK',
-     'Identical to A once pressed, but nothing is requested from Google until someone asks for it. '
-     'A Google embed sets cookies and runs third-party script on page load; this is the same facade '
-     'pattern the films already use for YouTube, so the site keeps its no-third-party-on-load rule '
-     'and its consent story stays simple. The placeholder still shows the pin, the address, and the '
-     'White House to the west, and both map links work without pressing anything.',
+    ('C', 'Statement, question, and what goes in and out  ·  MY PICK',
+     'The claim and the question, then a plain account of inputs and outputs, then governance. It '
+     'answers the two things a reader actually asks, what do you feed it and what do you get, '
+     'without restating the architecture grid below or publishing a source list.',
      PAGE_C, SHARED),
 ]
 blocks, extra = [], []
@@ -167,7 +169,6 @@ html = (f'<!doctype html><html lang="en"><head><meta charset="utf-8">'
         f'<meta name="viewport" content="width=device-width,initial-scale=1">'
         f'<title>{TITLE}, options A to {OPTIONS[-1][0]}</title>'
         f'<style>{FACES}{css}{SHELL}{"".join(extra)}</style>'
-        f'<script>const MAP_SRC={_json.dumps(EMBED)};{EXTRA_JS}</script>'
         f'</head><body><div class="mockwrap">'
         f'<div class="mockhead"><p class="optlbl">ILLICIT SHADOWS &middot; /MUSEUM</p>'
         f'<h1>{TITLE}</h1><p>{INTRO}</p></div>{"".join(blocks)}</div></body></html>')

@@ -36,10 +36,10 @@ export function Nav() {
           {NAV.slice(1).map(([href, label]) => (
             <Link key={href} href={href} className={path.startsWith(href) ? 'on' : undefined} onClick={() => setOpen(false)}>{label}</Link>
           ))}
-          <Link href="/contact" className="ed-link navmob" onClick={() => setOpen(false)}>Get in touch {Arrow.upRight}</Link>
+          <Link href="/contact" className="ed-link navmob" onClick={() => setOpen(false)}>Contact {Arrow.upRight}</Link>
         </nav>
         <div className="navright">
-          <Link className="ed-link navcta" href="/contact">Get in touch {Arrow.upRight}</Link>
+          <Link className="ed-link navcta" href="/contact">Contact {Arrow.upRight}</Link>
           <button className="navtoggle" aria-label="Toggle menu" aria-expanded={open} onClick={() => setOpen(!open)}>&#9776;</button>
         </div>
       </div>

@@ -99,8 +99,6 @@ export default async function Investigation({ params }) {
       <section className="wrap s s-ink" id="next">
         <div className="intro">
           <div><span className="kicker">Continue exploring</span><h2>The other<br /><em>investigation.</em></h2></div>
-          <p>Two investigations, one system: the chemicals that move as medicine, and the metal that
-            launders itself.</p>
         </div>
         <div className="nextfilm">
           <Link href={`/film/${other.slug}`}><Pic base={other.image} alt={`${other.title}: ${other.subtitle}`} /></Link>

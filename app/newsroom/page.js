@@ -12,7 +12,7 @@ export default function Newsroom() {
           dark-left composition, the copy in the empty space. */}
       <Hero img="/images/hero-newsroom" mobilePos="58% center" alt="A desk of contact sheets, a field recorder and a notebook under lamplight"
             eyebrow="The wire"
-            title={<>From<br /><span className="y">the shadows.</span></>}
+            title={<>News from<br /><span className="y">the shadows.</span></>}
             lede="Dispatches, press, and releases from the investigations." />
 
       <section className="wrap s s-paper">
