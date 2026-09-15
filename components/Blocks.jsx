@@ -2,6 +2,7 @@
 import { Arrow, Brand, Chevron } from './Icons';
 import site from '../data/site.json';
 import films from '../data/films.json';
+import slate from '../data/slate.json';
 // Shared blocks. Pages compose these; new page types reuse them rather than inventing a fourth treatment.
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -24,38 +25,46 @@ const NAV = [
   ['/books', 'Books'], ['/newsroom', 'Newsroom'], ['/about', 'About'],
 ];
 
-/* Film submenu. Contents come from the data, so a new investigation appears here automatically. */
-const FILM_MENU = [
-  // Released first: the thing people can watch now leads the menu, as it does on the home page.
-  ...[...films].sort((a, b) => (a.status === 'streaming' ? -1 : 1) - (b.status === 'streaming' ? -1 : 1)).map(f => ({
-    href: `/film/${f.slug}`, title: f.title, image: f.image,
-    meta: f.status === 'streaming' ? `Now streaming · ${f.form || f.years}` : `In production · ${f.years}`,
-  })),
-  { href: '/film#development', title: 'Upcoming slate', meta: 'Six investigations in development' },
-];
+/* Film submenu. Built from the data, so a new investigation appears here automatically.
+   Illicit Gold leads: it is the current work. Flip the sort to lead with what is watchable. */
+const FILM_MENU = [...films].sort((a, b) => (a.status === 'in-production' ? -1 : 1) - (b.status === 'in-production' ? -1 : 1))
+  .map(f => ({
+    href: `/film/${f.slug}`, title: f.title, image: f.image, live: f.status === 'streaming',
+    meta: f.status === 'streaming' ? `Released · ${f.form || f.years}` : `In production · ${f.years}`,
+  }));
 
 export function Nav() {
   const path = usePathname();
   const [open, setOpen] = useState(false);
   const [film, setFilm] = useState(false);
-  const [pinned, setPinned] = useState(false);   // opened by the button, so hover cannot close it
   const filmRef = useRef(null);
+  const triggerRef = useRef(null);
 
-  /* Escape closes, and a click anywhere else closes. Hover opens it on a pointer device, but the
-     button is the real control: it works on touch and from the keyboard, and Film stays a link to
-     the index rather than becoming a label that only opens a menu. */
+  /* Click, not hover. A hover menu closes the moment the pointer crosses the gap between the
+     trigger and the panel, and padding does not reliably fix it. Escape, a second click of the
+     trigger, or a click outside all close it; focus returns to the trigger on Escape.
+     The outside-click handler tests containment rather than relying on propagation, so a click on
+     a link inside the panel cannot close the menu before the navigation happens. */
   useEffect(() => {
     if (!film) return;
-    const shut = () => { setFilm(false); setPinned(false); };
-    const onKey = e => { if (e.key === 'Escape') shut(); };
-    const onDown = e => { if (!filmRef.current?.contains(e.target)) shut(); };
+    const onKey = e => {
+      if (e.key === 'Escape') { setFilm(false); triggerRef.current?.focus(); return; }
+      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+      const items = [...(filmRef.current?.querySelectorAll('.fm-link') || [])];
+      if (!items.length) return;
+      e.preventDefault();
+      const i = items.indexOf(document.activeElement);
+      const next = e.key === 'ArrowDown' ? (i + 1) % items.length : (i <= 0 ? items.length - 1 : i - 1);
+      items[next].focus();
+    };
+    const onDown = e => { if (!filmRef.current?.contains(e.target)) setFilm(false); };
     document.addEventListener('keydown', onKey);
     document.addEventListener('pointerdown', onDown);
     return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDown); };
   }, [film]);
-  useEffect(() => { setFilm(false); setPinned(false); setOpen(false); }, [path]);
+  useEffect(() => { setFilm(false); setOpen(false); }, [path]);
 
-  const close = () => { setOpen(false); setFilm(false); setPinned(false); };
+  const close = () => { setOpen(false); setFilm(false); };
 
   return (
     <header className="nav">
@@ -64,21 +73,27 @@ export function Nav() {
         <nav className={`links${open ? ' open' : ''}`} aria-label="Primary">
           {NAV.slice(1).map(([href, label]) => (
             href === '/film' ? (
-              <span className="hasmenu" key={href} ref={filmRef}
-                    onMouseEnter={() => setFilm(true)} onMouseLeave={() => { if (!pinned) setFilm(false); }}>
+              <span className="hasmenu" key={href} ref={filmRef}>
                 <Link href={href} className={path.startsWith(href) ? 'on' : undefined} onClick={close}>{label}</Link>
-                <button type="button" className="menutoggle" aria-expanded={film || pinned}
+                <button type="button" className="menutoggle" ref={triggerRef} aria-expanded={film}
                         aria-label={film ? 'Hide film menu' : 'Show film menu'}
-                        onClick={() => { const next = !pinned; setPinned(next); setFilm(next); }}>{Chevron}</button>
+                        onClick={() => setFilm(v => !v)}>{Chevron}</button>
                 <div className={`filmmenu${film ? ' on' : ''}`}>
                   <div className="filmmenu-inner">
                     {FILM_MENU.map(m => (
-                      <Link className={`fm-item${m.image ? '' : ' plain'}`} href={m.href} key={m.href} onClick={close}>
-                        {m.image && <Pic base={m.image} alt="" />}
-                        <span><b>{m.title}</b><em>{m.meta}</em></span>
+                      <Link className="fm-link fm-item" href={m.href} key={m.href} onClick={close}>
+                        <Pic base={m.image} alt="" />
+                        <span>
+                          <b><i className={`dot${m.live ? ' live' : ''}`} aria-hidden="true" />{m.title}</b>
+                          <em>{m.meta}</em>
+                        </span>
                       </Link>
                     ))}
-                    <Link className="fm-all" href="/film" onClick={close}>All investigations {Arrow.upRight}</Link>
+                    <span className="fm-div">In development</span>
+                    {slate.map(x => (
+                      <Link className="fm-link fm-slate" href="/film#development" key={x.slug} onClick={close}>{x.title}</Link>
+                    ))}
+                    <Link className="fm-link fm-all" href="/film" onClick={close}>All investigations {Arrow.upRight}</Link>
                   </div>
                 </div>
               </span>

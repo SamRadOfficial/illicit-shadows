@@ -297,14 +297,18 @@ where a page still needs them. The system:
   `.ed-link` (text with an accent underline and an arrow). Every arrow is an inline SVG from
   `components/Icons.jsx` (`Arrow.upRight`, `.down`, `.right`, `.left`, `.close`): no Unicode arrows,
   ever. Brand marks live in `Brand`.
-- **Film submenu** (15 Sep): covers for each investigation plus the upcoming slate, built from
-  `films.json` so a new film appears automatically, released first. Hover opens it on a pointer;
-  the chevron **button** opens it on touch and from the keyboard and *pins* it, so hover cannot
-  close what the button opened, which was the first bug in this build. Escape and an outside click
-  close it. **`Film` itself stays a link to the index.** Below 820px it is an indented sub-list
-  inside the hamburger panel, not an overlay.
-  If Museum or Books ever get the same treatment, they should use this component rather than a
-  second pattern.
+- **Film submenu** (15 Sep, variant A): a vertical panel under Film, **opened by click, never
+  hover**. A hover menu closes the instant the pointer crosses the gap between trigger and panel and
+  no amount of padding fixes it reliably. Second click, Escape, or an outside click closes it;
+  Escape returns focus to the trigger; ArrowUp/ArrowDown move through the items.
+  **The outside-click handler tests `filmRef.contains(e.target)` rather than relying on event
+  propagation.** If it is ever rewritten to close on any document click, clicks on links inside the
+  panel will close the menu before the navigation runs, and the menu will look broken. That is the
+  usual cause of a dropdown that will not stay open.
+  Order is Illicit Gold, then Chemical Cartels, then the six development subjects in a quieter
+  weight; the in-production work leads because it is the current one. Status dots: alert red in
+  production, signal yellow released. No numbering. `Film` itself stays a link to the index. Below
+  820px the panel is an indented sub-list inside the hamburger.
 - **Shell.** Nav is centred with a quiet "Get in touch" arrow link on the right; the mobile menu is
   the same list plus that link. Footer leads with the **wordmark large**; *Media. Knowledge. Intelligence.* sits under it as a
   small uppercase subtitle, then *Everything is connected.* in mono, three quiet links, and a
@@ -349,6 +353,10 @@ where a page still needs them. The system:
   `founders-white-house` above the founder portraits on `/about`. The White House still was tried
   as the About hero and rejected: Sam stands left of centre and any left-aligned headline lands on
   her. It works where nothing sits on it.
+- **Cover title colour is a live decision.** `public/images/variants/red/` and `.../yellow/` hold
+  both sets of the twelve Chemical Cartels covers; the live files are whichever set was last copied
+  over `public/images/`. Currently **red**. Switching means copying a variant folder and
+  regenerating every `.webp` sibling; the JPEG alone will not change what the browser serves.
 - **Film covers** were reissued 15 Sep with unified branding: "ICAIE & RADOC PRESENT" top left, a
   stacked ILLICIT/SHADOWS wordmark bottom right, **no circular roundel** and **no burned-in
   IN DEVELOPMENT**. All 20 covers plus `helix-ai` were replaced at 1600x900.

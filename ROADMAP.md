@@ -158,6 +158,20 @@ ships. Decisions it needs from the owner:
       treatments; run the contrast checks the handoff lists (4.5:1 body, 3:1 large); keep the MIS
       eclipse on a black panel wherever it appears near cream or slate.
 
+## Decide: red or yellow Chemical Cartels titles
+
+**Owner decision 15 Sep: stay red for now.** Revisit when there is a reason to.
+
+- [ ] Both variants are in the repository under `public/images/variants/red/` and
+      `.../yellow/`, twelve covers each, with `variants/README.json` holding the checksums. The
+      **live files are the red set**; the yellow package supersedes them only if you say so.
+      A yellow mockup of the real site (home, `/film`, the investigation page, a short page) was
+      produced on 15 Sep. To switch: copy one variant folder over `public/images/`, regenerate each
+      `.webp` sibling, rebuild.
+      My read: yellow unifies the film set with Illicit Gold and the wordmark, but it also spends
+      the signal colour on artwork, where red currently distinguishes the fentanyl investigation
+      from the gold one at a glance. Worth deciding with both mockups side by side.
+
 ## Replace site images
 
 An image review, in priority order. Two standing rules: anything that depicts the museum or an

@@ -1,0 +1,53 @@
+{
+  "note": "Two title-colour variants of the Chemical Cartels covers. The live files in public/images/ are whichever set is active; these folders hold both.",
+  "files": {
+    "film-chemical-cartels.jpg": {
+      "red": "7da8ff94",
+      "yellow": "1b6f1e54"
+    },
+    "short-american-fallout.jpg": {
+      "red": "563e4e5b",
+      "yellow": "9297f405"
+    },
+    "short-arctic-frontlines.jpg": {
+      "red": "cab0a614",
+      "yellow": "e742cff0"
+    },
+    "short-dirty-profits.jpg": {
+      "red": "a595714e",
+      "yellow": "ad1a05f0"
+    },
+    "short-illicit-beachhead.jpg": {
+      "red": "d5be45d3",
+      "yellow": "4beb29d0"
+    },
+    "short-invisible-source.jpg": {
+      "red": "35d7491f",
+      "yellow": "60252add"
+    },
+    "short-lab-next-door.jpg": {
+      "red": "13c1c07b",
+      "yellow": "2ce9dbe5"
+    },
+    "short-leaky-port.jpg": {
+      "red": "68875ccf",
+      "yellow": "eafec7a5"
+    },
+    "short-next-wave.jpg": {
+      "red": "6b790df4",
+      "yellow": "dbad552c"
+    },
+    "short-parcel-pipeline.jpg": {
+      "red": "ecb2236d",
+      "yellow": "2b0aab48"
+    },
+    "short-syndicates.jpg": {
+      "red": "c9024652",
+      "yellow": "88c05ab3"
+    },
+    "short-the-cartels.jpg": {
+      "red": "09105645",
+      "yellow": "c735cbd7"
+    }
+  }
+}

@@ -1,17 +1,24 @@
-Intelligence: What it is becomes its own section
+Film submenu: vertical panel, click to open
 
-- Removed the "works the way an intelligence fusion center works" paragraph
-  from the MISTIC block.
-- "What it is" is now its own slate section: kicker "Project Helix · Predictive
-  Convergence System", heading "A system for the next move", the statement and
-  the modeling question.
-- Removed the what-goes-in / what-comes-out lists and the governance note.
-- Removed the four-layer deck line, and "Project Helix / How it works" moves to
-  the light surface.
+- Replaces the hover panel with variant A: a 300px vertical panel under Film,
+  opened by clicking the chevron. Hover no longer opens it. A hover menu closes
+  the moment the pointer crosses the gap between trigger and panel, which no
+  amount of padding fixes reliably.
+- Closes on a second click, on Escape (returning focus to the trigger), and on
+  an outside click. ArrowUp and ArrowDown move through the items.
+- The outside-click handler tests containment rather than relying on event
+  propagation, so clicking a link inside the panel navigates instead of closing
+  the menu first. Verified.
+- Order: Illicit Gold, then Chemical Cartels, then the six development subjects
+  in a quieter weight, then All investigations. Status dots, alert red in
+  production and signal yellow released. No numbering.
+- Below 820px the panel is an indented sub-list inside the hamburger.
 
-Page now reads: hero, MISTIC (light), What it is (slate), How it works (light),
-cascade (dark), what the model is for (slate), convergence (light), CTA.
+Covers
+- Chemical Cartels titles stay red. Both variants remain archived under
+  public/images/variants/; the decision is recorded on the roadmap.
 
-Verified: build 30 pages, 107 asset references present. Surfaces and removals
-read back from the DOM; contrast checked on the new slate section, nothing
-below 4.5:1.
+Verified: build 30 pages, 107 asset references present. Closed on load, hover
+does not open, click opens, second click and outside click and Escape all close,
+focus returns to the trigger, arrow keys move, a link inside the panel navigates
+to /film/illicit-gold, mobile submenu opens with no horizontal overflow.
