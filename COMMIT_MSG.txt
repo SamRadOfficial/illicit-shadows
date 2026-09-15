@@ -1,17 +1,17 @@
-Film submenu with covers
+Intelligence: What it is becomes its own section
 
-- The Film nav item gains a panel with key art for each investigation, the
-  upcoming slate, and a link to the index. Built from films.json, released
-  first, so a new film appears without touching the nav.
-- Hover opens it on a pointer device; the chevron button opens it on touch and
-  from the keyboard and pins it open, so hover cannot close what the button
-  opened. Escape and an outside click close it; navigating closes it. Film
-  itself stays a link to /film.
-- Below 820px it is an indented sub-list inside the hamburger panel.
-- Items stack the cover above the label; side by side the titles wrapped in the
-  narrow columns.
+- Removed the "works the way an intelligence fusion center works" paragraph
+  from the MISTIC block.
+- "What it is" is now its own slate section: kicker "Project Helix · Predictive
+  Convergence System", heading "A system for the next move", the statement and
+  the modeling question.
+- Removed the what-goes-in / what-comes-out lists and the governance note.
+- Removed the four-layer deck line, and "Project Helix / How it works" moves to
+  the light surface.
 
-Verified: build 30 pages, 107 asset references present. Closed on load, hover
-opens, button opens and survives pointer-leave, Escape closes, navigation
-closes, Film href intact, both covers loaded, mobile submenu opens with no
-horizontal overflow.
+Page now reads: hero, MISTIC (light), What it is (slate), How it works (light),
+cascade (dark), what the model is for (slate), convergence (light), CTA.
+
+Verified: build 30 pages, 107 asset references present. Surfaces and removals
+read back from the DOM; contrast checked on the new slate section, nothing
+below 4.5:1.
