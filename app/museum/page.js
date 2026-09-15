@@ -44,8 +44,15 @@ export default function Museum() {
         <div>
           <span className="kicker">Our origins</span>
           <h2>Founded in<br /><em>the digital world.</em></h2>
-          <p>David M. Luna and Sam Rad founded MIS in 2025 to make the harms of crime convergence visible to a wider public.</p>
-          <p>Their shared vision brings together field investigations, exhibitions, dialogues, and research in a museum built for global access.</p>
+          <p className="deck">MIS is a first-of-its-kind virtual museum dedicated to educating global
+            communities on the harms and impacts to international security of crime convergence and
+            illicit economies around the world.</p>
+          <p>Through exhibitions, research, and public programming, MIS examines how crime
+            convergence, from narcotics and counterfeit goods to human and environmental
+            trafficking, threatens global communities and international security.</p>
+          <p>David M. Luna and Sam Rad founded MIS in 2025 to make those harms visible to a wider
+            public, bringing field investigations, exhibitions, dialogues, and research together in
+            a museum built for global access.</p>
           <Link className="ed-link" href="/about">Meet the founders {Arrow.upRight}</Link>
         </div>
       </section>

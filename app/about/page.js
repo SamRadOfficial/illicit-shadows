@@ -90,13 +90,13 @@ export default function About() {
         <div className="intro"><div><span className="kicker">Partners</span><h2>Built with<br /><em>ICAIE and RADOC.</em></h2></div></div>
         <div className="partners">
           <article>
-            <Pic base="/logos/icaie-square" className="plogo" alt="ICAIE, International Coalition Against Illicit Economies" />
+            <span className="plogo"><Pic base="/logos/icaie-square" alt="ICAIE, International Coalition Against Illicit Economies" /></span>
             <h3>ICAIE</h3>
             <p>International Coalition Against Illicit Economies. Confronting illicit trade, crime, and threat finance. Washington, DC.</p>
             <a className="ed-link" href="https://icaie.com" target="_blank" rel="noopener noreferrer">icaie.com {Arrow.upRight}</a>
           </article>
           <article>
-            <div className="radoc" style={{ fontSize: 28, marginBottom: 18 }} aria-label="RADOC"><b>RAD</b><em>OC</em></div>
+            <span className="plogo plogo-text"><span className="radoc" aria-label="RADOC"><b>RAD</b><em>OC</em></span></span>
             <h3>RAD Original Creations</h3>
             <p>A meta-media studio producing the Illicit Shadows films. NYC, Washington, DC, and London.</p>
             <a className="ed-link" href="https://radoc.co" target="_blank" rel="noopener noreferrer">radoc.co {Arrow.upRight}</a>
