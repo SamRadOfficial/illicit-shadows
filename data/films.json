@@ -3,7 +3,7 @@
     "slug": "illicit-gold",
     "oldSlug": "golden-handcuffs",
     "title": "Illicit Gold",
-    "subtitle": "Gold trafficking and the Amazon's shadow mining empire",
+    "subtitle": "The rush to cash in on the criminal shadows of El Dorado",
     "line": "Gold from the Amazon is dug by the poor, taxed by armed groups, laundered through a refining chokepoint, and sold into markets that cannot tell where it came from. No test on earth can determine where a bar was mined.",
     "status": "in-production",
     "places": [
@@ -18,14 +18,13 @@
       "environmental-crime"
     ],
     "image": "/images/film-illicit-gold",
-    "synopsis": "Gold does not rust, and it launders once. Illicit Gold follows the metal from the mines of Colombia and the Brazilian Amazon to the refineries of Switzerland: the armed groups that now earn more from gold than from cocaine, the narcogarimpo economy of diesel and mercury, the refining chokepoint that buys in good faith, and the forensic effort to give a bar of gold a fingerprint. Three countries. Sam Rad on camera, David M. Luna as the institutional voice.",
+    "synopsis": "Gold has never been worth more, and almost none of it has to say where it came from. In the Amazon, that gap has become an industry. We follow a single trade from the mud it comes out of to the wedding ring it ends up on: the garimpeiro who mixes mercury with his bare hands and eats fish from the river he poisons, the armed groups who don't dig but sell the diesel and collect the tax, the airstrip no inspector visits, and the furnace where the crime quietly ends and a commodity begins.\n\nBecause that's the part nobody talks about. There is no test on earth that can determine where a bar of gold was mined. Once it's melted, everyone's gold is the same gold, and every person who handles it afterward is telling the truth. We trace what that buys: a cartel the United States calls a terrorist organization, a state that launders through its own central bank, a shipment of Iranian oil, a payment to Hezbollah, a coin sold by the U.S. Mint with an eagle stamped on it. And in a field in Colombia, we find a man with a gamma-ray detector pulling land mines out of a farm, because gold routes are worth protecting with explosives.\n\nThis isn't a story about gold. It's about what happens when a crime becomes a commodity, and who pays for it.",
     "locations": [
       "Meta, Colombia",
       "Para, Brazil",
       "Ticino, Switzerland"
     ],
     "host": "Sam Rad",
-    "voice": "David M. Luna",
     "trailer": {
       "target": "3:00",
       "status": "script in draft"

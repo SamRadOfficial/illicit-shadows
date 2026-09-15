@@ -1,19 +1,18 @@
-Replace all film covers and the Helix graphic
+Illicit Gold: full synopsis, new subtitle, and its own next-film section
 
-- 20 reissued covers plus helix-ai installed at the supplied sizes: 11 Chemical
-  Cartels shorts, six upcoming investigations, both films, the trailer. All
-  .webp siblings regenerated from the new files; a stale WebP would otherwise
-  keep being served in preference to the JPEG.
-- The covers now carry unified branding (ICAIE & RADOC PRESENT top left,
-  stacked wordmark bottom right, no roundel) and the upcoming covers no longer
-  carry a burned-in IN DEVELOPMENT stamp.
-- Because that status left the artwork, the upcoming grid on /film states it in
-  the UI with an "In development" chip on each of the six. Removing the label
-  from the art does not mean anything has been released.
-- Helix graphic: new conceptual system view, with a caption stating the
-  connections illustrate a concept rather than measured data or a validated
-  forecast, and a full-size link for the legend. Alt text updated.
+- films.json: subtitle becomes "The rush to cash in on the criminal shadows of
+  El Dorado"; the synopsis is the owner's three-paragraph copy, verbatim apart
+  from punctuation normalised to house style. The "voice" credit (David M. Luna
+  as institutional voice) is removed from the data and the credits block.
+- The investigation template splits the synopsis on real paragraph breaks
+  rather than guessing at sentence boundaries, and sets the subtitle as a deck
+  without a trailing period.
+- "Continue exploring" becomes its own titled section on the ink surface, with
+  a heading, a line on why the two investigations belong together, the other
+  film's cover, and its status as a chip.
+- Stats grid uses auto-fit columns; four fixed columns mangled the figures at
+  390px ("$12 to $48 billion a year" broke one word per line).
 
-Verified: build 30 pages, 103 asset references present. Every cover checked on
-home, /film, /film/chemical-cartels and a short page: zero broken images, WebP
-served from the new files. Six status chips counted.
+Verified: build 30 pages, 103 asset references present. Three paragraphs
+rendered, credits confirmed without the voice line, both investigation pages
+checked at 1440 and 390 with no horizontal overflow.

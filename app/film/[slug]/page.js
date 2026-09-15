@@ -19,27 +19,26 @@ export default async function Investigation({ params }) {
   const other = films.find(x => x.slug !== slug);
   const live = f.status === 'streaming';
   const shorts = (f.segments || []).filter(s => s.slug);
-  const paras = f.synopsis.split(/(?<=\.)\s+(?=[A-Z])/).reduce((acc, sent, i) => {
-    // Two paragraphs from the synopsis: the first sentence stands alone, the rest follow.
-    if (i === 0) acc.push(sent); else acc[acc.length - 1 < 1 ? 0 : 1] = (acc[1] || '') + (acc[1] ? ' ' : '') + sent;
-    return acc;
-  }, []);
+  const paras = f.synopsis.split(/\n{2,}/).map(t => t.trim()).filter(Boolean);
 
   return (
     <>
       <section className="wrap s s-ink detail-title">
         <span className="kicker"><Link href="/film">Film</Link> <span className="kmuted">/ {live ? 'Now streaming' : 'In production'} · {f.form || f.years}</span></span>
         <h1>{f.title}</h1>
-        <p>{f.subtitle}.</p>
+        <p className="deck">{f.subtitle}</p>
       </section>
 
       <section className="wrap s s-ink" style={{ paddingTop: 0 }}>
-        {live
-          ? <VideoEmbed modal className="wide ep-player" big id={f.youtubeId} list={f.playlist} image={f.image} alt={`${f.title} title card`} title={f.title} channel={f.youtube || site.social.youtube} />
-          : <div className="wide"><Pic base={f.image} alt={`${f.title} title card`} priority /><span className="play-marker">In production</span></div>}
+        {/* Not playable: the key art is the poster, and the films are watched from the rows below,
+            one at a time. A playlist button here opened a player people then had to dismiss. */}
+        <div className="wide">
+          <Pic base={f.image} alt={`${f.title} title card`} priority />
+          {!live && <span className="play-marker">In production</span>}
+        </div>
         <div className="detail-meta">
           <span>{f.places.join(' · ')} · {f.years}</span>
-          {live && shorts[0] && <Link className="ed-link" href={`/film/${f.slug}/${shorts[0].slug}`}>Watch the first film {Arrow.upRight}</Link>}
+          {live && shorts[0] && <a className="ed-link" href="#shorts">Watch the films {Arrow.down}</a>}
           {!live && <Prov status="investigating">In production</Prov>}
         </div>
       </section>
@@ -83,7 +82,7 @@ export default async function Investigation({ params }) {
 
       {f.stats && <section className="wrap s s-slate compact">
         <span className="kicker">By the numbers</span>
-        <div className="method" style={{ gridTemplateColumns: `repeat(${Math.min(f.stats.length, 4)},minmax(0,1fr))` }}>
+        <div className="method stats">
           {f.stats.map(st => {
             const src = sources.find(x => x.id === st.source);
             return (
@@ -97,17 +96,23 @@ export default async function Investigation({ params }) {
         </div>
       </section>}
 
-      <section className="wrap s s-slate compact">
+      <section className="wrap s s-ink" id="next">
+        <div className="intro">
+          <div><span className="kicker">Continue exploring</span><h2>The other<br /><em>investigation.</em></h2></div>
+          <p>Two investigations, one system: the chemicals that move as medicine, and the metal that
+            launders itself.</p>
+        </div>
         <div className="nextfilm">
           <Link href={`/film/${other.slug}`}><Pic base={other.image} alt={`${other.title}: ${other.subtitle}`} /></Link>
           <div>
-            <span className="kicker">Continue exploring / {other.status === 'streaming' ? 'Now streaming' : 'In production'} · {other.years}</span>
-            <h2>{other.title}</h2>
+            <p className="status-chip">{other.status === 'streaming' ? 'Now streaming' : 'In production'} &middot; {other.years}</p>
+            <h3 style={{ fontSize: 34 }}>{other.title}</h3>
             <p>{other.line}</p>
             <Link className="ed-link" href={`/film/${other.slug}`}>Explore the investigation {Arrow.upRight}</Link>
           </div>
         </div>
       </section>
+
     </>
   );
 }

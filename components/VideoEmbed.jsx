@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { Pic } from './Blocks';
 
 /**
@@ -16,6 +17,8 @@ import { Pic } from './Blocks';
  */
 export function VideoEmbed({ id, list, image, alt, title, channel, className = '', big = false, modal = false, variant, meta }) {
   const [playing, setPlaying] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   const closeRef = useRef(null);
   const openerRef = useRef(null);
 
@@ -70,26 +73,30 @@ export function VideoEmbed({ id, list, image, alt, title, channel, className = '
   ) : null;
 
   if (modal) {
+    /* The overlay is rendered into document.body, not in place. Editorial sections isolate their
+       stacking context, so a lightbox left inside one paints beneath every later section while
+       still locking scroll: the page appears frozen with the video showing further down. */
+    const overlay = playing && (
+      <div className="lightbox" role="dialog" aria-modal="true" aria-label={title}
+           onClick={e => { if (e.target === e.currentTarget) setPlaying(false); }}>
+        <div className="lightbox-inner">
+          <div className="lightbox-bar">
+            <span className="lightbox-title">{title}</span>
+            <button type="button" ref={closeRef} className="lightbox-close"
+                    onClick={() => setPlaying(false)} aria-label="Close video">&times;</button>
+          </div>
+          <div className="lightbox-frame">
+            <iframe src={src} title={title} allowFullScreen
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
+          </div>
+        </div>
+      </div>
+    );
     return (
       <>
         {poster}
         {control}
-        {playing && (
-          <div className="lightbox" role="dialog" aria-modal="true" aria-label={title}
-               onClick={e => { if (e.target === e.currentTarget) setPlaying(false); }}>
-            <div className="lightbox-inner">
-              <div className="lightbox-bar">
-                <span className="lightbox-title">{title}</span>
-                <button type="button" ref={closeRef} className="lightbox-close"
-                        onClick={() => setPlaying(false)} aria-label="Close video">&times;</button>
-              </div>
-              <div className="lightbox-frame">
-                <iframe src={src} title={title} allowFullScreen
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
-              </div>
-            </div>
-          </div>
-        )}
+        {mounted && overlay ? createPortal(overlay, document.body) : null}
       </>
     );
   }

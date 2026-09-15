@@ -273,6 +273,13 @@ file about the earlier layout (card grids, `.head` section bars, `band-raised`, 
 breaks, the multi-column footer) describes components that are now either unused or retained only
 where a page still needs them. The system:
 
+- **The lightbox renders into `document.body` via a portal.** Editorial sections isolate their
+  stacking context, so an overlay left in place paints beneath every later section while still
+  locking scroll: the page looks frozen with the video showing somewhere down the page. That is
+  exactly what shipped on `/film/chemical-cartels`. Keep the portal.
+- **The investigation hero is not playable.** The key art is a poster; the films are watched from
+  the rows below, one at a time, and the meta line links down to them. A playlist player in the
+  hero opened something people then had to dismiss.
 - **The surface layer must not use `z-index:-1`.** A negative layer vanishes behind any ancestor
   that creates a stacking context, which is how `/film/chemical-cartels` shipped with black text on
   a black page after deploy while rendering correctly in local preview. `.s` is `isolation:isolate`,

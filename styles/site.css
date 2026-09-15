@@ -701,6 +701,8 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .upcoming p{font-size:13px;margin-top:8px}
 .method{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;padding:0;margin:0}
 .method li{border-top:1px solid var(--rule);padding-top:15px}
+/* Figures wrap badly in four narrow columns; let them find their own width. */
+.method.stats{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
 .method .n{font-family:var(--mono);color:var(--ac);font-size:12px;display:block;margin-bottom:24px}
 .method p{font-size:13px;margin-top:12px}
 .halls-ed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px 24px;margin-bottom:28px}
@@ -841,6 +843,7 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
   .pillar-grid,.pair,.feature,.feature.reverse,.two,.museum-feature,.reading-pair,.three,.upcoming,.method,.halls-ed,.origins,.two-features,.book-feature,.sequels,.signup-band,.founders,.partners,.contact-layout,.reading,.nextcard-ed{grid-template-columns:1fr}
   .wire-teaser{border-left:0;padding-left:0;border-top:1px solid var(--rule);padding-top:28px}
   .cta-band,.next-strip{flex-direction:column;align-items:flex-start}
+  .method,.method.stats{grid-template-columns:1fr 1fr;gap:20px}
   .argument article{grid-template-columns:36px 1fr}
   .argument article p{grid-column:2}
   .short-row{grid-template-columns:28px 1fr;gap:10px 14px;align-items:start}
