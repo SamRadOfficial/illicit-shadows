@@ -329,6 +329,11 @@ where a page still needs them. The system:
   right, via a plain `<img>`: `Pic` emits a WebP source for every base and an SVG has none.
 - `/books` hero uses `variant="soft"`, a lighter veil, because the art is dark on its left by
   nature and the standard gradient made it read as a rendering fault.
+- Two field stills from the July 2024 DC shoot: `hero-contact` (the Reflecting Pool walk, **mirrored**
+  so the founders sit right of the copy; the Monument is symmetric so the flip is invisible) and
+  `founders-white-house` above the founder portraits on `/about`. The White House still was tried
+  as the About hero and rejected: Sam stands left of centre and any left-aligned headline lands on
+  her. It works where nothing sits on it.
 - `HallsEd` is the phase toggle over `halls.json`; `NewsIndex` is the newsroom filter. Both are
   small client components; everything else is server-rendered.
 

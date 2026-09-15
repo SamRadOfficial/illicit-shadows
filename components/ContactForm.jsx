@@ -11,10 +11,11 @@ import site from '../data/site.json';
  * identical emails. `company` is a honeypot: a field no human sees and most bots fill in.
  */
 const ROUTES = [
+  ['investment', 'Investment'],
+  ['film', 'Film'],
+  ['museum', 'Museum'],
+  ['helix', 'Helix'],
   ['advisory', 'Advisory and briefings'],
-  ['helix', 'Helix subscription'],
-  ['donor', 'Founding donor'],
-  ['ep', 'Executive producer'],
   ['press', 'Press enquiry'],
   ['other', 'Something else'],
 ];

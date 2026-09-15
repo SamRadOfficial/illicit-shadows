@@ -600,6 +600,12 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 /* Museum hero: the vector eclipse, no plate, top right. Hidden below 820px where it would sit on the copy. */
 .hero-mark{position:absolute;right:clamp(20px,4vw,56px);top:clamp(20px,4vw,48px);width:clamp(84px,9vw,132px);z-index:3;pointer-events:none}
 .hero-mark img{width:100%;height:auto;display:block}
+.founders-still{margin:0 0 36px}
+.founders-still img{width:100%;aspect-ratio:2.2;object-fit:cover;object-position:center 32%;display:block}
+.founders-still figcaption{margin-top:10px}
+/* Narrow hero copy for photographs whose subjects start left of centre (About). */
+.hero.narrow .disp{max-width:11ch}
+.hero.narrow .lede{max-width:34ch}
 /* Books hero: the art is dark left by nature; a lighter veil keeps the window in the frame. */
 .hero.soft .veil{background:linear-gradient(90deg,rgba(8,9,9,.78) 0%,rgba(8,9,9,.42) 34%,rgba(8,9,9,.04) 70%)}
 .hero.soft .bg img{opacity:.9}

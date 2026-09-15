@@ -5,23 +5,24 @@ import { ContactForm } from '../../components/ContactForm';
 export const metadata = { title: 'Contact' };
 
 const OFFERS = [
-  ['Advisory & briefings', 'Strategic guidance on exposure and convergence risk.'],
-  ['Helix access', 'Enterprise intelligence for government and industry.'],
-  ['Museum partnerships', 'Support the public mission as a founding donor.'],
-  ['Film partnerships', 'Collaborate on an investigation or across the slate.'],
+  ['Investment', 'Support our cause and mission.'],
+  ['Film', 'Collaborate on an investigation or across the slate, as executive producer or sponsor.'],
+  ['Museum', 'Back the Museum of Illicit Shadows as a founding donor or institutional partner.'],
+  ['Helix', 'Intelligence access and briefings for government, international organizations, and industry.'],
+  ['Advisory and briefings', 'Strategic guidance on illicit-economy exposure and convergence risk.'],
 ];
 
 export default function Contact() {
   return (
     <>
-      <Hero img="/images/hero-contact" mobilePos="60% center" alt="A door opening onto a lit meeting room with an evidence wall and a city window" variant="short"
+      <Hero img="/images/hero-contact" pos="70% 88%" mobilePos="82% 90%" alt="David M. Luna and Sam Rad walking beside the Reflecting Pool, the Washington Monument ahead"
             eyebrow="Work with us"
             title={<>Start a<br /><span className="y">conversation.</span></>}
-            lede="Bring us a question, a collaboration, or a challenge. We will connect you with the right principal." />
+            lede="Support our mission, join our cause, bring us a question, a collaboration, or a challenge." />
 
       <section className="wrap s s-paper contact-layout">
         <div>
-          <span className="kicker">Four ways to connect</span>
+          <span className="kicker">Five ways to connect</span>
           <div className="offers">
             {OFFERS.map(([h, d], i) => <article key={h}><span>{String(i + 1).padStart(2, '0')}</span><div><h3>{h}</h3><p>{d}</p></div></article>)}
           </div>

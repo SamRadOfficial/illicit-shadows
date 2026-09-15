@@ -1,32 +1,17 @@
-Owner review pass: film, nav, museum, books, about, investigation page
+Contact: field-still hero, new copy, five ways to connect
 
-Film
-- Three-up strip now carries "All 11 films" with the form as its kicker, so the
-  route to the full list is visible without listing eleven on the index.
-
-Nav
-- Links 14.5px (was 12), contact link 13.5px.
-
-Museum
-- "Make the invisible undeniable."
-- Vector eclipse mark, transparent, top right of the hero.
-- Gift-shop band: "Shop MIS", opening with Phase I, enquiries to /contact.
-- Giving levels removed from the donor band.
-
-Books
-- Umbra Circle leads; the trilogy render follows as a header with "The circle
-  widens" on the left, then the two sequels.
-- Hero uses a lighter veil so the art's dark left reads as the art, not a fault.
+- Hero is the July 2024 Reflecting Pool still, mirrored so the founders sit on
+  the right of the frame beneath the copy, cropped low so they stay in view.
+- Lede: "Support our mission, join our cause, bring us a question, a
+  collaboration, or a challenge."
+- Five ways to connect: Investment, Film, Museum, Helix, Advisory and
+  briefings. The form's route chips match the same five, plus Press and
+  Something else.
 
 About
-- Statement routes read MEDIA · KNOWLEDGE · INTELLIGENCE; the pillars keep
-  WATCH · EXPLORE · MODEL.
-- Pillars on cream as on home; who-we-work-with on black.
-- The original four sector lists restored (Government, International
-  organizations, Industry, Civil society).
+- The White House still sits above the founder portraits with a dated
+  caption. It was tried as the hero and rejected: Sam is left of centre and the
+  headline landed on her. The investigation-room render stays as the hero.
 
-Investigation page
-- "Continue exploring" shows the other film's cover, not a text strip.
-
-Verified: build 30 pages, 101 asset references present. Surfaces, routes and
-nav size read back from the DOM; changed areas rendered at 1440.
+Verified: build 30 pages, 103 asset references present. Offers and chips read
+back from the DOM; both pages rendered at 1440.

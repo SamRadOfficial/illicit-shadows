@@ -44,6 +44,9 @@ export default function About() {
 
       <section className="wrap s s-ink" id="founders">
         <div className="intro"><div><span className="kicker">The founders</span><h2>Different disciplines.<br /><em>Shared purpose.</em></h2></div></div>
+        {/* Field still from the 2024 shoot: the two founders at the White House fence. Nothing sits
+            on it; the photograph's subjects are left of centre and would fight any headline. */}
+        <figure className="founders-still"><Pic base="/images/founders-white-house" alt="David M. Luna and Sam Rad in conversation outside the White House" /><figcaption className="fine">Washington, DC, July 2024</figcaption></figure>
         <div className="founders">
           {team.map(t => (
             <article key={t.slug}>
