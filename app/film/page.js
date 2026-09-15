@@ -36,11 +36,7 @@ export default function Film() {
             <Link className="ed-link" href={`/film/${released.slug}`}>Explore the investigation {Arrow.upRight}</Link>
           </div>
         </div>
-        <div className="intro" style={{ marginTop: 38, marginBottom: 0 }}>
-          <div><span className="kicker">{released.form}</span></div>
-          <Link className="ed-link" href={`/film/${released.slug}#shorts`}>All {released.segments.length} films {Arrow.upRight}</Link>
-        </div>
-        <div className="three" style={{ marginTop: 18 }}>
+        <div className="three">
           {shorts.map(s => (
             <Link className="tile" href={`/film/${released.slug}/${s.slug}`} key={s.slug}>
               <Pic base={s.image} alt={`${s.title} title card`} />
@@ -49,6 +45,7 @@ export default function Film() {
             </Link>
           ))}
         </div>
+        <p style={{ marginTop: 22 }}><Link className="ed-link" href={`/film/${released.slug}#shorts`}>All {released.segments.length} films {Arrow.upRight}</Link></p>
       </section>
 
       <section className="wrap s s-ink feature reverse" id="gold">

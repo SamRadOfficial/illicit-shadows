@@ -1,17 +1,7 @@
-Contact: field-still hero, new copy, five ways to connect
+Film: "All 11 films" link moves below the three covers
 
-- Hero is the July 2024 Reflecting Pool still, mirrored so the founders sit on
-  the right of the frame beneath the copy, cropped low so they stay in view.
-- Lede: "Support our mission, join our cause, bring us a question, a
-  collaboration, or a challenge."
-- Five ways to connect: Investment, Film, Museum, Helix, Advisory and
-  briefings. The form's route chips match the same five, plus Press and
-  Something else.
+- The link now sits under The Invisible Source at the foot of the strip, the
+  natural next step after the three previews, rather than in a header row
+  above them. The kicker row is gone.
 
-About
-- The White House still sits above the founder portraits with a dated
-  caption. It was tried as the hero and rejected: Sam is left of centre and the
-  headline landed on her. The investigation-room render stays as the hero.
-
-Verified: build 30 pages, 103 asset references present. Offers and chips read
-back from the DOM; both pages rendered at 1440.
+Verified: build 30 pages, 103 asset references present.
