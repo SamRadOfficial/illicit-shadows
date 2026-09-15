@@ -166,6 +166,18 @@ out in white, the working detail beside it, and a one-line handoff, "That conver
 straight into the MISTIC panels below. **MISTIC is expanded once**, in `Pillars`; the statement no
 longer repeats the expansion, which is what made the two blocks read as duplicates.
 
+`components/CtaBand.jsx` is the full-width call to action between sections. **`tone="signal"`, the
+solid yellow band, is reserved for one message, "Everything is connected", at most once per page**:
+it is the loudest thing on the site and competes with every button. `tone="panel"` and
+`tone="alert"` carry the colour in a top rule instead and can repeat. Do not put a band directly
+above the section it duplicates; the donor band sits earlier in the page for that reason.
+
+`components/ContactForm.jsx` posts to `site.forms.contact`. With no endpoint set it **does not
+pretend to send**: it says nothing was sent or stored and offers the mailto, matching `Signup`. The
+route the person picks is a real field so enquiries arrive pre-sorted. `company` is a honeypot,
+positioned off-screen, and `.cform` must stay `position:relative` or the trap resolves against the
+page and can land back in view.
+
 `components/Pillars.jsx` is the MISTIC three-pillar section, shared by home and `/about` (14 Sep).
 Image-led panels, **one link per panel at the foot**: a card-wide link wrapping the heading, status
 and action would be invalid and unusable with a screen reader. The connector line and nodes are
@@ -218,7 +230,8 @@ the books centre-right and uses `68% center`. Any new hero needs its own `mobile
 
 `/books` uses the **3D mockups** (`book-*-3d`) and the trilogy render as its hero. The mockups carry
 their own lighting, shadow and black field, so `.bookmock` adds no border and no cast shadow: framing
-a photograph that already sits on black just doubles it. The **flat covers** (`image` in
+a photograph that already sits on black just doubles it. **Do not key out their backdrop**: it was
+tried on 14 Sep and reverted, because the flood fill leaves artifacts in the book's own dark areas. The **flat covers** (`image` in
 `books.json`) stay on home, `/museum` and `/books/preview`, where the cover reads better than the
 object.
 
@@ -252,6 +265,57 @@ each map already carries the HELIX.AI header, the ILLUSTRATIVE MODEL chip, its o
 its own explanatory panel. An earlier version repeated all of it in HTML and said everything twice.
 
 All three packages are generated concept art, not documentary evidence. Keep them captioned that way.
+
+## Editorial system (15 Sep): read this before touching layout
+
+The site was recomposed against the *Illicit Shadows Editorial* package. Everything below in this
+file about the earlier layout (card grids, `.head` section bars, `band-raised`, evidence-wall
+breaks, the multi-column footer) describes components that are now either unused or retained only
+where a page still needs them. The system:
+
+- **Surfaces are semantic classes on sections**, never positional: `section.wrap.s.s-ink`,
+  `.s-paper`, `.s-slate`, `.s-yellow`, plus `.compact`. Each sets `--sbg`, `--fg`, `--ac`, `--rule`.
+  Body text is **white on dark and black on cream and yellow**; there is no grey body copy in the
+  editorial sections. Emphasis is `<em>` inside a heading: yellow on dark, **`#FF3030` red on cream**
+  (not burgundy). Do not reintroduce `--text-2`/`--muted` inside `.s` sections.
+- **One button, one link.** `.ed-btn` (yellow on dark, `#111716` on cream and yellow) and
+  `.ed-link` (text with an accent underline and an arrow). Every arrow is an inline SVG from
+  `components/Icons.jsx` (`Arrow.upRight`, `.down`, `.right`, `.left`, `.close`): no Unicode arrows,
+  ever. Brand marks live in `Brand`.
+- **Shell.** Nav is centred with a quiet "Get in touch" arrow link on the right; the mobile menu is
+  the same list plus that link. Footer leads with the **wordmark large**; *Media. Knowledge. Intelligence.* sits under it as a
+  small uppercase subtitle, then *Everything is connected.* in mono, three quiet links, and a
+  compact attribution row with social icons.
+  Partner detail moved to `/about#partners`.
+- **Home** keeps the exact eyebrow, H1 and WATCH · EXPLORE · MODEL order from the brief. The
+  museum feature uses `museum-convergence`, not the rotunda, because the rotunda is already the
+  EXPLORE pillar image on the same page. The Venn map is off home and on `/intelligence` and
+  `/museum`.
+- **Retained on purpose** (owner decisions from 14 Sep that the package did not know about):
+  the 320px vertical short-film list with the Play control outside the artwork, the in-page
+  lightbox on every short, the per-short pages with narration and a next-film cover card, the
+  clickable timeline inside the cascade maps, the year ranges on both investigations, the
+  `books-hero` on `/books`, and the live 3D viewer on `/museum/enter`.
+- `/intelligence` opens on the institute, then the project: **MISTIC is the fusion center, Helix.AI
+  is one of its projects.** Keep that order; the page previously led with Helix and never said what
+  MISTIC was.
+- **Newsroom is two sources in one list.** `data/newsroom.json` holds Illicit Shadows' own posts
+  (hand-written entries plus anything fetched from the Squarespace RSS, keyed by URL and marked
+  `fetched`), `data/newsroom-icaie.json` holds ICAIE's, refreshed from its WordPress feed by
+  `scripts/fetch-news.mjs`. ICAIE items carry an ICAIE stamp and link out to icaie.com in a new tab.
+  `.github/workflows/news.yml` runs the fetcher Monday and Thursday and commits only when the JSON
+  changes, which triggers the Vercel deploy. The fetcher could not be run against the live
+  endpoints from the build sandbox; its two parsers are tested against representative fragments,
+  and the first scheduled run should be checked in the Actions log.
+  `illicitshadows.com` disallows automated fetching by robots.txt, which is why only one of its
+  posts is seeded; the Action fetching the owner's own feed is a different matter from a crawler.
+- **`/contact` carries a live Google Maps embed** (owner pick, 15 Sep). It is the **one exception**
+  to the no-third-party-on-load rule: the film players stay facades and load nothing from YouTube
+  until clicked. The embed uses the keyless `output=embed` form, so there is no API key or billing
+  account involved. If a cookie or consent notice is ever added, this iframe is the thing it is
+  about.
+- `HallsEd` is the phase toggle over `halls.json`; `NewsIndex` is the newsroom filter. Both are
+  small client components; everything else is server-rendered.
 
 ## Video
 Films play through a **facade YouTube embed** (`components/VideoEmbed.jsx`): the cover art is the
@@ -319,6 +383,18 @@ to the films. The point of the hero is to keep people on the page and capture th
 is one click away everywhere else. It had
 three (button, form, YouTube subscribe), which is a tie rather than a hierarchy. `Signup` takes
 `subscribe={false}` to drop the YouTube line; it stays on the signup block further down the page.
+
+## CTA bands and the contact form (14 Sep)
+`components/CtaBand.jsx` is the full-bleed call-to-action between sections. **`tone="signal"` is a
+flood of yellow and appears once per page**, on the line that carries the argument; everything else
+uses the panel treatment, where the colour lives in the top rule and the link so it can repeat.
+`accent="alert"` switches that rule to red for a different kind of ask. Home carries exactly two:
+the connect band after the film section, the founding-donor band before the footer.
+
+`components/ContactForm.jsx` posts to `site.forms.contact`. **With no endpoint it does not pretend
+to send**: it blocks submission and points at the mailto, the same honesty rule as `Signup`. The
+chosen route is a real field so enquiries arrive pre-sorted, and `company` is a honeypot positioned
+off-screen. Wire the endpoint and nothing else needs to change.
 
 ## Nav
 Seven links plus a **solid signal-yellow Contact CTA at the right** (owner pick, 14 Sep). The button

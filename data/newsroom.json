@@ -1,30 +1,40 @@
 [
- {
-  "kind": "dispatch",
-  "date": "2026-08-19",
-  "title": "Why fentanyl precursors keep slipping through free-trade zones",
-  "summary": "The regulatory blind spots cartels exploit between interdiction and the next port of call.",
-  "placeholder": true
- },
- {
-  "kind": "press",
-  "date": "2026-08-12",
-  "title": "Illicit Shadows to brief customs authorities on crime convergence",
-  "summary": "MISTIC principals join a closed-door session on cascading network behavior.",
-  "placeholder": true
- },
- {
-  "kind": "release",
-  "date": "2026-08-08",
-  "title": "Illicit Gold now in production",
-  "summary": "Gold trafficking and the Amazon's shadow mining empire. Colombia, Brazil, Switzerland.",
-  "placeholder": true
- },
- {
-  "kind": "dispatch",
-  "date": "2026-07-31",
-  "title": "Blood batteries: how cobalt links the DRC to your phone",
-  "summary": "A subject under research: cobalt, conflict minerals, and the supply chain that ends in your pocket.",
-  "placeholder": true
- }
+  {
+    "source": "illicit-shadows",
+    "kind": "press",
+    "date": "2026-08-26",
+    "title": "Sam Rad delivers a human intelligence keynote at Genera Summit, Bogota",
+    "summary": "A keynote on human intelligence at MenteX's Genera Summit, held within GoFest at Agora Bogota: leadership and judgment in an era of accelerating machine intelligence.",
+    "url": "https://mentex.co/summit/",
+    "external": true,
+    "outlet": "Genera Summit"
+  },
+  {
+    "source": "illicit-shadows",
+    "kind": "release",
+    "date": "2025-10-30",
+    "title": "ICAIE announces the digital Museum of Illicit Shadows (MIS)",
+    "summary": "ICAIE, led by David M. Luna, announces the creation of the digital Museum of Illicit Shadows in partnership with RAD Original Creations, with Sam Rad as co-curator.",
+    "url": "https://illicitshadows.com/news",
+    "external": true
+  },
+  {
+    "source": "illicit-shadows",
+    "kind": "press",
+    "date": "2024-09-10",
+    "title": "ICAIE announces the investigative docuseries, in partnership with Sam Rad",
+    "summary": "The launch announcement, carried by Newswire: ICAIE, led by David M. Luna, with Sam Rad as co-executive producer, on the illicit threat networks menacing global markets and the rule of law.",
+    "url": "https://www.newswire.com/news/icaie-announces-new-investigative-docuseries-illicit-economies-of-the-22423115",
+    "external": true,
+    "outlet": "Newswire"
+  },
+  {
+    "source": "illicit-shadows",
+    "kind": "release",
+    "date": "2024-09-10",
+    "title": "ICAIE and RADOC begin production on the first investigation",
+    "summary": "ICAIE begins scripting the first investigation with Sam Rad and partners including the Council of the Great Lakes Region: cross-border illicit flows, the fentanyl trade, and the dirty money financing further criminality in Canada, along the U.S. border, and beyond.",
+    "url": "https://illicitshadows.com/news/icaie-and-radoc-begin-production-on-ep-01-fentanyl-cartels",
+    "external": true
+  }
 ]

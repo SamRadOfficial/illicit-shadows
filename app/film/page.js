@@ -2,68 +2,89 @@ import Link from 'next/link';
 import site from '../../data/site.json';
 import films from '../../data/films.json';
 import slate from '../../data/slate.json';
-import tags from '../../data/tags.json';
-import { Pic, SectionHead, Break, Hero, Donor, Prov, Tags } from '../../components/Blocks';
-import { VideoEmbed } from '../../components/VideoEmbed';
-import { WorkCard } from '../../components/WorkCard';
+import { Pic, Hero } from '../../components/Blocks';
+import { Arrow } from '../../components/Icons';
 export const metadata = { title: 'Film' };
 
-// No ordinals on public pages. Cardinal counters (ten short films, 01 to 10) are fine; Season N
-// and Episode N are not, because a film that is an episode of a series is generally ineligible
-// for documentary awards and festival forms ask directly. See HANDOFF.
-// Three covers on the index is proof the work exists; the full set lives on the film page.
-const SEGMENTS_ON_INDEX = 3;
-
 export default function Film() {
-  const [lead, released] = films;
+  const released = films.find(f => f.status === 'streaming');
+  const inProduction = films.find(f => f.status === 'in-production');
+  const shorts = (released.segments || []).filter(s => s.image).slice(0, 3);
   return (
     <>
-      <Hero img="/images/break-evidence-1" alt="An evidence wall of pinned photographs and documents" variant="filmhero" pos="center" eyebrow="Field investigations"
-            title={<>The dark forces shaping the <span className="y">global criminal underworld</span></>}
-            lede="Illicit Shadows investigates the global illicit economy: where the money moves, who it pays, and what it costs the people living on top of it. Each investigation begins as field research and becomes a film, a museum hall, and a public source index.">
-        <div className="cta-row"><Link className="btn btn-y" href={`/film/${released.slug}`}>Watch now</Link><a className="btn btn-o" href="#trailer">&#9654; Trailer</a></div>
+      <Hero img="/images/dividers/film-field-investigations" mobilePos="60% center" alt="A documentary camera and field notebook at a port"
+            eyebrow="Field investigations"
+            title={<>Follow the money.<br /><span className="y">Find the story.</span></>}
+            lede="The routes, people, and hidden systems behind the global illicit economy. Reported from the field.">
+        <div className="actions">
+          <Link className="ed-btn" href={`/film/${released.slug}`}>Watch {released.title} {Arrow.upRight}</Link>
+          <a className="ed-link" href="#trailer">Watch the trailer {Arrow.down}</a>
+        </div>
       </Hero>
-      <Break base="/images/dividers/film-field-investigations" alt="Documentary camera and field notebook at a port" />
-      <section className="wrap reveal" id="films">
-        <SectionHead label="Film" meta="INVESTIGATIONS" />
-        <div className="works">
-          {films.map(f => <WorkCard film={f} key={f.slug} segments={SEGMENTS_ON_INDEX} />)}
+
+      <section className="wrap s s-paper" id="watch">
+        <div className="feature">
+          <Link className="wide" href={`/film/${released.slug}`}>
+            <Pic base={released.image} alt={`${released.title}: ${released.subtitle}`} />
+            <span className="play-marker">Watch {Arrow.upRight}</span>
+          </Link>
+          <div>
+            <span className="kicker">Now streaming / {released.form} / {released.years}</span>
+            <h2>Chemical<br /><em>Cartels</em></h2>
+            <p>{released.line}</p>
+            <p className="fine">{released.places.join(' · ')}</p>
+            <Link className="ed-link" href={`/film/${released.slug}`}>Explore the investigation {Arrow.upRight}</Link>
+          </div>
+        </div>
+        <div className="three">
+          {shorts.map(s => (
+            <Link className="tile" href={`/film/${released.slug}/${s.slug}`} key={s.slug}>
+              <Pic base={s.image} alt={`${s.title} title card`} />
+              <h3>{s.title}</h3>
+              <p>{s.sub}{s.runtime ? ` · ${s.runtime}` : ''}</p>
+            </Link>
+          ))}
         </div>
       </section>
-      <section className="wrap reveal tight" id="development">
-        <SectionHead label="In development" meta="RESEARCH AGENDA" dim />
-        <div className="slategrid">
+
+      <section className="wrap s s-ink feature reverse" id="gold">
+        <div>
+          <span className="kicker">In production / {inProduction.years}</span>
+          <h2>Gold changes hands.<br /><em>Its origins disappear.</em></h2>
+          <p>{inProduction.line}</p>
+          <p className="fine">{inProduction.places.join(' · ')}</p>
+          <Link className="ed-link" href={`/film/${inProduction.slug}`}>Inside {inProduction.title} {Arrow.upRight}</Link>
+        </div>
+        <Link className="wide" href={`/film/${inProduction.slug}`}><Pic base={inProduction.image} alt={`${inProduction.title}: ${inProduction.subtitle}`} /></Link>
+      </section>
+
+      <section className="wrap s s-paper" id="development">
+        <div className="intro">
+          <div><span className="kicker">The research agenda</span><h2>Stories <em>taking shape.</em></h2></div>
+          <p>Subjects under research. These concept covers describe investigations in development; they are not production announcements.</p>
+        </div>
+        <div className="upcoming">
           {slate.map(x => (
-            <article className="scard" key={x.slug}>
+            <article key={x.slug}>
               <Pic base={x.image} alt={`${x.title}: concept cover`} />
-              {/* No title text here: the cover carries the title and the IN DEVELOPMENT stamp
-                  already. The card adds only what the art cannot say. */}
-              <div className="scard-body">
-                <p className="ssub">{x.sub}</p>
-                <Tags keys={x.tags} vocab={tags} />
-              </div>
+              <h3>{x.title}</h3>
+              <p>{x.sub}.</p>
             </article>
           ))}
         </div>
-        <p className="slate-note">Concept covers for subjects under research. Nothing here is in
-          production, and no film is promised until it is shot.</p>
       </section>
-      <Break base="/images/break-evidence-3" />
-      <section className="wrap reveal" id="trailer">
-        <SectionHead label="Trailer" meta="OFFICIAL" dim />
-        {/* New key art, 14 Sep. The cut itself still predates the gold shoot, so the copy says so
-            rather than implying it represents the current work. */}
-        <div className="trailer-band">
-          <a className="work-img trailer-img" href={site.social.youtube}><Pic base="/images/film-trailer" alt="Illicit Shadows trailer" /><span className="pb">&#9654;</span></a>
-          <div>
-            <h3 className="work-title">Trailer</h3>
-            <p className="work-line">A first look at the work. Cut before the gold shoot, so it covers the fentanyl investigation.</p>
-            <Prov status="illustrative">2024 cut</Prov>
-          </div>
+
+      <section className="wrap s s-slate compact feature" id="trailer">
+        <a className="wide" href={site.social.youtube} target="_blank" rel="noopener noreferrer">
+          <Pic base="/images/film-trailer" alt="Illicit Shadows official trailer" />
+          <span className="play-marker">YouTube {Arrow.upRight}</span>
+        </a>
+        <div>
+          <span className="kicker">Official trailer / 2024 cut</span>
+          <h2>A first look<br /><em>into the shadows.</em></h2>
+          <p>Made before the gold shoot, the trailer introduces the fentanyl investigation and the wider world behind it.</p>
+          <a className="ed-link" href={site.social.youtube} target="_blank" rel="noopener noreferrer">Watch on YouTube {Arrow.upRight}</a>
         </div>
-      </section>
-      <section className="wrap reveal">
-        <Donor eyebrow="Now streaming" title={<>Watch on <span>YouTube</span></>} copy="New investigative segments released regularly. Subscribe to follow the work across borders." cta="Watch on YouTube" href={site.social.youtube} />
       </section>
     </>
   );

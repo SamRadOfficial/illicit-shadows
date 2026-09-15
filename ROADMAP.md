@@ -30,9 +30,9 @@ contact form.
 - [ ] **Subscription.** Two different things share this word. Free: the YouTube subscribe link,
       already live beside the signup. Paid: Helix enterprise access on `/intelligence`, which is a
       sales conversation and a login, not a checkout button. Decide which is meant before building.
-- [ ] **Contact.** `/contact` routes four self-selecting paths to `mailto:`. A real form should keep
-      the path choice as a field so enquiries arrive pre-sorted, with spam protection and a
-      confirmation state. The `Signup` placeholder pattern is the model.
+- [ ] **Contact form endpoint.** The form is built (14 Sep): six routes, honeypot, honest failure
+      when unconnected. It needs `site.forms.contact` pointed at a provider (Formspree, Basin, or a
+      Vercel function) and a real confirmation page or state once it posts somewhere.
 - [ ] **Museum shop.** `/museum` already carries a shop card linking nowhere. Needs a storefront for
       merchandise, publications, and founding-donor editions. Static export means no server, so use
       a hosted cart: **Shopify** (Buy Buttons or the Storefront API against a headless store),
@@ -116,11 +116,66 @@ contact form.
 - [ ] Founder bio pages or expanded `/about` entries, if wanted.
 - [ ] Search or filtering on `/newsroom` once there are real posts (the filter chips are currently inert).
 
+## Editorial direction, 15 Sep: implemented
+
+The second package (*Illicit Shadows Editorial*) superseded the first and is now the site. The
+first package's surface system stays below for the record; its three open decisions were settled by
+the second (cream is the reading surface with `#FF3030` emphasis; the single yellow band is the
+donor moment; photographic breaks are gone in favour of surface changes and fine rules).
+
+Open items it leaves:
+- [ ] The package's museum hall **preview dialog** (click a hall for a large render and blurb) is
+      not built; tiles are static. Worth doing once halls have their own copy.
+- [ ] `?interest=` prefill on `/contact` from the offers list and the museum donor band, so the
+      form arrives with the route already selected.
+- [ ] Contrast audit of every `.s-paper` section against the 4.5:1 target, in particular the
+      mono kickers at 11px.
+- [ ] Dead CSS from the pre-editorial layout (`.head`, `.work`, `.minigrid`, `.band-*`, `.ppanel`,
+      `.trailer-row`, `.foot`) can be removed once nothing in the tree references it.
+
+## Design handoff, 15 Sep: surface system (superseded)
+
+A packaged direction proposing a dark editorial system: near-black default, selective **cream**
+reading sections (`#F0EEE8`, dark ink, deep red `#AD2425` accents), occasional **slate** interludes
+(`#1C242C`), and compact **yellow** CTA moments with a black button. Mocked on the real home page
+(`scripts/surface-mock.py`, which restyles the built output section by section) before anything
+ships. Decisions it needs from the owner:
+
+- [ ] **Cream, yes or no.** The cream band was tried on the film section on 14 Sep and reverted
+      ("looked better on grey, without inverted colours"). The handoff makes cream the reading
+      surface across the site. The mock shows it on the museum teaser and newsroom; if it does not
+      earn its place there, the rest of the system still works with slate and dark alone.
+- [ ] **Where yellow goes.** The handoff spends the one yellow band on the donor moment and puts
+      "Everything is connected" on dark with a rule. That reverses the 14 Sep decision (option A,
+      yellow for connect). One or the other, not both.
+- [ ] **Divider policy.** The handoff replaces most photographic breaks with whitespace and fine
+      rules, keeping page-specific dividers. The mock hides the generic evidence-wall breaks on
+      home and keeps `home-global-trade`. Confirm before applying site-wide.
+- [ ] If approved: implement as **semantic surface variants** (`data-surface` or a `.surface-*`
+      class per section), never nth-child colour cycling; extract shared button and rule
+      treatments; run the contrast checks the handoff lists (4.5:1 body, 3:1 large); keep the MIS
+      eclipse on a black panel wherever it appears near cream or slate.
+
 ## Replace site images
 
 An image review, in priority order. Two standing rules: anything that depicts the museum or an
 unmade film is captioned as a concept, and any diagram that is illustrative rather than measured
 keeps its `illustrative` chip.
+
+- [ ] **Books page update (built and reverted 14 Sep).** The page was rebuilt to a supplied brief,
+      then reverted to the live version on the owner's instruction. Everything below exists and can
+      be restored in one pass:
+      - **New atmospheric hero**, `images/books-hero` (London through rain-streaked glass, dossier
+        and surveillance photographs, dark left for live text), with an "Explore the trilogy" anchor.
+        The asset is in the repo and unused.
+      - **Trilogy introduction** at `#trilogy`: the trilogy render moved out of the hero and set
+        beside the approved copy ("Three novels. One hidden system." and the three paragraphs
+        following), `object-fit: contain` so no cover is cropped, with a Book 1 preview link.
+      - **Transparent book mockups**: the studio backdrop flood-filled out at `thresh=18`, the
+        highest value that leaves the book's own dark spine opaque. Needs PNG plus WebP, no JPEG,
+        and `Pic ext="png"`. Only reads correctly on dark backgrounds.
+      Decide whether the hero should be the trilogy render (live now) or the atmospheric London
+      image with the render moved down. Both work; the second is closer to the other page heroes.
 
 - [ ] **Animated hero.** The hero art is a raster render and cannot be animated as-is. The cheap
       version is an SVG layer over it: six trade routes that draw themselves in about two seconds,
@@ -155,6 +210,9 @@ keeps its `illustrative` chip.
       different viewing sizes.
 - [ ] **Founding-donor sections.** A visual showing what support buys: exhibitions, public
       education, research, field investigations. Specific outputs make the ask tangible.
+- [ ] **Seed the rest of Illicit Shadows' own posts.** The old Squarespace `/news` blocks automated
+      fetching, so only the MIS announcement is seeded. Either export the posts, or let the first
+      run of the news Action pull them from `/news?format=rss` and confirm what arrives.
 - [ ] **Newsroom.** Three reusable thumbnail templates for Dispatch, Press and Release: subject
       photography, a small category label, consistent crop. Apply as real posts replace the
       placeholders.
@@ -192,6 +250,13 @@ keeps its `illustrative` chip.
       placement guide, six upcoming covers on `/film` and home, five cascade maps as a stepper on
       `/intelligence`. Illicit Gold cover title recoloured to signal yellow. Home hero reordered to
       email first.
+- [x] **14 Sep** CTA bands (signal used once, panel repeatable) with two on home; contact form
+      built; books page reverted to the live version and its rework stashed above.
+- [x] **15 Sep** Newsroom seeded with real ICAIE and Illicit Shadows items; scheduled fetcher and
+      GitHub Action added to keep both sources current.
+- [x] **15 Sep** Site recomposed to the Editorial package across all 30 routes.
+- [x] **14 Sep** CTA bands (signal yellow for the connect message, rule-only for the rest) and a
+      contact form with routing, honeypot and an honest unconnected state.
 - [x] **14 Sep** MISTIC three pillars redesigned as image-led panels, shared by home and `/about`.
 - [x] **14 Sep** `/intelligence` restructured: Helix as two columns, a break band before the
       cascade, and the map's own timeline made clickable (option A, contained).

@@ -1,4 +1,5 @@
 'use client';
+import { Arrow, Brand } from './Icons';
 import site from '../data/site.json';
 // Shared blocks. Pages compose these; new page types reuse them rather than inventing a fourth treatment.
 import Link from 'next/link';
@@ -29,18 +30,16 @@ export function Nav() {
     <header className="nav">
       <div className="wrap">
         <Link className="brand" href="/">ILLICIT <b>SHADOWS</b></Link>
+        {/* Centred on desktop (the brief leaves this open; it balances the wordmark and the
+            contact link). Below 820px the same list is the dropdown. */}
         <nav className={`links${open ? ' open' : ''}`} aria-label="Primary">
-          {NAV.map(([href, label]) => (
-            <Link key={href} href={href} className={path === href ? 'on' : undefined} onClick={() => setOpen(false)}>{label}</Link>
+          {NAV.slice(1).map(([href, label]) => (
+            <Link key={href} href={href} className={path.startsWith(href) ? 'on' : undefined} onClick={() => setOpen(false)}>{label}</Link>
           ))}
-          {/* Mobile only. CSS hides this above 820px and hides the button below it, so Contact
-              appears exactly once at any width. No JavaScript involved in either state. */}
-          <Link href="/contact" className="btn btn-y navmob" onClick={() => setOpen(false)}>Contact</Link>
+          <Link href="/contact" className="ed-link navmob" onClick={() => setOpen(false)}>Get in touch {Arrow.upRight}</Link>
         </nav>
-        {/* CTA sits outside .links on purpose: the mobile toggle collapses the menu, so above
-            820px this is the call to action and below it the dropdown carries Contact instead. */}
         <div className="navright">
-          <Link className="btn btn-y navcta" href="/contact">Contact</Link>
+          <Link className="ed-link navcta" href="/contact">Get in touch {Arrow.upRight}</Link>
           <button className="navtoggle" aria-label="Toggle menu" aria-expanded={open} onClick={() => setOpen(!open)}>&#9776;</button>
         </div>
       </div>
@@ -103,32 +102,29 @@ const IG = 'M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9
 
 export function Footer({ site }) {
   return (
-    <footer>
+    <footer className="foot-ed">
       <div className="wrap">
-        <div className="foot">
+        <div className="foot-top">
           <div>
-            <div className="b">ILLICIT <b>SHADOWS</b></div>
-            <p>{site.boilerplate}</p>
-            <div className="socials" aria-label="Social links">
-              <a href={site.social.youtube} aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d={YT} /></svg></a>
-              <a href={site.social.x} aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d={X} /></svg></a>
-              <a href={site.social.instagram} aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d={IG} /></svg></a>
-            </div>
+            <Link className="brand small" href="/">ILLICIT <b>SHADOWS</b></Link>
+            <p className="foot-statement">Media<span>.</span> Knowledge<span>.</span> Intelligence<span>.</span></p>
+            <p className="foot-line">Everything is connected.</p>
           </div>
-          <div className="col"><h5>Explore</h5>{NAV.slice(1).map(([h, l]) => <Link key={h} href={h}>{l}</Link>)}</div>
-          <div>
-            <h5>Partners</h5>
-            <div className="partner">
-              <div className="pmark icaie"><Pic base="/logos/icaie-square" alt="ICAIE, International Coalition Against Illicit Economies" /></div>
-              <div><div className="ds">International Coalition Against Illicit Economies · Washington, DC</div><a href="https://icaie.com">icaie.com</a></div>
-            </div>
-            <div className="partner">
-              <div className="pmark"><span className="radoc" aria-label="RADOC"><b>RAD</b><em>OC</em></span></div>
-              <div><div className="ds">RAD Original Creations · Meta-media studio · NYC · Washington, DC · London</div><a href="https://radoc.co">radoc.co</a></div>
-            </div>
-          </div>
+          <nav className="foot-links" aria-label="Footer">
+            <Link className="ed-link" href="/contact">Partner with us {Arrow.upRight}</Link>
+            <Link className="ed-link" href="/sources">Explore our sources {Arrow.upRight}</Link>
+            <Link className="ed-link" href="/about">About the platform {Arrow.upRight}</Link>
+          </nav>
         </div>
-        <div className="creedline">&copy; {new Date().getFullYear()} ILLICIT SHADOWS, LLC &nbsp;&middot;&nbsp; <b>#EVERYTHINGISCONNECTED</b></div>
+        <div className="foot-bottom">
+          <span>&copy; {new Date().getFullYear()} ILLICIT SHADOWS, LLC</span>
+          <span>ICAIE + RADOC</span>
+          <nav className="foot-social" aria-label="Social links">
+            <a href={site.social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube">{Brand.youtube}</a>
+            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">{Brand.instagram}</a>
+            <a href={site.social.x} target="_blank" rel="noopener noreferrer" aria-label="X">{Brand.x}</a>
+          </nav>
+        </div>
       </div>
     </footer>
   );

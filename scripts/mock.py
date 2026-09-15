@@ -45,94 +45,97 @@ FACES = ''.join(f'@font-face{{font-family:{fam};src:url({font(f)});font-weight:{
 
 import json as _json
 
-def svg(name):
-    raw = open(os.path.join(PUB, 'images/cascade', name), 'rb').read()
-    return 'data:image/svg+xml;base64,' + base64.b64encode(raw).decode()
+ARROW = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>'
 
-MAPS = {n: svg(f'{n}.svg') for n in
-        ('00-trigger', '01-routes', '02-entities', '03-property', '04-influence')}
-STAGES = [('00-trigger', 'Trigger', 'Day 0', 'Contraband is interdicted at Rotterdam.'),
-          ('01-routes', 'Routes', 'Day 0', 'Volume shifts to Antwerp and Hamburg.'),
-          ('02-entities', 'Entities', '+11 days', 'Shell registrations spike in Lisbon, the Caribbean, offshore.'),
-          ('03-property', 'Property', '+3 months', 'Real-estate cash purchases rise in London, Miami, Dubai.'),
-          ('04-influence', 'Influence', '+12 months', 'Political funding anomalies appear in the EU and North America.')]
+ADDR = "1455 Pennsylvania Ave NW, Ste 400, Washington, DC 20004"
+Q = "1455+Pennsylvania+Ave+NW+Suite+400,+Washington,+DC+20004"
+EMBED = f"https://maps.google.com/maps?q={Q}&z=16&output=embed"
+LINK = f"https://www.google.com/maps/search/?api=1&query={Q}"
+DIR = f"https://www.google.com/maps/dir/?api=1&destination={Q}"
 
-HITS = ''.join(
-    f'<button class="hit{" on" if n == 0 else ""}" style="left:{(60 + n * 299) / 16}%;width:{281 / 16}%" '
-    f'aria-label="{lab}"></button>' for n, (f, lab, lag, what) in enumerate(STAGES))
+def details(tone='dark'):
+    return (f'<p class="kicker">Washington, DC</p><h2>Find us<br><em>on Pennsylvania Avenue.</em></h2>'
+            f'<p class="addr">1455 Pennsylvania Ave NW<br>Suite 400<br>Washington, DC 20004<br>United States</p>'
+            f'<p class="fine">Two blocks east of the White House, between 14th and 15th.</p>'
+            f'<div class="actions"><a class="ed-link" href="{LINK}" target="_blank" rel="noopener">Open in Google Maps {ARROW}</a>'
+            f'<a class="ed-link" href="{DIR}" target="_blank" rel="noopener">Directions {ARROW}</a></div>')
 
+IFRAME = (f'<iframe class="gmap" src="{EMBED}" title="Map showing 1455 Pennsylvania Avenue NW, Washington DC" '
+          f'loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>')
 
-def figure(active='00-trigger', cls=''):
-    active = active or '00-trigger'
-    return (f'<figure class="cfig {cls}"><img src="{MAPS[active]}" alt="">'
-            f'<div class="hits">{HITS}</div></figure>')
+PAGE_A = '<div class="s s-ink" style="padding:0">' + f'<div class="maprow">{IFRAME}<div class="mapcopy">{details()}</div></div></div>'
 
+PAGE_B = (f'<div class="mapcopy" style="max-width:640px;margin-bottom:26px">{details()}</div>'
+          f'<div class="mapwide">{IFRAME}</div></div>')
 
-def head(label, meta):
-    return (f'<div class="head"><span class="lbl">{label}</span><span class="bar"></span>'
-            f'<span class="meta">{meta}</span></div>')
-
-
-PAGE_A = (head('Cascade prediction', 'WORKED EXAMPLE')
-          + figure() + '<p class="cfoot">The chain is the claim: disruption does not remove the '
-          'trade, it moves it, and each move surfaces in different data.</p>')
-
-PAGE_B = (head('Cascade prediction', 'WORKED EXAMPLE')
-          + '<div class="cwide">' + figure() + '</div>'
-          + '<p class="cfoot">Full-bleed. The map is the argument, so it gets the width of the screen.</p>')
-
-RAIL = ''.join(
-    f'<button class="railbtn{" on" if n == 0 else ""}"><span class="rn">{n:02d}</span>'
-    f'<span class="rl">{lab}</span><span class="rg">{lag}</span>'
-    f'<span class="rw">{what}</span></button>' for n, (f, lab, lag, what) in enumerate(STAGES))
-
-PAGE_C = (head('Cascade prediction', 'WORKED EXAMPLE')
-          + f'<div class="crail"><div class="railcol">{RAIL}</div>{figure("", "in-rail")}</div>'
-          + '<p class="cfoot">The whole chain stays visible while you move through it.</p>')
+PAGE_C = ('<div class="s s-ink" style="padding:0">' + f'<div class="maprow"><div class="mapfacade" id="facade">'
+          f'<div class="facade-grid"></div>'
+          f'<span class="pin"></span>'
+          f'<span class="pinlabel">Illicit Shadows<br><b>1455 Pennsylvania Ave NW</b></span>'
+          f'<span class="wh">The White House</span>'
+          f'<span class="facade-cta"><button class="ed-btn" type="button" data-showmap>Show the map {ARROW}</button>'
+          f'<span class="facade-note">Nothing loads from Google until you press it</span></span>'
+          f'</div><div class="mapcopy">{details()}</div></div></div>')
 
 SHARED = """
-.cfig{position:relative;margin:0;border:1px solid var(--line-2)}
-.cfig img{display:block;width:100%;height:auto;background:#000}
-.hits{position:absolute;left:0;right:0;top:87.8%;height:6.7%}
-.hit{position:absolute;top:0;height:100%;background:none;border:1px solid transparent;border-radius:7px;cursor:pointer}
-.hit:hover{border-color:var(--signal)}
-.cfoot{font-size:12.5px;color:var(--muted);line-height:1.65;margin-top:14px;font-style:italic}
-.cwide{width:100vw;max-width:100vw;margin-left:calc(50% - 50vw)}
-.cwide .cfig{border-left:0;border-right:0}
-.crail{display:grid;grid-template-columns:300px 1fr;gap:20px;align-items:start}
-.railcol{display:flex;flex-direction:column;gap:8px}
-.railbtn{display:block;text-align:left;background:none;border:1px solid var(--line);border-left:3px solid var(--line);padding:12px 14px;cursor:pointer;font:inherit}
-.railbtn:hover{border-color:var(--line-2)}
-.railbtn.on{border-left-color:var(--signal);background:#141210}
-.rn{font-family:var(--disp);font-size:13px;color:var(--signal);margin-right:8px}
-.rl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text)}
-.rg{display:block;font-family:var(--mono);font-size:10px;color:var(--signal);margin-top:6px}
-.rw{display:block;color:var(--muted);font-size:13px;line-height:1.55;margin-top:4px}
+.maprow{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(22px,3vw,44px);align-items:stretch}
+.gmap{width:100%;min-height:420px;height:100%;border:1px solid var(--rule,#343b3b);display:block;filter:grayscale(.15) contrast(1.05)}
+.mapwide .gmap{min-height:380px}
+.mapcopy{display:flex;flex-direction:column;justify-content:center}
+.addr{font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.9;margin:16px 0 10px}
+.mapcopy .actions{gap:26px}
+/* Facade: nothing loads from Google until the button is pressed. Drawn with CSS, no image. */
+.mapfacade{position:relative;min-height:420px;border:1px solid var(--rule,#343b3b);background:#0d1116;overflow:hidden}
+.facade-grid{position:absolute;inset:0;background-image:linear-gradient(#182029 1px,transparent 1px),linear-gradient(90deg,#182029 1px,transparent 1px);background-size:46px 46px;opacity:.9}
+.facade-grid:after{content:"";position:absolute;left:0;right:0;top:54%;height:14px;background:#141b22;transform:rotate(-8deg)}
+.pin{position:absolute;left:52%;top:34%;width:14px;height:14px;border-radius:50%;background:#FFD400;box-shadow:0 0 0 6px rgba(255,212,0,.18)}
+.pinlabel{position:absolute;left:52%;top:34%;transform:translate(18px,-8px);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(8,9,9,.82);padding:7px 10px;line-height:1.5}
+.pinlabel b{color:#FFD400;font-weight:500}
+.wh{position:absolute;left:16%;top:56%;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#8b969f}
+.facade-cta{position:absolute;left:0;right:0;bottom:22px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.facade-note{position:relative;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8b969f}
+.mapfacade .ed-btn{position:relative}
+@media(max-width:820px){.maprow{grid-template-columns:1fr}.gmap,.mapfacade{min-height:320px}}
 """
 
-RECOMMEND = 'A'
+EXTRA_JS = """
+// Facade: build the iframe only when asked, the same way the film players do.
+document.addEventListener('click', e => {
+  const btn = e.target.closest('[data-showmap]'); if (!btn) return;
+  const box = btn.closest('.mapfacade');
+  const f = document.createElement('iframe');
+  f.className = 'gmap'; f.title = 'Map showing 1455 Pennsylvania Avenue NW, Washington DC';
+  f.loading = 'lazy'; f.referrerPolicy = 'no-referrer-when-downgrade'; f.allowFullscreen = true;
+  f.src = MAP_SRC;
+  box.replaceWith(f);
+});
+"""
 
-TITLE = 'The cascade block'
-INTRO = ('Three ways to present the five maps, after the Helix section and its divider. In all '
-         'three the timeline the map already draws is clickable: hover a chip to see the target. '
-         'Stage 00 is shown; the real component switches the image.')
+RECOMMEND = 'C'
+
+TITLE = 'A map on the contact page'
+INTRO = ('The office at 1455 Pennsylvania Avenue NW, two blocks from the White House. Open this in a '
+         'browser with a connection: options A and B load a live Google map, C loads one when you '
+         'press the button. All three use the same address, the same links out, and the same '
+         'surfaces as the rest of the contact page.')
 
 OPTIONS = [
-    ('A', 'Contained, timeline only  ·  MY PICK',
-     'The map at content width, nothing around it but the caveat. The graphic already carries its '
-     'own header, illustrative chip, stage strip and explanation panel, so anything added in HTML '
-     'repeats it. Reads as one considered object rather than a widget.',
+    ('A', 'Map beside the address',
+     'A live Google embed filling the left two thirds, the address and links beside it. Reads as '
+     'part of the page rather than an attachment, and the surrounding blocks (the White House, the '
+     'Treasury, Freedom Plaza) are visible at this zoom without labelling them ourselves.',
      PAGE_A, SHARED),
-    ('B', 'Full-bleed',
-     'The same thing edge to edge. The map labels get noticeably bigger, which is the strongest '
-     'argument for it, and the section feels like a centrepiece. It also breaks the page rhythm: '
-     'nothing else on the site runs full width except the break bands.',
+    ('B', 'Address above, map full width',
+     'The address leads, the map runs the width of the content column underneath. Gives the map the '
+     'most room and works best if you later want a wider view of the federal core. It also pushes '
+     'the map below the fold on a laptop, where it is the thing people came for.',
      PAGE_B, SHARED),
-    ('C', 'Stage rail beside the map',
-     'A list of all five stages on the left, always visible, with the map on the right. You can see '
-     'the whole chain and the current step at once, which is the one thing A and B cannot do. The '
-     'cost is duplication: the rail repeats the timeline inside the graphic, and the map shrinks to '
-     'about three quarters width, so its labels get smaller.',
+    ('C', 'Placeholder, map on request  ·  MY PICK',
+     'Identical to A once pressed, but nothing is requested from Google until someone asks for it. '
+     'A Google embed sets cookies and runs third-party script on page load; this is the same facade '
+     'pattern the films already use for YouTube, so the site keeps its no-third-party-on-load rule '
+     'and its consent story stays simple. The placeholder still shows the pin, the address, and the '
+     'White House to the west, and both map links work without pressing anything.',
      PAGE_C, SHARED),
 ]
 blocks, extra = [], []
@@ -163,7 +166,9 @@ body{padding:0}
 html = (f'<!doctype html><html lang="en"><head><meta charset="utf-8">'
         f'<meta name="viewport" content="width=device-width,initial-scale=1">'
         f'<title>{TITLE}, options A to {OPTIONS[-1][0]}</title>'
-        f'<style>{FACES}{css}{SHELL}{"".join(extra)}</style></head><body><div class="mockwrap">'
+        f'<style>{FACES}{css}{SHELL}{"".join(extra)}</style>'
+        f'<script>const MAP_SRC={_json.dumps(EMBED)};{EXTRA_JS}</script>'
+        f'</head><body><div class="mockwrap">'
         f'<div class="mockhead"><p class="optlbl">ILLICIT SHADOWS &middot; /MUSEUM</p>'
         f'<h1>{TITLE}</h1><p>{INTRO}</p></div>{"".join(blocks)}</div></body></html>')
 os.makedirs(os.path.dirname(dest), exist_ok=True)

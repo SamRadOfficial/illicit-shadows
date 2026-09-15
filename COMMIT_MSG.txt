@@ -1,0 +1,18 @@
+Contact: add the Washington DC map
+
+- Live Google Maps embed beside the address on /contact, keyless output=embed
+  form so no API key or billing account is needed. Heading reads "Find us in
+  Washington, DC"; the address block carries the street.
+- Open in Google Maps and Directions links alongside, both rel=noopener.
+- Map is lazy-loaded and slightly desaturated so Google's palette does not fight
+  the site.
+- Fix: removed a legacy .direct rule from the pre-editorial contact page that
+  painted a dark background over the yellow band, leaving colour only at the
+  viewport edges.
+
+Note: this embed is the one place on the site that loads a third party on page
+view; the film players remain facades. Recorded in HANDOFF, with a roadmap item
+to decide the consent story.
+
+Verified: build 30 pages, 100 asset references present. Heading, lazy loading
+and zero horizontal overflow checked; section rendered at 1440 and 390.

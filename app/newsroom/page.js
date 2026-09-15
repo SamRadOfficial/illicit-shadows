@@ -1,21 +1,27 @@
-import news from '../../data/newsroom.json';
-import { SectionHead, Prov, Hero } from '../../components/Blocks';
+import site from '../../data/site.json';
+import own from '../../data/newsroom.json';
+import icaie from '../../data/newsroom-icaie.json';
+import { Hero, Signup } from '../../components/Blocks';
+import { NewsIndex } from '../../components/NewsIndex';
 export const metadata = { title: 'Newsroom' };
-const K = { dispatch: 'd', press: 'p', release: 'r' };
+
 export default function Newsroom() {
   return (
     <>
-      <Hero img="/images/hero-newsroom" mobilePos="58% center" eyebrow="The wire"
-            alt="A desk of contact sheets, a field recorder and a notebook under lamplight"
-            title="Newsroom"
-            lede="Dispatches from the investigations, press coverage, and releases." />
-      <section className="wrap reveal" style={{ paddingBottom: 0 }}>
-        <div className="filters"><span className="on">ALL</span><span>DISPATCHES</span><span>PRESS</span><span>RELEASES</span></div>
+      {/* Hero like every other page, not the package's split masthead: the same image, the same
+          dark-left composition, the copy in the empty space. */}
+      <Hero img="/images/hero-newsroom" mobilePos="58% center" alt="A desk of contact sheets, a field recorder and a notebook under lamplight"
+            eyebrow="The wire"
+            title={<>From<br /><span className="y">the shadows.</span></>}
+            lede="Dispatches, press, and releases from the investigations." />
+
+      <section className="wrap s s-paper">
+        <NewsIndex items={[...own, ...icaie].sort((a, b) => (b.date || '').localeCompare(a.date || ''))} />
       </section>
 
-      <section className="wrap reveal tight">
-        <div className="newslist">{news.map(n => <div className="row" key={n.title}><div><div className={`k ${K[n.kind]}`}>{n.kind.toUpperCase()}</div><div className="dt">{n.date}</div></div><div><div className="t">{n.title}</div><div className="s">{n.summary}</div></div></div>)}</div>
-        <p style={{ marginTop: 22 }}><Prov status="illustrative">placeholder entries</Prov> <span style={{ color: 'var(--muted)', fontSize: 12, marginLeft: 8 }}>Sample dispatches to show the format. Replaced by real posts before launch.</span></p>
+      <section className="wrap s s-ink compact signup-band">
+        <div><span className="kicker">Stay connected</span><h2>Follow the work<br /><em>as it unfolds.</em></h2></div>
+        <Signup endpoint={site.forms?.signup} subscribe={false} />
       </section>
     </>
   );

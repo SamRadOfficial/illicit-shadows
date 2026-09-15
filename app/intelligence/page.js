@@ -1,57 +1,87 @@
 import Link from 'next/link';
-import site from '../../data/site.json';
-import { Pic, SectionHead, Break, Prov, Donor } from '../../components/Blocks';
+import { Pic, Hero } from '../../components/Blocks';
+import { Arrow } from '../../components/Icons';
 import { CascadeMaps } from '../../components/CascadeMaps';
 import { Convergence } from '../../components/Convergence';
 export const metadata = { title: 'Intelligence · MISTIC and Project Helix' };
 
+const METHOD = [
+  ['Gather', 'MIS assets, artifacts, and mapping enter the intelligence layer.'],
+  ['Connect', 'A global graph links actors, routes, and flows.'],
+  ['Model', 'Helix.AI applies structural causal modeling and adaptive feedback.'],
+  ['Test', 'Reinforcement explores cascading adaptation paths.'],
+];
+
 export default function Intelligence() {
   return (
     <>
-      <section className="hero" style={{ padding: 0 }}>
-        <div className="bg"><Pic base="/images/hero-intelligence" alt="An evidence wall of port photographs linked by gold string" priority pos="right center" /></div>
-        <div className="veil" />
-        <div className="wrap">
-          <p className="eyebrow">Strategic Intelligence &middot; MISTIC</p>
-          <h1 className="disp">We don't forecast incidents. We model <span className="y">what the network does next.</span></h1>
-          <p className="lede">Project Helix simulates how criminal, political, and economic networks reorganize after disruption, turning fragmented intelligence into systemic foresight.</p>
-          <div className="cta-row"><a className="btn btn-y" href={`mailto:${site.contact}`}>Request a briefing</a><a className="btn btn-o" href="#helix">Helix subscriptions</a></div>
+      <Hero img="/images/hero-intelligence" alt="An evidence wall of port photographs linked by gold string"
+            eyebrow="MISTIC / Strategic intelligence"
+            title={<>Model what<br />the network<br /><span className="y">does next.</span></>}
+            lede="How do criminal, political, and economic networks reorganize after disruption? Helix turns fragmented intelligence into systemic foresight.">
+        <div className="actions">
+          <a className="ed-btn" href="#cascade">Explore a scenario {Arrow.down}</a>
+          <Link className="ed-link" href="/contact">Request a briefing {Arrow.upRight}</Link>
         </div>
-      </section>
-      <Break base="/images/dividers/intelligence-network-analysis" alt="Layered network model with branching paths" />
-      <section className="wrap reveal">
-        <SectionHead label="The Institute" meta="FUSION CENTER" />
-        <div className="inst"><div className="it">MISTIC</div><div className="ie">MEDIA · TECHNOLOGY · INNOVATION CONVERGENCE</div><p>A fusion center for strategic intelligence, mapping the intersection of organized crime, emerging technology, and global threat networks, and home to Project Helix, an AI-based predictive convergence system.</p></div>
-      </section>
-      {/* Helix: the art carries the idea, the layers carry the mechanism. Two columns so the
-          reader sees both at once instead of scrolling from one to the other. */}
-      <section className="wrap reveal tight" id="helix">
-        <SectionHead label="Project Helix" meta="PREDICTIVE CONVERGENCE SYSTEM" />
-        <div className="helixrow">
-          <figure className="helix-art">
-            <Pic base="/images/helix-ai" alt="Helix.AI: illicit economies converging on shared nodes across the global network" />
-          </figure>
-          <div className="layers">
-            <div className="layer"><div className="ln">01 &middot; INTELLIGENCE LAYER</div><div className="ld">MIS ingestion: assets, artifacts, and mapping cataloged into the modeling framework.</div></div>
-            <div className="layer"><div className="ln">02 &middot; GLOBAL GRAPH</div><div className="ld">Nodes, edges, and a data lake linking actors, routes, and flows.</div></div>
-            <div className="layer"><div className="ln">03 &middot; CAUSAL ENGINE</div><div className="ld">Helix.AI: structural causal modeling with adaptive feedback.</div></div>
-            <div className="layer"><div className="ln">04 &middot; REINFORCEMENT</div><div className="ld">Optimization across cascading adaptation paths.</div></div>
-          </div>
+      </Hero>
+
+      {/* What this is: the institute first, then its project. Helix is one of MISTIC's projects,
+          not the other way round, and the page did not say so anywhere. */}
+      <section className="wrap s s-paper two" id="mistic">
+        <div><span className="kicker">MISTIC / The institute</span><h2>A fusion center for<br /><em>the shadow economy.</em></h2></div>
+        <div>
+          <p className="deck">MISTIC, Illicit Shadows Media, Technology &amp; Innovation Convergence, is the institute behind the platform: a fusion center where field investigations, the museum's research, and predictive modeling are brought together.</p>
+          <p>It works the way an intelligence fusion center works. Evidence gathered in the field and cataloged in the museum is connected and modeled, so what is learned in one place informs the others.</p>
+          <p>Helix.AI is one of its projects: the predictive convergence system that examines how criminal, political, and economic networks reorganize after disruption.</p>
         </div>
       </section>
 
-      <Break base="/images/break-evidence-2" />
+      <section className="wrap s s-ink" id="helix" style={{ paddingTop: 'clamp(44px,5.5vw,64px)' }}>
+        <div className="intro">
+          <div><span className="kicker">Project Helix / How it works</span><h2>From fragments<br /><em>to a system.</em></h2></div>
+          <p>Four layers, from the museum's intelligence layer to a reinforcement loop that tests how a network adapts.</p>
+        </div>
+        <ol className="method">
+          {METHOD.map(([t, d], i) => <li key={t}><span className="n">{String(i + 1).padStart(2, '0')}</span><h3>{t}</h3><p>{d}</p></li>)}
+        </ol>
+        <figure className="helix-art" style={{ marginTop: 40 }}>
+          <Pic base="/images/helix-ai" alt="Helix.AI: illicit economies converging on shared nodes across the global network" />
+        </figure>
+      </section>
 
-      <section className="wrap reveal" id="cascade">
-        <SectionHead label="Cascade prediction" meta="WORKED EXAMPLE" />
+      <section className="wrap s s-ink" id="cascade">
+        <div className="intro">
+          <div><span className="kicker">Illustrative model · Hypothetical scenario</span><h2>One disruption.<br /><em>Many consequences.</em></h2></div>
+          <p>Follow the Rotterdam example from an initial shock to redirected routes, financial activity, and downstream effects. Use the timeline on the map to move between stages.</p>
+        </div>
         <CascadeMaps />
       </section>
-      <Break base="/images/break-evidence-1" />
-      <section className="wrap reveal">
-        <Convergence label="Everything is connected" meta="WHAT HELIX MODELS" lede="Helix models the system the map describes: how pressure on one domain moves activity into another." />
+
+      <section className="wrap s s-slate two">
+        <div>
+          <span className="kicker">What the model is for</span>
+          <h2>Understand<br /><em>the adaptation.</em></h2>
+          <p className="deck">Strategic foresight, rather than a prediction of a single incident.</p>
+        </div>
+        <div>
+          <p>A disruption can move trade into different routes, entities, assets, and spheres of influence. Helix examines those linked shifts.</p>
+          <p>The Rotterdam sequence is an illustrative model, not a report of observed events or a validated forecast. Its purpose is to make the logic of a cascade visible.</p>
+          <a className="ed-link" href="#convergence">See the wider connections {Arrow.down}</a>
+        </div>
       </section>
-      <Break base="/images/break-evidence-2" />
-      <section className="wrap reveal"><Donor eyebrow="Enterprise" title={<>Advisory, briefings, and <span>Helix access</span></>} copy="Governments, international organizations, and industry on illicit-economy exposure. Enterprise B2G and B2B intelligence platform access." cta="Request a briefing" href={`mailto:${site.contact}`} mail={site.contact} /></section>
+
+      <section className="wrap s s-paper" id="convergence">
+        <div className="intro">
+          <div><span className="kicker">Crime convergence</span><h2>Pressure travels<br /><em>across domains.</em></h2></div>
+          <p>Illicit markets connect governance, security, economies, and communities. This is the wider system Helix seeks to model.</p>
+        </div>
+        <div className="convergence-frame"><Convergence head={false} /></div>
+      </section>
+
+      <section className="wrap s s-yellow cta-band">
+        <div><h2>Bring the network into view.</h2><p>Advisory, briefings, and Helix access for governments, international organizations, and industry.</p></div>
+        <Link className="ed-btn" href="/contact">Request a briefing {Arrow.upRight}</Link>
+      </section>
     </>
   );
 }

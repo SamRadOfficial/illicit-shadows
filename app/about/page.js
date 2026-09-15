@@ -1,81 +1,95 @@
 import Link from 'next/link';
-import site from '../../data/site.json';
 import team from '../../data/team.json';
+import { Pic, Hero } from '../../components/Blocks';
+import { Arrow } from '../../components/Icons';
 import { Pillars } from '../../components/Pillars';
-import { Pic, SectionHead, Break, Hero, Donor } from '../../components/Blocks';
-import { Icon } from '../../components/Icons';
 export const metadata = { title: 'About' };
 
 const WHY = [
-  ['alert', 'Crime convergence is accelerating', 'Cartels, kleptocrats, and state-linked actors now operate in the same supply chains, banks, and platforms.'],
-  ['supply', 'Supply chains are the new battlefield', 'Ports, e-commerce, free-trade zones, shipping nodes, and social media are exploited by illicit networks at industrial scale.'],
-  ['signal', 'Intelligence is fragmented', 'Governments and industry hold massive data: siloed, episodic, and unable to model cascading network behavior.'],
-  ['eye', 'Public demand for clarity', "Audiences want documentary-grade truth about the systems shaping their world. The genre is hot. The supply isn't."],
+  ['Crime crosses categories.', 'Cartels, kleptocrats, and state-linked actors operate through shared supply chains, banks, and platforms.'],
+  ['Trade routes carry more than trade.', 'Ports, free-trade zones, e-commerce, and shipping networks are exploited at scale.'],
+  ['Intelligence remains fragmented.', 'Data held across institutions can miss the consequences that travel between them.'],
+  ['Clarity has a public purpose.', 'People need to understand the systems affecting their communities and economies.'],
 ];
-const SERVE = {
-  'Industry': ['Pharmaceuticals', 'Luxury Retail', 'Automotive', 'Food, Alcohol, Tobacco', 'Electronics & e-commerce', 'Media & Entertainment', 'Sports & Frontier Tech', 'Industry Associations', 'Chambers of Commerce'],
-  'Intl. Orgs': ['United Nations', 'World Bank · IMF', 'OECD · WTO · WCO', 'INTERPOL', 'APEC · ASEAN · GCC', 'OAS · EU · NATO', 'ICC', 'World Economic Forum', 'Munich Security Conf.'],
-  'Government': ['National Security Agencies', 'Law Enforcement', 'Customs Authorities', 'Financial Intelligence Units', 'Diplomatic Missions'],
-  'Civil Society': ['NGOs', 'Think Tanks', 'Universities', 'Academic Centers', 'Foundations'],
-};
 
 export default function About() {
   return (
     <>
-      <Hero img="/images/hero-about" mobilePos="52% center" alt="An investigation room at night: an evidence wall of shipping photographs above a long working table" eyebrow="About · Illicit Shadows, LLC"
-            title={<>Diplomatic credibility meets <span className="y">deep-tech innovation.</span></>}
-            lede="We integrate three disciplines no single player has combined, documentary reach, curated knowledge, and predictive intelligence, to expose the global shadow economy and predict what it does next.">
-        <div className="cta-row"><a className="btn btn-y" href={`mailto:${site.contact}`}>Partner with us</a><Link className="btn btn-o" href="/">&#9654; See the platform</Link></div>
+      <Hero img="/images/hero-about" mobilePos="52% center" alt="An investigation room at night: an evidence wall of shipping photographs above a long working table"
+            eyebrow="About Illicit Shadows"
+            title={<>Two perspectives.<br /><span className="y">One field of vision.</span></>}
+            lede="Diplomatic credibility meets deep-tech innovation. Field investigations, public knowledge, and intelligence converge under one roof.">
+        <div className="actions"><a className="ed-btn" href="#founders">Meet the founders {Arrow.down}</a></div>
       </Hero>
-      <Break base="/images/dividers/about-shared-expertise" alt="Researchers reviewing documents and maps together" />
-      <section className="wrap reveal" id="who" style={{ paddingBottom: 0 }}>
-        <SectionHead label="Who we are" meta="THE INSTITUTION" />
-        {/* The statement sets up the panels below rather than repeating them: MISTIC is expanded
-            once, in the Pillars block, and this hands off to it. */}
-        <div className="whois">
-          <p className="whois-lead">A media, knowledge, and intelligence platform, where{' '}
-            <b>documentary-grade journalism</b>, <b>a public knowledge hub</b>, and{' '}
-            <b>a predictive intelligence system</b> converge under one roof.</p>
-          <div className="whois-side">
-            <p className="whois-body">Illicit Shadows, LLC works with governments, international
-              organizations, industry, and civil society to expose the global shadow economy and
-              predict what it does next.</p>
-            <p className="whois-hand">That convergence has a name.</p>
+
+      <section className="wrap s s-paper two" id="who">
+        <div><span className="kicker">The institution</span><h2>See the connections.<br /><em>Make them matter.</em></h2></div>
+        <div>
+          <p className="deck">Illicit Shadows, LLC brings together the reach of documentary journalism, the depth of a knowledge institution, and the foresight of a modeling system.</p>
+          <p>That convergence has a name: MISTIC, Illicit Shadows Media, Technology &amp; Innovation Convergence.</p>
+          <div className="text-routes">
+            <Link href="/film">WATCH {Arrow.upRight}</Link>
+            <Link href="/museum">EXPLORE {Arrow.upRight}</Link>
+            <Link href="/intelligence">MODEL {Arrow.upRight}</Link>
           </div>
         </div>
       </section>
 
-      <section className="wrap reveal tight" id="platform" style={{ paddingTop: 'clamp(28px,4vw,52px)' }}>
-        <Pillars />
-      </section>
-      <Break base="/images/break-evidence-2" />
-      <section className="wrap reveal" id="team">
-        <SectionHead label="Who's building this" meta="FOUNDERS" />
-        <p className="sec-sub">Diplomatic credibility meets deep-tech innovation.</p>
-        <div className="founders">{team.map(t => <div className={`fcard${t.photo ? ' haspic' : ''}`} key={t.slug}><div className="fhead"><div className="favatar">{t.photo ? <Pic base={t.photo} alt={`${t.name}, ${t.role}, Illicit Shadows`} /> : t.initials}</div><div className="fmeta"><div className="fname">{t.name}</div><div className="frole">{t.role.toUpperCase()}</div></div></div><div className="fanchor">{t.anchor}</div><p>{t.bio}</p></div>)}</div>
-        <p className="team-note">IN PARTNERSHIP WITH <b>ICAIE</b> + <b>RADOC</b></p>
-      </section>
-      <Break base="/images/break-evidence-3" />
-      <section className="wrap reveal" id="serve">
-        <SectionHead label="Who we serve" meta="CLIENTS & PARTNERS" />
-        <p className="sec-sub">Every player exposed to global supply chains, sanctions risk, or illicit-economy contamination.</p>
-        <div className="serve">{Object.entries(SERVE).map(([h, rows]) => <div className="scol" key={h}><div className="sh">{h}</div>{rows.map(r => <div className="row" key={r}>{r}</div>)}</div>)}</div>
-      </section>
-      <Break base="/images/break-evidence-1" />
-      <section className="wrap reveal" id="whynow">
-        <SectionHead label="Why now" meta="FOUR CONVERGING FORCES" />
-        <p className="sec-sub">Four converging forces, and a market with no incumbent.</p>
-        <div className="whynow">{WHY.map(([ic, t, p]) => <div className="wn" key={t}>{Icon[ic]}<h3>{t}</h3><p>{p}</p></div>)}</div>
-      </section>
-      <Break base="/images/break-evidence-2" />
-      <section className="wrap reveal" id="partners">
-        <SectionHead label="Partners" meta="ICAIE + RADOC" />
-        <div className="partners-big">
-          <div className="pbig"><div className="pmark icaie"><Pic base="/logos/icaie-square" alt="ICAIE" /></div><div><div className="pd2" style={{ marginTop: 6 }}>International Coalition Against Illicit Economies. A leading coalition confronting the convergence of illicit trade, crime, and threat finance. Washington, DC.</div><a href="https://icaie.com">icaie.com &rarr;</a></div></div>
-          <div className="pbig"><div className="pmark"><span className="radoc"><b>RAD</b><em>OC</em></span></div><div><div className="pn2">RADOC</div><div className="pd2">RAD Original Creations, a meta-media studio producing the Illicit Shadows films. NYC &middot; Washington, DC &middot; London.</div><a href="https://radoc.co">radoc.co &rarr;</a></div></div>
+      <section className="wrap s s-ink" id="founders">
+        <div className="intro"><div><span className="kicker">The founders</span><h2>Different disciplines.<br /><em>Shared purpose.</em></h2></div></div>
+        <div className="founders">
+          {team.map(t => (
+            <article key={t.slug}>
+              <Pic base={t.photo} alt={t.name} />
+              <span className="kicker">{t.anchor.replace(' Anchor', '')}</span>
+              <h3>{t.name}</h3>
+              <p>{t.bio}</p>
+            </article>
+          ))}
         </div>
       </section>
-      <section className="wrap reveal"><Donor eyebrow="Work with us" title={<>Partner with <span>Illicit Shadows</span></>} copy="Advisory, Helix subscriptions, Museum founding-donor partnerships, and executive-producer collaborations across the film slate." cta="Start a conversation" href={`mailto:${site.contact}`} mail={site.contact} /></section>
+
+      <section className="wrap s s-ink" id="platform" style={{ paddingTop: 0 }}>
+        <div className="intro"><div><span className="kicker">One platform</span><h2>Three <em>ways in.</em></h2></div></div>
+        <Pillars compact />
+      </section>
+
+      <section className="wrap s s-slate">
+        <div className="intro">
+          <div><span className="kicker">Why now</span><h2>The threats<br /><em>are converging.</em></h2></div>
+          <p>Our understanding needs to connect as quickly as the networks do.</p>
+        </div>
+        <div className="argument">
+          {WHY.map(([h, d], i) => <article key={h}><span>{String(i + 1).padStart(2, '0')}</span><h3>{h}</h3><p>{d}</p></article>)}
+        </div>
+      </section>
+
+      <section className="wrap s s-paper" id="partners">
+        <div className="intro">
+          <div><span className="kicker">Who we work with</span><h2>Across sectors.<br /><em>Across borders.</em></h2></div>
+          <p>Governments, international organizations, industry, and civil society facing illicit-economy exposure and convergence risk.</p>
+        </div>
+        <div className="audience"><span>Government</span><span>International organizations</span><span>Industry</span><span>Civil society</span></div>
+        <div className="partners">
+          <article>
+            <Pic base="/logos/icaie-square" className="plogo" alt="ICAIE, International Coalition Against Illicit Economies" />
+            <h3>ICAIE</h3>
+            <p>International Coalition Against Illicit Economies. Confronting illicit trade, crime, and threat finance. Washington, DC.</p>
+            <a className="ed-link" href="https://icaie.com" target="_blank" rel="noopener noreferrer">icaie.com {Arrow.upRight}</a>
+          </article>
+          <article>
+            <div className="radoc" style={{ fontSize: 28, marginBottom: 18 }} aria-label="RADOC"><b>RAD</b><em>OC</em></div>
+            <h3>RAD Original Creations</h3>
+            <p>A meta-media studio producing the Illicit Shadows films. NYC, Washington, DC, and London.</p>
+            <a className="ed-link" href="https://radoc.co" target="_blank" rel="noopener noreferrer">radoc.co {Arrow.upRight}</a>
+          </article>
+        </div>
+      </section>
+
+      <section className="wrap s s-yellow cta-band">
+        <div><h2>Work at the intersection.</h2><p>Advisory, intelligence access, museum partnerships, and film collaborations.</p></div>
+        <Link className="ed-btn" href="/contact">Start a conversation {Arrow.upRight}</Link>
+      </section>
     </>
   );
 }

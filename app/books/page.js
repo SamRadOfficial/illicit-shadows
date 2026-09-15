@@ -1,54 +1,66 @@
 import Link from 'next/link';
+import site from '../../data/site.json';
 import books from '../../data/books.json';
-import { Pic, SectionHead, Break, Prov, Hero } from '../../components/Blocks';
+import { Pic, Hero, Signup } from '../../components/Blocks';
+import { Arrow } from '../../components/Icons';
 export const metadata = { title: 'Books' };
 
 export default function Books() {
   const [one, ...rest] = books;
   return (
     <>
-      {/* The trilogy render is dark left and books right, so it works as a hero with the copy in
-          the empty half, the same composition rule as the globe. */}
-      <Hero img="/images/books-trilogy-hero" alt="The three Illicit Shadows Chronicles hardbacks standing on a wet street at night"
-            eyebrow="The publishing arm" pos="right center" mobilePos="68% center"
-            title={<>Read the <span className="y">shadows</span></>}
-            lede="A trilogy tracing one system: the network that built itself inside legitimate institutions, the state that comes to collect, and the older alliance that wakes up to both." />
+      {/* The owner's books hero (15 Sep) is newer than the package's trilogy render, so it stays. */}
+      <Hero img="/images/books-hero" alt="" mobilePos="62% center"
+            eyebrow="Illicit Shadows Chronicles / Fiction"
+            title={<>Read<br /><span className="y">the shadows.</span></>}
+            lede="A hidden network. A state that comes to collect. An older alliance that wakes to both.">
+        <div className="actions"><a className="ed-btn" href="#trilogy">Discover the trilogy {Arrow.down}</a></div>
+      </Hero>
 
-      <section className="wrap reveal tight">
-        <SectionHead label="Fiction series" meta="ILLICIT SHADOWS CHRONICLES" />
-        <div className="umbra">
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Pic base={one.mockup} alt={`${one.title}, Book One`} className="bookmock" priority />
-          </div>
-          <div>
-            <p className="eyebrow">Book {one.n}</p>
-            <h3>The Umbra <span>Circle</span></h3>
-            <p className="logline">{one.logline}</p>
-            <p>{one.blurb}</p>
-            <p className="meta" style={{ margin: '14px 0 18px' }}>{one.status.toUpperCase()} &middot; BY SAM RAD AND DAVID M. LUNA</p>
-            <Link className="btn btn-y" href={one.preview}>Read the preview</Link>
-          </div>
+      <section className="wrap s s-paper" id="trilogy" style={{ paddingBottom: 24 }}>
+        <Pic base="/images/books-trilogy-hero" className="trishot" alt="The three Illicit Shadows Chronicles novels standing on a wet street at night" />
+      </section>
+
+      <section className="wrap s s-paper book-feature" style={{ paddingTop: 24 }}>
+        <div className="book-stage"><Pic base={one.mockup} alt={`${one.title} book mockup`} /></div>
+        <div>
+          <span className="kicker">Book 1 / {one.status}</span>
+          <h2>The Umbra<br /><em>Circle</em></h2>
+          <p className="deck">The museum was built to expose a hidden world. Then that world came looking.</p>
+          <p>{one.blurb}</p>
+          <p className="byline">By Sam Rad and David M. Luna</p>
+          <Link className="ed-link" href={one.preview}>Explore the book {Arrow.upRight}</Link>
         </div>
       </section>
 
-      <Break base="/images/dividers/books-narrative-universe" alt="Open book and pen beside a rainy city window" />
-
-      <section className="wrap reveal">
-        <SectionHead label="The trilogy" meta="BOOKS TWO AND THREE" dim />
-        {/* No covers yet, so these are text cards rather than placeholder art. */}
-        <div className="trilogy">
+      <section className="wrap s s-ink">
+        <div className="intro">
+          <div><span className="kicker">The story continues</span><h2>The circle <em>widens.</em></h2></div>
+          <p>Books two and three are in development.</p>
+        </div>
+        <div className="sequels">
           {rest.map(b => (
-            <article className="tcard" key={b.slug}>
-              <Pic base={b.mockup} alt={`${b.title}, Book ${b.n}`} className="bookmock" />
-              <div className="tcard-body">
-                <p className="eyebrow">Book {b.n}</p>
-                <h3 className="lead-title sm">{b.title}</h3>
-                <p className="logline">{b.logline}</p>
-                <Prov status="investigating">{b.status}</Prov>
-              </div>
+            <article key={b.slug}>
+              <div className="book-stage"><Pic base={b.mockup} alt={`${b.title} book mockup`} /></div>
+              <span className="kicker">Book {b.n} / {b.status}</span>
+              <h3>{b.title}</h3>
+              <p>{b.logline}</p>
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="wrap s s-slate compact two">
+        <div><span className="kicker">Fiction. Real-world questions.</span><h2>Another route<br /><em>into the same world.</em></h2></div>
+        <div>
+          <p>The Chronicles are fiction. The films and museum explore the real illicit markets and convergence themes that inform the narrative universe.</p>
+          <Link className="ed-link" href="/film">Explore the investigations {Arrow.upRight}</Link>
+        </div>
+      </section>
+
+      <section className="wrap s s-paper compact signup-band">
+        <div><h2>Get the next chapter.</h2><p>Release news and updates from the world of Illicit Shadows.</p></div>
+        <Signup endpoint={site.forms?.signup} subscribe={false} />
       </section>
     </>
   );

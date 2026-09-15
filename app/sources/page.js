@@ -1,23 +1,34 @@
 import sources from '../../data/sources.json';
 import films from '../../data/films.json';
-import { SectionHead, Prov, Break } from '../../components/Blocks';
-export const metadata = { title: 'Sources', description: 'The evidentiary spine of Illicit Shadows: every published source behind the films, cited.' };
-const title = id => films.find(f => f.slug === id)?.title || id;
+export const metadata = { title: 'Sources', description: 'The evidentiary spine of Illicit Shadows: every published source behind the films, the halls, and the model.' };
+
+const filmTitle = id => films.find(f => f.slug === id || f.oldSlug === id)?.title || id;
+
 export default function Sources() {
   const pub = sources.filter(s => s.public);
   return (
     <>
-      <section className="wrap" style={{ paddingTop: 'clamp(48px,7vw,88px)', paddingBottom: 0 }}>
-        <p className="eyebrow">The evidentiary spine</p>
-        <h1 className="disp" style={{ marginTop: 14 }}>Sources</h1>
-        <p className="lede" style={{ marginTop: 18 }}>Every statistic on this site carries its source beside it. This is the index. Cited means a published document you can read; the status chip says how far a claim has been verified.</p>
+      <section className="wrap s s-ink text-hero">
+        <span className="kicker">The evidentiary spine</span>
+        <h1>Follow<br /><em>the evidence.</em></h1>
+        <p style={{ marginTop: 18 }}>A source index for claims across the site. Published documents, attribution, and verification status belong alongside the story.</p>
       </section>
-      <Break base="/images/dividers/sources-verified-documents" alt="Research files and a magnifier over documents" />
 
-      <section className="wrap reveal tight">
-        <SectionHead label="Published sources" meta={`${pub.length} DOCUMENTS`} />
-        <div className="srclist">{pub.map(s => <div className="src" key={s.id}><div><div className="st">{s.url ? <a href={s.url} style={{ color: 'var(--text)' }}>{s.title}</a> : s.title}</div><div className="sp">{s.publisher} &middot; {s.date}</div>{s.films?.length > 0 && <div className="sf">CITED IN: {s.films.map(title).join(', ').toUpperCase()}</div>}</div><Prov status={s.status} /></div>)}</div>
-        <p style={{ color: 'var(--muted)', fontSize: 12, marginTop: 22 }}>Links are added as each document is verified. Held, uncleared, and single-sourced material does not appear here until it clears.</p>
+      <section className="wrap s s-paper">
+        <div className="intro"><h2>Published sources</h2><span className="kicker" style={{ margin: 0 }}>{pub.length} documents</span></div>
+        <div className="source-index">
+          {pub.map((s, i) => (
+            <article className="source-row" key={s.id}>
+              <span>{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{s.url ? <a href={s.url} target="_blank" rel="noopener noreferrer">{s.title}</a> : s.title}</h3>
+                <p className="fine">{s.publisher} · {s.date}{s.films?.length ? ` · ${s.films.map(filmTitle).join(', ')}` : ''}</p>
+              </div>
+              <span>{s.status}</span>
+            </article>
+          ))}
+        </div>
+        <p className="fine" style={{ marginTop: 22 }}>Links are added as documents are verified. A listed citation records where a claim came from; it is not itself a verification.</p>
       </section>
     </>
   );

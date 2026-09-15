@@ -1,108 +1,106 @@
 import Link from 'next/link';
 import site from '../../../data/site.json';
 import films from '../../../data/films.json';
-import sources from '../../../data/sources.json';
-import tags from '../../../data/tags.json';
-import { Pic, SectionHead, Break, Stat, Prov, Tags } from '../../../components/Blocks';
+import { Pic, Prov } from '../../../components/Blocks';
+import { Arrow } from '../../../components/Icons';
 import { VideoEmbed } from '../../../components/VideoEmbed';
 import { VideoJsonLd } from '../../../components/Schema';
+import sources from '../../../data/sources.json';
 
 export function generateStaticParams() { return films.map(f => ({ slug: f.slug })); }
-// Next 16: params is a Promise and must be awaited.
-export async function generateMetadata({ params }) { const { slug } = await params; const f = films.find(x => x.slug === slug); return { title: f?.title }; }
-const srcName = id => { const s = sources.find(x => x.id === id); return s ? `${s.publisher}, ${s.date.slice(0, 4)}` : ''; };
+export async function generateMetadata({ params }) {
+  const { slug } = await params; const f = films.find(x => x.slug === slug);
+  return { title: f.title, description: f.subtitle };
+}
 
 export default async function Investigation({ params }) {
   const { slug } = await params;
   const f = films.find(x => x.slug === slug);
-  // "Also from Illicit Shadows", not "up next": ordering is by subject, not by position in a run.
   const other = films.find(x => x.slug !== slug);
   const live = f.status === 'streaming';
-  const [a, b] = f.title.split(' ');
+  const shorts = (f.segments || []).filter(s => s.slug);
+  const paras = f.synopsis.split(/(?<=\.)\s+(?=[A-Z])/).reduce((acc, sent, i) => {
+    // Two paragraphs from the synopsis: the first sentence stands alone, the rest follow.
+    if (i === 0) acc.push(sent); else acc[acc.length - 1 < 1 ? 0 : 1] = (acc[1] || '') + (acc[1] ? ' ' : '') + sent;
+    return acc;
+  }, []);
+
   return (
     <>
-      <section className="wrap" style={{ paddingTop: 'clamp(48px,7vw,88px)', paddingBottom: 'clamp(48px,7vw,88px)' }}>
-        <div className="crumb"><Link href="/film">Film</Link> &nbsp;/&nbsp; <b>{f.title}</b></div>
-        <h1 className="ep-title">{a} <span>{b}</span></h1>
-        <p className="ep-sub">{f.subtitle}.</p>
+      <section className="wrap s s-ink detail-title">
+        <span className="kicker"><Link href="/film">Film</Link> <span className="kmuted">/ {live ? 'Now streaming' : 'In production'} · {f.form || f.years}</span></span>
+        <h1>{f.title}</h1>
+        <p>{f.subtitle}.</p>
+      </section>
+
+      <section className="wrap s s-ink" style={{ paddingTop: 0 }}>
         {live
-          ? <VideoEmbed className="ep-player" id={f.youtubeId} list={f.playlist} image={f.image} alt={`${f.title} title card`} title={f.title} channel={f.youtube || site.social.youtube} big />
-          : <div className="ep-player"><Pic base={f.image} alt={`${f.title} title card`} priority /><span className="badge red btm">IN PRODUCTION</span></div>}
-        <div className="ep-meta">
-          {live ? <span className="live">&#9679; NOW STREAMING</span> : <span className="live">&#9679; IN PRODUCTION</span>}
-          {f.form && <span>{f.form.toUpperCase()}</span>}
-          {f.segments && <span>{f.segments.length} SEGMENTS</span>}{f.locations && <span>{f.locations.map(l => l.split(',')[1]?.trim() || l).join(' · ').toUpperCase()}</span>}
-          {live && <a href={f.youtube || site.social.youtube}>Watch on YouTube &rarr;</a>}
+          ? <VideoEmbed modal className="wide ep-player" big id={f.youtubeId} list={f.playlist} image={f.image} alt={`${f.title} title card`} title={f.title} channel={f.youtube || site.social.youtube} />
+          : <div className="wide"><Pic base={f.image} alt={`${f.title} title card`} priority /><span className="play-marker">In production</span></div>}
+        <div className="detail-meta">
+          <span>{f.places.join(' · ')} · {f.years}</span>
+          {live && shorts[0] && <Link className="ed-link" href={`/film/${f.slug}/${shorts[0].slug}`}>Watch the first film {Arrow.upRight}</Link>}
+          {!live && <Prov status="investigating">In production</Prov>}
         </div>
       </section>
-      <VideoJsonLd type="Movie" name={f.title} description={f.synopsis} image={f.image}
-                   youtubeId={f.youtubeId} published={f.published} />
-      {f.slug === 'chemical-cartels'
-        ? <Break base="/images/dividers/chemical-cartels-precursor-trade" alt="Sealed industrial drums, sample vials, and container seal" />
-        : <Break base="/images/dividers/illicit-gold-mine-to-market" alt="Gold-bearing rock, panning dish, and refined gold" />}
-      <section className="wrap reveal">
-        <SectionHead label="About this investigation" meta="SYNOPSIS" />
-        <div className="ep-about">
-          <div>
-            <p>{f.synopsis}</p>
-            {f.slug === 'chemical-cartels' && <>
-              <p>From the streets of San Francisco to the cartel fentanyl labs in Mexico and Canada, from the Chinese chemical companies to Canadian ports, we follow the chemical trail back through illicit supply chains: inter-modal transportation nodes of maritime shipping, highways, courier services, banking, real estate, e-commerce, and social media apps.</p>
-              <p>We bring greater insight to policy makers, law enforcement, and victimized communities on today's illegal fentanyl trade as it finances other criminal activities and profits are laundered in financial safe havens that converge across Mexico and the United States.</p>
-            </>}
-            <Tags keys={f.tags} vocab={tags} />
-            {f.stats && <div className="statgrid">{f.stats.map(s => <div className="statcell" key={s.label}><Stat n={s.n} src={srcName(s.source)} size="clamp(20px,2.4vw,28px)" /><div className="lb">{s.label}</div></div>)}</div>}
-          </div>
-          <div className="credits">
-            <h4>Credits</h4>
-            <div className="cr"><div className="ck">AN INVESTIGATION BY</div><div className="cv">ICAIE + RADOC</div></div>
-            <div className="cr"><div className="ck">EXECUTIVE PRODUCERS</div><div className="cv">David M. Luna &middot; Sam Rad</div></div>
-            {f.host && <div className="cr"><div className="ck">HOST</div><div className="cv">{f.host}</div></div>}
-            {f.voice && <div className="cr"><div className="ck">INSTITUTIONAL VOICE</div><div className="cv">{f.voice}</div></div>}
-            <div className="cr"><div className="ck">PRODUCTION</div><div className="cv">An Illicit Shadows Production</div></div>
-            <div className="cr"><div className="ck">STREAMING</div><div className="cv">YouTube &middot; {site.social.handle}</div></div>
-          </div>
+
+      <VideoJsonLd type="Movie" name={f.title} description={f.synopsis} image={f.image} youtubeId={f.youtubeId} published={f.published} />
+
+      <section className="wrap s s-paper reading">
+        <div><span className="kicker">The investigation</span><h2>Follow the trail.</h2></div>
+        <div className="prose">
+          {paras.map((p, i) => <p key={i}>{p}</p>)}
+          <dl className="credits">
+            <div><dt>An investigation by</dt><dd>ICAIE + RADOC</dd></div>
+            <div><dt>Executive producers</dt><dd>David M. Luna · Sam Rad</dd></div>
+            <div><dt>Production</dt><dd>An Illicit Shadows Production</dd></div>
+            {live && <div><dt>Streaming</dt><dd>YouTube · {site.social.handle}</dd></div>}
+            {f.host && <div><dt>On camera</dt><dd>{f.host}</dd></div>}
+          </dl>
         </div>
       </section>
-      {f.segments && <section className="wrap reveal tight">
-        <SectionHead label={f.form || 'Segments'} meta={`${f.title.toUpperCase()} · ${f.segments.length} PARTS`} dim />
-        {/* A short with artwork gets a card; one without stays a text row until its cover exists,
-            so a missing image never renders as a placeholder tile. Owner pick, 14 Sep. */}
-        {f.segments.some(s => s.image) && <div className="vlist">
-          {f.segments.filter(s => s.image).map(s => (
-            <div className="vrow" key={s.n}>
-              <span className="vrow-n">{String(s.n).padStart(2, '0')}</span>
-              <VideoEmbed modal variant="row" className="vrow-img" meta={s.runtime}
-                          id={s.youtubeId} image={s.image} alt={`${s.title} title card`}
-                          title={s.title} channel={f.youtube || site.social.youtube} />
-              <span className="vrow-body">
-                <span className="vrow-t">{s.title}</span>
-                {s.sub && <span className="vrow-s">{s.sub}</span>}
-                <Link className="tx-jump" href={`/film/${f.slug}/${s.slug}`}>
-                  {s.transcript ? 'Narration and details' : 'Details'} &rarr;
-                </Link>
-              </span>
+
+      {shorts.length > 0 && <section className="wrap s s-ink" id="shorts">
+        <span className="kicker">{f.title}</span>
+        <h2>{f.form === 'Eleven short films' ? 'Eleven ways into the story.' : 'The short films.'}</h2>
+        {/* Rows keep the 320px still and the labelled Play control outside the artwork (owner
+            decision, 14 Sep): the covers appear nowhere else and their titles are burned in. */}
+        <div className="short-index">
+          {shorts.map(s => (
+            <div className="short-row" key={s.n}>
+              <span>{String(s.n).padStart(2, '0')}</span>
+              <VideoEmbed modal variant="row" meta={s.runtime} id={s.youtubeId} image={s.image}
+                          alt={`${s.title} title card`} title={s.title} channel={f.youtube || site.social.youtube} />
+              <div className="vrow-body">
+                <h3><Link href={`/film/${f.slug}/${s.slug}`}>{s.title}</Link></h3>
+                {s.sub && <p>{s.sub}.</p>}
+                <Link className="ed-link" href={`/film/${f.slug}/${s.slug}`}>{s.transcript ? 'Narration and details' : 'Details'} {Arrow.upRight}</Link>
+              </div>
             </div>
           ))}
-        </div>}
-        {f.segments.some(s => !s.image) && <div className="seglist">
-          {f.segments.filter(s => !s.image).map(s => (
-            <a className="seg" href={f.youtube || site.social.youtube} key={s.n}>
-              <div className="sgn">{String(s.n).padStart(2, '0')}</div>
-              <div><div className="sgt">{s.title}</div>{s.sub && <div className="sgs">{s.sub}</div>}</div>
-              <div className="sgd">{s.runtime}</div>
-            </a>
-          ))}
-        </div>}
+        </div>
       </section>}
-      {f.locations && <section className="wrap reveal tight">
-        <SectionHead label="Locations" meta="THREE COUNTRIES" dim />
-        <div className="chips">{f.locations.map(l => <span className="chip-h" key={l}>{l}</span>)}</div>
-        <p style={{ color: 'var(--muted)', fontSize: 13, marginTop: 14 }}><Prov status="investigating">in production</Prov> &nbsp; Locations describe planned filming.</p>
+
+      {f.stats && <section className="wrap s s-slate compact">
+        <span className="kicker">By the numbers</span>
+        <div className="method" style={{ gridTemplateColumns: `repeat(${Math.min(f.stats.length, 4)},minmax(0,1fr))` }}>
+          {f.stats.map(st => {
+            const src = sources.find(x => x.id === st.source);
+            return (
+              <div key={st.n} style={{ borderTop: '1px solid var(--rule)', paddingTop: 14 }}>
+                <h3 style={{ fontSize: 30 }}>{st.n}</h3>
+                <p>{st.label}</p>
+                <p className="fine">{src ? `${src.publisher} · ${src.date}` : st.source} · <Link href="/sources">source</Link></p>
+              </div>
+            );
+          })}
+        </div>
       </section>}
-      {other && <><Break base="/images/break-evidence-2" /><section className="wrap reveal">
-        <SectionHead label="Also from Illicit Shadows" meta={other.places.join(' · ').toUpperCase()} />
-        <Link className="film-feature" href={`/film/${other.slug}`}><Pic base={other.image} alt={other.title} /><span className="badge red btm">{other.title.toUpperCase()} &middot; {other.status === 'streaming' ? 'RELEASED' : 'IN PRODUCTION'}</span></Link>
-      </section></>}
+
+      <section className="wrap s s-slate compact next-strip">
+        <div><span className="kicker">Continue exploring</span><h2>{other.title}</h2><p>{other.status === 'streaming' ? 'Now streaming' : 'In production'} · {other.years}</p></div>
+        <Link className="ed-link" href={`/film/${other.slug}`}>Explore the investigation {Arrow.upRight}</Link>
+      </section>
     </>
   );
 }
