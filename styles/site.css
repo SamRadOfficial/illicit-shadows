@@ -252,7 +252,10 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .band-white .convfig figcaption,.band-light .convfig figcaption{color:#6b655b}
 .helixrow{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(20px,3vw,40px);align-items:center}
 .helixrow .layers{display:flex;flex-direction:column;gap:10px}
-.helix-art{display:block;width:100%;margin:0;border:1px solid var(--line-2)}
+.helix-art{display:block;width:100%;margin:0}
+.helix-art img{border:1px solid var(--rule)}
+.helix-art figcaption{margin-top:12px}
+.helix-art figcaption a{color:var(--ac);border-bottom:1px solid var(--rule)}
 .helix-art img{display:block;width:100%;height:auto}
 
 .preview-top{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(24px,4vw,48px);align-items:center}
@@ -693,6 +696,7 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .tile:hover h3{color:var(--ac)}
 .upcoming{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 24px}
 .upcoming picture img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;margin-bottom:14px}
+.status-chip{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);border:1px solid var(--rule);padding:4px 9px;margin:0 0 10px}
 .upcoming h3{font-size:22px}
 .upcoming p{font-size:13px;margin-top:8px}
 .method{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;padding:0;margin:0}

@@ -1,8 +1,19 @@
-Signup: field and button share one width everywhere
+Replace all film covers and the Helix graphic
 
-- .signup stacks vertically at every viewport; input and button are both 100%
-  of the form's width (420px desktop, 354px at 390). Removed the mobile-only
-  wrap rules the stack makes redundant. Button gets a 44px minimum height.
+- 20 reissued covers plus helix-ai installed at the supplied sizes: 11 Chemical
+  Cartels shorts, six upcoming investigations, both films, the trailer. All
+  .webp siblings regenerated from the new files; a stale WebP would otherwise
+  keep being served in preference to the JPEG.
+- The covers now carry unified branding (ICAIE & RADOC PRESENT top left,
+  stacked wordmark bottom right, no roundel) and the upcoming covers no longer
+  carry a burned-in IN DEVELOPMENT stamp.
+- Because that status left the artwork, the upcoming grid on /film states it in
+  the UI with an "In development" chip on each of the six. Removing the label
+  from the art does not mean anything has been released.
+- Helix graphic: new conceptual system view, with a caption stating the
+  connections illustrate a concept rather than measured data or a validated
+  forecast, and a full-size link for the legend. Alt text updated.
 
-Verified: build 30 pages, 103 asset references present. Widths measured on
-home, books and newsroom at 1440 and 390: input and button equal on each.
+Verified: build 30 pages, 103 asset references present. Every cover checked on
+home, /film, /film/chemical-cartels and a short page: zero broken images, WebP
+served from the new files. Six status chips counted.

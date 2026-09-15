@@ -334,6 +334,15 @@ where a page still needs them. The system:
   `founders-white-house` above the founder portraits on `/about`. The White House still was tried
   as the About hero and rejected: Sam stands left of centre and any left-aligned headline lands on
   her. It works where nothing sits on it.
+- **Film covers** were reissued 15 Sep with unified branding: "ICAIE & RADOC PRESENT" top left, a
+  stacked ILLICIT/SHADOWS wordmark bottom right, **no circular roundel** and **no burned-in
+  IN DEVELOPMENT**. All 20 covers plus `helix-ai` were replaced at 1600x900.
+  Two rules that follow from this: when replacing any image, **regenerate the `.webp` sibling** or
+  the browser keeps serving the stale one; and because the status left the artwork, the upcoming
+  grid on `/film` carries a `.status-chip` reading "In development". Removing the label from the
+  art did not release anything.
+- The Helix graphic is a **conceptual system view**. Its caption says so and offers a full-size
+  link; never describe its connections as measured data or a validated forecast.
 - `HallsEd` is the phase toggle over `halls.json`; `NewsIndex` is the newsroom filter. Both are
   small client components; everything else is server-rendered.
 

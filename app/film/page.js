@@ -68,6 +68,9 @@ export default function Film() {
           {slate.map(x => (
             <article key={x.slug}>
               <Pic base={x.image} alt={`${x.title}: concept cover`} />
+              {/* The covers no longer carry an IN DEVELOPMENT stamp, so the status is stated here.
+                  Removing the label from the art does not mean anything has been released. */}
+              <p className="status-chip">In development</p>
               <h3>{x.title}</h3>
               <p>{x.sub}.</p>
             </article>
