@@ -297,6 +297,14 @@ where a page still needs them. The system:
   `.ed-link` (text with an accent underline and an arrow). Every arrow is an inline SVG from
   `components/Icons.jsx` (`Arrow.upRight`, `.down`, `.right`, `.left`, `.close`): no Unicode arrows,
   ever. Brand marks live in `Brand`.
+- **Film submenu** (15 Sep): covers for each investigation plus the upcoming slate, built from
+  `films.json` so a new film appears automatically, released first. Hover opens it on a pointer;
+  the chevron **button** opens it on touch and from the keyboard and *pins* it, so hover cannot
+  close what the button opened, which was the first bug in this build. Escape and an outside click
+  close it. **`Film` itself stays a link to the index.** Below 820px it is an indented sub-list
+  inside the hamburger panel, not an overlay.
+  If Museum or Books ever get the same treatment, they should use this component rather than a
+  second pattern.
 - **Shell.** Nav is centred with a quiet "Get in touch" arrow link on the right; the mobile menu is
   the same list plus that link. Footer leads with the **wordmark large**; *Media. Knowledge. Intelligence.* sits under it as a
   small uppercase subtitle, then *Everything is connected.* in mono, three quiet links, and a
@@ -357,9 +365,9 @@ where a page still needs them. The system:
   any claim about reward or governance mechanisms, which the brief marks TBD. The governance
   paragraph states the brief's own principle instead. Keep it that way unless the owner decides
   otherwise.
-- **Unresolved**: the brief's Rotterdam example puts the real-estate spike in Vancouver; the cascade
-  maps on the same page say London, Miami and Dubai. Same illustrative scenario, two different
-  claims.
+- **Resolved 15 Sep**: the Rotterdam example uses **London, Miami and Dubai** for the property
+  stage. The February brief says Vancouver; the site's version is the current one. If the brief is
+  revised, change it there, not here.
 - `HallsEd` is the phase toggle over `halls.json`; `NewsIndex` is the newsroom filter. Both are
   small client components; everything else is server-rendered.
 

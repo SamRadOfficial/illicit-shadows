@@ -19,7 +19,7 @@ export default function Books() {
 
       <section className="wrap s s-ink book-feature" id="trilogy">
         {/* Cut out and shown large: the flagship gets the object, not a box. */}
-        <Pic base={one.cutout} ext="png" className="book-hero" alt={`${one.title} book cover`} priority />
+        <Pic base={one.transparent} ext="png" className="book-hero" alt={`${one.title} book cover`} priority />
         <div>
           <span className="kicker">Book 1 / {one.status}</span>
           <h2>The Umbra<br /><em>Circle</em></h2>
@@ -30,18 +30,19 @@ export default function Books() {
       </section>
 
       <section className="wrap s s-ink" id="widens">
-        <div className="feature reverse">
-          <div>
-            <span className="kicker">The story continues</span>
-            <h2>The circle<br /><em>widens.</em></h2>
-            <p>Books two and three are in development: the state actor that let them build it, and an older, colder alliance waking south of the equator.</p>
-          </div>
-          <Pic base="/images/books-trilogy-hero" className="trishot" alt="The three Illicit Shadows Chronicles novels standing on a wet street at night" />
+        <div className="intro">
+          <div><span className="kicker">The story continues</span><h2>The circle<br /><em>widens.</em></h2></div>
+          <p>Books two and three are in development: the state actor that let them build it, and an
+            older, colder alliance waking south of the equator.</p>
         </div>
+        {/* Full width, nothing over it, description beneath: the composition already spreads all
+            three books across the frame. */}
+        <Pic base="/images/books-trilogy-full-bleed-feature" className="trishot"
+             alt="Three Illicit Shadows Chronicles books: The Umbra Circle, The Dragon Roars Forward, and The Condor Directive, by Sam Rad and David M. Luna." />
         <div className="sequels" style={{ marginTop: 44 }}>
           {rest.map(b => (
             <article key={b.slug}>
-              <div className="book-stage"><Pic base={b.mockup} alt={`${b.title} book mockup`} /></div>
+              <Pic base={b.transparent} ext="png" className="book-solo" alt={`${b.title} book cover`} />
               <span className="kicker">Book {b.n} / {b.status}</span>
               <h3>{b.title}</h3>
               <p>{b.logline}</p>

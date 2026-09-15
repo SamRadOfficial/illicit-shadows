@@ -1,26 +1,17 @@
-Helix description, books rework, and copy fixes
+Film submenu with covers
 
-Intelligence
-- New "What it is" section after the fusion-center block (option C): the claim,
-  the modeling question as a pull quote, what goes in and what comes out, and a
-  governance note. Drawn from the February Project Helix brief.
-- Not published from that brief, on purpose: the word "influence", the explicit
-  data-source list including telecom metadata, and any claim about reward or
-  governance mechanisms the brief marks TBD.
+- The Film nav item gains a panel with key art for each investigation, the
+  upcoming slate, and a link to the index. Built from films.json, released
+  first, so a new film appears without touching the nav.
+- Hover opens it on a pointer device; the chevron button opens it on touch and
+  from the keyboard and pins it open, so hover cannot close what the button
+  opened. Escape and an outside click close it; navigating closes it. Film
+  itself stays a link to /film.
+- Below 820px it is an indented sub-list inside the hamburger panel.
+- Items stack the cover above the label; side by side the titles wrapped in the
+  narrow columns.
 
-Books
-- Hero: "Enter the narrative universe", with the Chronicles subtitle.
-- The Umbra Circle carries the full four-paragraph description and loses the
-  "then that world came looking" line.
-- Book one is a cut-out cover shown large (no box); books two and three sit in
-  black boxes.
-
-Elsewhere
-- Illicit Gold: removed the linking sentence from Continue exploring.
-- Contact: lede reads "Support our mission and join our cause."; map zoomed out
-  one step so the White House is in frame.
-- Newsroom: "News from the shadows."
-- Nav and footer: "Get in touch" becomes "Contact".
-
-Verified: build 30 pages, 105 asset references present. Umbra paragraphs, cover
-file and nav label read back from the DOM.
+Verified: build 30 pages, 107 asset references present. Closed on load, hover
+opens, button opens and survives pointer-leave, Escape closes, navigation
+closes, Film href intact, both covers loaded, mobile submenu opens with no
+horizontal overflow.

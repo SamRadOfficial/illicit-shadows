@@ -1,10 +1,11 @@
 'use client';
-import { Arrow, Brand } from './Icons';
+import { Arrow, Brand, Chevron } from './Icons';
 import site from '../data/site.json';
+import films from '../data/films.json';
 // Shared blocks. Pages compose these; new page types reuse them rather than inventing a fourth treatment.
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /** <picture> with WebP source + fallback. A WebP that 404s renders nothing, so the
  *  asset checker must pass before every push. `base` is the path without extension. */
@@ -23,20 +24,69 @@ const NAV = [
   ['/books', 'Books'], ['/newsroom', 'Newsroom'], ['/about', 'About'],
 ];
 
+/* Film submenu. Contents come from the data, so a new investigation appears here automatically. */
+const FILM_MENU = [
+  // Released first: the thing people can watch now leads the menu, as it does on the home page.
+  ...[...films].sort((a, b) => (a.status === 'streaming' ? -1 : 1) - (b.status === 'streaming' ? -1 : 1)).map(f => ({
+    href: `/film/${f.slug}`, title: f.title, image: f.image,
+    meta: f.status === 'streaming' ? `Now streaming · ${f.form || f.years}` : `In production · ${f.years}`,
+  })),
+  { href: '/film#development', title: 'Upcoming slate', meta: 'Six investigations in development' },
+];
+
 export function Nav() {
   const path = usePathname();
   const [open, setOpen] = useState(false);
+  const [film, setFilm] = useState(false);
+  const [pinned, setPinned] = useState(false);   // opened by the button, so hover cannot close it
+  const filmRef = useRef(null);
+
+  /* Escape closes, and a click anywhere else closes. Hover opens it on a pointer device, but the
+     button is the real control: it works on touch and from the keyboard, and Film stays a link to
+     the index rather than becoming a label that only opens a menu. */
+  useEffect(() => {
+    if (!film) return;
+    const shut = () => { setFilm(false); setPinned(false); };
+    const onKey = e => { if (e.key === 'Escape') shut(); };
+    const onDown = e => { if (!filmRef.current?.contains(e.target)) shut(); };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', onDown);
+    return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDown); };
+  }, [film]);
+  useEffect(() => { setFilm(false); setPinned(false); setOpen(false); }, [path]);
+
+  const close = () => { setOpen(false); setFilm(false); setPinned(false); };
+
   return (
     <header className="nav">
       <div className="wrap">
         <Link className="brand" href="/">ILLICIT <b>SHADOWS</b></Link>
-        {/* Centred on desktop (the brief leaves this open; it balances the wordmark and the
-            contact link). Below 820px the same list is the dropdown. */}
         <nav className={`links${open ? ' open' : ''}`} aria-label="Primary">
           {NAV.slice(1).map(([href, label]) => (
-            <Link key={href} href={href} className={path.startsWith(href) ? 'on' : undefined} onClick={() => setOpen(false)}>{label}</Link>
+            href === '/film' ? (
+              <span className="hasmenu" key={href} ref={filmRef}
+                    onMouseEnter={() => setFilm(true)} onMouseLeave={() => { if (!pinned) setFilm(false); }}>
+                <Link href={href} className={path.startsWith(href) ? 'on' : undefined} onClick={close}>{label}</Link>
+                <button type="button" className="menutoggle" aria-expanded={film || pinned}
+                        aria-label={film ? 'Hide film menu' : 'Show film menu'}
+                        onClick={() => { const next = !pinned; setPinned(next); setFilm(next); }}>{Chevron}</button>
+                <div className={`filmmenu${film ? ' on' : ''}`}>
+                  <div className="filmmenu-inner">
+                    {FILM_MENU.map(m => (
+                      <Link className={`fm-item${m.image ? '' : ' plain'}`} href={m.href} key={m.href} onClick={close}>
+                        {m.image && <Pic base={m.image} alt="" />}
+                        <span><b>{m.title}</b><em>{m.meta}</em></span>
+                      </Link>
+                    ))}
+                    <Link className="fm-all" href="/film" onClick={close}>All investigations {Arrow.upRight}</Link>
+                  </div>
+                </div>
+              </span>
+            ) : (
+              <Link key={href} href={href} className={path.startsWith(href) ? 'on' : undefined} onClick={close}>{label}</Link>
+            )
           ))}
-          <Link href="/contact" className="ed-link navmob" onClick={() => setOpen(false)}>Contact {Arrow.upRight}</Link>
+          <Link href="/contact" className="ed-link navmob" onClick={close}>Contact {Arrow.upRight}</Link>
         </nav>
         <div className="navright">
           <Link className="ed-link navcta" href="/contact">Contact {Arrow.upRight}</Link>

@@ -45,99 +45,112 @@ FACES = ''.join(f'@font-face{{font-family:{fam};src:url({font(f)});font-weight:{
 
 import json as _json
 
-ARROW = ('<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" '
+ARROW = ('<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" '
          'stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
          '<path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>')
+CHEV = ('<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" '
+        'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+        '<path d="m6 9 6 6 6-6"/></svg>')
+FILMS = _json.load(open(os.path.join(ROOT, 'data/films.json')))
+CC = [f for f in FILMS if f['slug']=='chemical-cartels'][0]
+IG = [f for f in FILMS if f['slug']=='illicit-gold'][0]
 
-def head(k, h, deck=''):
-    return (f'<div class="intro"><div><span class="kicker">{k}</span><h2>{h}</h2></div>'
-            f'{f"<p>{deck}</p>" if deck else ""}</div>')
+def thumb(f):  return img(f['image'] + '.jpg')
 
-STATEMENT = ('<p class="deck">Project Helix is a predictive convergence system: it models how '
-             'criminal, political, and economic networks reorganize when something disrupts them.</p>'
-             '<p>Most intelligence systems forecast discrete events: a shipment, a transfer, an '
-             'attack. Helix models the adaptation that follows. The question it asks is not what '
-             'happens next, but what the system does about it.</p>')
+NAVBAR = ('<div class="mocknav"><span class="mockbrand">ILLICIT <b>SHADOWS</b></span>'
+          '<nav class="mocklinks"><span class="on">Film{CHEV}</span><span>Intelligence</span>'
+          '<span>Museum</span><span>Books</span><span>Newsroom</span><span>About</span></nav>'
+          '<span class="mockcta">Contact</span></div>').replace('{CHEV}', CHEV)
 
-QUESTION = ('<figure class="pullq"><blockquote>If a disruption occurs at one node, how do the '
-            'others reorganize to compensate?</blockquote>'
-            '<figcaption>The modeling question behind the system</figcaption></figure>')
+DROPDOWN = (f'<div class="dd"><div class="dd-inner">'
+            f'<a class="dd-item"><img src="{thumb(CC)}" alt=""><span><b>Chemical Cartels</b>'
+            f'<em>Now streaming &middot; Eleven short films</em></span></a>'
+            f'<a class="dd-item"><img src="{thumb(IG)}" alt=""><span><b>Illicit Gold</b>'
+            f'<em>In production &middot; 2026-2027</em></span></a>'
+            f'<a class="dd-item"><span class="dd-plain"><b>Upcoming slate</b>'
+            f'<em>Six investigations in development</em></span></a>'
+            f'<a class="dd-all">All investigations {ARROW}</a></div></div>')
 
-IO = ('<div class="two-col">'
-      '<div><span class="kicker">What goes in</span>'
-      '<ul class="tick"><li>Artifacts, mapping and research cataloged by the museum</li>'
-      '<li>Open-source reporting and case histories</li>'
-      '<li>Trade, corporate and sanctions records</li></ul>'
-      '<p class="fine">Each input is tagged three ways: who is connected, how money moves, and how '
-      'the story is told.</p></div>'
-      '<div><span class="kicker">What comes out</span>'
-      '<ul class="tick"><li>Where activity is likely to move after a disruption</li>'
-      '<li>Which actors and routes absorb it</li>'
-      '<li>Where the effects surface in other domains</li></ul>'
-      '<p class="fine">Strategic foresight for decisions, not a prediction of a dated event.</p></div>'
-      '</div>')
+DD_TEXT = ('<div class="dd dd-text"><div class="dd-inner">'
+           '<a class="dd-row"><b>Chemical Cartels</b><em>Now streaming</em></a>'
+           '<a class="dd-row"><b>Illicit Gold</b><em>In production</em></a>'
+           '<a class="dd-row"><b>Upcoming slate</b><em>In development</em></a>'
+           f'<a class="dd-row all">All investigations {ARROW}</a></div></div>')
 
-LAYERS = ('<ol class="method">'
-          '<li><span class="n">01</span><h3>Intelligence layer</h3><p>Museum assets, artifacts and '
-          'mapping enter the modeling framework, each tagged by network, economy and narrative.</p></li>'
-          '<li><span class="n">02</span><h3>Global graph</h3><p>People, companies, ports, banks and '
-          'offices as nodes; money, directorships, contracts and co-location as the edges between '
-          'them.</p></li>'
-          '<li><span class="n">03</span><h3>Causal engine</h3><p>Structural causal modeling rather '
-          'than pattern matching: graph topology, temporal sequence, and probabilistic cascades.</p></li>'
-          '<li><span class="n">04</span><h3>Reinforcement</h3><p>Simulated adaptation paths, tested '
-          'against how networks have actually behaved.</p></li></ol>')
+SUBNAV = (f'<div class="subnav"><span class="subnav-k">Film</span>'
+          f'<nav><a class="on">Chemical Cartels</a><a>Illicit Gold</a><a>Upcoming slate</a>'
+          f'<a class="right">All investigations {ARROW}</a></nav></div>')
 
-GOV = ('<div class="gov"><span class="kicker">Governance</span>'
-       '<p>Helix is built to inform decisions, not to make them. Its usefulness depends on '
-       'governance that keeps optimization subordinate to the rule of law, and on human judgment '
-       'at every point where the model meets a decision.</p></div>')
+PAGE_HEAD = ('<div class="pagehead"><span class="kicker">Chemical Cartels / Eleven short films</span>'
+             '<h2>American Fallout</h2><p>How fentanyl became a weapon of war.</p></div>')
 
-def wrap(inner, surface='s-paper'):
-    # Must be a real section.wrap.s: that selector carries position/isolation, without which the
-    # surface pseudo-element never paints and the copy renders dark on dark.
-    return f'<section class="wrap s {surface}">{inner}</section>'
-
-PAGE_A = wrap(head('What it is', 'A system for<br><em>the next move.</em>') + STATEMENT + QUESTION + GOV)
-PAGE_B = wrap(head('What it is', 'A system for<br><em>the next move.</em>',
-                   'Four layers, from catalogued evidence to simulated adaptation.') + STATEMENT + LAYERS + GOV)
-PAGE_C = wrap(head('What it is', 'A system for<br><em>the next move.</em>') + STATEMENT + QUESTION + IO + GOV)
+PAGE_A = NAVBAR + DROPDOWN + '<div class="mockbody">' + PAGE_HEAD + '</div>'
+PAGE_B = NAVBAR + DD_TEXT + '<div class="mockbody">' + PAGE_HEAD + '</div>'
+PAGE_C = NAVBAR.replace('Film{CHEV}'.replace('{CHEV}', CHEV), 'Film') + SUBNAV + '<div class="mockbody">' + PAGE_HEAD + '</div>'
 
 SHARED = """
-.pullq{margin:34px 0;border-left:3px solid var(--ac);padding:4px 0 4px 26px;max-width:46ch}
-.pullq blockquote{margin:0;font-family:var(--disp);font-size:clamp(24px,3vw,34px);line-height:1.15;text-transform:uppercase}
-.pullq figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;margin-top:14px;opacity:.75}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:38px;margin-top:34px;border-top:1px solid var(--rule);padding-top:26px}
-.tick{list-style:none;padding:0;margin:14px 0 14px}
-.tick li{font-size:15px;line-height:1.6;padding:9px 0 9px 20px;border-bottom:1px solid var(--rule);position:relative}
-.tick li:before{content:"";position:absolute;left:0;top:17px;width:8px;height:1px;background:var(--ac)}
-.gov{margin-top:34px;border-top:1px solid var(--rule);padding-top:20px;max-width:62ch}
-.method li h3{font-size:22px}
-@media(max-width:820px){.two-col{grid-template-columns:1fr}.method{grid-template-columns:1fr 1fr}}
+.mocknav{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;background:#080909;border-bottom:1px solid #2a2f2f;padding:18px 26px}
+.mockbrand{font-family:var(--disp);font-size:20px;letter-spacing:.02em;color:#fff}
+.mockbrand b{color:var(--signal);font-weight:400}
+.mocklinks{display:flex;justify-content:center;gap:24px;font-size:14.5px;color:#fff}
+.mocklinks .on{color:var(--signal);display:inline-flex;align-items:center;gap:6px;border-bottom:1px solid var(--signal);padding-bottom:4px}
+.mockcta{font-size:13.5px;color:#fff;border-bottom:1px solid var(--signal);padding-bottom:4px}
+.mockbody{background:#080909;padding:34px 26px 60px}
+.pagehead h2{font-family:var(--disp);font-size:40px;text-transform:uppercase;color:#fff;margin:8px 0 10px}
+.pagehead p{color:#fff;font-size:15px;margin:0}
+.pagehead .kicker{color:var(--signal);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+
+/* A: cover dropdown */
+.dd{background:#0d1010;border-bottom:1px solid #2a2f2f}
+.dd-inner{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:22px;align-items:center;padding:22px 26px;max-width:1100px;margin:0 auto}
+.dd-item{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center}
+.dd-item img{width:120px;aspect-ratio:16/9;object-fit:cover;display:block}
+.dd-item b,.dd-row b{display:block;color:#fff;font-size:15px;font-weight:700}
+.dd-item em,.dd-row em{display:block;font-style:normal;color:#b9bdbd;font-family:var(--mono);font-size:11px;margin-top:4px}
+.dd-plain{display:block;border-left:2px solid var(--signal);padding-left:14px}
+.dd-all{align-self:center;color:var(--signal);font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;gap:8px;align-items:center;white-space:nowrap}
+
+/* B: text dropdown */
+.dd-text .dd-inner{display:block;max-width:320px;margin:0;padding:8px 0 10px 26px}
+.dd-row{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:11px 0;border-bottom:1px solid #222}
+.dd-row.all{border-bottom:0;color:var(--signal);font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase}
+
+/* C: page-level sub-nav */
+.subnav{background:#0d1010;border-bottom:1px solid #2a2f2f;padding:0 26px}
+.subnav{display:flex;align-items:center;gap:24px;max-width:1100px;margin:0 auto}
+.subnav-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#8d9292}
+.subnav nav{display:flex;gap:24px;align-items:center;flex:1}
+.subnav a{color:#fff;font-size:14px;padding:16px 0;border-bottom:2px solid transparent}
+.subnav a.on{color:var(--signal);border-color:var(--signal)}
+.subnav a.right{margin-left:auto;color:var(--signal);font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;gap:8px;align-items:center}
+@media(max-width:820px){.dd-inner{grid-template-columns:1fr}.subnav{flex-wrap:wrap;gap:12px}}
 """
 
 RECOMMEND = 'C'
 
-TITLE = 'What Project Helix is'
-INTRO = ('A description section for /intelligence, after the fusion-center block and before the '
-         'four-layer method grid. Drawn from the February brief. Three depths, same surface and '
-         'type as the rest of the page.')
+TITLE = 'Getting around the film pages'
+INTRO = ('Three ways to reach Chemical Cartels, Illicit Gold and the upcoming slate from anywhere '
+         'in the film section. Shown open; in A and B the panel appears on hover or focus of Film, '
+         'in C it is always there on film pages only.')
 
 OPTIONS = [
-    ('A', 'Statement and the question',
-     'The claim, the distinction from event forecasting, the modeling question as a pull quote, and '
-     'the governance line. Shortest and least technical. It says what Helix is without describing '
-     'how it is built, which the page already covers in the layer grid below.',
+    ('A', 'Dropdown with covers',
+     'A panel under Film showing both investigations with their key art and status, plus the slate '
+     'and a link to the index. The most informative, and the covers do the identifying. It is also '
+     'the heaviest thing in the header, needs its own keyboard and touch behaviour, and it appears '
+     'on every page whether or not you are anywhere near the films.',
      PAGE_A, SHARED),
-    ('B', 'Statement and the architecture',
-     'The claim, then the four layers expanded with the graph and tagging detail from the brief. '
-     'Most informative for an evaluator. It also duplicates the Gather / Connect / Model / Test grid '
-     'that already follows on the page, so one of the two would have to go.',
+    ('B', 'Plain text dropdown',
+     'The same three destinations as a short list, no art. Light, quick to build, and conventional. '
+     'It adds a hover-or-tap menu to a header that currently has none, and once Film has one the '
+     'question of why Museum and Books do not will follow.',
      PAGE_B, SHARED),
-    ('C', 'Statement, question, and what goes in and out  ·  MY PICK',
-     'The claim and the question, then a plain account of inputs and outputs, then governance. It '
-     'answers the two things a reader actually asks, what do you feed it and what do you get, '
-     'without restating the architecture grid below or publishing a source list.',
+    ('C', 'Sub-nav on film pages  ·  MY PICK',
+     'A second row that appears only inside the film section, marking where you are: Chemical '
+     'Cartels, Illicit Gold, Upcoming slate, and All investigations. No hover states, no menu, works '
+     'on touch and keyboard by being ordinary links, and it solves the actual problem, which is not '
+     'reaching the films from the home page but knowing where you are once you are three levels '
+     'deep in one.',
      PAGE_C, SHARED),
 ]
 blocks, extra = [], []

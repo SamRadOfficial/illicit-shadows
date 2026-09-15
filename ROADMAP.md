@@ -95,7 +95,9 @@ contact form.
       different lighting, different backgrounds, different crop tightness. Post-processing was tried
       and reverted; the fix is photography.
 
-- [ ] **Film dropdown in the nav**, listing each work (Chemical Cartels, Illicit Gold) with "All
+- [x] **Film dropdown in the nav** — built 15 Sep with covers. Original item and requirements kept
+      below for the record.
+- [ ] ~~**Film dropdown in the nav**~~, listing each work (Chemical Cartels, Illicit Gold) with "All
       films" at the foot. Owner wants this; my read is that it earns its place at three or four
       released works rather than two, since `/film` is one click away and already leads with both.
       Worth doing sooner if analytics show people landing on a short page and having no way back

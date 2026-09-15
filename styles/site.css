@@ -484,7 +484,7 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 
 /* Trilogy introduction: the render beside the copy, contained so no cover is cropped. */
 .triintro{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(24px,4vw,52px);align-items:center}
-.trishot{width:100%;height:auto;object-fit:contain;display:block;border:1px solid var(--line-2)}
+.trishot{width:100%;height:auto;object-fit:contain;display:block}
 .tri-lede{font-family:var(--disp);font-size:clamp(20px,2.2vw,26px);text-transform:uppercase;color:var(--signal);margin:10px 0 16px;line-height:1.1}
 .tri-body{color:var(--text-2);font-size:16px;line-height:1.8;margin:0 0 14px;max-width:52ch}
 .triintro .meta{margin-top:18px}
@@ -633,6 +633,30 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .nav .navcta svg{width:14px;height:14px}
 .navmob{display:none}
 
+/* Film submenu: covers under the Film link. Hover opens it on a pointer, the chevron button opens
+   it on touch and from the keyboard, and Film itself stays a link to the index. */
+.hasmenu{position:static;display:inline-flex;align-items:center;gap:6px}
+.menutoggle{background:none;border:0;color:inherit;padding:4px;cursor:pointer;display:inline-flex;line-height:0}
+.menutoggle svg{width:12px;height:12px;transition:transform .18s}
+.hasmenu .menutoggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+.filmmenu{position:absolute;left:0;right:0;top:100%;background:#0d1010;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  display:none;z-index:60}
+.filmmenu.on{display:block}
+.filmmenu-inner{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:clamp(20px,2.4vw,34px);
+  align-items:start;max-width:var(--wrap);margin:0 auto;padding:24px var(--gutter) 26px}
+/* Stacked: cover above the label. Side by side, the titles wrapped in the narrow columns. */
+.fm-item{display:block}
+.fm-item picture{display:block}
+.fm-item img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;margin-bottom:12px}
+.fm-item.plain{border-left:2px solid var(--signal);padding-left:14px;align-self:center}
+.fm-item b{display:block;color:#fff;font-size:15.5px;font-weight:700;line-height:1.25}
+.fm-item em{display:block;font-style:normal;color:#b9bdbd;font-family:var(--mono);font-size:11px;margin-top:5px;letter-spacing:.02em}
+.fm-item:hover b{color:var(--signal)}
+.fm-item:focus-visible{outline:2px solid var(--signal);outline-offset:4px}
+.fm-all{white-space:nowrap;align-self:center;color:var(--signal);font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;gap:8px;align-items:center}
+.fm-all svg{width:14px;height:14px}
+@media (prefers-reduced-motion:reduce){.menutoggle svg{transition:none}}
+
 /* Footer */
 .foot-ed{background:var(--ink);border-top:1px solid #252d2b;padding:56px 0 28px;color:#fff}
 .foot-top{display:flex;justify-content:space-between;gap:40px;align-items:flex-start;flex-wrap:wrap;padding-bottom:36px;border-bottom:1px solid #252d2b}
@@ -738,6 +762,8 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .book-stage img{height:360px;width:auto;object-fit:contain}
 .sequels{display:grid;grid-template-columns:1fr 1fr;gap:45px}
 .sequels .book-stage{margin-bottom:22px;background:#000}
+/* Transparent mockups: no box, no frame, contained so the whole book shows. */
+.book-solo{display:block;width:100%;max-width:300px;height:auto;object-fit:contain;margin:0 0 22px;filter:drop-shadow(0 22px 40px rgba(0,0,0,.7))}
 .sequels .book-stage img{height:300px}
 .sequels p{font-size:14px}
 .byline{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-top:16px}
@@ -843,6 +869,14 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
   .nav .wrap{grid-template-columns:auto auto;display:flex;justify-content:space-between}
   .nav .links{display:none;flex-direction:column;align-items:flex-start;gap:0}
   .nav .links.open{display:flex}
+  /* On mobile the menu is a sub-list inside the panel, not an overlay. */
+  .hasmenu{display:block;width:100%}
+  .filmmenu{position:static;display:none;border:0;background:none}
+  .filmmenu.on{display:block}
+  .filmmenu-inner{grid-template-columns:1fr;gap:12px;padding:4px 0 10px 16px;border-left:1px solid var(--line)}
+  .fm-item{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:center}
+  .fm-item img{width:96px;margin-bottom:0}
+  .fm-item.plain{display:block}
   .maprow{grid-template-columns:1fr}
   .gmap{min-height:300px}
   .news-item{grid-template-columns:1fr;gap:8px}
