@@ -1,21 +1,17 @@
-Museum logo centred, origins copy, new ICAIE mark, partners aligned
+Load pages at the top, without the scroll animation
 
-Museum
-- images/mis-eclipse recentred. Measured from the alpha channel: the mark sat
-  8px left and 14px high of its canvas, which is why it looked off inside the
-  black panel. Now 0,0.
-- Origins carries the MIS description: the first-of-its-kind sentence as the
-  deck, the exhibitions-and-programming paragraph, and the founding line.
+- Removed scroll-behavior:smooth from html. It animated every programmatic
+  scroll, including the scroll the App Router performs on navigation, so each
+  page glided down instead of loading normally. Traced frame by frame:
+  2500 -> 2333 -> 256 -> 132 -> 74 over about half a second.
+- The html:focus-within variant was tried and removed: clicking a nav link
+  focuses it, which re-enabled smooth for that same router scroll.
+- Pages now land at 0 instantly, on fresh loads and on in-app navigation. In-page
+  anchors jump rather than glide.
 
-About
-- New ICAIE logo installed, trimmed and recentred on a square as before.
-- Both partner marks sit in one fixed 96px slot, so the ICAIE logo and the
-  RADOC wordmark share a baseline and the names below them align. Verified: both
-  headings at the same offset.
+Docs
+- HANDOFF: why smooth scrolling must not come back, including the focus-within
+  trap.
 
-Note: three arrangements of the museum page (fixing the black convergence
-section bleeding into the black section after it) were produced as previews for
-review and are NOT in this commit; the page order is unchanged.
-
-Verified: build 30 pages, 107 asset references present. Alignment measured from
-the DOM; partners checked at 1440 and 390.
+Verified: build 30 pages, 107 asset references present. Three navigations traced
+with no intermediate positions, anchor jump instant, fresh load at 0.

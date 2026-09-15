@@ -280,6 +280,11 @@ where a page still needs them. The system:
 - **The investigation hero is not playable.** The key art is a poster; the films are watched from
   the rows below, one at a time, and the meta line links down to them. A playlist player in the
   hero opened something people then had to dismiss.
+- **Never set `scroll-behavior:smooth` on `html`.** It animates *every* programmatic scroll,
+  including the one the App Router performs on navigation, so each page appeared to glide down
+  instead of loading at the top. The `html:focus-within` variant is worse than useless here:
+  clicking a nav link focuses it, which re-enables smooth for that same router scroll, and it also
+  left pages resting 74px down at `main`'s offset instead of 0. Scrolling is `auto` everywhere.
 - **The surface layer must not use `z-index:-1`.** A negative layer vanishes behind any ancestor
   that creates a stacking context, which is how `/film/chemical-cartels` shipped with black text on
   a black page after deploy while rendering correctly in local preview. `.s` is `isolation:isolate`,
