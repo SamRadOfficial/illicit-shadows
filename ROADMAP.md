@@ -97,22 +97,7 @@ contact form.
 
 - [x] **Film dropdown in the nav** — built 15 Sep with covers. Original item and requirements kept
       below for the record.
-- [ ] ~~**Film dropdown in the nav**~~, listing each work (Chemical Cartels, Illicit Gold) with "All
-      films" at the foot. Owner wants this; my read is that it earns its place at three or four
-      released works rather than two, since `/film` is one click away and already leads with both.
-      Worth doing sooner if analytics show people landing on a short page and having no way back
-      into the other work without two hops.
-      If it is built, these are the requirements, not optional extras:
-      - Keyboard operable (Enter and Escape, arrow keys through items) and readable by screen
-        readers: a `<button aria-expanded>` plus a list, not a hover-only CSS menu. Hover alone is
-        unusable on touch and invisible to keyboards.
-      - A working destination on the parent: `Film` must stay clickable, not become a label that
-        only opens a menu.
-      - Mobile: the dropdown has to collapse into the existing hamburger panel as an indented
-        sub-list. Do not build a second mobile pattern.
-      - Decide at the same time whether Museum (halls) and Books (three titles) get the same
-        treatment. One page with a dropdown and two without reads as an oversight.
-
+- [x] ~~**Film dropdown in the nav**~~. Shipped 15 Sep as a click-opened vertical panel.
 - [ ] `/press` page: coverage, press kit, interview contact.
 - [ ] `/museum/[hall]` hall detail pages with the artifact orbit viewer.
 - [ ] Founder bio pages or expanded `/about` entries, if wanted.
@@ -128,10 +113,8 @@ donor moment; photographic breaks are gone in favour of surface changes and fine
 Open items it leaves:
 - [ ] The package's museum hall **preview dialog** (click a hall for a large render and blurb) is
       not built; tiles are static. Worth doing once halls have their own copy.
-- [ ] `?interest=` prefill on `/contact` from the offers list and the museum donor band, so the
-      form arrives with the route already selected.
-- [ ] Contrast audit of every `.s-paper` section against the 4.5:1 target, in particular the
-      mono kickers at 11px.
+- [x] `?interest=` prefill on `/contact`, multi-select enquiry types. Shipped 16 Sep.
+- [x] Contrast audit: swept all fourteen routes 16 Sep, nothing below 4.5:1.
 - [ ] Dead CSS from the pre-editorial layout (`.head`, `.work`, `.minigrid`, `.band-*`, `.ppanel`,
       `.trailer-row`, `.foot`) can be removed once nothing in the tree references it.
 
@@ -178,21 +161,7 @@ An image review, in priority order. Two standing rules: anything that depicts th
 unmade film is captioned as a concept, and any diagram that is illustrative rather than measured
 keeps its `illustrative` chip.
 
-- [ ] **Books page update (built and reverted 14 Sep).** The page was rebuilt to a supplied brief,
-      then reverted to the live version on the owner's instruction. Everything below exists and can
-      be restored in one pass:
-      - **New atmospheric hero**, `images/books-hero` (London through rain-streaked glass, dossier
-        and surveillance photographs, dark left for live text), with an "Explore the trilogy" anchor.
-        The asset is in the repo and unused.
-      - **Trilogy introduction** at `#trilogy`: the trilogy render moved out of the hero and set
-        beside the approved copy ("Three novels. One hidden system." and the three paragraphs
-        following), `object-fit: contain` so no cover is cropped, with a Book 1 preview link.
-      - **Transparent book mockups**: the studio backdrop flood-filled out at `thresh=18`, the
-        highest value that leaves the book's own dark spine opaque. Needs PNG plus WebP, no JPEG,
-        and `Pic ext="png"`. Only reads correctly on dark backgrounds.
-      Decide whether the hero should be the trilogy render (live now) or the atmospheric London
-      image with the render moved down. Both work; the second is closer to the other page heroes.
-
+- [x] **Books page** rebuilt 15 Sep with transparent mockups and the full-bleed feature.
 - [ ] **Animated hero.** The hero art is a raster render and cannot be animated as-is. The cheap
       version is an SVG layer over it: six trade routes that draw themselves in about two seconds,
       then city nodes that pulse slowly. Roughly 4KB of SVG and CSS, no JavaScript, no new

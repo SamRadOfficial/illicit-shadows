@@ -1,21 +1,11 @@
-Cascade active state, and remove graphic credits
+Divide same-surface sections; trim the Intelligence lede
 
-- Timeline chips now carry a yellow ring and border when active. The state was
-  drawn only inside whichever SVG had loaded; it is now in the HTML too, so the
-  active stage reads immediately.
-- Removed the closing line "The chain is the claim...".
-- Removed provenance baked into the graphics: "Basemap: Natural Earth / public
-  domain" and "Scenario: illicitshadows.vercel.app/intelligence" from all five
-  cascade maps, and "Source: ICAIE" from the convergence map. These were glyph
-  groups inside the SVGs, so the enclosing titled group was removed rather than
-  the visible text alone.
-- Convergence caption reduced to "Open full size"; the ICAIE and Illicit Shadows
-  credit is gone.
+- Sections that sit next to another section on the same surface now carry a 1px
+  top rule at content width. A change of surface is already a divider, so only
+  same-colour neighbours get the line. Audited every route: six pages had such a
+  run, on /museum, /intelligence, /books, both investigation pages and the short
+  page. All now separated; nothing else changed.
+- Intelligence hero drops "Not a forecast of events, but of adaptation."
 
-Kept, because they are evidentiary rather than credits: the /sources page, the
-per-statistic citations on the investigation pages, and the $6 trillion
-attribution on the home hero, which was explicitly requested. Say the word and
-those go too.
-
-Verified: build 30 pages, 106 asset references present. Active ring confirmed on
-stages 0, 2 and 4; no attribution text remains in the rendered pages.
+Verified: build 30 pages, 106 asset references present. Every same-surface
+boundary confirmed at 1px; boundaries inspected at 1440.

@@ -18,7 +18,7 @@ export default function Intelligence() {
       <Hero img="/images/hero-intelligence" alt="An evidence wall of port photographs linked by gold string"
             eyebrow="Project Helix"
             title={<>Model what<br />the network<br /><span className="y">does next.</span></>}
-            lede="Our platform turns fragmented intelligence into systemic foresight: how criminal, political, and economic networks reorganize after a disruption. Not a forecast of events, but of adaptation.">
+            lede="Our platform turns fragmented intelligence into systemic foresight: how criminal, political, and economic networks reorganize after a disruption.">
         <div className="actions">
           <a className="ed-btn" href="#cascade">Explore a scenario {Arrow.down}</a>
           <Link className="ed-link" href="/contact?interest=helix">Request a briefing {Arrow.upRight}</Link>

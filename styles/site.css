@@ -566,6 +566,13 @@ section.wrap.s{position:relative;isolation:isolate;padding-top:clamp(44px,5.5vw,
    and the content is lifted above it. */
 .s::before{content:"";position:absolute;inset:0 50% 0 50%;width:100vw;transform:translateX(-50%);z-index:0;background:var(--sbg)}
 .s > *{position:relative;z-index:1}
+/* Two sections on the same surface run together with no edge. A hairline at the content width
+   separates them without introducing a band. Only same-surface neighbours get it: a surface
+   change is its own divider. */
+.s-ink + .s-ink,
+.s-paper + .s-paper,
+.s-slate + .s-slate,
+.s-yellow + .s-yellow{border-top:1px solid var(--rule)}
 section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .s-ink{--sbg:var(--ink);--fg:#fff;--ac:var(--signal);--rule:#343b3b;color:var(--fg)}
 .s-slate{--sbg:var(--slate);--fg:#fff;--ac:var(--signal);--rule:#4c5b63;color:var(--fg)}

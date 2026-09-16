@@ -16,8 +16,7 @@ export default function Home() {
       <Hero img="/images/hero-globe" mobilePos="22% center" alt="A gold-lit globe on black, trade routes arcing between continents"
             eyebrow="Media · Knowledge · Intelligence"
             title={<>The dark forces shaping the <span className="y">global criminal underworld</span></>}
-            lede="We investigate the $6 trillion shadow economy and model how its networks adapt."
-            source="$6 trillion: annual value of global illicit economies, ICAIE, 2026 &#8594; sources">
+            lede="We investigate the $6 trillion shadow economy and model how its networks adapt.">
         <div className="actions">
           <Link className="ed-btn" href="/film">Watch the investigations {Arrow.upRight}</Link>
           <a className="ed-link" href="#platform">Meet the platform {Arrow.down}</a>

@@ -297,6 +297,10 @@ where a page still needs them. The system:
   instead of loading at the top. The `html:focus-within` variant is worse than useless here:
   clicking a nav link focuses it, which re-enables smooth for that same router scroll, and it also
   left pages resting 74px down at `main`'s offset instead of 0. Scrolling is `auto` everywhere.
+- **Same-surface neighbours get a hairline, nothing else does.** `.s-ink + .s-ink` and its three
+  siblings carry a 1px top rule at content width. Two sections on the same surface otherwise run
+  together with no edge; a *change* of surface is already its own divider, so those boundaries stay
+  clean. If a new section lands next to one of its own colour, the rule applies itself.
 - **The surface layer must not use `z-index:-1`.** A negative layer vanishes behind any ancestor
   that creates a stacking context, which is how `/film/chemical-cartels` shipped with black text on
   a black page after deploy while rendering correctly in local preview. `.s` is `isolation:isolate`,
