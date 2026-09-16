@@ -81,8 +81,6 @@ export function CascadeMaps() {
             worked example, not a report of observed events or a validated forecast.</dd></div>
         </dl>
       </div>
-      <p className="cfoot">The chain is the claim: disruption does not remove the trade, it moves
-        it, and each move surfaces in different data.</p>
     </div>
   );
 }

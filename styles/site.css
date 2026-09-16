@@ -350,7 +350,7 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .cmaps-hit button{position:absolute;top:0;height:100%;background:none;border:1px solid transparent;border-radius:7px;cursor:pointer;padding:0}
 .cmaps-hit button:hover{border-color:var(--signal)}
 .cmaps-hit button:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
-.cmaps-hit button.on{cursor:default}
+.cmaps-hit button.on{cursor:default;border-color:var(--signal);box-shadow:0 0 0 2px rgba(255,212,0,.55) inset}
 .cmaps-fig img{display:block;width:100%;height:auto;background:#000}
 .cs-lag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--signal);margin-right:10px}
 .cs-what{font-weight:700;font-size:15px;color:var(--text)}

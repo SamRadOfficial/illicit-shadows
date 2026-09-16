@@ -19,7 +19,7 @@ export function Convergence({ head = true, label = 'Everything is connected', me
         <div className="convscroll">
           <img src="/images/convergence-map.svg" alt="Everything is connected: five overlapping domains of crime convergence, economic development and human security, societal trust and integrity, governance and democracy, environment security and global threats, and criminal activities, meeting at the center." loading="lazy" width="3000" height="3200" />
         </div>
-        <figcaption><a href="/images/convergence-map.svg" target="_blank" rel="noopener noreferrer">Open full size</a> &middot; ICAIE and Illicit Shadows, LLC &middot; <b>#EverythingIsConnected</b></figcaption>
+        <figcaption><a href="/images/convergence-map.svg" target="_blank" rel="noopener noreferrer">Open full size</a></figcaption>
       </figure>
     </>
   );

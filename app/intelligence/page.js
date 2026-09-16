@@ -53,8 +53,8 @@ export default function Intelligence() {
         <figure className="helix-art" style={{ marginTop: 40 }}>
           <Pic base="/images/helix-ai" alt="Conceptual Helix.AI diagram showing overlapping domains, shared network nodes, dependencies, and an illustrative adaptation path after disruption." />
           <figcaption className="fine">
-            Conceptual system view. The connections illustrate a concept, not measured data or a validated forecast.{' '}
-            <a href="/images/helix-ai.jpg" target="_blank" rel="noopener noreferrer">Open full size</a>
+            Conceptual system view. The connections illustrate a concept, not measured data or a
+            validated forecast. <a href="/images/helix-ai.jpg" target="_blank" rel="noopener noreferrer">Open full size</a>
           </figcaption>
         </figure>
       </section>
