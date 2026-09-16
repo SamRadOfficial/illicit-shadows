@@ -1,21 +1,27 @@
-Responsive heroes: phones no longer download the 1920px file
+Contact trims, wider map, and a real museum shop section
 
-- Every hero now has 640, 1024 and 1600 wide WebP and JPEG variants. Pic takes a
-  `widths` prop and emits a srcset with sizes="100vw"; Hero preloads the
-  matching width so the fetch starts with the HTML rather than after the
-  stylesheet reveals the background.
-- Hero weight on a phone drops from 110-225KB per page to 26-58KB: 352KB across
-  the eight main routes, down from roughly 1MB. Desktop serves 1600px, a phone
-  at 2x serves 1024, at 1x serves 640, all confirmed from currentSrc.
-- Hero JPEG/WebP quality lowered to 80/78. The art sits behind a veil at 0.76
-  opacity; mean pixel difference against the old file is 1.46/255.
+Contact
+- Note under Send message reads only "Expect a reply within a few working days."
+- "What is this about?" legend removed; the fieldset keeps an aria-label so the
+  checkboxes still announce what they are for.
+- Map zoomed out one step (z=14) so the White House sits in frame.
+- "Directions" link removed; Open in Google Maps remains.
 
-Two bugs found while doing it
-- /film and /museum use images that had no variants, so their srcset candidates
-  404'd silently. Variants generated for both.
-- check-assets.mjs only read single-value src attributes, so it could not see a
-  missing srcset candidate. It now parses every candidate in a srcset, which is
-  why the reference count jumped from 100 to 148.
+Museum
+- The gift shop is its own section rather than a one-line band: "Take the museum
+  home with you", three numbered categories (exhibition editions, publications,
+  founding-donor editions), and a Join the shop list CTA. It states plainly that
+  it opens with Phase I in 2027 and that purchases fund the exhibitions.
+- Built it yellow first, then moved it to the ink surface: the donor band
+  directly above is yellow, and two yellow bands in a row break the rule that
+  the signal colour appears once per page. It now contrasts with the donor
+  moment instead of competing with it.
 
-Verified: build 30 pages, 148 references, all present. No 4xx on any route
-except the Google Maps embed, which the build sandbox blocks.
+Fix
+- .ed-btn was only surface-aware for light surfaces, so on ink and slate it
+  inherited the wrong colour and could render yellow-on-yellow (1.1:1). Buttons
+  are now explicit per surface; audited every .ed-btn on six routes at two
+  widths, nothing below 4.5:1.
+
+Verified: build 30 pages, 148 references present. Shop section contrast clean,
+no horizontal overflow at 390.

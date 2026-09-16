@@ -91,9 +91,40 @@ export default function Museum() {
         <Link className="ed-btn" href="/contact?interest=museum">Become a founding donor {Arrow.upRight}</Link>
       </section>
 
-      <section className="wrap s s-paper compact cta-band" id="shop">
-        <div><span className="kicker">Gift shop</span><h2>Shop MIS.</h2><p>Merchandise, publications, and founding-donor editions. The shop opens with Phase I; enquiries are welcome now.</p></div>
-        <Link className="ed-btn" href="/contact?interest=museum">Shop enquiries {Arrow.upRight}</Link>
+      {/* The shop is a real part of the museum's public mission, not a footnote, so it gets a
+          section of its own on the loudest surface with the three things it will actually sell. */}
+      <section className="wrap s s-ink" id="shop">
+        <div className="intro">
+          <div>
+            <span className="kicker">The gift shop</span>
+            <h2>Take the museum<br /><em>home with you.</em></h2>
+          </div>
+          <p>Every purchase funds the exhibitions, the research behind them, and free public access
+            to the collection.</p>
+        </div>
+        <div className="shopgrid">
+          <article>
+            <span className="shop-n">01</span>
+            <h3>Exhibition editions</h3>
+            <p>Prints and objects drawn from the halls: the contraband still life, the convergence
+              map, the eclipse.</p>
+          </article>
+          <article>
+            <span className="shop-n">02</span>
+            <h3>Publications</h3>
+            <p>Museum catalogues, the Illicit Shadows Chronicles, and research briefs from ICAIE.</p>
+          </article>
+          <article>
+            <span className="shop-n">03</span>
+            <h3>Founding-donor editions</h3>
+            <p>Numbered pieces reserved for the people who open the doors. Not sold after Phase I.</p>
+          </article>
+        </div>
+        <div className="shopfoot">
+          <p className="fine">Opening with Phase I in 2027. Tell us what you want and we will hold
+            one back.</p>
+          <Link className="ed-btn" href="/contact?interest=museum">Join the shop list {Arrow.upRight}</Link>
+        </div>
       </section>
     </>
   );

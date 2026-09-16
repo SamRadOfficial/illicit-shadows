@@ -502,6 +502,17 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .tone-panel .cb-a,.tone-alert .cb-a{color:var(--signal);border-color:var(--line-2)}
 .tone-panel .cb-a:hover,.tone-alert .cb-a:hover{border-color:var(--signal)}
 
+/* Museum shop: three columns on the yellow surface, numbered rather than imaged, since the
+   merchandise does not exist to photograph yet. */
+.shopgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.6vw,36px)}
+.shopgrid article{border-top:2px solid var(--ac);padding-top:16px}
+.shop-n{font-family:var(--disp);font-size:13px;letter-spacing:.14em;display:block;margin-bottom:26px;color:var(--ac)}
+.shopgrid h3{font-size:clamp(22px,2.3vw,28px);text-transform:uppercase}
+.shopgrid p{font-size:15px;margin-top:10px;max-width:34ch}
+.shopfoot{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  margin-top:clamp(28px,3.4vw,44px);border-top:1px solid var(--rule);padding-top:22px}
+.shopfoot .fine{max-width:46ch}
+
 /* Trilogy introduction: the render beside the copy, contained so no cover is cropped. */
 .triintro{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(24px,4vw,52px);align-items:center}
 .trishot{width:100%;height:auto;object-fit:contain;display:block}
@@ -602,6 +613,8 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .ed-btn svg{width:16px;height:16px}
 .ed-btn:hover{background:#fff}
 .s-paper .ed-btn,.s-yellow .ed-btn{background:#111716;color:#fff}
+.s-paper .ed-btn,.s-paper .ed-btn svg,.s-yellow .ed-btn,.s-yellow .ed-btn svg{color:#fff}
+.s-ink .ed-btn,.s-ink .ed-btn svg,.s-slate .ed-btn,.s-slate .ed-btn svg{background:var(--signal);color:#000}
 .s-paper .ed-btn:hover,.s-yellow .ed-btn:hover{background:#000}
 .ed-link{display:inline-flex;align-items:center;gap:10px;min-height:36px;border-bottom:1px solid var(--ac,var(--signal));color:var(--fg,#fff);font-size:14px;font-weight:500;line-height:1.5;padding:4px 0;margin-top:20px}
 .ed-link svg{width:15px;height:15px;color:var(--ac,var(--signal))}
@@ -1024,7 +1037,9 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
   .hero .bg img{object-position:var(--hero-pos-mobile, var(--hero-pos, right center))}
   .lead-film,.preview-top,.trailer-row,.trilogy,.helixrow{grid-template-columns:1fr}
   /* Stacked: descriptions and actions stay visible, nothing depends on hover. */
-  .mistichead,.ppanels,.whois,.triintro{grid-template-columns:1fr}
+  .mistichead,.ppanels,.whois,.triintro,.shopgrid{grid-template-columns:1fr}
+  .shopgrid article{padding-top:14px}
+  .shop-n{margin-bottom:12px}
   .cb-inner{grid-template-columns:1fr}
   .cb-a{grid-column:1;grid-row:auto;justify-self:start;margin-top:6px}
   .cform-grid{grid-template-columns:1fr}

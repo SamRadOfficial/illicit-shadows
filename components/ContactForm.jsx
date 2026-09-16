@@ -49,8 +49,7 @@ export function ContactForm() {
 
   return (
     <form className="cform" action={endpoint || undefined} method="post" onSubmit={onSubmit}>
-      <fieldset className="cform-routes">
-        <legend>What is this about? <i>Choose any that apply</i></legend>
+      <fieldset className="cform-routes" aria-label="Enquiry type, choose any that apply">
         <div className="cform-chips">
           {ROUTES.map(([v, label]) => (
             <label key={v} className={`cchip${routes.includes(v) ? ' on' : ''}`}>
@@ -95,8 +94,7 @@ export function ContactForm() {
       <div className="cform-foot">
         <button className="btn btn-y" type="submit">Send message</button>
         <p className="cform-note">
-          We read everything. Expect a reply within a few working days, or write directly to{' '}
-          <a href={`mailto:${site.contact}`}>{site.contact}</a>.
+          Expect a reply within a few working days.
         </p>
       </div>
 
