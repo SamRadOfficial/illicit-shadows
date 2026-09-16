@@ -367,10 +367,11 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .cstage-dl dd{margin:0;font-size:14.5px;line-height:1.6;color:var(--fg)}
 @media(max-width:820px){.cstage-dl{grid-template-columns:1fr;gap:16px}}
 .cmaps-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}
-.cmaps-nav button{background:none;border:1px solid var(--line);color:var(--text-2);padding:9px 14px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
-.cmaps-nav button:hover:not(:disabled){border-color:var(--signal);color:var(--text)}
+.cmaps-nav button{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--rule);color:var(--fg);padding:9px 14px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.cmaps-nav button:hover:not(:disabled){border-color:var(--ac);color:var(--fg)}
 .cmaps-nav button:disabled{opacity:.35;cursor:default}
-.cmaps-count{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.cmaps-nav button svg{width:14px;height:14px}
+.cmaps-count{font-family:var(--mono);font-size:11px;color:var(--fg);opacity:.75}
 
 /* Narration, collected below the list (owner pick). Measure for reading, not for scanning. */
 .tx-jump{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);border-bottom:1px solid var(--alert);padding-bottom:2px}

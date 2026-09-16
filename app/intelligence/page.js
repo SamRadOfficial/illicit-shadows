@@ -41,7 +41,7 @@ export default function Intelligence() {
           mechanisms, which the brief marks TBD. */}
       {/* Two columns: the claim and the question on the left, the explanation on the right. A
           single measure left half the section empty. */}
-      <section className="wrap s s-paper" id="helix">
+      <section className="wrap s s-ink" id="helix">
         <div className="intro">
           <div><span className="kicker">Project Helix / Predictive convergence system</span><h2>From fragments<br /><em>to a system.</em></h2></div>
           <p>Most intelligence forecasts discrete events. Helix models the adaptation that follows:
@@ -59,7 +59,7 @@ export default function Intelligence() {
         </figure>
       </section>
 
-      <section className="wrap s s-ink" id="cascade">
+      <section className="wrap s s-paper" id="cascade">
         <div className="intro">
           <div><span className="kicker">Illustrative model · Hypothetical scenario</span><h2>One disruption.<br /><em>Many consequences.</em></h2></div>
           <p>Follow the Rotterdam example from an initial shock to redirected routes, financial activity, and downstream effects. Use the timeline on the map to move between stages.</p>

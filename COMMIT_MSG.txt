@@ -1,11 +1,17 @@
-Divide same-surface sections; trim the Intelligence lede
+Intelligence: flip two surfaces, drop the stage text
 
-- Sections that sit next to another section on the same surface now carry a 1px
-  top rule at content width. A change of surface is already a divider, so only
-  same-colour neighbours get the line. Audited every route: six pages had such a
-  run, on /museum, /intelligence, /books, both investigation pages and the short
-  page. All now separated; nothing else changed.
-- Intelligence hero drops "Not a forecast of events, but of adaptation."
+- "From fragments to a system" moves to black; the Helix graphic now sits on its
+  own surface rather than on cream.
+- "One disruption. Many consequences." moves to white.
+- Removed the per-stage HTML block beneath the map (Stage 00, Day 0, what
+  changed, what carries the effect, what is hypothetical).
+- Fix: the cascade Previous/Next controls and counter were coloured for a dark
+  section only, so on the new white surface they were white on cream at 1.4:1.
+  They now inherit the surface, and nothing in the section is below 4.5:1.
 
-Verified: build 30 pages, 106 asset references present. Every same-surface
-boundary confirmed at 1px; boundaries inspected at 1440.
+Note: with the stage block gone, the only "Illustrative model" marker in this
+section is the one drawn inside each map, along with the caveat line beneath it.
+Both are still present on every stage.
+
+Verified: build 30 pages, 106 asset references present. Surface sequence and
+contrast read back from the DOM.

@@ -67,20 +67,6 @@ export function CascadeMaps() {
         <button type="button" onClick={() => setI(Math.min(STAGES.length - 1, i + 1))} disabled={i === STAGES.length - 1}>Next <span aria-hidden="true">{Arrow.right}</span></button>
       </div>
 
-      <div className="cstage">
-        <p className="cstage-head">
-          <span className="cstage-n">Stage {String(s.n).padStart(2, '0')}</span>
-          <span className="cstage-lag">{s.lag}</span>
-          <span className="chip chip-illus">Illustrative model</span>
-        </p>
-        <h3>{s.what}</h3>
-        <dl className="cstage-dl">
-          <div><dt>What changed</dt><dd>{s.why}</dd></div>
-          <div><dt>What carries the effect</dt><dd>{s.carries}</dd></div>
-          <div><dt>What is hypothetical</dt><dd>The places, the timing and the volumes. This is a
-            worked example, not a report of observed events or a validated forecast.</dd></div>
-        </dl>
-      </div>
     </div>
   );
 }
