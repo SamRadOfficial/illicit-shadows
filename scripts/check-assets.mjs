@@ -10,6 +10,14 @@ const refs = new Set();
 for (const f of walk(OUT).filter(p => p.endsWith('.html'))) {
   const h = readFileSync(f, 'utf8');
   for (const m of h.matchAll(new RegExp(`(?:src|href|srcSet|srcset)="(${ASSET})"`, 'g'))) refs.add(m[1]);
+  // A srcset holds several candidates with width descriptors; the single-value pattern above
+  // misses every one of them, so a missing responsive file 404s in silence.
+  for (const m of h.matchAll(/(?:srcSet|srcset)="([^"]+)"/g)) {
+    for (const part of m[1].split(',')) {
+      const url = part.trim().split(/\s+/)[0];
+      if (url && !url.startsWith('data:')) refs.add(url);
+    }
+  }
   for (const m of h.matchAll(new RegExp(`url\\(["']?(${ASSET})["']?\\)`, 'g'))) refs.add(m[1]);
 }
 for (const f of walk(OUT).filter(p => p.endsWith('.css'))) {

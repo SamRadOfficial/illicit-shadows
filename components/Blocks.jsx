@@ -19,12 +19,18 @@ export const ASSET_V = '3';
 /* `w`/`h` are the intrinsic pixel size of the art. They are not display sizes: CSS still controls
    how big the image renders, but giving the browser the ratio up front stops the page reflowing as
    each file arrives. `sizes` lets the browser pick the smaller file on a phone. */
-export function Pic({ base, alt, ext = 'jpg', priority = false, className, style, pos, w = 1600, h = 900, sizes }) {
+export function Pic({ base, alt, ext = 'jpg', priority = false, className, style, pos, w = 1600, h = 900,
+                     sizes, widths }) {
   const v = `?v=${ASSET_V}`;
+  /* `widths` names the pre-generated sizes on disk (base-640.webp and so on). Without it a phone
+     downloads the full-width file: that is why the heroes were slow. */
+  const set = ext2 => widths
+    ? widths.map(n => `${base}-${n}.${ext2}${v} ${n}w`).join(', ')
+    : undefined;
   return (
     <picture>
-      <source srcSet={`${base}.webp${v}`} type="image/webp" sizes={sizes} />
-      <img src={`${base}.${ext}${v}`} alt={alt} className={className} width={w} height={h}
+      <source srcSet={set('webp') || `${base}.webp${v}`} type="image/webp" sizes={sizes} />
+      <img src={`${base}.${ext}${v}`} srcSet={set(ext)} alt={alt} className={className} width={w} height={h}
            sizes={sizes} style={{ objectPosition: pos, ...style }}
            fetchPriority={priority ? 'high' : undefined} loading={priority ? 'eager' : 'lazy'} decoding="async" />
     </picture>
@@ -214,7 +220,12 @@ export function Hero({ img, alt, eyebrow, title, lede, source, children, variant
   return (
     <section className={`hero ${variant}`}
              style={{ padding: 0, '--hero-pos': pos, '--hero-pos-mobile': mobilePos || pos }}>
-      <div className="bg"><Pic base={img} alt={alt} priority /></div>
+      {/* Preload the hero: React hoists this into <head>, so the browser starts fetching the right
+          width immediately instead of waiting for the stylesheet to reveal the background. */}
+      <link rel="preload" as="image" href={`${img}-1600.webp?v=${ASSET_V}`} fetchPriority="high"
+            imageSrcSet={[640, 1024, 1600].map(n => `${img}-${n}.webp?v=${ASSET_V} ${n}w`).join(', ')}
+            imageSizes="100vw" />
+      <div className="bg"><Pic base={img} alt={alt} priority widths={[640, 1024, 1600]} sizes="100vw" /></div>
       <div className="veil" />
       <div className="wrap">
         {eyebrow && <p className="eyebrow">{eyebrow}</p>}

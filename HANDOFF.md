@@ -301,6 +301,11 @@ where a page still needs them. The system:
   siblings carry a 1px top rule at content width. Two sections on the same surface otherwise run
   together with no edge; a *change* of surface is already its own divider, so those boundaries stay
   clean. If a new section lands next to one of its own colour, the rule applies itself.
+- **Heroes are responsive.** Each hero image has `-640`, `-1024` and `-1600` WebP and JPEG variants
+  on disk; `Pic` takes `widths` and emits a srcset, and `Hero` preloads the right one. A phone was
+  downloading the full 1920px file, which is why heroes felt slow. **If a new image is used as a
+  hero, generate its variants**, or the srcset candidates 404 silently.
+  `check-assets.mjs` now parses `srcset`, so that failure is caught at build time.
 - **The surface layer must not use `z-index:-1`.** A negative layer vanishes behind any ancestor
   that creates a stacking context, which is how `/film/chemical-cartels` shipped with black text on
   a black page after deploy while rendering correctly in local preview. `.s` is `isolation:isolate`,

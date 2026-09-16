@@ -1,17 +1,21 @@
-Intelligence: flip two surfaces, drop the stage text
+Responsive heroes: phones no longer download the 1920px file
 
-- "From fragments to a system" moves to black; the Helix graphic now sits on its
-  own surface rather than on cream.
-- "One disruption. Many consequences." moves to white.
-- Removed the per-stage HTML block beneath the map (Stage 00, Day 0, what
-  changed, what carries the effect, what is hypothetical).
-- Fix: the cascade Previous/Next controls and counter were coloured for a dark
-  section only, so on the new white surface they were white on cream at 1.4:1.
-  They now inherit the surface, and nothing in the section is below 4.5:1.
+- Every hero now has 640, 1024 and 1600 wide WebP and JPEG variants. Pic takes a
+  `widths` prop and emits a srcset with sizes="100vw"; Hero preloads the
+  matching width so the fetch starts with the HTML rather than after the
+  stylesheet reveals the background.
+- Hero weight on a phone drops from 110-225KB per page to 26-58KB: 352KB across
+  the eight main routes, down from roughly 1MB. Desktop serves 1600px, a phone
+  at 2x serves 1024, at 1x serves 640, all confirmed from currentSrc.
+- Hero JPEG/WebP quality lowered to 80/78. The art sits behind a veil at 0.76
+  opacity; mean pixel difference against the old file is 1.46/255.
 
-Note: with the stage block gone, the only "Illustrative model" marker in this
-section is the one drawn inside each map, along with the caveat line beneath it.
-Both are still present on every stage.
+Two bugs found while doing it
+- /film and /museum use images that had no variants, so their srcset candidates
+  404'd silently. Variants generated for both.
+- check-assets.mjs only read single-value src attributes, so it could not see a
+  missing srcset candidate. It now parses every candidate in a srcset, which is
+  why the reference count jumped from 100 to 148.
 
-Verified: build 30 pages, 106 asset references present. Surface sequence and
-contrast read back from the DOM.
+Verified: build 30 pages, 148 references, all present. No 4xx on any route
+except the Google Maps embed, which the build sandbox blocks.
