@@ -87,17 +87,17 @@ export default function About() {
         </div>
       </section>
 
-      <section className="wrap s s-ink" id="partner-orgs" style={{ paddingTop: 0 }}>
+      <section className="wrap s s-paper" id="partner-orgs">
         <div className="intro"><div><span className="kicker">Partners</span><h2>Built with<br /><em>ICAIE and RADOC.</em></h2></div><p>Our two standing partnerships.</p></div>
         <div className="partners">
           <article>
-            <span className="plogo"><Pic base="/logos/icaie-square" alt="ICAIE, International Coalition Against Illicit Economies" /></span>
+            <span className="plogo plogo-big"><Pic base="/logos/icaie-square" ext="png" alt="ICAIE, International Coalition Against Illicit Economies" /></span>
             <h3>ICAIE</h3>
             <p>International Coalition Against Illicit Economies. Confronting illicit trade, crime, and threat finance. Washington, DC.</p>
             <a className="ed-link" href="https://icaie.com" target="_blank" rel="noopener noreferrer">icaie.com {Arrow.upRight}</a>
           </article>
           <article>
-            <span className="plogo plogo-text"><span className="radoc" aria-label="RADOC"><b>RAD</b><em>OC</em></span></span>
+            <span className="plogo plogo-big plogo-text"><span className="radoc" aria-label="RADOC"><b>RAD</b><em>OC</em></span></span>
             <h3>RAD Original Creations</h3>
             <p>A meta-media studio producing the Illicit Shadows films. NYC, Washington, DC, and London.</p>
             <a className="ed-link" href="https://radoc.co" target="_blank" rel="noopener noreferrer">radoc.co {Arrow.upRight}</a>

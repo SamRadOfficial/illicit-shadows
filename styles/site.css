@@ -840,12 +840,22 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .argument p{font-size:15px;margin:0}
 .audience{display:flex;flex-wrap:wrap;gap:12px 30px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:20px 0;font-size:15.5px}
 .partners{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.partners article{border:1px solid var(--rule);padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column}
-.partners article .ed-link{margin-top:auto;align-self:flex-start;padding-top:18px}
+.partners article{border:1px solid var(--rule);padding:clamp(26px,3vw,40px);display:flex;flex-direction:column;align-items:center;text-align:center}
+.partners article p{max-width:42ch}
+.partners article .ed-link{margin-top:auto;align-self:center;padding-top:18px}
 /* One fixed-height slot for both marks, so ICAIE's logo and the RADOC wordmark share a baseline
    and the partner names below them line up. */
-.partners .plogo{display:flex;align-items:center;height:96px;margin-bottom:20px}
-.partners .plogo img{width:auto;height:96px;object-fit:contain;display:block;background:#fff;padding:8px}
+.partners .plogo{display:flex;align-items:center;justify-content:center;height:96px;margin-bottom:22px}
+.partners .plogo img{width:auto;height:96px;object-fit:contain;display:block}
+/* Larger, centred marks. RADOC's OC sits on a black highlight, as the studio sets it. */
+.partners .plogo-big{height:132px}
+/* Transparent mark: no plate. Declared after the base rule so it is not overridden. */
+.partners .plogo-big img{width:auto;height:132px;object-fit:contain;background:none;padding:0}
+.partners .plogo-big .radoc{font-size:40px;letter-spacing:.01em}
+.partners .radoc b{color:var(--fg)}
+.partners .radoc em{font-style:normal;background:#000;color:#fff;padding:2px 10px;margin-left:4px}
+.s-paper .partners .radoc em{background:#111716}
+.s-ink .partners .radoc em{background:#000}
 .partners .plogo-text .radoc{font-size:30px}
 .partners p{font-size:14px}
 .contact-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start}

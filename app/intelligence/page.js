@@ -16,9 +16,9 @@ export default function Intelligence() {
   return (
     <>
       <Hero img="/images/hero-intelligence" alt="An evidence wall of port photographs linked by gold string"
-            eyebrow="MISTIC / Strategic intelligence"
+            eyebrow="Project Helix"
             title={<>Model what<br />the network<br /><span className="y">does next.</span></>}
-            lede="How do criminal, political, and economic networks reorganize after disruption? Helix turns fragmented intelligence into systemic foresight.">
+            lede="Our platform turns fragmented intelligence into systemic foresight: how criminal, political, and economic networks reorganize after a disruption. Not a forecast of events, but of adaptation.">
         <div className="actions">
           <a className="ed-btn" href="#cascade">Explore a scenario {Arrow.down}</a>
           <Link className="ed-link" href="/contact?interest=helix">Request a briefing {Arrow.upRight}</Link>
@@ -41,27 +41,11 @@ export default function Intelligence() {
           mechanisms, which the brief marks TBD. */}
       {/* Two columns: the claim and the question on the left, the explanation on the right. A
           single measure left half the section empty. */}
-      <section className="wrap s s-slate two" id="what">
-        <div>
-          <span className="kicker">Project Helix &middot; Predictive Convergence System</span>
-          <h2>A system for<br /><em>the next move.</em></h2>
-          <figure className="pullq">
-            <blockquote>If a disruption occurs at one node, how do the others reorganize to compensate?</blockquote>
-            <figcaption>The modeling question behind the system</figcaption>
-          </figure>
-        </div>
-        <div>
-          <p className="deck">Project Helix is MISTIC's predictive convergence system. It models how
-            criminal, political, and economic networks reorganize when something disrupts them.</p>
-          <p>Most intelligence systems forecast discrete events: a shipment, a transfer, an attack.
-            Helix models the adaptation that follows. The question it asks is not what happens next,
-            but what the system does about it.</p>
-        </div>
-      </section>
-
       <section className="wrap s s-paper" id="helix">
         <div className="intro">
-          <div><span className="kicker">Project Helix / How it works</span><h2>From fragments<br /><em>to a system.</em></h2></div>
+          <div><span className="kicker">Project Helix / Predictive convergence system</span><h2>From fragments<br /><em>to a system.</em></h2></div>
+          <p>Most intelligence forecasts discrete events. Helix models the adaptation that follows:
+            if a disruption occurs at one node, how do the others reorganize to compensate?</p>
         </div>
         <ol className="method">
           {METHOD.map(([t, d], i) => <li key={t}><span className="n">{String(i + 1).padStart(2, '0')}</span><h3>{t}</h3><p>{d}</p></li>)}
