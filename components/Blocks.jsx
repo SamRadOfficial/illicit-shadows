@@ -1,6 +1,7 @@
 'use client';
 import { Arrow, Brand, Chevron } from './Icons';
 import site from '../data/site.json';
+import VARIANTS from '../data/image-variants.json';
 import films from '../data/films.json';
 import slate from '../data/slate.json';
 // Shared blocks. Pages compose these; new page types reuse them rather than inventing a fourth treatment.
@@ -21,11 +22,16 @@ export const ASSET_V = '3';
    each file arrives. `sizes` lets the browser pick the smaller file on a phone. */
 export function Pic({ base, alt, ext = 'jpg', priority = false, className, style, pos, w = 1600, h = 900,
                      sizes, widths }) {
+  /* Only offer widths that exist on disk. The manifest is regenerated before every build, so a
+     srcset can never point at a file that was not committed: without variants the browser simply
+     gets the full-size image. */
+  const have = VARIANTS[base];
+  const use = widths && have ? widths.filter(n => have.includes(n)) : null;
   const v = `?v=${ASSET_V}`;
   /* `widths` names the pre-generated sizes on disk (base-640.webp and so on). Without it a phone
      downloads the full-width file: that is why the heroes were slow. */
-  const set = ext2 => widths
-    ? widths.map(n => `${base}-${n}.${ext2}${v} ${n}w`).join(', ')
+  const set = ext2 => use && use.length
+    ? use.map(n => `${base}-${n}.${ext2}${v} ${n}w`).join(', ')
     : undefined;
   return (
     <picture>
@@ -222,9 +228,11 @@ export function Hero({ img, alt, eyebrow, title, lede, source, children, variant
              style={{ padding: 0, '--hero-pos': pos, '--hero-pos-mobile': mobilePos || pos }}>
       {/* Preload the hero: React hoists this into <head>, so the browser starts fetching the right
           width immediately instead of waiting for the stylesheet to reveal the background. */}
-      <link rel="preload" as="image" href={`${img}-1600.webp?v=${ASSET_V}`} fetchPriority="high"
-            imageSrcSet={[640, 1024, 1600].map(n => `${img}-${n}.webp?v=${ASSET_V} ${n}w`).join(', ')}
-            imageSizes="100vw" />
+      {(VARIANTS[img]?.length
+        ? <link rel="preload" as="image" href={`${img}-${VARIANTS[img].at(-1)}.webp?v=${ASSET_V}`} fetchPriority="high"
+                imageSrcSet={VARIANTS[img].map(n => `${img}-${n}.webp?v=${ASSET_V} ${n}w`).join(', ')}
+                imageSizes="100vw" />
+        : <link rel="preload" as="image" href={`${img}.webp?v=${ASSET_V}`} fetchPriority="high" />)}
       <div className="bg"><Pic base={img} alt={alt} priority widths={[640, 1024, 1600]} sizes="100vw" /></div>
       <div className="veil" />
       <div className="wrap">

@@ -1,27 +1,9 @@
-Contact trims, wider map, and a real museum shop section
+About: keep MEDIA · KNOWLEDGE · INTELLIGENCE on one line
 
-Contact
-- Note under Send message reads only "Expect a reply within a few working days."
-- "What is this about?" legend removed; the fieldset keeps an aria-label so the
-  checkboxes still announce what they are for.
-- Map zoomed out one step (z=14) so the White House sits in frame.
-- "Directions" link removed; Open in Google Maps remains.
+- .text-routes no longer wraps. The three words are one statement, so the size
+  now follows the viewport, clamp(15px, 3.1vw, 24px), rather than the row
+  breaking when it runs out of room. Arrows and gaps scale with the type (em
+  units) instead of staying fixed.
 
-Museum
-- The gift shop is its own section rather than a one-line band: "Take the museum
-  home with you", three numbered categories (exhibition editions, publications,
-  founding-donor editions), and a Join the shop list CTA. It states plainly that
-  it opens with Phase I in 2027 and that purchases fund the exhibitions.
-- Built it yellow first, then moved it to the ink surface: the donor band
-  directly above is yellow, and two yellow bands in a row break the rule that
-  the signal colour appears once per page. It now contrasts with the donor
-  moment instead of competing with it.
-
-Fix
-- .ed-btn was only surface-aware for light surfaces, so on ink and slate it
-  inherited the wrong colour and could render yellow-on-yellow (1.1:1). Buttons
-  are now explicit per surface; audited every .ed-btn on six routes at two
-  widths, nothing below 4.5:1.
-
-Verified: build 30 pages, 148 references present. Shop section contrast clean,
-no horizontal overflow at 390.
+Verified: one row at 320, 360, 390, 430, 768, 1024 and 1440, with no overflow
+inside the row or on the page.

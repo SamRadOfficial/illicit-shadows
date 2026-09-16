@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "build:export": "EXPORT=1 next build",
+    "build": "node scripts/image-variants.mjs && next build",
+    "build:export": "node scripts/image-variants.mjs && EXPORT=1 next build",
     "check": "npm run build:export && node scripts/check-assets.mjs",
     "preview": "python3 scripts/preview.py",
-    "shot": "python3 scripts/screenshot.py"
+    "shot": "python3 scripts/screenshot.py",
+    "variants": "node scripts/image-variants.mjs"
   },
   "dependencies": {
     "next": "16.3.5",
