@@ -15,6 +15,8 @@ export const Arrow = {
 
 // Brand marks are filled shapes, not strokes.
 const brand = (d) => <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false"><path d={d} /></svg>;
+export const Play = <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z" /></svg>;
+
 export const Chevron = svg(<path d="m6 9 6 6 6-6" />, { strokeWidth: 2 });
 
 export const Brand = {

@@ -16,7 +16,8 @@ export default function Home() {
       <Hero img="/images/hero-globe" mobilePos="22% center" alt="A gold-lit globe on black, trade routes arcing between continents"
             eyebrow="Media · Knowledge · Intelligence"
             title={<>The dark forces shaping the <span className="y">global criminal underworld</span></>}
-            lede="We expose the $6 trillion+ shadow economy and predict what it does next.">
+            lede="We investigate the $6 trillion shadow economy and model how its networks adapt."
+            source="$6 trillion: annual value of global illicit economies, ICAIE, 2026 &#8594; sources">
         <div className="actions">
           <Link className="ed-btn" href="/film">Watch the investigations {Arrow.upRight}</Link>
           <a className="ed-link" href="#platform">Meet the platform {Arrow.down}</a>
@@ -74,8 +75,7 @@ export default function Home() {
           <div>
             <span className="kicker">Illicit Shadows Chronicles &middot; Fiction</span>
             <h2>{bookOne.title}</h2>
-            <p>When a Mexican diplomat is assassinated in London, Santiago and Samira are drawn into
-              a high-stakes web of espionage and intrigue.</p>
+            <p>{bookOne.hook}</p>
             <p className="fine">Sam Rad &amp; David M. Luna · {bookOne.status}</p>
             <Link className="ed-link" href="/books">Enter the trilogy {Arrow.upRight}</Link>
           </div>
@@ -91,7 +91,7 @@ export default function Home() {
 
       <section className="wrap s s-yellow cta-band" id="donor">
         <div><h2>Help bring the hidden world to light.</h2><p>Support the museum's public mission as a founding donor.</p></div>
-        <Link className="ed-btn" href="/museum#donor">Become a founding donor {Arrow.upRight}</Link>
+        <Link className="ed-btn" href="/contact?interest=museum">Become a founding donor {Arrow.upRight}</Link>
       </section>
     </>
   );

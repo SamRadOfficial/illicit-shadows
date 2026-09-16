@@ -37,6 +37,7 @@
 
 /* ---- base ---- */
 *{box-sizing:border-box;margin:0;padding:0}
+img{max-width:100%;height:auto}
 html{scroll-behavior:auto}  /* never smooth: see the note further down */
 body{background:var(--ink);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
@@ -193,7 +194,8 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .trailer-band{display:grid;grid-template-columns:1.15fr 1fr;gap:26px;align-items:center;background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--line-2)}
 .trailer-band>div{padding:20px 26px 20px 0}
 .trailer-band .work-title{font-size:26px}
-.trailer-img .pb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3}
+.trailer-img .pb svg{width:.9em;height:.9em;display:block}
+.pb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3}
 
 /* Top right: these covers run their title down the left and the roundel bottom right, so
    a number anywhere else lands on type. Checked at 390px, where the collision showed first. */
@@ -204,10 +206,13 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .vembed img{width:100%;height:100%;object-fit:cover;display:block}
 /* .pb takes its size from context elsewhere, so give the facade its own. Without this it
    collapses to the glyph and the border-radius renders as a wedge. */
-.vembed .pb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;width:54px;height:54px;font-size:19px;box-shadow:0 0 0 6px rgba(0,0,0,.35)}
-.minicard-img .vembed .pb{width:40px;height:40px;font-size:14px;box-shadow:0 0 0 5px rgba(0,0,0,.35)}
+.vembed .pb svg{width:.9em;height:.9em;display:block}
+.pb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;width:54px;height:54px;font-size:19px;box-shadow:0 0 0 6px rgba(0,0,0,.35)}
+.minicard-img .vembed .pb svg{width:.9em;height:.9em;display:block}
+.pb{width:40px;height:40px;font-size:14px;box-shadow:0 0 0 5px rgba(0,0,0,.35)}
 .vembed .pb--big{width:74px;height:74px;font-size:26px}
-.vembed:hover .pb{background:var(--signal);color:var(--ink)}
+.vembed:hover .pb svg{width:.9em;height:.9em;display:block}
+.pb{background:var(--signal);color:var(--ink)}
 .vembed:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
 .vembed--live{cursor:default}
 .vembed--live iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
@@ -234,7 +239,8 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .upnext a:hover b{color:var(--signal)}
 .upnext span{display:block;color:var(--muted);font-size:13.5px;margin-top:3px}
 /* .pb has no intrinsic size; every context that uses it has to set one. */
-.trailer-home .pb{width:48px;height:48px;font-size:16px;box-shadow:0 0 0 5px rgba(0,0,0,.35)}
+.trailer-home .pb svg{width:.9em;height:.9em;display:block}
+.pb{width:48px;height:48px;font-size:16px;box-shadow:0 0 0 5px rgba(0,0,0,.35)}
 .trailer-home img{width:100%;height:100%;object-fit:cover;display:block}
 .pb.sm{width:38px;height:38px;font-size:13px}
 
@@ -314,7 +320,7 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .playbtn{display:flex;align-items:center;gap:9px;background:var(--signal);color:var(--ink);border:0;padding:12px 18px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
 .playbtn:hover{background:#fff}
 .playbtn:focus-visible{outline:2px solid var(--text);outline-offset:2px}
-.playbtn-ico{font-size:12px}
+.playbtn-ico{display:inline-flex;font-size:13px}
 .vrow-t{display:block;font-weight:700;font-size:19px;color:var(--text)}
 .vrow:hover .vrow-t{color:var(--signal)}
 .vrow-s{display:block;color:var(--muted);font-size:14.5px;margin-top:4px}
@@ -349,6 +355,17 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .cs-lag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--signal);margin-right:10px}
 .cs-what{font-weight:700;font-size:15px;color:var(--text)}
 .cs-why{display:block;color:var(--muted);font-size:13.5px;line-height:1.65;margin-top:5px}
+.cstage{border-top:1px solid var(--rule);margin-top:18px;padding-top:18px}
+.cstage-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:0 0 8px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.cstage-n{color:var(--fg)}
+.cstage-lag{color:var(--ac)}
+.chip-illus{border:1px solid var(--ac);color:var(--ac);padding:3px 8px;font-size:10px}
+.cstage h3{font-size:22px;margin:0 0 14px;max-width:34ch}
+.cstage-dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:0}
+.cstage-dl dt{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);margin-bottom:6px}
+.cstage-dl dd{margin:0;font-size:14.5px;line-height:1.6;color:var(--fg)}
+@media(max-width:820px){.cstage-dl{grid-template-columns:1fr;gap:16px}}
 .cmaps-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}
 .cmaps-nav button{background:none;border:1px solid var(--line);color:var(--text-2);padding:9px 14px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
 .cmaps-nav button:hover:not(:disabled){border-color:var(--signal);color:var(--text)}
@@ -368,7 +385,8 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 /* Centred on the three-up previews (owner pick): those cards run about 325px wide, where a
    centred button reads as a player control without burying the title. The 208px list rows were
    the case that failed, and those now carry the control outside the artwork entirely. */
-.minicard-img .vembed .pb{width:44px;height:44px;font-size:15px;box-shadow:0 0 0 5px rgba(0,0,0,.35)}
+.minicard-img .vembed .pb svg{width:.9em;height:.9em;display:block}
+.pb{width:44px;height:44px;font-size:15px;box-shadow:0 0 0 5px rgba(0,0,0,.35)}
 
 .shortnav{display:grid;grid-template-columns:1fr 2fr;gap:clamp(20px,3vw,40px);align-items:center;padding-top:6px}
 .shortnav-a{display:block;align-self:start}
@@ -413,6 +431,7 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 /* Contact form. Square fields, hairline borders, yellow only on focus and the submit button. */
 .cform{position:relative;max-width:820px}
 .cform-routes{border:0;padding:0;margin:0 0 26px}
+.cform-routes legend i{font-style:normal;opacity:.7;text-transform:none;letter-spacing:0}
 .cform-routes legend{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);padding:0 0 12px}
 .cform-chips{display:flex;flex-wrap:wrap;gap:8px}
 .cchip{display:inline-flex;align-items:center;border:1px solid var(--line);padding:10px 14px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);cursor:pointer}
@@ -597,6 +616,9 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .hero .eyebrow{color:var(--signal);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
 .hero .kicker{margin-bottom:14px}
 .hero .ed-link{color:#fff}
+.hero-source{margin-top:12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:#cfd3d3;max-width:52ch}
+.hero-source a{color:#cfd3d3;border-bottom:1px solid var(--signal);padding-bottom:2px}
+.hero-source a:hover{color:var(--signal)}
 .hero.short{min-height:360px}
 .text-hero{padding:clamp(56px,7vw,88px) 0 clamp(36px,5vw,56px)}
 .text-hero h1{max-width:16ch}
@@ -704,7 +726,7 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .wide{position:relative;display:block;min-width:0}
 .wide img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
 .play-marker{position:absolute;left:16px;bottom:16px;background:var(--signal);color:#000;font-size:12px;line-height:1.4;padding:10px 14px;display:inline-flex;gap:8px;align-items:center}
-.play-marker svg{width:14px;height:14px}
+.play-marker svg{width:13px;height:13px}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
 .museum-feature{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,4vw,52px);align-items:center}
 /* The museum's name is the headline here, so it carries hero weight. */
@@ -781,7 +803,19 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .news-controls{display:flex;gap:18px;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:12px;margin-bottom:22px}
 .news-controls span,.news-controls button{font:inherit;font-size:12px;color:var(--fg);background:none;border:0;border-bottom:2px solid transparent;padding:10px 0}
 .news-controls .on{border-color:var(--ac)}
-.news-item{display:grid;grid-template-columns:135px 1fr;gap:30px;border-top:1px solid var(--rule);padding:26px 0}
+/* Meta line first, then the headline: organisation, kind and date scan in one pass. */
+.news-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:0 0 8px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.news-org{background:var(--fg);color:var(--sbg);padding:3px 8px}
+.news-kind{color:var(--fg);opacity:.9}
+.news-meta time,.news-outlet{color:var(--fg);opacity:.75;text-transform:none;letter-spacing:.02em;font-size:11.5px}
+.news-count{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+.news-lead{border-top:2px solid var(--ac);padding:22px 0 26px;margin-bottom:6px}
+.news-lead h2{font-size:clamp(28px,3.4vw,40px);max-width:24ch;margin:6px 0 10px}
+.news-lead h2 a{color:inherit;display:inline}
+.news-lead h2 a svg{width:20px;height:20px;color:var(--ac)}
+.news-lead p{font-size:17px;max-width:60ch}
+.news-item{display:grid;grid-template-columns:1fr;gap:4px;border-top:1px solid var(--rule);padding:22px 0}
 .news-item .kicker{margin-bottom:5px}
 .news-item h3{font-size:24px;max-width:48ch;line-height:1.15}
 .news-item p{font-size:15px;margin-top:10px}
@@ -870,7 +904,8 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 /* Forms on cream: light fields, black text, dark button. Signup and contact share the rules. */
 .s-paper .cform input,.s-paper .cform textarea,.s-paper .signup input,.s-yellow .signup input{background:#f8f7f1;color:#000;border:1px solid #a6ada5}
 .s-paper .cform input::placeholder,.s-paper .cform textarea::placeholder,.s-paper .signup input::placeholder{color:#3a3a3a}
-.s-paper .cfield span,.s-paper .cform-routes legend,.s-paper .cform-note,.s-paper .cform-note a{color:#000}
+.s-paper .cfield span,.s-paper .cform-routes legend i{font-style:normal;opacity:.7;text-transform:none;letter-spacing:0}
+.cform-routes legend,.s-paper .cform-note,.s-paper .cform-note a{color:#000}
 .s-paper .cchip{background:#f8f7f1;color:#000;border-color:#a6ada5}
 .s-paper .cchip.on{background:#111716;color:#fff;border-color:#111716}
 .s-paper .cform .btn-y,.s-paper .signup button,.s-yellow .signup button{background:#111716;color:#fff;border-color:#111716}
@@ -1041,11 +1076,13 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .mistic-sub{color:var(--text-2);max-width:64ch;font-size:16.5px}
 
 /* video features + media boxes */
+.pb svg{width:.9em;height:.9em;display:block}
 .pb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;background:var(--signal);display:flex;align-items:center;justify-content:center;color:var(--ink);z-index:3}
 .film-feature{position:relative;display:block;aspect-ratio:16/9;max-height:520px;max-width:1000px;margin:0 auto;border:1px solid var(--line-2);overflow:hidden}
 .film-feature img{width:100%;height:100%;object-fit:cover}
 .film-feature::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.4))}
-.film-feature .pb{width:64px;height:64px;font-size:22px}
+.film-feature .pb svg{width:.9em;height:.9em;display:block}
+.pb{width:64px;height:64px;font-size:22px}
 .badge{position:absolute;top:12px;left:12px;z-index:4;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--signal);background:rgba(0,0,0,.72);border:1px solid var(--line-2);padding:5px 9px}
 /* Stamps over key art belong bottom left: the covers carry the presenting credit top left
    and the roundel bottom right. Always pair .badge with .btm on film artwork. */
@@ -1194,14 +1231,16 @@ a.mbox:hover{transform:translateY(-3px)}.mbox.alert{border-top-color:var(--alert
 .ep:hover{background:var(--panel)}.ep:last-child{border-bottom:1px solid var(--line)}
 .epthumb{position:relative;aspect-ratio:16/9;border:1px solid var(--line-2);overflow:hidden;background:var(--panel)}.epthumb img{width:100%;height:100%;object-fit:cover}
 .epthumb.soon{display:flex;align-items:center;justify-content:center}.epthumb.soon span{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.12em}
-.epthumb .pb{width:34px;height:34px;font-size:13px}
+.epthumb .pb svg{width:.9em;height:.9em;display:block}
+.pb{width:34px;height:34px;font-size:13px}
 .epn{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--signal);margin-bottom:5px}.ept{font-weight:700;font-size:19px;color:var(--text);line-height:1.2}.eps{color:var(--muted);font-size:14.5px;margin-top:3px}
 .epmeta{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--dim);white-space:nowrap;text-align:right}.ep.up .ept{color:var(--text-2)}
 .crumb{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--dim);margin-bottom:16px}.crumb a{color:var(--muted)}.crumb b{color:var(--signal);font-weight:500}
 .ep-title{font-family:var(--disp);text-transform:uppercase;color:var(--text);font-size:clamp(40px,7vw,80px);line-height:.92}.ep-title span{color:var(--signal)}
 .ep-sub{color:var(--text-2);font-size:clamp(15px,2vw,19px);margin:14px 0 26px}
 .ep-player{position:relative;display:block;aspect-ratio:16/9;border:1px solid var(--line-2);overflow:hidden}.ep-player img{width:100%;height:100%;object-fit:cover}
-.ep-player::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.35))}.ep-player .pb{width:74px;height:74px;font-size:26px}
+.ep-player::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.35))}.ep-player .pb svg{width:.9em;height:.9em;display:block}
+.pb{width:74px;height:74px;font-size:26px}
 .ep-meta{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;margin-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--dim)}.ep-meta .live{color:var(--alert)}.ep-meta a{color:var(--signal);margin-left:auto}
 .ep-about{display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(30px,5vw,56px);align-items:start}.ep-about p{color:var(--text-2);font-size:16.5px;line-height:1.8;margin-bottom:14px}
 .credits h4{font-family:var(--disp);font-size:15px;color:var(--text);text-transform:uppercase;margin-bottom:14px}

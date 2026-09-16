@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Pic } from './Blocks';
+import { Play } from './Icons';
 
 /**
  * Facade embed. The cover art is the poster; the YouTube iframe is only injected on click.
@@ -46,7 +47,7 @@ export function VideoEmbed({ id, list, image, alt, title, channel, className = '
     return (
       <a className={`vembed ${className}`} href={channel} target="_blank" rel="noopener noreferrer">
         <Pic base={image} alt={alt} />
-        <span className={`pb${big ? ' pb--big' : ''}`} aria-hidden="true">&#9654;</span>
+        <span className={`pb${big ? ' pb--big' : ''}`} aria-hidden="true">{Play}</span>
       </a>
     );
   }
@@ -55,7 +56,7 @@ export function VideoEmbed({ id, list, image, alt, title, channel, className = '
     <button type="button" ref={openerRef} className={`vembed ${className}`}
             onClick={() => setPlaying(true)} aria-label={`Play ${title}`}>
       <Pic base={image} alt={alt} />
-      {variant !== 'row' && <span className={`pb${big ? ' pb--big' : ''}`} aria-hidden="true">&#9654;</span>}
+      {variant !== 'row' && <span className={`pb${big ? ' pb--big' : ''}`} aria-hidden="true">{Play}</span>}
     </button>
   );
 
@@ -65,7 +66,7 @@ export function VideoEmbed({ id, list, image, alt, title, channel, className = '
   const control = variant === 'row' ? (
     <span className="vrow-play">
       <button type="button" className="playbtn" onClick={() => setPlaying(true)} aria-label={`Play ${title}`}>
-        <span className="playbtn-ico" aria-hidden="true">&#9654;</span>
+        <span className="playbtn-ico" aria-hidden="true">{Play}</span>
         <span className="playbtn-txt">Play</span>
       </button>
       {meta && <span className="vrow-r">{meta}</span>}

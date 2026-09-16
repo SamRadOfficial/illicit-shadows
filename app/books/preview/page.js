@@ -20,7 +20,8 @@ export default function Preview() {
         <div>
           <span className="kicker">{one.status}</span>
           <h2>They built a museum.<br /><em>They uncovered a network.</em></h2>
-          <p>{one.blurb}</p>
+          <p className="deck">{one.hook}</p>
+          {one.blurb.split(/\n{2,}/).map((t, i) => <p key={i}>{t}</p>)}
           <p className="fine">Washington, D.C. · London · Rome · Mexico City</p>
           {/* Unpublished state stays accurate: no invented extract. */}
           <div className="extract">

@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { Arrow } from './Icons';
 
 /**
  * The cascade as five maps rather than four lines of text. Stepper, not carousel: the sequence is
@@ -12,20 +13,26 @@ import { useState } from 'react';
 const STAGES = [
   { n: 0, file: '00-trigger',  label: 'Trigger',    lag: 'Day 0',
     what: 'Contraband is interdicted at Rotterdam.',
+    carries: 'Nothing has moved yet. This is the shock the rest of the sequence responds to.',
     why: 'One seizure at one port. Everything that follows is what the model expects the network to do about it.' },
   { n: 1, file: '01-routes',   label: 'Routes',     lag: 'Day 0',
     what: 'Volume shifts to Antwerp and Hamburg.',
+    carries: 'Carried by shipping capacity and existing freight relationships: the cargo still has to land somewhere with the throughput to absorb it.',
     why: 'The shipment still has to land, so it moves to the next-nearest port with capacity.' },
   { n: 2, file: '02-entities', label: 'Entities',   lag: '+11 days',
     what: 'Shell registrations spike in Lisbon, the Caribbean, offshore.',
+    carries: 'Carried by company formation and invoicing: a new corridor needs new paper before it can move value.',
     why: 'New corridors need new invoicing entities before the next load moves.' },
   { n: 3, file: '03-property', label: 'Property',   lag: '+3 months',
     what: 'Real-estate cash purchases rise in London, Miami, Dubai.',
+    carries: 'Carried by the entities created in the previous stage: proceeds leave the trade through assets those companies can hold.',
     why: 'Proceeds have to leave the trade and enter something that holds value.' },
   { n: 4, file: '04-influence', label: 'Influence', lag: '+12 months',
     what: 'Political funding anomalies appear in the EU and North America.',
+    carries: 'Carried by the wealth parked in the previous stage: protection is bought with assets, not with cargo.',
     why: 'Protection of the new route is cheaper than losing it again.' },
 ];
+
 
 export function CascadeMaps() {
   const [i, setI] = useState(0);
@@ -55,11 +62,25 @@ export function CascadeMaps() {
       </figure>
 
       <div className="cmaps-nav">
-        <button type="button" onClick={() => setI(Math.max(0, i - 1))} disabled={i === 0}>&larr; Previous</button>
+        <button type="button" onClick={() => setI(Math.max(0, i - 1))} disabled={i === 0}><span aria-hidden="true">{Arrow.left}</span> Previous</button>
         <span className="cmaps-count">{i + 1} of {STAGES.length}</span>
-        <button type="button" onClick={() => setI(Math.min(STAGES.length - 1, i + 1))} disabled={i === STAGES.length - 1}>Next &rarr;</button>
+        <button type="button" onClick={() => setI(Math.min(STAGES.length - 1, i + 1))} disabled={i === STAGES.length - 1}>Next <span aria-hidden="true">{Arrow.right}</span></button>
       </div>
 
+      <div className="cstage">
+        <p className="cstage-head">
+          <span className="cstage-n">Stage {String(s.n).padStart(2, '0')}</span>
+          <span className="cstage-lag">{s.lag}</span>
+          <span className="chip chip-illus">Illustrative model</span>
+        </p>
+        <h3>{s.what}</h3>
+        <dl className="cstage-dl">
+          <div><dt>What changed</dt><dd>{s.why}</dd></div>
+          <div><dt>What carries the effect</dt><dd>{s.carries}</dd></div>
+          <div><dt>What is hypothetical</dt><dd>The places, the timing and the volumes. This is a
+            worked example, not a report of observed events or a validated forecast.</dd></div>
+        </dl>
+      </div>
       <p className="cfoot">The chain is the claim: disruption does not remove the trade, it moves
         it, and each move surfaces in different data.</p>
     </div>

@@ -396,6 +396,15 @@ where a page still needs them. The system:
 - `HallsEd` is the phase toggle over `halls.json`; `NewsIndex` is the newsroom filter. Both are
   small client components; everything else is server-rendered.
 
+## Handing off assets
+
+Run `python3 scripts/pack-assets.py` at the end of a session. It compares `public/` against a
+manifest kept outside the repo and writes **one zip per changed directory**, naming the files it
+contains; if nothing changed it writes nothing and says so, and the source zip is the only
+deliverable. The full-`public/` zip is no longer produced by default: it is ~34MB, and almost all of
+it is unchanged every time. `--baseline` records the current state without zipping, for when assets
+are changed outside a handoff.
+
 ## Video
 Films play through a **facade YouTube embed** (`components/VideoEmbed.jsx`): the cover art is the
 poster and the `youtube-nocookie` iframe is only injected on click. Verified: **zero** requests to

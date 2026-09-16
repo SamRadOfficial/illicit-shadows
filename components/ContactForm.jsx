@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import site from '../data/site.json';
 
 /**
@@ -7,8 +7,10 @@ import site from '../data/site.json';
  * `site.forms.contact` (Formspree, Basin, a Vercel function). With no endpoint it does NOT pretend
  * to send: it says so and offers the mailto, which is the honest failure and matches `Signup`.
  *
- * The route the person picks is a real field, so enquiries arrive pre-sorted rather than as four
- * identical emails. `company` is a honeypot: a field no human sees and most bots fill in.
+ * Enquiry types are a real field, so messages arrive pre-sorted. They are **checkboxes, not radio
+ * buttons**: a museum donor who also wants a Helix briefing should not have to choose. A CTA can
+ * preselect them with `?interest=museum,helix`, so intent carries from the button that was pressed.
+ * `company` is a honeypot: a field no human sees and most bots fill in.
  */
 const ROUTES = [
   ['investment', 'Investment'],
@@ -20,10 +22,23 @@ const ROUTES = [
   ['other', 'Something else'],
 ];
 
+const VALID = new Set(ROUTES.map(([v]) => v));
+
 export function ContactForm() {
   const endpoint = site.forms?.contact;
   const [state, setState] = useState('idle');
-  const [route, setRoute] = useState('advisory');
+  const [routes, setRoutes] = useState([]);
+
+  /* Read ?interest= after mount: the page is statically exported, so the query is not known at
+     build time. Unknown values are ignored rather than trusted. */
+  useEffect(() => {
+    const raw = new URLSearchParams(window.location.search).get('interest');
+    if (!raw) return;
+    const picked = raw.split(',').map(v => v.trim().toLowerCase()).filter(v => VALID.has(v));
+    if (picked.length) setRoutes(picked);
+  }, []);
+
+  const toggle = v => setRoutes(r => r.includes(v) ? r.filter(x => x !== v) : [...r, v]);
 
   const onSubmit = e => {
     if (!endpoint) {
@@ -35,12 +50,12 @@ export function ContactForm() {
   return (
     <form className="cform" action={endpoint || undefined} method="post" onSubmit={onSubmit}>
       <fieldset className="cform-routes">
-        <legend>What is this about?</legend>
+        <legend>What is this about? <i>Choose any that apply</i></legend>
         <div className="cform-chips">
           {ROUTES.map(([v, label]) => (
-            <label key={v} className={`cchip${route === v ? ' on' : ''}`}>
-              <input type="radio" name="route" value={label} checked={route === v}
-                     onChange={() => setRoute(v)} />
+            <label key={v} className={`cchip${routes.includes(v) ? ' on' : ''}`}>
+              <input type="checkbox" name="interest" value={label}
+                     checked={routes.includes(v)} onChange={() => toggle(v)} />
               {label}
             </label>
           ))}

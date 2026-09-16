@@ -76,8 +76,9 @@ export default function About() {
 
       <section className="wrap s s-ink" id="partners">
         <div className="intro">
-          <div><span className="kicker">Who we work with</span><h2>Across sectors.<br /><em>Across borders.</em></h2></div>
-          <p>Every player exposed to global supply chains, sanctions risk, or illicit-economy contamination.</p>
+          <div><span className="kicker">Who we serve</span><h2>Across sectors.<br /><em>Across borders.</em></h2></div>
+          <p>The institutions and industries our work is built for. These are the sectors we address,
+            not a list of partners: our formal relationships are ICAIE and RADOC, below.</p>
         </div>
         <div className="sectors">
           {SECTORS.map(([name, items]) => (
@@ -87,7 +88,7 @@ export default function About() {
       </section>
 
       <section className="wrap s s-ink" id="partner-orgs" style={{ paddingTop: 0 }}>
-        <div className="intro"><div><span className="kicker">Partners</span><h2>Built with<br /><em>ICAIE and RADOC.</em></h2></div></div>
+        <div className="intro"><div><span className="kicker">Partners</span><h2>Built with<br /><em>ICAIE and RADOC.</em></h2></div><p>Our two standing partnerships.</p></div>
         <div className="partners">
           <article>
             <span className="plogo"><Pic base="/logos/icaie-square" alt="ICAIE, International Coalition Against Illicit Economies" /></span>
@@ -106,7 +107,7 @@ export default function About() {
 
       <section className="wrap s s-yellow cta-band">
         <div><h2>Work at the intersection.</h2><p>Advisory, intelligence access, museum partnerships, and film collaborations.</p></div>
-        <Link className="ed-btn" href="/contact">Start a conversation {Arrow.upRight}</Link>
+        <Link className="ed-btn" href="/contact?interest=advisory">Start a conversation {Arrow.upRight}</Link>
       </section>
     </>
   );

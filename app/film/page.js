@@ -3,7 +3,7 @@ import site from '../../data/site.json';
 import films from '../../data/films.json';
 import slate from '../../data/slate.json';
 import { Pic, Hero } from '../../components/Blocks';
-import { Arrow } from '../../components/Icons';
+import { Arrow, Play } from '../../components/Icons';
 export const metadata = { title: 'Film' };
 
 export default function Film() {
@@ -26,7 +26,7 @@ export default function Film() {
         <div className="feature">
           <Link className="wide" href={`/film/${released.slug}`}>
             <Pic base={released.image} alt={`${released.title}: ${released.subtitle}`} />
-            <span className="play-marker">Watch {Arrow.upRight}</span>
+            <span className="play-marker">{Play} Watch</span>
           </Link>
           <div>
             <span className="kicker">Now streaming / {released.form} / {released.years}</span>
@@ -81,7 +81,7 @@ export default function Film() {
       <section className="wrap s s-slate compact feature" id="trailer">
         <a className="wide" href={site.social.youtube} target="_blank" rel="noopener noreferrer">
           <Pic base="/images/film-trailer" alt="Illicit Shadows official trailer" />
-          <span className="play-marker">YouTube {Arrow.upRight}</span>
+          <span className="play-marker">{Play} YouTube</span>
         </a>
         <div>
           <span className="kicker">Official trailer / 2024 cut</span>

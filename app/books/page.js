@@ -23,9 +23,10 @@ export default function Books() {
         <div>
           <span className="kicker">Book 1 / {one.status}</span>
           <h2>The Umbra<br /><em>Circle</em></h2>
-          {one.blurb.split(/\n{2,}/).map((t, i) => <p key={i}>{t}</p>)}
+          <p className="deck">{one.hook}</p>
+          <p className="fine">Washington, D.C. &middot; London &middot; Rome &middot; Mexico City</p>
           <p className="byline">By Sam Rad and David M. Luna</p>
-          <Link className="ed-link" href={one.preview}>Explore the book {Arrow.upRight}</Link>
+          <Link className="ed-link" href={one.preview}>Read the full description {Arrow.upRight}</Link>
         </div>
       </section>
 

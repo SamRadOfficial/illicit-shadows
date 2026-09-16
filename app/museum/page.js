@@ -33,7 +33,9 @@ export default function Museum() {
       <section className="wrap s s-slate compact two" id="prototype">
         <div><span className="kicker">The building / Interactive prototype</span><h2>Find your way<br /><em>through the shadows.</em></h2></div>
         <div>
-          <p>Explore the rotunda, the positions of the halls, and the routes between them.</p>
+          <p>The prototype is live today: a walkable model of the building, the rotunda and the hall
+            positions. The exhibitions themselves open in phases from 2027, so what you can visit now
+            is the architecture, not the collection.</p>
           <Link className="ed-btn" href="/museum/enter">Enter the museum concept {Arrow.upRight}</Link>
         </div>
       </section>
@@ -73,7 +75,7 @@ export default function Museum() {
           <Link className="ed-link" href="/film">Watch the investigations {Arrow.upRight}</Link>
         </article>
         <article>
-          <Link href="/books"><Pic base="/images/books-trilogy-hero" alt="The three Illicit Shadows Chronicles novels" /></Link>
+          <Link href="/books"><Pic base="/images/books-trilogy-full-bleed-feature" alt="The three Illicit Shadows Chronicles novels" /></Link>
           <h3>Enter the narrative world.</h3>
           <p>The Illicit Shadows Chronicles take the themes of convergence into fiction.</p>
           <Link className="ed-link" href="/books">Explore the trilogy {Arrow.upRight}</Link>
@@ -86,12 +88,12 @@ export default function Museum() {
           <h2>Help open the doors.</h2>
           <p>Support the museum's public mission and its phased opening from 2027. Institutional partnerships are available.</p>
         </div>
-        <Link className="ed-btn" href="/contact">Become a founding donor {Arrow.upRight}</Link>
+        <Link className="ed-btn" href="/contact?interest=museum">Become a founding donor {Arrow.upRight}</Link>
       </section>
 
       <section className="wrap s s-paper compact cta-band" id="shop">
         <div><span className="kicker">Gift shop</span><h2>Shop MIS.</h2><p>Merchandise, publications, and founding-donor editions. The shop opens with Phase I; enquiries are welcome now.</p></div>
-        <Link className="ed-btn" href="/contact">Shop enquiries {Arrow.upRight}</Link>
+        <Link className="ed-btn" href="/contact?interest=museum">Shop enquiries {Arrow.upRight}</Link>
       </section>
     </>
   );

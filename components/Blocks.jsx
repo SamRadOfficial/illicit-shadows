@@ -16,11 +16,16 @@ import { useEffect, useRef, useState } from 'react';
    old file for a long time otherwise, and the filename never changes. */
 export const ASSET_V = '3';
 
-export function Pic({ base, alt, ext = 'jpg', priority = false, className, style, pos }) {
+/* `w`/`h` are the intrinsic pixel size of the art. They are not display sizes: CSS still controls
+   how big the image renders, but giving the browser the ratio up front stops the page reflowing as
+   each file arrives. `sizes` lets the browser pick the smaller file on a phone. */
+export function Pic({ base, alt, ext = 'jpg', priority = false, className, style, pos, w = 1600, h = 900, sizes }) {
+  const v = `?v=${ASSET_V}`;
   return (
     <picture>
-      <source srcSet={`${base}.webp?v=${ASSET_V}`} type="image/webp" />
-      <img src={`${base}.${ext}?v=${ASSET_V}`} alt={alt} className={className} style={{ objectPosition: pos, ...style }}
+      <source srcSet={`${base}.webp${v}`} type="image/webp" sizes={sizes} />
+      <img src={`${base}.${ext}${v}`} alt={alt} className={className} width={w} height={h}
+           sizes={sizes} style={{ objectPosition: pos, ...style }}
            fetchPriority={priority ? 'high' : undefined} loading={priority ? 'eager' : 'lazy'} decoding="async" />
     </picture>
   );
@@ -205,7 +210,7 @@ export function Footer({ site }) {
 
 /* Crops come from CSS variables, not an inline object-position on the image: an inline style beats
    the stylesheet, so a media query could never change the crop on a narrow screen. */
-export function Hero({ img, alt, eyebrow, title, lede, children, variant = '', pos = 'right center', mobilePos }) {
+export function Hero({ img, alt, eyebrow, title, lede, source, children, variant = '', pos = 'right center', mobilePos }) {
   return (
     <section className={`hero ${variant}`}
              style={{ padding: 0, '--hero-pos': pos, '--hero-pos-mobile': mobilePos || pos }}>
@@ -215,6 +220,7 @@ export function Hero({ img, alt, eyebrow, title, lede, children, variant = '', p
         {eyebrow && <p className="eyebrow">{eyebrow}</p>}
         <h1 className="disp">{title}</h1>
         {lede && <p className="lede">{lede}</p>}
+        {source && <p className="hero-source"><Link href="/sources">{source}</Link></p>}
         {children}
       </div>
     </section>

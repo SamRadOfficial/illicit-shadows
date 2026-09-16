@@ -21,7 +21,7 @@ export default function Intelligence() {
             lede="How do criminal, political, and economic networks reorganize after disruption? Helix turns fragmented intelligence into systemic foresight.">
         <div className="actions">
           <a className="ed-btn" href="#cascade">Explore a scenario {Arrow.down}</a>
-          <Link className="ed-link" href="/contact">Request a briefing {Arrow.upRight}</Link>
+          <Link className="ed-link" href="/contact?interest=helix">Request a briefing {Arrow.upRight}</Link>
         </div>
       </Hero>
 
@@ -51,7 +51,7 @@ export default function Intelligence() {
           </figure>
         </div>
         <div>
-          <p className="deck">Project Helix is a predictive convergence system: it models how
+          <p className="deck">Project Helix is MISTIC's predictive convergence system. It models how
             criminal, political, and economic networks reorganize when something disrupts them.</p>
           <p>Most intelligence systems forecast discrete events: a shipment, a transfer, an attack.
             Helix models the adaptation that follows. The question it asks is not what happens next,
@@ -106,7 +106,7 @@ export default function Intelligence() {
 
       <section className="wrap s s-yellow cta-band">
         <div><h2>Bring the network into view.</h2><p>Advisory, briefings, and Helix access for governments, international organizations, and industry.</p></div>
-        <Link className="ed-btn" href="/contact">Request a briefing {Arrow.upRight}</Link>
+        <Link className="ed-btn" href="/contact?interest=helix">Request a briefing {Arrow.upRight}</Link>
       </section>
     </>
   );

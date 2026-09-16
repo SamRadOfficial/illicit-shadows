@@ -1,15 +1,45 @@
-Restore the MIS eclipse, and raise the type scale one step
+Editorial review pass: claims, hierarchy, icons, newsroom, contact, QA
 
-- images/mis-eclipse is the supplied original again. My alpha-cut version had
-  mangled the corona into a spiky feathered edge. The mark only appears inside
-  .black-logo on /museum, which is already a black panel, so the artwork's own
-  black field is correct and no transparency is needed. .black-logo now frames
-  the image edge to edge.
-- Type scale A: body 15 to 16.5px, small print 11 to 12px, labels 11.5px, nav
-  14.5 to 15.5px, deck 21px, hero lede 17px, and the card and list sizes lifted
-  a step to match. Headings unchanged, so the contrast between headline and text
-  is preserved.
+Claims and sourcing
+- Home: "predict what it does next" becomes "We investigate the $6 trillion
+  shadow economy and model how its networks adapt", matching what the
+  intelligence page actually describes. The estimate is attributed beside it and
+  links to /sources.
+- Illicit Gold: "no test on earth can determine where a bar was mined" narrowed
+  to "once it is refined, no routine assay can establish where it was mined", in
+  both the line and the synopsis.
 
-Verified: build 30 pages, 108 asset references present. Computed sizes read back
-from the DOM; all fourteen routes checked at 1440, 390 and 320 with no
-horizontal overflow.
+Brand hierarchy, used the same way on Home, About and Intelligence
+- MISTIC is the platform and the institute; Project Helix is its predictive
+  convergence system; Helix.AI is the software that runs it.
+
+Icons
+- Text arrows in the cascade controls and the remaining play triangles are now
+  SVG. Button labels unchanged and still read as text to a screen reader.
+
+Newsroom
+- One lead story, then the index. Labels normalised to Announcement, In the
+  press, Dispatch. Each item leads with organisation, kind and a spelled-out
+  date. Kind colour changed from accent red (3.2:1 on cream) to ink.
+
+Contact
+- Enquiry types are multi-select checkboxes, not one radio choice, and CTAs pass
+  ?interest= so museum, shop and Helix buttons arrive preselected.
+
+Museum, About, Books
+- Prototype section distinguishes the walkable model available today from the
+  exhibitions opening in phases from 2027.
+- About separates the sectors served from the two standing partnerships.
+- Books lead with the assassination premise; the institutional world-building
+  moves to the book detail page.
+- Old trilogy composition replaced on /museum with the full-bleed feature.
+
+Scenario
+- Each cascade stage now has an HTML explanation: what changed, what carries the
+  effect, and what is hypothetical, with an Illustrative model chip.
+
+QA
+- Every image carries intrinsic width and height (98/98) so nothing shifts as
+  art loads. Contrast swept across fourteen routes: no text below 4.5:1.
+  Verified keyboard operation of the phase switch and scenario controls, the
+  lightbox, and the form's preselect, multi-select and unconnected states.
