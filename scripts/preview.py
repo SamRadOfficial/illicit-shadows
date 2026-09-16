@@ -22,7 +22,8 @@ html = re.sub(r'<script[^>]*/>', '', html)
 html = re.sub(r'<link[^>]*_next/static[^>]*>', '', html)
 missing = []
 def b64(path):
-    p = os.path.join(PUB, path.lstrip('/'))
+    # Strip the ?v= cache-buster that Pic appends; it is not part of the filename on disk.
+    p = os.path.join(PUB, path.split('?')[0].lstrip('/'))
     if not os.path.exists(p): missing.append(path); return path
     mt = mimetypes.guess_type(p)[0] or 'application/octet-stream'
     raw = open(p, 'rb').read()

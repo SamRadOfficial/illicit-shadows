@@ -280,6 +280,18 @@ where a page still needs them. The system:
 - **The investigation hero is not playable.** The key art is a poster; the films are watched from
   the rows below, one at a time, and the meta line links down to them. A playlist player in the
   hero opened something people then had to dismiss.
+- **The mobile nav panel is a grid, not a flex row.** `.filmmenu` is a third child of `.hasmenu`;
+  in a flex row it sat *beside* the Film link and pushed Film below its own submenu. Row one holds
+  the link and the chevron, the panel spans row two. There was also a second, later `.hasmenu` rule
+  in the mobile block re-flattening it; if the submenu ever lands in the wrong place again, look for
+  a duplicate selector before rewriting the markup.
+- **The MIS eclipse is a black-square photograph, not a cut-out.** `images/mis-eclipse` is the
+  supplied original; an earlier attempt to key the corona to transparency mangled it into a spiky
+  feathered edge. The only place it appears is `.black-logo` on `/museum`, which is a black panel,
+  so no alpha is needed. The hero mark is the **vector** `/logos/mis-eclipse.svg`. Do not alpha-cut
+  this artwork again.
+- **Type scale (15 Sep):** body 16.5px, small print 12px mono, labels 11.5px, nav 15.5px, deck
+  21px. Headings unchanged. Scales A, B and C were mocked; A shipped.
 - **Never set `scroll-behavior:smooth` on `html`.** It animates *every* programmatic scroll,
   including the one the App Router performs on navigation, so each page appeared to glide down
   instead of loading at the top. The `html:focus-within` variant is worse than useless here:

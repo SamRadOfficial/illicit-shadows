@@ -1,10 +1,15 @@
-Use the supplied square ICAIE logo as given
+Restore the MIS eclipse, and raise the type scale one step
 
-- public/logos/icaie-square now holds the supplied 200x200 file unmodified.
-  My earlier version trimmed the white field and re-squared it, which enlarged
-  the mark and changed its margins. Reframing a partner's logo is not ours to do.
-- Partner alignment unchanged: both marks share one 96px slot and the names
-  below them stay level.
+- images/mis-eclipse is the supplied original again. My alpha-cut version had
+  mangled the corona into a spiky feathered edge. The mark only appears inside
+  .black-logo on /museum, which is already a black panel, so the artwork's own
+  black field is correct and no transparency is needed. .black-logo now frames
+  the image edge to edge.
+- Type scale A: body 15 to 16.5px, small print 11 to 12px, labels 11.5px, nav
+  14.5 to 15.5px, deck 21px, hero lede 17px, and the card and list sizes lifted
+  a step to match. Headings unchanged, so the contrast between headline and text
+  is preserved.
 
-Verified: build 30 pages, 107 asset references present. Serving the new file,
-96x96 in the box, headings confirmed aligned.
+Verified: build 30 pages, 108 asset references present. Computed sizes read back
+from the DOM; all fourteen routes checked at 1440, 390 and 320 with no
+horizontal overflow.

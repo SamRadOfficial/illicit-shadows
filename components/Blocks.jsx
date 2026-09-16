@@ -10,11 +10,17 @@ import { useEffect, useRef, useState } from 'react';
 
 /** <picture> with WebP source + fallback. A WebP that 404s renders nothing, so the
  *  asset checker must pass before every push. `base` is the path without extension. */
+/* Bump when an image is replaced without changing its filename: browsers and the CDN cache
+   /images/* aggressively, which is why reissued covers kept showing the old art on phones. */
+/* Cache-buster. Bump this whenever an image is replaced in place: phones and CDNs hold the
+   old file for a long time otherwise, and the filename never changes. */
+export const ASSET_V = '3';
+
 export function Pic({ base, alt, ext = 'jpg', priority = false, className, style, pos }) {
   return (
     <picture>
-      <source srcSet={`${base}.webp`} type="image/webp" />
-      <img src={`${base}.${ext}`} alt={alt} className={className} style={{ objectPosition: pos, ...style }}
+      <source srcSet={`${base}.webp?v=${ASSET_V}`} type="image/webp" />
+      <img src={`${base}.${ext}?v=${ASSET_V}`} alt={alt} className={className} style={{ objectPosition: pos, ...style }}
            fetchPriority={priority ? 'high' : undefined} loading={priority ? 'eager' : 'lazy'} decoding="async" />
     </picture>
   );
