@@ -1,18 +1,15 @@
-Shop: flip between front and back in place
+Shop: quieter view controls
 
-- New components/ProductViews.jsx. Items with two views show one image at full
-  size with arrow controls over it and a small FRONT/BACK label; items with one
-  view render a plain image and no controls. Three items have a back: both
-  bombers and the Illicit Shadows tote.
-- Both views are rendered with one hidden rather than swapped on demand, so the
-  back is already decoded when someone flips and there is no blank frame.
-- Arrows are real buttons with per-view aria-labels and an aria-live label, so
-  the change is announced; 40px hit targets, 34px below 820px, and they stay
-  visible on touch rather than appearing on hover.
-- Removed the closing "Images are design concepts rather than photographs"
-  paragraph. "Design concepts" still appears under the lead image and on the
-  museum teaser.
+- The FRONT/BACK stamps are gone. The view is named in 8.5px lowercase mono,
+  black at 60% opacity, top left, with no chip behind it.
+- One arrow instead of two, top right, same weight and colour, no background.
+  With exactly two views a second arrow pointed at the same place.
+- Both sit on the mockups' pale grey ground, so black reads better than white
+  reversed out.
 
-Verified: build 34 pages, 184 references present. Flip tested by click, keyboard
-and tap; wraps front to back to front; label stays inside the frame at 1440
-and 390.
+Fix: the previous rewrite dropped the `flip` helper, so the arrow rendered but
+did nothing. Caught by testing the click rather than the markup.
+
+Verified: build 34 pages, 184 references present. Flip works by click, tap and
+keyboard, wraps front to back to front, and the aria-label tracks the current
+view.

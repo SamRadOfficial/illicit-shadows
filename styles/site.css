@@ -524,20 +524,19 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .shopitems{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.6vw,34px)}
 .shopitems article{border-top:1px solid var(--rule);padding-top:16px}
 .shopitems img{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:#111}
-/* Front and back in place: one image at full size, arrows over it. */
+/* Front and back in place: one image, one small arrow top right, and the view named in typewriter
+   text top left. No chips or stamps over the product. Both sit on the mockups' pale grey ground,
+   so they are set in black rather than reversed out. */
 .pviews{position:relative;margin-bottom:14px}
-.pnav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;display:flex;
-  align-items:center;justify-content:center;background:rgba(8,9,9,.72);border:1px solid rgba(255,255,255,.28);
-  color:#fff;cursor:pointer;padding:0}
-.pnav svg{width:17px;height:17px}
-.pnav.prev{left:10px}
-.pnav.next{right:10px}
-.pnav:hover{background:var(--signal);color:#000;border-color:var(--signal)}
-.pnav:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
-.pview-label{position:absolute;left:10px;top:10px;margin:0;white-space:nowrap;background:rgba(8,9,9,.78);
-  color:#fff;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;padding:4px 9px}
+.s .pview-label,.pview-label{position:absolute;left:10px;top:9px;margin:0;white-space:nowrap;
+  background:none;padding:0;color:#111;font-family:var(--mono);font-size:8.5px;line-height:1;
+  letter-spacing:.16em;text-transform:lowercase;opacity:.6}
+.pnav{position:absolute;top:6px;right:6px;width:24px;height:24px;display:flex;align-items:center;
+  justify-content:center;background:none;border:0;padding:0;color:#111;opacity:.6;cursor:pointer}
+.pnav svg{width:14px;height:14px}
+.pnav:hover{opacity:1}
+.pnav:focus-visible{outline:1px solid #111;outline-offset:2px;opacity:1}
 .pviews img{margin-bottom:0}
-@media (hover:none){.pnav{background:rgba(8,9,9,.82)}}
 .shopitems h3{font-size:20px}
 .shopitems p{font-size:14px;margin-top:8px}
 .shopteaser{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,3.4vw,48px);align-items:center}
@@ -546,7 +545,6 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .waitlist select{background:rgba(0,0,0,.35);border:1px solid var(--rule);color:var(--fg);
   padding:12px 14px;font-family:var(--body);font-size:15px;width:100%}
 @media(max-width:820px){.shopitems{grid-template-columns:1fr 1fr}.shopteaser{grid-template-columns:1fr}
-  .pnav{width:34px;height:34px}.pnav.prev{left:6px}.pnav.next{right:6px}
   .waitlist .cfields{grid-template-columns:1fr}}
 
 /* Museum shop: three columns on the yellow surface, numbered rather than imaged, since the

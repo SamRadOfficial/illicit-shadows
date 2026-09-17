@@ -10,14 +10,23 @@ blocks a launch.
 
 ## 1. Launch blockers
 
-- [ ] **Choose a newsletter tool and import the list.** The Squarespace export is done: 117 unique
-      addresses across the two files, deduped and split by consent (107 importable, 10 held back).
-      Formspree is a form backend, not a list: it has no broadcast, no unsubscribe, no audience
-      management, and CAN-SPAM requires a working unsubscribe on anything promotional. Pick one:
-      **MailerLite** (free to 1,000, my pick at this size), **Buttondown** (about $9/mo, cleanest
-      writing experience), or **Kit** (free to 10,000, strongest automation). Then point the site's
-      signup form at that provider's form endpoint and leave Formspree handling contact and the shop
-      waitlist.
+- [ ] **Newsletter, contacts and CRM: decide where people live.** The Squarespace export is done:
+      one combined file, 117 unique addresses, deduped across both exports, with a status and a
+      consent basis per row (107 subscribed, 10 held back). Three related decisions, worth taking
+      together rather than one tool at a time:
+      1. **Newsletter.** Where the list lives and where broadcasts are sent. MailerLite (free to
+         1,000, my pick at this size), Buttondown (about $9/mo, best writing experience), or Kit
+         (free to 10,000, strongest automation). Formspree cannot do this: no broadcast, no
+         unsubscribe, no audience management.
+      2. **Contact management.** Enquiries currently arrive as email from Formspree and stop there,
+         so there is no record of who asked what, or whether anyone replied. At this volume a shared
+         label in the inbox works; past a few a week it does not.
+      3. **CRM, once there is a pipeline to manage.** Funders, underwriters, institutional partners
+         and press are different relationships with different histories. Options run from a Notion
+         or Airtable base (free, fine to a few hundred records, no email sync) to HubSpot's free
+         tier (real pipeline, email logging, heavier) to Attio (modern, about $29/seat).
+      Sequence: newsletter first, since the list is exported and nothing is capturing it; contacts
+      second; CRM only when the donor and underwriter conversations are real enough to track.
 - [ ] **Squarespace redirect map.** Every `illicitshadows.com/news/...` URL 404s the moment DNS
       moves. Both announcements are rebuilt here, so the map is mostly old-news-URL to new-post-URL.
       Check `next.config.js` for shadowing rules before adding routes.

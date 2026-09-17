@@ -4,9 +4,10 @@ import { Pic } from './Blocks';
 import { Arrow } from './Icons';
 
 /**
- * One image at full size, with front/back arrows when a second view exists. Both views render and
- * one is hidden, so the back is already decoded when someone flips it and there is no blank frame.
- * Items with a single view render a plain image with no controls.
+ * One image at full size. Where a back view exists, a single arrow in the top right flips to it and
+ * a small typed word in the top left says which view is showing. Both views are rendered with one
+ * hidden, so the back is already decoded and there is no blank frame on the flip.
+ * Items with a single view render a plain image and no controls at all.
  */
 export function ProductViews({ name, image, back }) {
   const [view, setView] = useState(0);
@@ -16,7 +17,7 @@ export function ProductViews({ name, image, back }) {
     { src: image, label: 'front' },
     { src: back, label: 'back' },
   ];
-  const flip = d => setView(v => (v + d + views.length) % views.length);
+  const next = (view + 1) % views.length;
 
   return (
     <div className="pviews">
@@ -25,15 +26,12 @@ export function ProductViews({ name, image, back }) {
           <Pic base={v.src} alt={`${name}, ${v.label}, design concept`} />
         </div>
       ))}
-      <button type="button" className="pnav prev" onClick={() => flip(-1)}
-              aria-label={`Show the ${views[(view + views.length - 1) % views.length].label} of the ${name}`}>
-        {Arrow.left}
-      </button>
-      <button type="button" className="pnav next" onClick={() => flip(1)}
-              aria-label={`Show the ${views[(view + 1) % views.length].label} of the ${name}`}>
+      <p className="pview-label" aria-live="polite">{views[view].label}</p>
+      {/* One control: with exactly two views, a second arrow would point at the same place. */}
+      <button type="button" className="pnav" onClick={() => setView(next)}
+              aria-label={`Show the ${views[next].label} of the ${name}`}>
         {Arrow.right}
       </button>
-      <p className="pview-label" aria-live="polite">{views[view].label}</p>
     </div>
   );
 }
