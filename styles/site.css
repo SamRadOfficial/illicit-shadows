@@ -502,6 +502,21 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .tone-panel .cb-a,.tone-alert .cb-a{color:var(--signal);border-color:var(--line-2)}
 .tone-panel .cb-a:hover,.tone-alert .cb-a:hover{border-color:var(--signal)}
 
+/* A tier with a payment link is a control; one without is a label. They must not look alike. */
+.support{margin-top:22px}
+.support .tiers{display:flex;flex-wrap:wrap;gap:10px}
+.tier.is-live{display:inline-flex;flex-direction:column;gap:2px;border:1px solid var(--ac);padding:10px 16px;color:var(--fg);cursor:pointer}
+.tier.is-live b{font-family:var(--disp);font-size:19px;line-height:1}
+.tier.is-live span{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+.tier.is-live:hover{background:var(--ac);color:var(--sbg)}
+.tier.is-live:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+.tier.is-custom{border-style:dashed}
+.tier.is-custom b{font-size:15px;font-family:var(--body);font-weight:700}
+.support-note{margin-top:14px;max-width:56ch}
+/* Fine print: present and legible, but not part of the ask. */
+.support-fine{margin-top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;opacity:.8}
+.cform-alert.is-ok{border-color:var(--ac)}
+
 /* Museum shop: three columns on the yellow surface, numbered rather than imaged, since the
    merchandise does not exist to photograph yet. */
 .shopgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.6vw,36px)}

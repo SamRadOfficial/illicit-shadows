@@ -105,7 +105,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="wrap s s-yellow cta-band">
+      <section className="wrap s s-slate cta-band">
         <div><h2>Work at the intersection.</h2><p>Advisory, intelligence access, museum partnerships, and film collaborations.</p></div>
         <Link className="ed-btn" href="/contact?interest=advisory">Start a conversation {Arrow.upRight}</Link>
       </section>

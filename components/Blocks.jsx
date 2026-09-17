@@ -202,6 +202,7 @@ export function Footer({ site }) {
             <Link className="ed-link" href="/contact">Partner with us {Arrow.upRight}</Link>
             <Link className="ed-link" href="/sources">Explore our sources {Arrow.upRight}</Link>
             <Link className="ed-link" href="/about">About the platform {Arrow.upRight}</Link>
+            <a className="ed-link" href={site.social.linkedin} target="_blank" rel="noopener noreferrer">Connect on LinkedIn {Arrow.upRight}</a>
           </nav>
         </div>
         <div className="foot-bottom">
@@ -209,7 +210,7 @@ export function Footer({ site }) {
           <span>ICAIE + RADOC</span>
           <nav className="foot-social" aria-label="Social links">
             <a href={site.social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube">{Brand.youtube}</a>
-            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">{Brand.instagram}</a>
+            <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">{Brand.linkedin}</a>
             <a href={site.social.x} target="_blank" rel="noopener noreferrer" aria-label="X">{Brand.x}</a>
           </nav>
         </div>
@@ -249,12 +250,28 @@ export function Hero({ img, alt, eyebrow, title, lede, source, children, variant
 /** Email signup. Honest placeholder until `site.forms.signup` is set: no reload, no discarded input. */
 export function Signup({ endpoint, center = false, subscribe = true }) {
   const [state, setState] = useState('');
-  const onSubmit = (e) => { if (!endpoint) { e.preventDefault(); setState('Signup opens at launch. Your address was not sent anywhere.'); } };
+  const [busy, setBusy] = useState(false);
+  /* Same contract as the contact form: post with fetch, confirm in place, and never pretend an
+     address was stored when it was not. */
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (!endpoint) { setState('Signup opens at launch. Your address was not sent anywhere.'); return; }
+    const form = e.currentTarget;
+    setBusy(true);
+    try {
+      const res = await fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      if (!res.ok) throw new Error(String(res.status));
+      form.reset();
+      setState('Thank you. Check your inbox to confirm.');
+    } catch {
+      setState('That did not send. Try again in a moment.');
+    } finally { setBusy(false); }
+  };
   return (
     <>
       <form className={`signup${center ? ' center' : ''}`} action={endpoint || undefined} method="post" onSubmit={onSubmit}>
         <input type="email" name="email" placeholder="Email address" aria-label="Email address" required />
-        <button type="submit">Sign up for updates</button>
+        <button type="submit" disabled={busy}>{busy ? 'Sending...' : 'Sign up for updates'}</button>
       </form>
       {state && <p className="signup-note" style={center ? { textAlign: 'center' } : undefined}>{state}</p>}
       {/* Email leads, subscribe follows. An email list is an audience you own and can take to a
@@ -268,12 +285,29 @@ export function Signup({ endpoint, center = false, subscribe = true }) {
 }
 
 export function Donor({ eyebrow = 'Make an impact', title, copy, tiers, cta = 'Become a donor', href, mail }) {
+  /* Tiers come from `site.support.tiers`. Each one is a Stripe Payment Link: hosted checkout, no
+     server, which is what a static export can support. A tier with no link yet is not a button;
+     it falls back to the enquiry route rather than a control that does nothing. */
+  const configured = (site.support?.tiers || []).filter(t => t.url);
   return (
     <div className="donor">
       <p className="eyebrow">{eyebrow}</p>
       <h4>{title}</h4>
       <p>{copy}</p>
-      {tiers && <div className="tiers">{tiers.map(t => <span className="tier" tabIndex={0} key={t}>{t}</span>)}</div>}
+      {configured.length > 0 ? (
+        <>
+          <div className="tiers">
+            {configured.map(t => (
+              <a className="tier is-live" href={t.url} key={t.label}>
+                <b>{t.label}</b><span>{t.name}</span>
+              </a>
+            ))}
+          </div>
+          {site.support?.note && <p className="fine support-note">{site.support.note}</p>}
+        </>
+      ) : (
+        tiers && <div className="tiers">{tiers.map(t => <span className="tier" key={t}>{t}</span>)}</div>
+      )}
       <a className="btn btn-y" href={href}>{cta}</a>
       {mail && <p className="mail">Direct &middot; <a href={`mailto:${mail}`}>{mail}</a></p>}
     </div>

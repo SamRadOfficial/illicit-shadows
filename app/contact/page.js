@@ -53,7 +53,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="wrap s s-yellow compact direct">
+      <section className="wrap s s-slate compact direct">
         <h2 style={{ fontSize: 30 }}>Prefer a direct line?</h2>
         <a href={`mailto:${site.contact}`}>{site.contact} {Arrow.upRight}</a>
       </section>

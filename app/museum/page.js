@@ -82,14 +82,6 @@ export default function Museum() {
         </article>
       </section>
 
-      <section className="wrap s s-yellow cta-band" id="donor">
-        <div>
-          <span className="kicker">Founding donors</span>
-          <h2>Help open the doors.</h2>
-          <p>Support the museum's public mission and its phased opening from 2027. Institutional partnerships are available.</p>
-        </div>
-        <Link className="ed-btn" href="/contact?interest=museum">Become a founding donor {Arrow.upRight}</Link>
-      </section>
 
       {/* The shop is a real part of the museum's public mission, not a footnote, so it gets a
           section of its own on the loudest surface with the three things it will actually sell. */}

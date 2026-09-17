@@ -1,9 +1,17 @@
-About: keep MEDIA · KNOWLEDGE · INTELLIGENCE on one line
+LinkedIn in the footer, quieter pages, and a cleaner message field
 
-- .text-routes no longer wraps. The three words are one statement, so the size
-  now follows the viewport, clamp(15px, 3.1vw, 24px), rather than the row
-  breaking when it runs out of room. Arrows and gaps scale with the type (em
-  units) instead of staying fixed.
+- Footer swaps Instagram for LinkedIn (linkedin.com/company/illicitshadows), as
+  an icon in the social row and as a named "Connect on LinkedIn" link beside the
+  other footer actions. The Instagram icon stays in Icons.jsx in case the
+  account is revived.
+- The support band no longer renders on the short-film pages, the museum viewer
+  or the book preview: each is mid-experience, where the ask interrupts rather
+  than invites. It is a route test inside the component, so new short films are
+  covered automatically. Verified across fifteen routes, eleven showing and four
+  hiding.
+- Contact: removed the placeholder from the message field.
 
-Verified: one row at 320, 360, 390, 430, 768, 1024 and 1440, with no overflow
-inside the row or on the page.
+Docs
+- ROADMAP: the Instagram handle item is closed by this change.
+
+Verified: build 30 pages, 148 references present.

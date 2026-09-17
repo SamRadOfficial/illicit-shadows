@@ -18,8 +18,8 @@ Nothing else on this list matters until these are done.
 - [ ] **DNS cutover to illicitshadows.com.**
 - [ ] **Delete the stale Vercel project** once the new one holds the domain, so two projects are not
       building on every push.
-- [ ] **Form endpoints.** `data/site.json` has no `forms` block at all, so both the newsletter signup
-      and the contact form are unconnected. They say so honestly rather than discarding input, but a
+- [x] **Form endpoints.** Contact and newsletter wired to Formspree 16 Sep and verified end to end.
+- [ ] ~~Form endpoints~~ (superseded). They say so honestly rather than discarding input, but a
       live site with a dead contact form loses enquiries. One provider (Formspree, Basin, or a Vercel
       function) covers both; then two lines of JSON. Decide whether the list lives with Illicit
       Shadows or ICAIE, since that affects consent language and who may mail it.
@@ -54,16 +54,15 @@ Things a knowledgeable reader would notice, in the order they would notice them.
 - [ ] **Runtime for The Next Wave.** The only short without one.
 - [ ] **Confirm one short title.** Cover art reads FENTANYL'S DIRTY PROFITS; `films.json` says
       "Dirty Profits".
-- [ ] **Instagram handle.** Still `illicitshadowsdoc`; YouTube and X are both `illicit_shadows`.
-
-## 3. Money and audience systems
-
-Parked by the owner. Each needs a hosted endpoint, since static export means no server. Worth
-choosing the provider set once rather than four times.
-
-- [ ] **Donate.** Tiers on `/museum` and the donor blocks are display-only. **Decide first whether
-      donations route to Illicit Shadows, LLC or a fiscal sponsor**: a tax question that changes the
-      copy and is far harder to change after the first donation.
+- [x] **Instagram** removed from the footer 16 Sep and replaced with LinkedIn
+      (linkedin.com/company/illicitshadows). The `Brand.instagram` icon is kept in Icons.jsx in case
+      the account is revived; the handle mismatch no longer matters.
+- [ ] **Stripe Payment Links for the six giving tiers.** Owner decision 16 Sep: contributions stay
+      in Illicit Shadows, LLC, and the site says they are not tax deductible. Blocked on dashboard
+      access only. Create links for $100, $500, $1,000, $10,000, $25,000 and one
+      "customers choose what to pay"; set the call to action to Donate and the success URL to the
+      home page; paste them into `support.tiers[].url` and `support.custom.url`. Start the account
+      review early: Stripe adds checks for new donation accounts.
 - [ ] **Museum shop.** `/museum` carries a Shop MIS band pointing at contact. Shopify Buy Buttons if
       there is physical stock; Lemon Squeezy or Gumroad if digital only. Decide alongside Donate:
       one merchant account, one tax treatment, one checkout look.

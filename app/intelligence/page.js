@@ -88,7 +88,7 @@ export default function Intelligence() {
         <div className="convergence-frame"><Convergence head={false} /></div>
       </section>
 
-      <section className="wrap s s-yellow cta-band">
+      <section className="wrap s s-slate cta-band">
         <div><h2>Bring the network into view.</h2><p>Advisory, briefings, and Helix access for governments, international organizations, and industry.</p></div>
         <Link className="ed-btn" href="/contact?interest=helix">Request a briefing {Arrow.upRight}</Link>
       </section>

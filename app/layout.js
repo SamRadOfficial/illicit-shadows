@@ -1,6 +1,7 @@
 import '../styles/site.css';
 import site from '../data/site.json';
 import { Nav, Footer } from '../components/Blocks';
+import { SupportBand } from '../components/SupportBand';
 
 export const metadata = {
   metadataBase: new URL(site.domain),
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
       <body>
         <Nav />
         <main id="top">{children}</main>
+        <SupportBand />
         <Footer site={site} />
       </body>
     </html>

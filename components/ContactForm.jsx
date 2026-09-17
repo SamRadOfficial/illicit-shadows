@@ -40,10 +40,28 @@ export function ContactForm() {
 
   const toggle = v => setRoutes(r => r.includes(v) ? r.filter(x => x !== v) : [...r, v]);
 
-  const onSubmit = e => {
-    if (!endpoint) {
-      e.preventDefault();
-      setState('noendpoint');
+  /* Posted with fetch rather than a native form post, so the person stays on the page and gets a
+     real confirmation. Formspree, Basin and a Vercel function all accept this shape. Any failure
+     is shown, never swallowed: a contact form that silently drops a message is worse than none. */
+  const onSubmit = async e => {
+    e.preventDefault();
+    if (!endpoint) { setState('noendpoint'); return; }
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const picked = data.getAll('interest');
+    data.set('_subject', picked.length
+      ? `Illicit Shadows enquiry: ${picked.join(', ')}`
+      : 'Illicit Shadows enquiry');
+    if (data.get('company')) return;                 // honeypot: pretend success, send nothing
+    setState('sending');
+    try {
+      const res = await fetch(endpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      if (!res.ok) throw new Error(String(res.status));
+      form.reset();
+      setRoutes([]);
+      setState('sent');
+    } catch {
+      setState('error');
     }
   };
 
@@ -82,8 +100,7 @@ export function ContactForm() {
 
       <label className="cfield">
         <span>Message</span>
-        <textarea name="message" rows={6} required
-                  placeholder="What you are working on, and what you need from us." />
+        <textarea name="message" rows={6} required />
       </label>
 
       {/* Honeypot: hidden from people, usually filled by bots. */}
@@ -92,17 +109,19 @@ export function ContactForm() {
       </div>
 
       <div className="cform-foot">
-        <button className="btn btn-y" type="submit">Send message</button>
+        <button className="btn btn-y" type="submit" disabled={state === 'sending'}>{state === 'sending' ? 'Sending...' : 'Send message'}</button>
         <p className="cform-note">
           Expect a reply within a few working days.
         </p>
       </div>
 
-      {state === 'noendpoint' && (
-        <p className="cform-alert">The form is not connected yet, so nothing was sent and your
-          message was not stored. Please email <a href={`mailto:${site.contact}`}>{site.contact}</a>
-          {' '}and we will pick it up.</p>
-      )}
+      {state === 'noendpoint' && <p className="cform-alert" role="status">The form is not connected
+        yet, so nothing was sent or stored. Write to <a href={`mailto:${site.contact}`}>{site.contact}</a> and
+        it will reach the same place.</p>}
+      {state === 'error' && <p className="cform-alert" role="alert">That did not send. Try again, or
+        write to <a href={`mailto:${site.contact}`}>{site.contact}</a>.</p>}
+      {state === 'sent' && <p className="cform-alert is-ok" role="status">Message sent. Expect a
+        reply within a few working days.</p>}
     </form>
   );
 }

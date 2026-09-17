@@ -306,6 +306,10 @@ where a page still needs them. The system:
   downloading the full 1920px file, which is why heroes felt slow. **If a new image is used as a
   hero, generate its variants**, or the srcset candidates 404 silently.
   `check-assets.mjs` now parses `srcset`, so that failure is caught at build time.
+- **One donation ask, rendered by the layout.** `components/SupportBand.jsx` sits above the footer
+  on every page. Do not add a second donor section to a page: the museum's own was removed when this
+  landed, and the CTA bands on `/intelligence`, `/about` and `/contact` were moved to slate so that
+  **yellow means the support band and nothing else**. Verified: exactly one `.s-yellow` per route.
 - **The surface layer must not use `z-index:-1`.** A negative layer vanishes behind any ancestor
   that creates a stacking context, which is how `/film/chemical-cartels` shipped with black text on
   a black page after deploy while rendering correctly in local preview. `.s` is `isolation:isolate`,

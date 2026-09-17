@@ -45,10 +45,12 @@ export default function Home() {
       </section>
 
       <section className="wrap s s-slate compact two">
-        <div><span className="kicker">Strategic intelligence / Project Helix</span><h2>What happens<br /><em>after disruption?</em></h2></div>
+        <div><span className="kicker">Strategic intelligence / Project Helix</span><h2>A fusion center for<br /><em>the shadow economy.</em></h2></div>
         <div>
-          <p>A closed route can create a new one. Helix models how pressure travels through a network, and where its effects may emerge next.</p>
-          <Link className="ed-link" href="/intelligence#cascade">Explore the worked example {Arrow.upRight}</Link>
+          <p>Our <strong>predictive convergence system</strong> turns fragmented intelligence into
+            systemic foresight: how criminal, political, and economic networks reorganize after a
+            disruption.</p>
+          <Link className="ed-link" href="/intelligence#cascade">Explore the demo {Arrow.upRight}</Link>
         </div>
       </section>
 
@@ -88,10 +90,6 @@ export default function Home() {
         </article>
       </section>
 
-      <section className="wrap s s-yellow cta-band" id="donor">
-        <div><h2>Help bring the hidden world to light.</h2><p>Support the museum's public mission as a founding donor.</p></div>
-        <Link className="ed-btn" href="/contact?interest=museum">Become a founding donor {Arrow.upRight}</Link>
-      </section>
     </>
   );
 }
