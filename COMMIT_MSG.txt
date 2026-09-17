@@ -1,18 +1,9 @@
-Redirect map from the real sitemap; publish the Illicit Gold announcement
+Shop: align the waitlist buttons across each row
 
-Redirects
-- Rebuilt from the Squarespace sitemap rather than guesses. Every path in it now
-  resolves: /episodes/ep-01-chemical-cartels and /episodes/ep-02-gold-trafficking
-  land on the right investigation, /episodes and its category and tag pages go to
-  /film, /news and its post and tag URLs go to /newsroom with both rebuilt posts
-  matched by name, /home goes to /, and /trailer goes to /film.
-- /books, /contact, /donate and /museum keep the same paths, so they need no rule.
-- Kept the likely-but-unlisted paths (/shadowverse, /watch, /mis, /helix, /store,
-  /team and others) for links that live in decks and emails rather than the site.
+- Product cards are flex columns with the control pinned to the bottom, so
+  cards stretch to the tallest in their row and the buttons line up whatever the
+  description length. Previously a two-line description pushed its button 14px
+  below its neighbours.
 
-Newsroom
-- The Illicit Gold pre-production announcement (1 Sep 2026) is in the build and
-  leads the newsroom.
-
-Verified: build 34 pages, 184 references present. vercel.json parses; every
-sitemap path checked against the rule set.
+Verified: build 34 pages, 194 references present. Every row in all five groups
+checked at 1440 and 390: no row has buttons at differing offsets.

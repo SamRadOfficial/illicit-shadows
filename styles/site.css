@@ -522,7 +522,10 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .shop-lead img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
 .shop-lead figcaption{margin-top:12px}
 .shopitems{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.6vw,34px)}
-.shopitems article{border-top:1px solid var(--rule);padding-top:16px}
+/* Cards stretch to the tallest in their row and the control is pinned to the bottom, so the
+   buttons line up whatever the description length. */
+.shopitems article{display:flex;flex-direction:column;border-top:1px solid var(--rule);padding-top:16px}
+.shopitems article > p{flex:0 0 auto}
 .shopitems img{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:#111}
 /* Front and back in place: one image, one small arrow top right, and the view named in typewriter
    text top left. No chips or stamps over the product. Both sit on the mockups' pale grey ground,
@@ -537,8 +540,28 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .pnav:hover{opacity:1}
 .pnav:focus-visible{outline:1px solid #111;outline-offset:2px;opacity:1}
 .pviews img{margin-bottom:0}
-.shopitems h3{font-size:20px}
+.shopgroup{margin-top:clamp(28px,3.4vw,44px)}
+.shopgroup:first-of-type{margin-top:26px}
+.shopgroup > .kicker{border-top:1px solid var(--rule);padding-top:14px;margin-bottom:18px}
+.shopitems h4{font-size:19px;margin:0}
 .shopitems p{font-size:14px;margin-top:8px}
+.shopitems article.is-picked{outline:2px solid var(--label,var(--ac));outline-offset:8px}
+/* Selection lives on the card. The button is the control; size only appears when it applies. */
+.pickrow{display:flex;gap:8px;align-items:stretch;margin-top:auto;padding-top:14px}
+.pick{flex:1;background:none;border:1px solid var(--rule);color:var(--fg);font-family:var(--mono);
+  font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:10px 12px;cursor:pointer;min-height:40px}
+.pick:hover{border-color:var(--label,var(--ac))}
+.pick.on{background:var(--label,var(--ac));border-color:var(--label,var(--ac));color:var(--sbg)}
+.pick:focus-visible{outline:2px solid var(--label,var(--ac));outline-offset:2px}
+.picksize select{height:100%;min-height:40px;background:none;border:1px solid var(--rule);color:var(--fg);
+  font-family:var(--mono);font-size:11px;padding:0 8px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wsum{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);padding:16px 0;margin:clamp(28px,3.4vw,44px) 0 22px;font-size:15px}
+.wsum span{opacity:.82;max-width:74ch}
+.wclear{background:none;border:0;padding:0;color:var(--label,var(--ac));font-family:var(--mono);
+  font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.waitlist .cfields{grid-template-columns:minmax(0,420px)}
 .shopteaser{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,3.4vw,48px);align-items:center}
 .shopteaser img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
 .waitlist .cfields{grid-template-columns:1fr 200px}

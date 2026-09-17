@@ -128,29 +128,105 @@ SHARED = """
 
 RECOMMEND = 'C'
 
-TITLE = 'Getting around the film pages'
-INTRO = ('Three ways to reach Chemical Cartels, Illicit Gold and the upcoming slate from anywhere '
-         'in the film section. Shown open; in A and B the panel appears on hover or focus of Film, '
-         'in C it is always there on film pages only.')
+TITLE = 'Choosing pieces on the waitlist'
+INTRO = ('The current list is thirteen chips in a row, and it only gets worse as pieces are added. '
+         'Three ways to make the choice legible at thirty items, using real product names.')
+
+GROUPS = [
+    ('Caps', [('MIS eclipse cap','hat-mis'), ('Illicit Shadows cap','hat-is'), ('Everything is connected cap','hat-connected')]),
+    ('Tees', [('MIS eclipse tee','tee-mis'), ('Illicit Shadows tee','tee-is'), ('Everything is connected tee','tee-connected'), ('Convergence network tee','tee-network')]),
+    ('Outerwear', [('MIS bomber','bomber-mis'), ('Illicit Shadows bomber','bomber-is')]),
+    ('Bags and goods', [('MIS eclipse tote','tote-mis'), ('Illicit Shadows tote','tote-is'), ('Illicit Shadows sling','sling'), ('Everything is connected notebook','notebook')]),
+]
+
+def thumb(slug):
+    return img(f'/images/shop/{slug}.jpg')
+
+# A: grouped checkboxes
+rows = ''
+for name, items in GROUPS:
+    chips = ''.join(f'<label class="wchip"><input type="checkbox"><span>{n}</span></label>' for n, _ in items)
+    rows += f'<div class="wgroup"><p class="wgh">{name}</p><div class="wchips">{chips}</div></div>'
+PAGE_A = f'<div class="s s-slate wpad"><div class="wgroups">{rows}</div>{{FOOT}}</div>'
+
+# B: thumbnail grid
+cards = ''
+for name, items in GROUPS:
+    cards += f'<p class="wgh">{name}</p><div class="wgrid">'
+    for n, slug in items:
+        cards += (f'<label class="wcard"><input type="checkbox">'
+                  f'<img src="{thumb(slug)}" alt=""><span>{n}</span><i class="wtick">&#10003;</i></label>')
+    cards += '</div>'
+PAGE_B = f'<div class="s s-slate wpad">{cards}{{FOOT}}</div>'
+
+# C: choose on the product itself, form just collects size and email
+picks = ''
+for name, items in GROUPS[:2]:
+    for n, slug in items[:2]:
+        picks += (f'<article class="pcard"><img src="{thumb(slug)}" alt="">'
+                  f'<h3>{n}</h3><p>Design concept.</p>'
+                  f'<button class="padd">Add to waitlist</button></article>')
+PAGE_C = (f'<div class="s s-paper wpad"><p class="wgh">The collection, with the control on each piece</p>'
+          f'<div class="pgrid">{picks}</div></div>'
+          f'<div class="s s-slate wpad"><p class="wsum"><b>3 pieces selected</b> '
+          f'<span>MIS eclipse cap, Illicit Shadows cap, MIS eclipse tee</span> '
+          f'<a href="#">Clear</a></p>{{FOOT}}</div>')
+
+FOOT = ('<div class="wfoot"><label class="wfield"><span>Email</span><input type="email"></label>'
+        '<label class="wfield"><span>Size</span><select><option>Select</option><option>M</option></select></label>'
+        '<button class="btn btn-y">Join the waitlist</button></div>')
+PAGE_A = PAGE_A.replace('{FOOT}', FOOT)
+PAGE_B = PAGE_B.replace('{FOOT}', FOOT)
+PAGE_C = PAGE_C.replace('{FOOT}', FOOT)
+
+SHARED = """
+.wpad{padding:34px 30px}
+.wgh{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--label,var(--ac));margin:0 0 12px}
+.wgroups{display:grid;grid-template-columns:1fr 1fr;gap:26px 34px}
+.wgroup{border-top:1px solid var(--rule);padding-top:14px}
+.wchips{display:flex;flex-direction:column;gap:2px}
+.wchip{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:15px;cursor:pointer}
+.wchip input{width:15px;height:15px;accent-color:var(--signal)}
+.wgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:26px}
+.wcard{position:relative;display:block;cursor:pointer;border:1px solid var(--rule);padding:8px}
+.wcard img{width:100%;aspect-ratio:1;object-fit:cover;display:block;margin-bottom:8px}
+.wcard span{display:block;font-size:12.5px;line-height:1.35}
+.wcard input{position:absolute;left:14px;top:14px;width:16px;height:16px;accent-color:var(--signal);z-index:2}
+.wtick{display:none}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.pcard img{width:100%;aspect-ratio:1;object-fit:cover;display:block;margin-bottom:10px}
+.pcard h3{font-size:16px;margin:0}
+.pcard p{font-size:13px;margin:6px 0 12px;opacity:.75}
+.padd{background:none;border:1px solid var(--ac);color:var(--fg);font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;cursor:pointer;width:100%}
+.wsum{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;border-bottom:1px solid var(--rule);
+  padding-bottom:16px;margin:0 0 20px;font-size:14.5px}
+.wsum span{opacity:.8}
+.wsum a{color:var(--label,var(--ac));font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.12em}
+.wfoot{display:grid;grid-template-columns:1fr 180px auto;gap:16px;align-items:end;margin-top:26px;
+  border-top:1px solid var(--rule);padding-top:22px}
+.wfield span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;opacity:.85}
+.wfield input,.wfield select{width:100%;background:rgba(0,0,0,.35);border:1px solid var(--rule);color:var(--fg);padding:11px 13px;font-size:15px}
+"""
 
 OPTIONS = [
-    ('A', 'Dropdown with covers',
-     'A panel under Film showing both investigations with their key art and status, plus the slate '
-     'and a link to the index. The most informative, and the covers do the identifying. It is also '
-     'the heaviest thing in the header, needs its own keyboard and touch behaviour, and it appears '
-     'on every page whether or not you are anywhere near the films.',
+    ('A', 'Grouped checkboxes',
+     'The same chips, broken into caps, tees, outerwear, bags and goods, set as a checklist rather '
+     'than a cloud. Cheapest to build, scans in a second, and thirty items stay readable because '
+     'the groups do the work. No pictures, so someone who has not scrolled the collection is '
+     'choosing from names alone.',
      PAGE_A, SHARED),
-    ('B', 'Plain text dropdown',
-     'The same three destinations as a short list, no art. Light, quick to build, and conventional. '
-     'It adds a hover-or-tap menu to a header that currently has none, and once Film has one the '
-     'question of why Museum and Books do not will follow.',
+    ('B', 'Thumbnail picker',
+     'Every piece as a small image with a checkbox. Easiest to choose from, and the one that best '
+     'survives a catalogue of thirty. It also repeats the collection grid directly above it, so the '
+     'page shows each product twice, and it is the heaviest of the three on a phone.',
      PAGE_B, SHARED),
-    ('C', 'Sub-nav on film pages  ·  MY PICK',
-     'A second row that appears only inside the film section, marking where you are: Chemical '
-     'Cartels, Illicit Gold, Upcoming slate, and All investigations. No hover states, no menu, works '
-     'on touch and keyboard by being ordinary links, and it solves the actual problem, which is not '
-     'reaching the films from the home page but knowing where you are once you are three levels '
-     'deep in one.',
+    ('C', 'Choose on the product, not in a list  &middot;  MY PICK',
+     'The control moves onto each product card in the collection, and the form keeps only the '
+     'summary, size and email. The selection happens where the person is already looking, the page '
+     'stops listing every item twice, and adding a thirtieth piece changes nothing about the form. '
+     'It needs the selection to be shared between the grid and the form, which is a little more '
+     'work than the other two and is the reason to choose it deliberately.',
      PAGE_C, SHARED),
 ]
 blocks, extra = [], []

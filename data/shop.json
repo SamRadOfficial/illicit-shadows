@@ -1,0 +1,43 @@
+[
+  { "name": "MIS eclipse cap", "group": "Caps", "image": "/images/shop/hat-mis",
+    "line": "Embroidered eclipse, structured six-panel.", "sizing": "one" },
+  { "name": "Illicit Shadows cap", "group": "Caps", "image": "/images/shop/hat-is",
+    "line": "Wordmark in signal yellow.", "sizing": "one" },
+  { "name": "Everything is connected cap", "group": "Caps", "image": "/images/shop/hat-connected",
+    "line": "Three lines, front and centre.", "sizing": "one" },
+  { "name": "MIS beanie", "group": "Caps", "image": "/images/shop/beanie",
+    "line": "Ribbed black, black-on-black embroidery.", "sizing": "one" },
+
+  { "name": "MIS eclipse tee", "group": "Tees", "image": "/images/shop/tee-mis",
+    "line": "Eclipse at the chest, on heavyweight cotton.", "sizing": "apparel" },
+  { "name": "Illicit Shadows tee", "group": "Tees", "image": "/images/shop/tee-is",
+    "line": "The wordmark, small and left.", "sizing": "apparel" },
+  { "name": "Everything is connected tee", "group": "Tees", "image": "/images/shop/tee-connected",
+    "line": "Set in alert red.", "sizing": "apparel" },
+  { "name": "Convergence network tee", "group": "Tees", "image": "/images/shop/tee-network",
+    "line": "The convergence map as a line drawing.", "sizing": "apparel" },
+
+  { "name": "MIS bomber", "group": "Outerwear", "image": "/images/shop/bomber-mis",
+    "back": "/images/shop/bomber-mis-back",
+    "line": "Embroidered eclipse at the chest, wordmark across the back.", "sizing": "apparel" },
+  { "name": "Illicit Shadows bomber", "group": "Outerwear", "image": "/images/shop/bomber-is",
+    "back": "/images/shop/bomber-is-back", "line": "Wordmark front and back.", "sizing": "apparel" },
+
+  { "name": "MIS eclipse tote", "group": "Bags", "image": "/images/shop/tote-mis",
+    "line": "Heavy canvas, eclipse and full museum name.", "sizing": "one" },
+  { "name": "Illicit Shadows tote", "group": "Bags", "image": "/images/shop/tote-is",
+    "back": "/images/shop/tote-is-back", "line": "Wordmark one side, the network the other.", "sizing": "one" },
+  { "name": "Illicit Shadows sling", "group": "Bags", "image": "/images/shop/sling",
+    "line": "Crossbody, for a notebook and a recorder.", "sizing": "one" },
+  { "name": "Faraday phone sleeve", "group": "Bags", "image": "/images/shop/faraday",
+    "line": "Signal-blocking sleeve concept, wordmark at the foot.", "sizing": "one" },
+
+  { "name": "Everything is connected notebook", "group": "Field kit", "image": "/images/shop/notebook",
+    "line": "Hardback, ribbon marker, the network on the cover.", "sizing": "none" },
+  { "name": "MIS eclipse pen", "group": "Field kit", "image": "/images/shop/pen",
+    "line": "Matte black pocket pen, eclipse at the cap.", "sizing": "none" },
+  { "name": "Illicit Shadows passport wallet", "group": "Field kit", "image": "/images/shop/passport",
+    "line": "Black leather, signal-yellow lining.", "sizing": "none" },
+  { "name": "Convergence bandana", "group": "Field kit", "image": "/images/shop/bandana",
+    "line": "The network in cream and yellow on black silk.", "sizing": "none" }
+]

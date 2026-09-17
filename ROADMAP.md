@@ -63,13 +63,14 @@ blocks a launch.
 
 ## 3. Money and audience systems
 
-- [ ] **Turn the shop waitlist into a shop.** `/shop` is live as a waitlist: nine concept pieces,
-      no checkout, no money. Next steps in order: sample one cap, one tee and one bomber through
-      Printful or Printify (about $120, two weeks); photograph the real pieces and replace the
-      renders; then add checkout. Shopify Starter (about $5/mo, buy buttons) or Stripe Payment Links
-      with manual fulfilment are both lighter than full Shopify at $39/mo, which only earns its keep
-      with inventory and variants. Caps are the strongest item: best margin, most reliable
-      decoration. The bomber may not be viable through print on demand at all.
+- [ ] **Turn the shop waitlist into a shop.** `/shop` is a waitlist: 18 concept pieces, selection on
+      each card, no checkout. Next in order: sample one cap, one tee and one bomber through Printful
+      or Printify (about $120, two weeks); photograph the real pieces and replace the renders; then
+      add checkout, either Shopify Starter (about $5/mo) or Stripe Payment Links with manual
+      fulfilment. Caps are the strongest item; the bomber may not be viable through print on demand.
+      The Faraday sleeve and the pen are concepts drawn from existing products (SLNT, Fisher Bullet)
+      and their technical claims are not validated: do not repeat performance claims until a
+      supplier confirms them.
 - [ ] **Paid Helix access.** Enterprise access is a sales conversation and a login, not a checkout
       button. Decide what is being sold before building anything.
 
