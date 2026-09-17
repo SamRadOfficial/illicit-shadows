@@ -1,17 +1,11 @@
-Add the IS monogram favicon; make the donation fine print small
+Rename the production post URL; MIS banner on the museum post
 
-Favicon
-- Installed the monogram set at the public root: favicon.ico, 16/32/48/64/192/512
-  PNGs, the 180px Apple touch icon, and site.webmanifest.
-- Wired into the layout metadata (icon, apple, manifest). All five paths return
-  200 and there are no 4xx during a page load.
+- Slug follows the title: /newsroom/production-begins-chemical-cartels. The old
+  /newsroom/production-begins-fentanyl-cartels now 301s to it in next.config.js,
+  so anything already shared keeps working. Note that redirects run on Vercel,
+  not in the static export, so the local preview will 404 the old path.
+- The museum announcement leads with the MIS presentation banner rather than the
+  square mark, at the wide frame.
 
-Fine print
-- "Donations are not tax deductible" is now 10px mono at 0.7 opacity.
-  It had never actually been small: `.s p` is more specific than a bare
-  `.support-fine` class, so the rule had been silently losing and the line was
-  rendering at body size, 16.5px. The selector now matches that specificity.
-  Contrast measured 14.7:1, so it is quiet without being unreadable.
-
-Verified: build 32 pages, 148 references present. Sizes and contrast read from
-the DOM on home and /donate.
+Verified: build 32 pages, 150 references present. Both posts return 200 at their
+new paths, index links and sitemap updated.

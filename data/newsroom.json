@@ -69,9 +69,9 @@
         "x": "Everything is connected. Join us on our journey into the Illicit Shadows, and [support the Museum of Illicit Shadows](/donate) as a founding donor and benefactor today."
       }
     ],
-    "image": "/images/mis-eclipse",
-    "imageExt": "png",
-    "imageAlt": "The MIS eclipse emblem",
+    "image": "/images/mis-banner",
+    "imageExt": "jpg",
+    "imageAlt": "Museum of Illicit Shadows: Everything is connected",
     "contact": {
       "name": "Sam Rad (Samantha Radocchia)",
       "role": "Co-Curator, MIS; Co-Founder, Illicit Shadows, LLC",
@@ -92,15 +92,15 @@
     "source": "illicit-shadows",
     "kind": "release",
     "date": "2024-09-10",
-    "slug": "production-begins-fentanyl-cartels",
-    "title": "ICAIE and RADOC begin production on the first investigation",
+    "slug": "production-begins-chemical-cartels",
+    "title": "ICAIE and RADOC begin production on Ep. 01: Chemical Cartels",
     "summary": "ICAIE begins scripting the first investigation with Sam Rad and partners including the Council of the Great Lakes Region: cross-border illicit flows, the fentanyl trade, and the dirty money financing further criminality.",
     "external": false,
-    "url": "/newsroom/production-begins-fentanyl-cartels",
+    "url": "/newsroom/production-begins-chemical-cartels",
     "body": [
       {
         "t": "p",
-        "x": "ICAIE has started coordinating with Sam Rad (Samantha Radocchia) and partners such as the Council of the Great Lakes Region, and others, on scripting our first episode, Ep.1: The Fentanyl Cartels and their Illicit Enablers, of our ICAIE-RADOC docuseries: The Shadowverse."
+        "x": "ICAIE has started coordinating with [Sam Rad (Samantha Radocchia)](https://www.linkedin.com/in/samradofficial/) and partners such as the [Council of the Great Lakes Region](https://www.linkedin.com/company/council-of-the-great-lakes-region/), et al, on scripting our first episode of Illicit Shadows (Ep.1: The Chemical Cartels and their Illicit Enablers) of our ICAIE-RADOC docuseries: Illicit Shadows."
       },
       {
         "t": "p",
@@ -108,12 +108,24 @@
       },
       {
         "t": "p",
-        "x": "Join us on our journey into the Shadowverse."
+        "x": "Join us on our journey into the Illicit Shadows."
       },
       {
         "t": "p",
-        "x": "The Illicit Economies of the Shadowverse are all around us, everywhere. They know no borders. And they encompass the intricate, often unseen networks of illicit trade and criminalized economies that silently shape our world."
+        "x": "Illicit Shadows are all around us, everywhere. They know no borders. And they encompass the intricate, often unseen networks of illicit trade and criminalized economies that silently shape our world."
+      },
+      {
+        "t": "p",
+        "x": "[#EverythingIsConnected](https://www.linkedin.com/feed/hashtag/?keywords=everythingisconnected)"
       }
-    ]
+    ],
+    "image": "/images/film-chemical-cartels",
+    "imageExt": "jpg",
+    "imageAlt": "Chemical Cartels key art",
+    "contact": {
+      "name": "Sam Rad (Samantha Radocchia)",
+      "role": "Co-Founder, Illicit Shadows, LLC",
+      "email": "sam@illicitshadows.com"
+    }
   }
 ]

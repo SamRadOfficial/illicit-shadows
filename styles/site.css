@@ -933,7 +933,9 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .detail-title h1{margin:10px 0 12px}
 /* A newsroom headline is a sentence, not a display line: it needs a measure and normal case. */
 .post-title{font-size:clamp(28px,3.6vw,46px)!important;text-transform:none!important;max-width:26ch;line-height:1.1}
-.post-art{margin:0;max-width:460px}
+.post-art{margin:0}
+.post-art.is-mark{max-width:420px}
+.post-art.is-wide{max-width:100%}
 .post-art img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
 /* Press quotes: attributed, set apart, but not shouting over the body. */
 .pullpress{margin:26px 0;border-left:3px solid var(--ac);padding:2px 0 2px 22px}

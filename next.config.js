@@ -12,6 +12,14 @@ const nextConfig = {
   ...(isExport ? { output: 'export' } : {}),
   trailingSlash: false,
   images: { unoptimized: true },
-  // REDIRECTS: none. Before adding a route, check here for a rule that would shadow it.
+  // REDIRECTS. Before adding a route, check here for a rule that would shadow it.
+  // Note: redirects do NOT run in the static export (EXPORT=1), only on Vercel. That is fine for
+  // renames like this one; anything load-bearing must not depend on them.
+  async redirects() {
+    return [
+      { source: '/newsroom/production-begins-fentanyl-cartels',
+        destination: '/newsroom/production-begins-chemical-cartels', permanent: true },
+    ];
+  },
 };
 module.exports = nextConfig;

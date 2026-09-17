@@ -55,7 +55,7 @@ export default async function Post({ params }) {
 
       {post.image && (
         <section className="wrap s s-ink" style={{ paddingTop: 0 }}>
-          <figure className="post-art">
+          <figure className={`post-art${(post.imageExt || 'jpg') === 'png' ? ' is-mark' : ' is-wide'}`}>
             <Pic base={post.image} ext={post.imageExt || 'jpg'} alt={post.imageAlt || ''} priority />
           </figure>
         </section>
@@ -64,10 +64,6 @@ export default async function Post({ params }) {
       <section className="wrap s s-paper reading">
         <div>
           <span className="kicker">The announcement</span>
-          {/* Published as it was written. The wording is of its moment: the site has since retired
-              the docuseries and episode framing, and the archive is left alone rather than edited
-              to match. */}
-          <p className="fine">Published {fmt(post.date)}. Reproduced as originally issued.</p>
         </div>
         <article className="prose">
           {post.body.map((b, i) => (b.t === 'q'
