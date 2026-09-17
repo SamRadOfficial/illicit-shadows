@@ -1,15 +1,8 @@
-Shop: quieter view controls
+Shop headings: "Wear the shadows" and "Designed to shine"
 
-- The FRONT/BACK stamps are gone. The view is named in 8.5px lowercase mono,
-  black at 60% opacity, top left, with no chip behind it.
-- One arrow instead of two, top right, same weight and colour, no background.
-  With exactly two views a second arrow pointed at the same place.
-- Both sit on the mockups' pale grey ground, so black reads better than white
-  reversed out.
+- Hero was "Wear the evidence"; the collection heading was "Built from the same
+  evidence". Neither uses the word now, and the section heading no longer
+  carries a count that goes stale when a piece is added or dropped.
 
-Fix: the previous rewrite dropped the `flip` helper, so the arrow rendered but
-did nothing. Caught by testing the click rather than the markup.
-
-Verified: build 34 pages, 184 references present. Flip works by click, tap and
-keyboard, wraps front to back to front, and the aria-label tracks the current
-view.
+Verified: build 34 pages, 184 references present. Both headings set on two lines
+at 1440 and 390.

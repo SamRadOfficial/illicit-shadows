@@ -32,7 +32,7 @@ export default function Shop() {
     <>
       <Hero img="/images/museum-rotunda" alt="" variant="short" mobilePos="52% center"
             eyebrow="MIS shop"
-            title={<>Wear the<br /><span className="y">evidence.</span></>}
+            title={<>Wear the<br /><span className="y">shadows.</span></>}
             lede="The first Museum of Illicit Shadows collection. Nothing is on sale yet: join the waitlist and we will write when the first pieces are made." />
 
       <section className="wrap s s-ink">
@@ -44,7 +44,7 @@ export default function Shop() {
 
       <section className="wrap s s-paper" id="collection">
         <div className="intro">
-          <div><span className="kicker">The first collection</span><h2>Built from<br /><em>the same evidence.</em></h2></div>
+          <div><span className="kicker">The first collection</span><h2>Designed<br /><em>to shine.</em></h2></div>
           <p>Every purchase will fund the investigations, the museum, and the programming around them,
             the same as a contribution.</p>
         </div>
