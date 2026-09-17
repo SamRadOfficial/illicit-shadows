@@ -27,7 +27,9 @@ blocks a launch.
          tier (real pipeline, email logging, heavier) to Attio (modern, about $29/seat).
       Sequence: newsletter first, since the list is exported and nothing is capturing it; contacts
       second; CRM only when the donor and underwriter conversations are real enough to track.
-- [x] **Redirect map** shipped 17 Sep: 31 rules in vercel.json covering the old news URLs and the likely Squarespace paths.
+- [x] **Redirect map** shipped 17 Sep, then rebuilt from the real Squarespace sitemap: every path
+      in it now resolves, either because the route exists unchanged or through a rule. Old
+      /episodes/ep-01 and ep-02 land on the right investigation.
 - [x] ~~Squarespace redirect map~~
 - [ ] **DNS cutover to illicitshadows.com.**
 - [ ] **Delete the stale Vercel project** once the new one holds the domain, so two projects are not

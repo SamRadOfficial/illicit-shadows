@@ -1,6 +1,51 @@
 [
   {
     "source": "illicit-shadows",
+    "kind": "release",
+    "date": "2026-09-01",
+    "slug": "pre-production-illicit-gold",
+    "title": "Illicit Shadows begins pre-production on Illicit Gold",
+    "summary": "The second investigation follows a single trade from the mud it comes out of to the market that will not ask where it came from: the rush to cash in on the criminal shadows of El Dorado.",
+    "external": false,
+    "url": "/newsroom/pre-production-illicit-gold",
+    "dateline": "WASHINGTON, DC",
+    "image": "/images/film-illicit-gold",
+    "imageExt": "jpg",
+    "imageAlt": "Illicit Gold key art",
+    "body": [
+      {
+        "t": "p",
+        "x": "Illicit Shadows, LLC has begun pre-production on its second investigation, **Illicit Gold: the rush to cash in on the criminal shadows of El Dorado**, in partnership with the [International Coalition Against Illicit Economies (ICAIE)](https://icaie.com) and [RAD Original Creations (RADOC)](https://radoc.co)."
+      },
+      {
+        "t": "p",
+        "x": "Gold has never been worth more. An ounce has gone from under $300 in 2000 to more than $5,600 in early 2026, and almost none of it has to say where it came from. In the Amazon, that gap has become an industry: about 80% of mining in the region is presumed illegal, and the trade is valued at $12 to $48 billion a year."
+      },
+      {
+        "t": "p",
+        "x": "The investigation follows a single trade from the mud it comes out of to the market that will not ask about it: the garimpeiro who mixes mercury with his bare hands and eats fish from the river he poisons, the armed groups who do not dig but sell the diesel and collect the tax, the airstrip no inspector visits, and the refinery where the crime quietly ends and a commodity begins."
+      },
+      {
+        "t": "p",
+        "x": "That last step is the part nobody talks about. Once gold is refined, no routine assay can establish where it was mined. About 70% of the world's gold passes through refineries in Switzerland, under 2% of shipping containers are ever inspected, and everyone downstream is telling the truth."
+      },
+      {
+        "t": "p",
+        "x": "Filming is planned across Colombia, Brazil and Switzerland through 2026 and 2027. As with the first investigation, the film will be released free on YouTube, and the evidence behind it will be published alongside it."
+      },
+      {
+        "t": "p",
+        "x": "Everything is connected."
+      }
+    ],
+    "contact": {
+      "name": "Sam Rad (Samantha Radocchia)",
+      "role": "Co-Founder, Illicit Shadows, LLC",
+      "email": "sam@illicitshadows.com"
+    }
+  },
+  {
+    "source": "illicit-shadows",
     "kind": "press",
     "date": "2026-08-26",
     "title": "Sam Rad delivers a human intelligence keynote at Genera Summit, Bogota",

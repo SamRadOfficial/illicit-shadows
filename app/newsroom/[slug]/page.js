@@ -15,11 +15,12 @@ const fmt = d => {
    links stay internal, so the archive points at this site rather than the old one. */
 function rich(text) {
   const out = [];
-  const re = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const re = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*/g;
   let last = 0, m;
   while ((m = re.exec(text))) {
     if (m.index > last) out.push(text.slice(last, m.index));
-    out.push(m[2].startsWith('/')
+    if (m[3]) out.push(<strong key={m.index}>{m[3]}</strong>);
+    else out.push(m[2].startsWith('/')
       ? <Link href={m[2]} key={m.index}>{m[1]}</Link>
       : <a href={m[2]} target="_blank" rel="noopener noreferrer" key={m.index}>{m[1]}</a>);
     last = m.index + m[0].length;

@@ -56,6 +56,41 @@
       "permanent": true
     },
     {
+      "source": "/episodes/ep-01-chemical-cartels",
+      "destination": "/film/chemical-cartels",
+      "permanent": true
+    },
+    {
+      "source": "/episodes/ep-02-gold-trafficking",
+      "destination": "/film/illicit-gold",
+      "permanent": true
+    },
+    {
+      "source": "/episodes/category/:cat*",
+      "destination": "/film",
+      "permanent": true
+    },
+    {
+      "source": "/episodes/tag/:tag*",
+      "destination": "/film",
+      "permanent": true
+    },
+    {
+      "source": "/episodes",
+      "destination": "/film",
+      "permanent": true
+    },
+    {
+      "source": "/episodes/:slug*",
+      "destination": "/film",
+      "permanent": true
+    },
+    {
+      "source": "/trailer",
+      "destination": "/film",
+      "permanent": true
+    },
+    {
       "source": "/news/icaie-and-radoc-begin-production-on-ep-01-fentanyl-cartels",
       "destination": "/newsroom/production-begins-chemical-cartels",
       "permanent": true
@@ -66,28 +101,28 @@
       "permanent": true
     },
     {
+      "source": "/news/press-release-shadowverse-announcement-09102024-k7blk",
+      "destination": "/newsroom",
+      "permanent": true
+    },
+    {
+      "source": "/news/tag/:tag*",
+      "destination": "/newsroom",
+      "permanent": true
+    },
+    {
       "source": "/news",
       "destination": "/newsroom",
       "permanent": true
     },
     {
-      "source": "/news/:slug",
+      "source": "/news/:slug*",
       "destination": "/newsroom",
       "permanent": true
     },
     {
-      "source": "/blog",
-      "destination": "/newsroom",
-      "permanent": true
-    },
-    {
-      "source": "/blog/:slug*",
-      "destination": "/newsroom",
-      "permanent": true
-    },
-    {
-      "source": "/press",
-      "destination": "/newsroom",
+      "source": "/home",
+      "destination": "/",
       "permanent": true
     },
     {
@@ -106,16 +141,6 @@
       "permanent": true
     },
     {
-      "source": "/episodes",
-      "destination": "/film",
-      "permanent": true
-    },
-    {
-      "source": "/episodes/:slug*",
-      "destination": "/film",
-      "permanent": true
-    },
-    {
       "source": "/series",
       "destination": "/film",
       "permanent": true
@@ -126,8 +151,23 @@
       "permanent": true
     },
     {
-      "source": "/trailer",
-      "destination": "/film",
+      "source": "/press",
+      "destination": "/newsroom",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/newsroom",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:slug*",
+      "destination": "/newsroom",
+      "permanent": true
+    },
+    {
+      "source": "/subscribe",
+      "destination": "/newsroom",
       "permanent": true
     },
     {
@@ -193,11 +233,6 @@
     {
       "source": "/get-in-touch",
       "destination": "/contact",
-      "permanent": true
-    },
-    {
-      "source": "/subscribe",
-      "destination": "/newsroom",
       "permanent": true
     }
   ]

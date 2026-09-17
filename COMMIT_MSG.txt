@@ -1,32 +1,18 @@
-Share cards, noindex on the preview host, redirect map, viewer copy
-
-OG images
-- scripts/og-images.py generates twelve 1200x630 cards from the site's own art:
-  page title in Anton over a darkened crop, wordmark bottom left. The two film
-  covers are used as-is, since they already carry their title and branding.
-- lib/og.js wires a card into a page's metadata in one line. Every route now
-  declares its own card and its own twitter:summary_large_image; newsroom posts
-  use the post's image where it has one. Verified: no page points at a card
-  that does not exist on disk.
-
-Robots
-- The preview host gets X-Robots-Tag: noindex, nofollow through a host-matched
-  header rule in vercel.json. robots.txt is a single static file and cannot vary
-  by host, and a full duplicate of the site competing with the real domain is
-  worse than no preview. The site itself stays open to crawlers.
+Redirect map from the real sitemap; publish the Illicit Gold announcement
 
 Redirects
-- 31 rules, since Squarespace is being retired entirely rather than kept as a
-  redirect host. Covers both old news URLs by name, /news and /news/:slug, and
-  the paths most likely to be linked from elsewhere: /shadowverse, /episodes,
-  /watch, /mis, /helix, /store, /team, /subscribe and others.
-- Note: these run on Vercel, not in the static export, so a local preview will
-  404 them. Nothing load-bearing depends on them.
+- Rebuilt from the Squarespace sitemap rather than guesses. Every path in it now
+  resolves: /episodes/ep-01-chemical-cartels and /episodes/ep-02-gold-trafficking
+  land on the right investigation, /episodes and its category and tag pages go to
+  /film, /news and its post and tag URLs go to /newsroom with both rebuilt posts
+  matched by name, /home goes to /, and /trailer goes to /film.
+- /books, /contact, /donate and /museum keep the same paths, so they need no rule.
+- Kept the likely-but-unlisted paths (/shadowverse, /watch, /mis, /helix, /store,
+  /team and others) for links that live in decks and emails rather than the site.
 
-Museum viewer
-- Replaced SEASON 2 / GOLDEN HANDCUFFS / JANUARY 2027 with Illicit Gold and
-  2026-2027, and removed the remaining Shadowverse references. This is canvas
-  text inside the viewer, invisible to a site-wide grep.
+Newsroom
+- The Illicit Gold pre-production announcement (1 Sep 2026) is in the build and
+  leads the newsroom.
 
-Verified: build 34 pages, 184 references present. vercel.json parses; 31 of 32
-built pages carry a card, the exception being the standalone viewer.
+Verified: build 34 pages, 184 references present. vercel.json parses; every
+sitemap path checked against the rule set.
