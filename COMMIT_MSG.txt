@@ -1,25 +1,17 @@
-Live donate links, a /donate page, and footer and nav fixes
+Add the IS monogram favicon; make the donation fine print small
 
-Donations
-- The six Stripe links are live in site.json: Supporter, Patron, Benefactor,
-  Underwriter, Founding donor, and the customers-choose Contributor.
-- New /donate page: hero, the six tiers on yellow, "where it goes" in three
-  parts (investigations, museum, products and programming), and a dark band for
-  underwriting and institutional partnerships. Added to the sitemap.
-- The support band and the museum CTA now point at /donate rather than the
-  contact form, and the band suppresses itself on /donate.
+Favicon
+- Installed the monogram set at the public root: favicon.ico, 16/32/48/64/192/512
+  PNGs, the 180px Apple touch icon, and site.webmanifest.
+- Wired into the layout metadata (icon, apple, manifest). All five paths return
+  200 and there are no 4xx during a page load.
 
-Contact
-- Removed "Expect a reply within a few working days" from under the button.
-- Fixed the confirmation: .cform-alert is a dark panel, but an .s-paper override
-  was forcing its text black, so on the cream contact page it was black on
-  near-black. Text is white on every surface now; measured 18.1:1.
+Fine print
+- "Donations are not tax deductible" is now 10px mono at 0.7 opacity.
+  It had never actually been small: `.s p` is more specific than a bare
+  `.support-fine` class, so the rule had been silently losing and the line was
+  rendering at body size, 16.5px. The selector now matches that specificity.
+  Contrast measured 14.7:1, so it is quiet without being unreadable.
 
-Header and footer
-- Contact in the nav is a yellow button rather than a text link.
-- "Connect on LinkedIn" becomes a bordered button under "Everything is
-  connected." in the footer, with the LinkedIn mark, and is removed from the
-  quiet link list.
-
-Verified: build 30 pages, 148 references present. All six tier URLs render,
-/donate checked at 1440 and 390 with no overflow.
+Verified: build 32 pages, 148 references present. Sizes and contrast read from
+the DOM on home and /donate.

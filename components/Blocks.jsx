@@ -202,9 +202,9 @@ export function Footer({ site }) {
             </a>
           </div>
           <nav className="foot-links" aria-label="Footer">
-            <Link className="ed-link" href="/contact">Partner with us {Arrow.upRight}</Link>
-            <Link className="ed-link" href="/sources">Explore our sources {Arrow.upRight}</Link>
             <Link className="ed-link" href="/about">About the platform {Arrow.upRight}</Link>
+            <Link className="ed-link" href="/contact">Partner with us {Arrow.upRight}</Link>
+            <Link className="ed-link" href="/donate">Donate {Arrow.upRight}</Link>
           </nav>
         </div>
         <div className="foot-bottom">

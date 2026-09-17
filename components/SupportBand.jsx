@@ -17,8 +17,11 @@ const QUIET = [/^\/film\/[^/]+\/[^/]+/, /^\/museum\/enter/, /^\/books\/preview/,
 export function SupportBand() {
   const path = usePathname() || '';
   if (QUIET.some(re => re.test(path))) return null;
+  /* When the tiers are showing they are the call to action; a button beside them is a second,
+     weaker ask for the same thing. The button only appears when there is nothing to click. */
+  const live = (site.support?.tiers || []).some(t => t.url) || !!site.support?.custom?.url;
   return (
-    <section className="wrap s s-yellow cta-band" id="support">
+    <section className={`wrap s s-yellow${live ? '' : ' cta-band'}`} id="support">
       <div>
         <span className="kicker">Founding contributors</span>
         <h2>Help bring the hidden world to light.</h2>
@@ -26,7 +29,9 @@ export function SupportBand() {
         <SupportTiers />
         <p className="support-fine">Donations are not tax deductible.</p>
       </div>
-      <Link className="ed-btn" href="/donate">Become a founding contributor {Arrow.upRight}</Link>
+      {!live && (
+        <Link className="ed-btn" href="/donate">Become a founding contributor {Arrow.upRight}</Link>
+      )}
     </section>
   );
 }

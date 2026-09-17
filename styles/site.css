@@ -514,7 +514,7 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .tier.is-custom b{font-size:15px;font-family:var(--body);font-weight:700}
 .support-note{margin-top:14px;max-width:56ch}
 /* Fine print: present and legible, but not part of the ask. */
-.support-fine{margin-top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;opacity:.8}
+.s .support-fine,.support-fine{margin-top:14px;font-family:var(--mono);font-size:10px;line-height:1.5;letter-spacing:.04em;opacity:.7}
 .cform-alert.is-ok{border-color:var(--ac)}
 
 /* Museum shop: three columns on the yellow surface, numbered rather than imaged, since the
@@ -855,11 +855,22 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .news-kind{color:var(--fg);opacity:.9}
 .news-meta time,.news-outlet{color:var(--fg);opacity:.75;text-transform:none;letter-spacing:.02em;font-size:11.5px}
 .news-count{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
-.news-lead{border-top:2px solid var(--ac);padding:22px 0 26px;margin-bottom:6px}
-.news-lead h2{font-size:clamp(28px,3.4vw,40px);max-width:24ch;margin:6px 0 10px}
-.news-lead h2 a{color:inherit;display:inline}
-.news-lead h2 a svg{width:20px;height:20px;color:var(--ac)}
-.news-lead p{font-size:17px;max-width:60ch}
+/* The lead story is a card, not just bigger type: on the cream index a dark panel with a yellow
+   FEATURED flag reads as an editorial choice rather than a styling accident. */
+.news-lead{position:relative;background:#0d1110;border:1px solid #242c2b;padding:clamp(24px,3vw,38px);
+  margin:0 0 26px}
+/* `.s p` and friends set the surface colour, so the card needs matching specificity. */
+.s .news-lead,.s .news-lead p,.s .news-lead h2,.s .news-lead time,.s .news-lead span:not(.news-org),.s .news-lead a{color:#fff}
+.s .news-lead .news-flag{color:#000}
+.s .news-flag{display:inline-block;background:var(--signal);color:#000;font-family:var(--mono);
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding:5px 10px;margin:0 0 16px}
+.s .news-lead .news-org{background:#fff;color:#0d1110}
+.s .news-lead .news-kind{color:var(--signal);opacity:1}
+.news-lead h2{font-size:clamp(26px,3vw,36px);max-width:26ch;margin:6px 0 12px}
+.s .news-lead h2 a{color:#fff}
+.s .news-lead h2 a:hover{color:var(--signal)}
+.news-lead h2 a svg{width:19px;height:19px;color:var(--signal)}
+.news-lead p{font-size:16.5px;max-width:62ch}
 .news-item{display:grid;grid-template-columns:1fr;gap:4px;border-top:1px solid var(--rule);padding:22px 0}
 .news-item .kicker{margin-bottom:5px}
 .news-item h3{font-size:24px;max-width:48ch;line-height:1.15}
@@ -920,6 +931,18 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .source-row a{text-decoration:underline;color:var(--fg)}
 .detail-title p{max-width:60ch;font-size:16px}
 .detail-title h1{margin:10px 0 12px}
+/* A newsroom headline is a sentence, not a display line: it needs a measure and normal case. */
+.post-title{font-size:clamp(28px,3.6vw,46px)!important;text-transform:none!important;max-width:26ch;line-height:1.1}
+.post-art{margin:0;max-width:460px}
+.post-art img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+/* Press quotes: attributed, set apart, but not shouting over the body. */
+.pullpress{margin:26px 0;border-left:3px solid var(--ac);padding:2px 0 2px 22px}
+.pullpress p{font-size:19px;line-height:1.55;font-style:italic;margin:0}
+.pullpress cite{display:block;margin-top:10px;font-style:normal;font-family:var(--mono);
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ac)}
+.press-contact{margin-top:32px;border-top:1px solid var(--rule);padding-top:18px}
+.press-contact p{font-size:14.5px;line-height:1.7}
+.post-meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;margin-top:14px}
 .detail-meta{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:14px}
 .detail-meta .ed-link{margin:0;font-family:var(--body);text-transform:none;letter-spacing:0}
 .reading{display:grid;grid-template-columns:.7fr 1.3fr;gap:44px;align-items:start}

@@ -5,6 +5,15 @@ import { SupportBand } from '../components/SupportBand';
 
 export const metadata = {
   metadataBase: new URL(site.domain),
+  manifest: '/site.webmanifest',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon-192.png', type: 'image/png', sizes: '192x192' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+  },
   title: { default: 'Illicit Shadows', template: '%s · Illicit Shadows' },
   description: site.boilerplate,
   openGraph: { siteName: 'Illicit Shadows', type: 'website' },

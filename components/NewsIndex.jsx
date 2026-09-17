@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import Link from 'next/link';
 import { Arrow } from './Icons';
 
 const SOURCES = [['all', 'All'], ['illicit-shadows', 'Illicit Shadows'], ['icaie', 'ICAIE']];
@@ -40,10 +41,11 @@ export function NewsIndex({ items }) {
 
       {lead && (
         <article className="news-lead">
+          <p className="news-flag">Featured</p>
           <Meta n={lead} />
-          <h2>{lead.external && lead.url
+          <h2>{lead.external
             ? <a href={lead.url} target="_blank" rel="noopener noreferrer">{lead.title} {Arrow.upRight}</a>
-            : lead.title}</h2>
+            : <Link href={lead.url}>{lead.title}</Link>}</h2>
           {lead.summary && <p>{lead.summary}</p>}
         </article>
       )}
@@ -53,16 +55,14 @@ export function NewsIndex({ items }) {
           <article className="news-item" key={n.url || n.title}>
             <Meta n={n} />
             <div>
-              <h3>{n.external && n.url
+              <h3>{n.external
                 ? <a href={n.url} target="_blank" rel="noopener noreferrer">{n.title} {Arrow.upRight}</a>
-                : n.title}</h3>
+                : <Link href={n.url}>{n.title}</Link>}</h3>
               {n.summary && <p>{n.summary}</p>}
             </div>
           </article>
         ))}
       </div>
-      <p className="fine" style={{ marginTop: 22 }}>ICAIE items link to icaie.com and are refreshed
-        from its feed. Illicit Shadows posts link to the original.</p>
     </>
   );
 }

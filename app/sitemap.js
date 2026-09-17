@@ -1,4 +1,5 @@
 import films from '../data/films.json';
+import news from '../data/newsroom.json';
 // output: export requires these route handlers to be explicitly static.
 export const dynamic = 'force-static';
 
@@ -13,6 +14,9 @@ export default function sitemap() {
   return [
     ...ROUTES.map(r => ({ url: new URL(r || '/', site.domain).href, lastModified: now,
                           priority: r === '' ? 1 : 0.8 })),
+    ...news.filter(n => n.slug && n.body).map(n => ({
+      url: new URL(`/newsroom/${n.slug}`, site.domain).href, lastModified: now,
+      changeFrequency: 'yearly', priority: 0.5 })),
     ...films.map(f => ({ url: new URL(`/film/${f.slug}`, site.domain).href, lastModified: now,
                          priority: 0.9 })),
     // One entry per short film. These are the pages carrying the narration text.

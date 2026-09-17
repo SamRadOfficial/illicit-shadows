@@ -306,6 +306,10 @@ where a page still needs them. The system:
   downloading the full 1920px file, which is why heroes felt slow. **If a new image is used as a
   hero, generate its variants**, or the srcset candidates 404 silently.
   `check-assets.mjs` now parses `srcset`, so that failure is caught at build time.
+- **The tiers are the call to action.** When `site.support` has any live Stripe URL the band drops
+  its button: a button beside the amounts is a second, weaker ask for the same thing. The bare CTA
+  band (`.cta-band` with a button and no tiers) is what renders when no link is configured, or where
+  the ask should be quieter. The museum donor band follows the same rule.
 - **One donation ask, rendered by the layout.** `components/SupportBand.jsx` sits above the footer
   on every page. Do not add a second donor section to a page: the museum's own was removed when this
   landed, and the CTA bands on `/intelligence`, `/about` and `/contact` were moved to slate so that
