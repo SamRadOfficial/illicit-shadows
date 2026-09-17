@@ -10,9 +10,14 @@ blocks a launch.
 
 ## 1. Launch blockers
 
-- [ ] **Export the newsletter signups from Squarespace** before the site comes down. The list is the
-      one thing on that account that cannot be rebuilt, and the forms here now point at Formspree,
-      so nothing new is landing there. Export, then decide where the list lives.
+- [ ] **Choose a newsletter tool and import the list.** The Squarespace export is done: 117 unique
+      addresses across the two files, deduped and split by consent (107 importable, 10 held back).
+      Formspree is a form backend, not a list: it has no broadcast, no unsubscribe, no audience
+      management, and CAN-SPAM requires a working unsubscribe on anything promotional. Pick one:
+      **MailerLite** (free to 1,000, my pick at this size), **Buttondown** (about $9/mo, cleanest
+      writing experience), or **Kit** (free to 10,000, strongest automation). Then point the site's
+      signup form at that provider's form endpoint and leave Formspree handling contact and the shop
+      waitlist.
 - [ ] **Squarespace redirect map.** Every `illicitshadows.com/news/...` URL 404s the moment DNS
       moves. Both announcements are rebuilt here, so the map is mostly old-news-URL to new-post-URL.
       Check `next.config.js` for shadowing rules before adding routes.

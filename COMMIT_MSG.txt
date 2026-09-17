@@ -1,14 +1,18 @@
-Shop: five new pieces, back views, and a heading that will not go stale
+Shop: flip between front and back in place
 
-- Added the notebook, sling, MIS tote and Illicit Shadows tote to the
-  collection, taking it from nine pieces to thirteen. All appear as waitlist
-  options too.
-- Bombers and the Illicit Shadows tote now show front and back side by side.
-  Items with one view keep a single image, so the grid stays even.
-- "Nine pieces, one argument" becomes "Built from the same evidence": the old
-  heading needed editing every time a piece was added or dropped.
-- Removed "Nothing here has been produced yet"; "Design concepts" stays on the
-  lead image, in the collection note and on the museum teaser.
+- New components/ProductViews.jsx. Items with two views show one image at full
+  size with arrow controls over it and a small FRONT/BACK label; items with one
+  view render a plain image and no controls. Three items have a back: both
+  bombers and the Illicit Shadows tote.
+- Both views are rendered with one hidden rather than swapped on demand, so the
+  back is already decoded when someone flips and there is no blank frame.
+- Arrows are real buttons with per-view aria-labels and an aria-live label, so
+  the change is announced; 40px hit targets, 34px below 820px, and they stay
+  visible on touch rather than appearing on hover.
+- Removed the closing "Images are design concepts rather than photographs"
+  paragraph. "Design concepts" still appears under the lead image and on the
+  museum teaser.
 
-Verified: build 34 pages, 184 references present. Thirteen products, thirteen
-waitlist chips, three with back views, no 4xx, no overflow at 390.
+Verified: build 34 pages, 184 references present. Flip tested by click, keyboard
+and tap; wraps front to back to front; label stays inside the frame at 1440
+and 390.

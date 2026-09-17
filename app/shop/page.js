@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Pic, Hero } from '../../components/Blocks';
 import { ShopWaitlist } from '../../components/ShopWaitlist';
+import { ProductViews } from '../../components/ProductViews';
 import { Arrow } from '../../components/Icons';
 
 export const metadata = {
@@ -49,18 +50,13 @@ export default function Shop() {
         </div>
         <div className="shopitems">
           {PRODUCTS.map(p => (
-            <article key={p.name} className={p.back ? 'has-back' : undefined}>
-              <div className="shop-views">
-                <Pic base={p.image} alt={`${p.name}, front, design concept`} />
-                {p.back && <Pic base={p.back} alt={`${p.name}, back, design concept`} />}
-              </div>
+            <article key={p.name}>
+              <ProductViews name={p.name} image={p.image} back={p.back} />
               <h3>{p.name}</h3>
               <p>{p.line}</p>
             </article>
           ))}
         </div>
-        <p className="fine" style={{ marginTop: 26 }}>Images are design concepts rather than
-          photographs. Fabric, print and embroidery will be photographed once the first run exists.</p>
       </section>
 
       <section className="wrap s s-slate" id="waitlist">
