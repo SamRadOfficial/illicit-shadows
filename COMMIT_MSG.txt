@@ -1,17 +1,7 @@
-LinkedIn in the footer, quieter pages, and a cleaner message field
+Add the Stripe donate setup steps
 
-- Footer swaps Instagram for LinkedIn (linkedin.com/company/illicitshadows), as
-  an icon in the social row and as a named "Connect on LinkedIn" link beside the
-  other footer actions. The Instagram icon stays in Icons.jsx in case the
-  account is revived.
-- The support band no longer renders on the short-film pages, the museum viewer
-  or the book preview: each is mid-experience, where the ask interrupts rather
-  than invites. It is a route test inside the component, so new short films are
-  covered automatically. Verified across fifteen routes, eleven showing and four
-  hiding.
-- Contact: removed the placeholder from the message field.
+- SETUP-DONATIONS-STEPS.md: the six links to create, the exact Stripe options
+  (call to action set to Donate, redirect back to the site, customers-choose for
+  the sixth), where to paste them, and how to verify.
 
-Docs
-- ROADMAP: the Instagram handle item is closed by this change.
-
-Verified: build 30 pages, 148 references present.
+No site changes in this commit.
