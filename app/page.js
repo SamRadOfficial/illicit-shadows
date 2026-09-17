@@ -1,4 +1,7 @@
 import Link from 'next/link';
+import { og } from './../lib/og';
+
+export const metadata = { ...og('home') };
 import site from '../data/site.json';
 import films from '../data/films.json';
 import books from '../data/books.json';

@@ -1,9 +1,11 @@
+import { og } from '../../lib/og';
 import site from '../../data/site.json';
 import own from '../../data/newsroom.json';
 import icaie from '../../data/newsroom-icaie.json';
 import { Hero, Signup } from '../../components/Blocks';
 import { NewsIndex } from '../../components/NewsIndex';
-export const metadata = { title: 'Newsroom' };
+export const metadata = {
+  ...og('newsroom'), title: 'Newsroom' };
 
 export default function Newsroom() {
   return (

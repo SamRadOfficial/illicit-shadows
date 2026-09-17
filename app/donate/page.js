@@ -1,10 +1,12 @@
 import Link from 'next/link';
+import { og } from '../../lib/og';
 import site from '../../data/site.json';
 import { Hero } from '../../components/Blocks';
 import { SupportTiers } from '../../components/SupportTiers';
 import { Arrow } from '../../components/Icons';
 
 export const metadata = {
+  ...og('donate'),
   title: 'Donate',
   description: 'Support the investigations, the Museum of Illicit Shadows, and the new products and programming built around them.',
 };

@@ -1,10 +1,12 @@
 import Link from 'next/link';
+import { og } from '../../lib/og';
 import site from '../../data/site.json';
 import films from '../../data/films.json';
 import slate from '../../data/slate.json';
 import { Pic, Hero } from '../../components/Blocks';
 import { Arrow, Play } from '../../components/Icons';
-export const metadata = { title: 'Film' };
+export const metadata = {
+  ...og('film'), title: 'Film' };
 
 export default function Film() {
   const released = films.find(f => f.status === 'streaming');

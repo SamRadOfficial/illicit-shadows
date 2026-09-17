@@ -1,9 +1,11 @@
 import Link from 'next/link';
+import { og } from '../../lib/og';
 import team from '../../data/team.json';
 import { Pic, Hero } from '../../components/Blocks';
 import { Arrow } from '../../components/Icons';
 import { Pillars } from '../../components/Pillars';
-export const metadata = { title: 'About' };
+export const metadata = {
+  ...og('about'), title: 'About' };
 
 const SECTORS = [
   ['Industry', ['Pharmaceuticals', 'Luxury retail', 'Automotive', 'Food, alcohol, tobacco', 'Electronics and e-commerce', 'Media and entertainment', 'Sports and frontier tech', 'Industry associations', 'Chambers of commerce']],

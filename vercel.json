@@ -27,12 +27,177 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "illicitshadows.vercel.app"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ],
   "redirects": [
     {
       "source": "/film/golden-handcuffs",
       "destination": "/film/illicit-gold",
+      "permanent": true
+    },
+    {
+      "source": "/newsroom/production-begins-fentanyl-cartels",
+      "destination": "/newsroom/production-begins-chemical-cartels",
+      "permanent": true
+    },
+    {
+      "source": "/news/icaie-and-radoc-begin-production-on-ep-01-fentanyl-cartels",
+      "destination": "/newsroom/production-begins-chemical-cartels",
+      "permanent": true
+    },
+    {
+      "source": "/news/icaie-and-radoc-begin-production-on-ep-01-fentanyl-cartels-4732p",
+      "destination": "/newsroom/museum-of-illicit-shadows-announced",
+      "permanent": true
+    },
+    {
+      "source": "/news",
+      "destination": "/newsroom",
+      "permanent": true
+    },
+    {
+      "source": "/news/:slug",
+      "destination": "/newsroom",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/newsroom",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:slug*",
+      "destination": "/newsroom",
+      "permanent": true
+    },
+    {
+      "source": "/press",
+      "destination": "/newsroom",
+      "permanent": true
+    },
+    {
+      "source": "/shadowverse",
+      "destination": "/film",
+      "permanent": true
+    },
+    {
+      "source": "/shadowverse/:slug*",
+      "destination": "/film",
+      "permanent": true
+    },
+    {
+      "source": "/docuseries",
+      "destination": "/film",
+      "permanent": true
+    },
+    {
+      "source": "/episodes",
+      "destination": "/film",
+      "permanent": true
+    },
+    {
+      "source": "/episodes/:slug*",
+      "destination": "/film",
+      "permanent": true
+    },
+    {
+      "source": "/series",
+      "destination": "/film",
+      "permanent": true
+    },
+    {
+      "source": "/watch",
+      "destination": "/film",
+      "permanent": true
+    },
+    {
+      "source": "/trailer",
+      "destination": "/film",
+      "permanent": true
+    },
+    {
+      "source": "/mis",
+      "destination": "/museum",
+      "permanent": true
+    },
+    {
+      "source": "/museum-of-illicit-shadows",
+      "destination": "/museum",
+      "permanent": true
+    },
+    {
+      "source": "/helix",
+      "destination": "/intelligence",
+      "permanent": true
+    },
+    {
+      "source": "/mistic",
+      "destination": "/intelligence",
+      "permanent": true
+    },
+    {
+      "source": "/book",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/the-umbra-circle",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/support",
+      "destination": "/donate",
+      "permanent": true
+    },
+    {
+      "source": "/give",
+      "destination": "/donate",
+      "permanent": true
+    },
+    {
+      "source": "/store",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/merch",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/team",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/founders",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/get-in-touch",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/subscribe",
+      "destination": "/newsroom",
       "permanent": true
     }
   ]

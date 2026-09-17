@@ -1,9 +1,11 @@
 import Link from 'next/link';
+import { og } from '../../lib/og';
 import site from '../../data/site.json';
 import books from '../../data/books.json';
 import { Pic, Hero, Signup } from '../../components/Blocks';
 import { Arrow } from '../../components/Icons';
-export const metadata = { title: 'Books' };
+export const metadata = {
+  ...og('books'), title: 'Books' };
 
 export default function Books() {
   const [one, ...rest] = books;

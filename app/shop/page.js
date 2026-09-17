@@ -1,10 +1,12 @@
 import Link from 'next/link';
+import { og } from '../../lib/og';
 import { Pic, Hero } from '../../components/Blocks';
 import { ShopWaitlist } from '../../components/ShopWaitlist';
 import { ProductViews } from '../../components/ProductViews';
 import { Arrow } from '../../components/Icons';
 
 export const metadata = {
+  ...og('shop'),
   title: 'Shop',
   description: 'The first Museum of Illicit Shadows collection: caps, tees and outerwear. Join the waitlist.',
 };

@@ -1,9 +1,11 @@
 import Link from 'next/link';
+import { og } from '../../lib/og';
 import { Pic, Hero } from '../../components/Blocks';
 import { Arrow } from '../../components/Icons';
 import { CascadeMaps } from '../../components/CascadeMaps';
 import { Convergence } from '../../components/Convergence';
-export const metadata = { title: 'Intelligence · MISTIC and Project Helix' };
+export const metadata = {
+  ...og('intelligence'), title: 'Intelligence · MISTIC and Project Helix' };
 
 const METHOD = [
   ['Gather', 'MIS assets, artifacts, and mapping enter the intelligence layer.'],

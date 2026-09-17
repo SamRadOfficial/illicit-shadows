@@ -1,8 +1,10 @@
+import { og } from '../../lib/og';
 import site from '../../data/site.json';
 import { Hero } from '../../components/Blocks';
 import { Arrow } from '../../components/Icons';
 import { ContactForm } from '../../components/ContactForm';
-export const metadata = { title: 'Contact' };
+export const metadata = {
+  ...og('contact'), title: 'Contact' };
 
 const OFFERS = [
   ['Investment', 'Support our cause and mission.'],

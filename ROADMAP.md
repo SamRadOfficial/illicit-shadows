@@ -27,20 +27,15 @@ blocks a launch.
          tier (real pipeline, email logging, heavier) to Attio (modern, about $29/seat).
       Sequence: newsletter first, since the list is exported and nothing is capturing it; contacts
       second; CRM only when the donor and underwriter conversations are real enough to track.
-- [ ] **Squarespace redirect map.** Every `illicitshadows.com/news/...` URL 404s the moment DNS
-      moves. Both announcements are rebuilt here, so the map is mostly old-news-URL to new-post-URL.
-      Check `next.config.js` for shadowing rules before adding routes.
+- [x] **Redirect map** shipped 17 Sep: 31 rules in vercel.json covering the old news URLs and the likely Squarespace paths.
+- [x] ~~Squarespace redirect map~~
 - [ ] **DNS cutover to illicitshadows.com.**
 - [ ] **Delete the stale Vercel project** once the new one holds the domain, so two projects are not
       building on every push.
-- [ ] **AI crawler stance in `robots.js`.** Currently allows everything except `/specimen`. The site
-      publishes original investigative text; whether that belongs in training corpora is a decision
-      to make once, before indexing.
-- [ ] **OG images per page.** Every share inherits one default card. For an audience that circulates
-      links professionally, the highest-visibility small job left.
-
-## 2. Credibility gaps
-
+- [x] **AI crawler stance** decided 17 Sep: the site stays open to crawlers, and the preview host is noindexed so it cannot compete with the real domain. Revisit if the position on AI training changes.
+- [x] ~~AI crawler stance in `robots.js`~~
+- [x] **OG images per page** shipped 17 Sep: twelve generated cards, wired per route, film covers used as-is.
+- [x] ~~OG images per page~~
 - [ ] **YouTube titles and descriptions.** The playlist is still "Ep. 01 | CHEMICAL CARTELS", videos
       use "Ep.1, Dispatch N", and the channel description opens "ILLICIT SHADOWS is a docuseries".
       The framing removed from the site is intact one click away.
@@ -56,8 +51,8 @@ blocks a launch.
       changes (dropped "Next Dispatch" trailers, normalised punctuation) worth confirming against
       what is actually spoken.
 - [ ] **Recut the trailer.** Pre-gold, and says "docuseries" on screen.
-- [ ] **Copy pass on `public/museum-viewer.html`**: still says SEASON 2, GOLDEN HANDCUFFS, JANUARY
-      2027. Canvas text inside the viewer, so invisible to a site-wide grep.
+- [x] **Museum viewer copy** fixed 17 Sep: Illicit Gold and 2026-2027 replace Golden Handcuffs and January 2027; Shadowverse references removed.
+- [x] ~~Copy pass on the museum viewer~~
 - [ ] **Runtime for The Next Wave.** The only short without one.
 - [ ] **Confirm one short title.** Cover art reads FENTANYL'S DIRTY PROFITS; `films.json` says
       "Dirty Profits".

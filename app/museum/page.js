@@ -1,9 +1,11 @@
 import Link from 'next/link';
+import { og } from '../../lib/og';
 import { Pic, Hero } from '../../components/Blocks';
 import { Arrow } from '../../components/Icons';
 import { Convergence } from '../../components/Convergence';
 import { HallsEd } from '../../components/HallsEd';
-export const metadata = { title: 'Museum of Illicit Shadows' };
+export const metadata = {
+  ...og('museum'), title: 'Museum of Illicit Shadows' };
 
 export default function Museum() {
   return (

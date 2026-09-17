@@ -188,7 +188,7 @@ const HALLS = [
     title:'MIS Museum Shop', short:'Shop',
     intro:'Books, dialogues and the founding donor programme. The museum is free to enter; its research and exhibitions are supported by donors and partners.',
     exhibits:[
-      ['The Umbra Circle','The novel that enters the narrative universe of the Shadowverse. Pick up a copy or read the overview on illicitshadows.com.'],
+      ['The Umbra Circle','The novel that enters the narrative universe of the Illicit Shadows Chronicles. Read the overview on illicitshadows.com.'],
       ['Become a founding donor','MIS online is under construction. Founding donors underwrite the exhibition halls and the investigative docuseries, and are recognized in the rotunda.'],
       ['Partners','MIS is built with the International Coalition Against Illicit Economies (ICAIE) in Washington, DC and RAD Original Creations in New York, DC and London.']]},
 
@@ -203,7 +203,7 @@ const HALLS = [
     exhibits:[['The impacts wheel','Five domains, one engine. Walk into the wheel to see how a single illicit market registers in every sector at once.']]},
   { id:'corruption', level:2, angle:30, accent:0x7dd3c0, shape:'holo',
     title:'Corruption & Money Laundering', short:'Corruption',
-    intro:'Nothing in the Shadowverse works without someone to look away and somewhere to put the money. Kleptocrats, shell companies and trade-based laundering.',
+    intro:'Nothing in the illicit economy works without someone to look away and somewhere to put the money. Kleptocrats, shell companies and trade-based laundering.',
     exhibits:[['Hall in development','Opens with the second digital matrix level in 2028.']]},
   { id:'antiquities', level:2, angle:90, accent:0xd98c4a, shape:'holo',
     title:'Stolen Antiquities, Fine Art & Cultural Heritage', short:'Antiquities',
@@ -215,7 +215,7 @@ const HALLS = [
     exhibits:[['Hall in development','Opens with the second digital matrix level in 2028.']]},
   { id:'cyber', level:2, angle:210, accent:0x5ad1ff, shape:'holo',
     title:'Cybercrime & Online Scams', short:'Cyber',
-    intro:'Scam compounds, ransomware and fraud-as-a-service. The newest hall of the Shadowverse and the one growing fastest.',
+    intro:'Scam compounds, ransomware and fraud-as-a-service. The newest hall of the illicit economy and the one growing fastest.',
     exhibits:[['Hall in development','Opens with the second digital matrix level in 2028.']]},
 ];
 
@@ -493,7 +493,7 @@ function addProps(h, g){
       break; }
     case 'theater': {
       // poster frames along the side walls
-      const titles = ['SEASON 1 · CRIME CONVERGENCE','GOLDEN HANDCUFFS','THE SHADOWVERSE','EVERYTHING IS CONNECTED'];
+      const titles = ['SEASON 1 · CRIME CONVERGENCE','ILLICIT GOLD','THE SHADOWVERSE','EVERYTHING IS CONNECTED'];
       titles.forEach((t,i)=>{ const side = i%2?1:-1, z = 4+Math.floor(i/2)*6; const fr = box(.08, 2.2, 1.5, mat(0x050505), side*(HALL_W/2-.25), 2.6, z); g.add(fr);
         const pt = tex(600,880,(g2,W,H)=>{ g2.fillStyle='#0b0b0b'; g2.fillRect(0,0,W,H); g2.fillStyle='#E11D1D'; g2.fillRect(40,40,W-80,6); g2.fillStyle='#fff'; g2.textAlign='center'; const sz=fitFont(g2,t,W-80,110,DISPLAY); const words=t.split(' · '); let y=380; words.forEach(w=>{ g2.fillText(w, W/2, y); y+=sz*1.05; }); g2.fillStyle='#FFD400'; g2.font=`500 30px ${MONO}`; g2.fillText('ILLICIT SHADOWS', W/2, H-70); });
         const po = new THREE.Mesh(new THREE.PlaneGeometry(1.4, 2.05), new THREE.MeshStandardMaterial({ map:pt, emissive:0xffffff, emissiveMap:pt, emissiveIntensity:.35 })); po.position.set(side*(HALL_W/2-.2), 2.6, z); po.rotation.y = side<0 ? Math.PI/2 : -Math.PI/2; g.add(po); });
@@ -620,7 +620,7 @@ function buildHall(h) {
 
   // Theater: seating + screen
   if (h.id==='theater') {
-    const screen = new THREE.Mesh(new THREE.PlaneGeometry(9, 4.2), new THREE.MeshStandardMaterial({ map:tex(1800,840,(g2,w,hh)=>{ g2.fillStyle='#050505'; g2.fillRect(0,0,w,hh); g2.fillStyle='#fff'; fitFont(g2, 'ILLICIT SHADOWS', w-120, 260, DISPLAY); g2.textAlign='center'; g2.fillText('ILLICIT SHADOWS', w/2, 380); g2.fillStyle='#FFD400'; g2.font=`500 60px ${MONO}`; g2.fillText('SEASON 2 · GOLDEN HANDCUFFS · JANUARY 2027', w/2, 520); g2.fillStyle='#E11D1D'; g2.fillText('COLOMBIA · BRAZIL · SWITZERLAND', w/2, 620); }), emissive:0xffffff, emissiveIntensity:.5, emissiveMap:null }));
+    const screen = new THREE.Mesh(new THREE.PlaneGeometry(9, 4.2), new THREE.MeshStandardMaterial({ map:tex(1800,840,(g2,w,hh)=>{ g2.fillStyle='#050505'; g2.fillRect(0,0,w,hh); g2.fillStyle='#fff'; fitFont(g2, 'ILLICIT SHADOWS', w-120, 260, DISPLAY); g2.textAlign='center'; g2.fillText('ILLICIT SHADOWS', w/2, 380); g2.fillStyle='#FFD400'; g2.font=`500 60px ${MONO}`; g2.fillText('ILLICIT GOLD · IN PRODUCTION · 2026-2027', w/2, 520); g2.fillStyle='#E11D1D'; g2.fillText('COLOMBIA · BRAZIL · SWITZERLAND', w/2, 620); }), emissive:0xffffff, emissiveIntensity:.5, emissiveMap:null }));
     screen.material.emissiveMap = screen.material.map;
     screen.position.set(0, 3.4, HALL_D-.5); screen.rotation.y=Math.PI; g.add(screen);
     mural.visible = false;

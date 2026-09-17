@@ -32,7 +32,13 @@ export function generateStaticParams() { return POSTS.map(p => ({ slug: p.slug }
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const p = POSTS.find(x => x.slug === slug);
-  return p ? { title: p.title, description: p.summary } : {};
+  if (!p) return {};
+  const image = p.image ? `${p.image}.${p.imageExt || 'jpg'}` : '/og/newsroom.jpg';
+  return {
+    title: p.title, description: p.summary,
+    openGraph: { title: p.title, description: p.summary, images: [{ url: image }] },
+    twitter: { card: 'summary_large_image', images: [image] },
+  };
 }
 
 export default async function Post({ params }) {

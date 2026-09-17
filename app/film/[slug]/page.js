@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { og } from '../../../lib/og';
 import site from '../../../data/site.json';
 import films from '../../../data/films.json';
 import { Pic, Prov } from '../../../components/Blocks';
@@ -10,7 +11,8 @@ import sources from '../../../data/sources.json';
 export function generateStaticParams() { return films.map(f => ({ slug: f.slug })); }
 export async function generateMetadata({ params }) {
   const { slug } = await params; const f = films.find(x => x.slug === slug);
-  return { title: f.title, description: f.subtitle };
+  return {
+    ...og(f.slug === 'chemical-cartels' ? 'chemical-cartels' : 'illicit-gold'), title: f.title, description: f.subtitle };
 }
 
 export default async function Investigation({ params }) {
