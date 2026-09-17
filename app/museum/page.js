@@ -34,13 +34,12 @@ export default function Museum() {
         <div><span className="kicker">The building / Interactive prototype</span><h2>Find your way<br /><em>through the shadows.</em></h2></div>
         <div>
           <p>The prototype is live today: a walkable model of the building, the rotunda and the hall
-            positions. The exhibitions themselves open in phases from 2027, so what you can visit now
-            is the architecture, not the collection.</p>
+            positions. The exhibitions themselves open in phases from 2027.</p>
           <Link className="ed-btn" href="/museum/enter">Enter the museum concept {Arrow.upRight}</Link>
         </div>
       </section>
 
-      <section className="wrap s s-paper origins" id="origins">
+      <section className="wrap s s-ink origins" id="origins">
         {/* The eclipse mark keeps a solid black panel: its transparent edge never touches cream. */}
         <div className="black-logo"><Pic base="/images/mis-eclipse" ext="png" alt="MIS eclipse emblem" /></div>
         <div>
@@ -59,7 +58,7 @@ export default function Museum() {
         </div>
       </section>
 
-      <section className="wrap s s-ink" id="convergence">
+      <section className="wrap s s-paper" id="convergence">
         <div className="intro">
           <div><span className="kicker">Crime convergence</span><h2>Everything <em>is connected.</em></h2></div>
           <p>Five domains, one system. The map the museum is built to explain.</p>
@@ -93,24 +92,6 @@ export default function Museum() {
           </div>
           <p>Every purchase funds the exhibitions, the research behind them, and free public access
             to the collection.</p>
-        </div>
-        <div className="shopgrid">
-          <article>
-            <span className="shop-n">01</span>
-            <h3>Exhibition editions</h3>
-            <p>Prints and objects drawn from the halls: the contraband still life, the convergence
-              map, the eclipse.</p>
-          </article>
-          <article>
-            <span className="shop-n">02</span>
-            <h3>Publications</h3>
-            <p>Museum catalogues, the Illicit Shadows Chronicles, and research briefs from ICAIE.</p>
-          </article>
-          <article>
-            <span className="shop-n">03</span>
-            <h3>Founding-donor editions</h3>
-            <p>Numbered pieces reserved for the people who open the doors. Not sold after Phase I.</p>
-          </article>
         </div>
         <div className="shopfoot">
           <p className="fine">Opening with Phase I in 2027. Tell us what you want and we will hold

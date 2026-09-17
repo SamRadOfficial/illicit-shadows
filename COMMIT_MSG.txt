@@ -1,14 +1,16 @@
-Left-align the giving tiers
+About copy trims; remove the film-menu status dots
 
-- .tiers was centred by a rule left over from the old donor block. The row now
-  starts at the same left edge as the copy above it, and each tier's own text is
-  explicitly left-aligned.
-- Verified the first tier's left edge matches the paragraph's on /donate, home,
-  film, about and newsroom.
+About
+- Removed "These are the sectors we address, not a list of partners..." and
+  "Our two standing partnerships."
+- RADOC: "A media and narrative studio creating stories to shape better futures.
+  Co-producers of Illicit Shadows. New York and London."
 
-Noticed while checking: /museum no longer has its own donor section. It was
-removed when the shared band landed and the page now relies on that, which is
-the intended one-ask-per-page behaviour, but worth confirming you are happy the
-museum has no donate block of its own above the footer.
+Film menu
+- Removed the status dots beside Illicit Gold and Chemical Cartels, and their
+  CSS. The meta line under each title already says "In production" and
+  "Released", so the dots repeated it in colour, and the red one read as an
+  error rather than a state.
 
-Verified: build 32 pages, 150 references present.
+Verified: build 32 pages, 150 references present. Zero dots in the menu, copy
+read back from the DOM.

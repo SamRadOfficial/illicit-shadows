@@ -107,7 +107,7 @@ export function Nav() {
                       <Link className="fm-link fm-item" href={m.href} key={m.href} onClick={close}>
                         <Pic base={m.image} alt="" />
                         <span>
-                          <b><i className={`dot${m.live ? ' live' : ''}`} aria-hidden="true" />{m.title}</b>
+                          <b>{m.title}</b>
                           <em>{m.meta}</em>
                         </span>
                       </Link>
@@ -209,7 +209,11 @@ export function Footer({ site }) {
         </div>
         <div className="foot-bottom">
           <span>&copy; {new Date().getFullYear()} ILLICIT SHADOWS, LLC</span>
-          <span>ICAIE + RADOC</span>
+          <span className="foot-partners">
+            <a href="https://icaie.com" target="_blank" rel="noopener noreferrer">ICAIE</a>
+            {' + '}
+            <a href="https://radoc.co" target="_blank" rel="noopener noreferrer">RADOC</a>
+          </span>
           <nav className="foot-social" aria-label="Social links">
             <a href={site.social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube">{Brand.youtube}</a>
             <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">{Brand.linkedin}</a>

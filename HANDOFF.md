@@ -314,6 +314,11 @@ where a page still needs them. The system:
   on every page. Do not add a second donor section to a page: the museum's own was removed when this
   landed, and the CTA bands on `/intelligence`, `/about` and `/contact` were moved to slate so that
   **yellow means the support band and nothing else**. Verified: exactly one `.s-yellow` per route.
+- **Small labels use `--label`, not `--ac`.** The cream accent `#FF3030` is a *display* colour: at
+  11px it measures 3.2:1 on cream, under the bar. Every surface now sets `--label` (signal yellow on
+  dark, `#C81414` on cream) and kickers, numerals, cites, chips and status lines read it. Links use
+  `--link` on the same principle. Headings keep `--ac`, where large-text rules apply.
+  The full sweep across seventeen routes is clean; run it again after adding any small label.
 - **The surface layer must not use `z-index:-1`.** A negative layer vanishes behind any ancestor
   that creates a stacking context, which is how `/film/chemical-cartels` shipped with black text on
   a black page after deploy while rendering correctly in local preview. `.s` is `isolation:isolate`,

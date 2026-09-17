@@ -40,13 +40,18 @@ export default function Books() {
             three books across the frame. */}
         <Pic base="/images/books-trilogy-full-bleed-feature" className="trishot"
              alt="Three Illicit Shadows Chronicles books: The Umbra Circle, The Dragon Roars Forward, and The Condor Directive, by Sam Rad and David M. Luna." />
-        <div className="sequels" style={{ marginTop: 44 }}>
+        <div className="sequels">
           {rest.map(b => (
             <article key={b.slug}>
-              <Pic base={b.transparent} ext="png" className="book-solo" alt={`${b.title} book cover`} />
-              <span className="kicker">Book {b.n} / {b.status}</span>
-              <h3>{b.title}</h3>
-              <p>{b.logline}</p>
+              {/* The trilogy render above already shows these covers at full size, so here they are
+                  thumbnails beside the copy rather than a second gallery. */}
+              <Pic base={b.transparent} ext="png" className="seq-cover" alt={`${b.title} book cover`} />
+              <div>
+                <span className="kicker">Book {b.n}</span>
+                <h3>{b.title}</h3>
+                <p>{b.logline}</p>
+                <p className="seq-status">{b.status}</p>
+              </div>
             </article>
           ))}
         </div>

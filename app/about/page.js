@@ -77,8 +77,7 @@ export default function About() {
       <section className="wrap s s-ink" id="partners">
         <div className="intro">
           <div><span className="kicker">Who we serve</span><h2>Across sectors.<br /><em>Across borders.</em></h2></div>
-          <p>The institutions and industries our work is built for. These are the sectors we address,
-            not a list of partners: our formal relationships are ICAIE and RADOC, below.</p>
+          <p>The institutions and industries our work is built for.</p>
         </div>
         <div className="sectors">
           {SECTORS.map(([name, items]) => (
@@ -88,7 +87,7 @@ export default function About() {
       </section>
 
       <section className="wrap s s-paper" id="partner-orgs">
-        <div className="intro"><div><span className="kicker">Partners</span><h2>Built with<br /><em>ICAIE and RADOC.</em></h2></div><p>Our two standing partnerships.</p></div>
+        <div className="intro"><div><span className="kicker">Partners</span><h2>Built with<br /><em>ICAIE and RADOC.</em></h2></div></div>
         <div className="partners">
           <article>
             <span className="plogo plogo-big"><Pic base="/logos/icaie-square" ext="png" alt="ICAIE, International Coalition Against Illicit Economies" /></span>
@@ -99,7 +98,7 @@ export default function About() {
           <article>
             <span className="plogo plogo-big plogo-text"><span className="radoc" aria-label="RADOC"><b>RAD</b><em>OC</em></span></span>
             <h3>RAD Original Creations</h3>
-            <p>A meta-media studio producing the Illicit Shadows films. NYC, Washington, DC, and London.</p>
+            <p>A media and narrative studio creating stories to shape better futures. Co-producers of Illicit Shadows. New York and London.</p>
             <a className="ed-link" href="https://radoc.co" target="_blank" rel="noopener noreferrer">radoc.co {Arrow.upRight}</a>
           </article>
         </div>
