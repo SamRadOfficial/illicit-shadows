@@ -1,11 +1,14 @@
-Rename the production post URL; MIS banner on the museum post
+Left-align the giving tiers
 
-- Slug follows the title: /newsroom/production-begins-chemical-cartels. The old
-  /newsroom/production-begins-fentanyl-cartels now 301s to it in next.config.js,
-  so anything already shared keeps working. Note that redirects run on Vercel,
-  not in the static export, so the local preview will 404 the old path.
-- The museum announcement leads with the MIS presentation banner rather than the
-  square mark, at the wide frame.
+- .tiers was centred by a rule left over from the old donor block. The row now
+  starts at the same left edge as the copy above it, and each tier's own text is
+  explicitly left-aligned.
+- Verified the first tier's left edge matches the paragraph's on /donate, home,
+  film, about and newsroom.
 
-Verified: build 32 pages, 150 references present. Both posts return 200 at their
-new paths, index links and sitemap updated.
+Noticed while checking: /museum no longer has its own donor section. It was
+removed when the shared band landed and the page now relies on that, which is
+the intended one-ask-per-page behaviour, but worth confirming you are happy the
+museum has no donate block of its own above the footer.
+
+Verified: build 32 pages, 150 references present.

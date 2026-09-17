@@ -505,7 +505,7 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 /* A tier with a payment link is a control; one without is a label. They must not look alike. */
 .support{margin-top:22px}
 .support .tiers{display:flex;flex-wrap:wrap;gap:10px}
-.tier.is-live{display:inline-flex;flex-direction:column;gap:2px;border:1px solid var(--ac);padding:10px 16px;color:var(--fg);cursor:pointer}
+.tier.is-live{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;border:1px solid var(--ac);padding:10px 16px;color:var(--fg);cursor:pointer;text-align:left}
 .tier.is-live b{font-family:var(--disp);font-size:19px;line-height:1}
 .tier.is-live span{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
 .tier.is-live:hover{background:var(--ac);color:var(--sbg)}
@@ -603,7 +603,7 @@ section.wrap.s{position:relative;isolation:isolate;padding-top:clamp(44px,5.5vw,
 section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .s-ink{--sbg:var(--ink);--fg:#fff;--ac:var(--signal);--rule:#343b3b;color:var(--fg)}
 .s-slate{--sbg:var(--slate);--fg:#fff;--ac:var(--signal);--rule:#4c5b63;color:var(--fg)}
-.s-paper{--sbg:var(--paper);--fg:#000;--ac:var(--red-paper);--rule:#c6cbc3;color:var(--fg)}
+.s-paper{--sbg:var(--paper);--fg:#000;--ac:var(--red-paper);--link:#C81414;--rule:#c6cbc3;color:var(--fg)}
 .s-yellow{--sbg:var(--signal);--fg:#000;--ac:#000;--rule:#9d891f;color:var(--fg)}
 .s p,.s li,.s dd,.s dt,.s figcaption,.s time{color:var(--fg)}
 .s h1,.s h2,.s h3{font-family:var(--disp);font-weight:400;letter-spacing:0;line-height:1.1;color:var(--fg);margin:0}
@@ -942,6 +942,9 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .pullpress p{font-size:19px;line-height:1.55;font-style:italic;margin:0}
 .pullpress cite{display:block;margin-top:10px;font-style:normal;font-family:var(--mono);
   font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ac)}
+.s .prose a{color:var(--link,var(--ac));text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.s .prose a:hover{text-decoration-thickness:2px}
+.s .prose a:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
 .press-contact{margin-top:32px;border-top:1px solid var(--rule);padding-top:18px}
 .press-contact p{font-size:14.5px;line-height:1.7}
 .post-meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;margin-top:14px}
@@ -1231,7 +1234,7 @@ a.mbox:hover{transform:translateY(-3px)}.mbox.alert{border-top-color:var(--alert
 .donor{background:var(--panel);border:1px solid #3a2f0a;padding:clamp(30px,5vw,52px);text-align:center}
 .donor h4{font-family:var(--disp);text-transform:uppercase;color:var(--text);font-size:clamp(30px,5vw,52px);line-height:.96;margin:14px 0 12px}
 .donor h4 span{color:var(--signal)}.donor p{color:var(--text-2);font-size:16.5px;max-width:56ch;margin:0 auto 22px}
-.tiers{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:22px}
+.tiers{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start;margin-bottom:22px}
 .tier{font-family:var(--mono);font-size:13px;color:var(--text);border:1px solid #5a4b00;padding:9px 16px;cursor:pointer}.tier:hover{border-color:var(--signal);color:var(--signal)}
 .donor .mail{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:16px}.donor .mail a{color:var(--signal)}
 /* Stacked at every width: the field and the button share one width. */
