@@ -205,6 +205,7 @@ export function Footer({ site }) {
             <Link className="ed-link" href="/about">About the platform {Arrow.upRight}</Link>
             <Link className="ed-link" href="/contact">Partner with us {Arrow.upRight}</Link>
             <Link className="ed-link" href="/donate">Donate {Arrow.upRight}</Link>
+            <Link className="ed-link" href="/shop">Shop {Arrow.upRight}</Link>
           </nav>
         </div>
         <div className="foot-bottom">

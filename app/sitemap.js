@@ -7,7 +7,7 @@ import site from '../data/site.json';
 
 /** Static sitemap. Next writes sitemap.xml into the export. Add a route here when you add a page. */
 const ROUTES = ['', '/film', '/intelligence', '/museum', '/museum/enter', '/books', '/books/preview', '/newsroom',
-                '/about', '/contact', '/sources', '/donate'];
+                '/about', '/contact', '/sources', '/donate', '/shop'];
 
 export default function sitemap() {
   const now = new Date();

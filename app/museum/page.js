@@ -84,19 +84,16 @@ export default function Museum() {
 
       {/* The shop is a real part of the museum's public mission, not a footnote, so it gets a
           section of its own on the loudest surface with the three things it will actually sell. */}
-      <section className="wrap s s-ink" id="shop">
-        <div className="intro">
-          <div>
-            <span className="kicker">The gift shop</span>
-            <h2>Take the museum<br /><em>home with you.</em></h2>
-          </div>
+      <section className="wrap s s-ink shopteaser" id="shop">
+        <Link href="/shop"><Pic base="/images/shop/hats-set" alt="Three MIS caps: Illicit Shadows, the eclipse, and Everything is connected" /></Link>
+        <div>
+          <span className="kicker">The gift shop</span>
+          <h2>Take the museum<br /><em>home with you.</em></h2>
           <p>Every purchase funds the exhibitions, the research behind them, and free public access
             to the collection.</p>
-        </div>
-        <div className="shopfoot">
-          <p className="fine">Opening with Phase I in 2027. Tell us what you want and we will hold
-            one back.</p>
-          <Link className="ed-btn" href="/contact?interest=museum">Join the shop list {Arrow.upRight}</Link>
+          <p className="fine">Design concepts. Nothing is on sale yet; the waitlist decides what gets
+            made first.</p>
+          <div className="actions"><Link className="ed-btn" href="/shop">Shop {Arrow.upRight}</Link></div>
         </div>
       </section>
     </>

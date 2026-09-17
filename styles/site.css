@@ -442,7 +442,7 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .cchip:focus-within{outline:2px solid var(--signal);outline-offset:2px}
 .cform-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
 .cfield{display:block;margin-bottom:16px}
-.cfield span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.cfield span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg);opacity:.85;margin-bottom:8px}
 .cfield span i{font-style:normal;color:var(--muted);letter-spacing:.1em}
 .cfield input,.cfield textarea{width:100%;background:#0b0b0b;border:1px solid var(--line);color:var(--text);font:inherit;font-size:15px;padding:13px 14px;border-radius:0}
 .cfield textarea{resize:vertical;line-height:1.7}
@@ -516,6 +516,23 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 /* Fine print: present and legible, but not part of the ask. */
 .s .support-fine,.support-fine{margin-top:14px;font-family:var(--mono);font-size:10px;line-height:1.5;letter-spacing:.04em;opacity:.7}
 .cform-alert.is-ok{border-color:var(--ac)}
+
+/* Shop */
+.shop-lead{margin:0}
+.shop-lead img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+.shop-lead figcaption{margin-top:12px}
+.shopitems{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.6vw,34px)}
+.shopitems article{border-top:1px solid var(--rule);padding-top:16px}
+.shopitems img{width:100%;aspect-ratio:1;object-fit:cover;display:block;margin-bottom:14px;background:#111}
+.shopitems h3{font-size:20px}
+.shopitems p{font-size:14px;margin-top:8px}
+.shopteaser{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,3.4vw,48px);align-items:center}
+.shopteaser img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+.waitlist .cfields{grid-template-columns:1fr 200px}
+.waitlist select{background:rgba(0,0,0,.35);border:1px solid var(--rule);color:var(--fg);
+  padding:12px 14px;font-family:var(--body);font-size:15px;width:100%}
+@media(max-width:820px){.shopitems{grid-template-columns:1fr 1fr}.shopteaser{grid-template-columns:1fr}
+  .waitlist .cfields{grid-template-columns:1fr}}
 
 /* Museum shop: three columns on the yellow surface, numbered rather than imaged, since the
    merchandise does not exist to photograph yet. */

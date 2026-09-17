@@ -1,16 +1,26 @@
-About copy trims; remove the film-menu status dots
+Add /shop as a waitlist, with the collection and a museum teaser
 
-About
-- Removed "These are the sectors we address, not a list of partners..." and
-  "Our two standing partnerships."
-- RADOC: "A media and narrative studio creating stories to shape better futures.
-  Co-producers of Illicit Shadows. New York and London."
+- New /shop: hero, the three-cap image as the lead, nine concept pieces, and a
+  waitlist that captures which pieces someone wants and their size. No checkout,
+  no money, nothing promised on a date: a pre-order is a contract, and none of
+  this has been manufactured.
+- Every image is labelled a design concept rather than a photograph, twice on
+  the page and again in the museum teaser. They are renders; print and
+  embroidery land differently, and the first run needs photographing before
+  anything is sold from these.
+- Waitlist posts to the newsletter endpoint with a subject naming the pieces, so
+  the list arrives sorted by demand. Honeypot and honest unconnected state, as
+  the other forms.
+- Museum shop band becomes a teaser: the caps image beside the copy, with a Shop
+  button.
+- Footer gains Shop after Donate. Not in the main nav: see the note below.
+- Fix: form field labels were --dim at 2.9:1 on the slate surface. Now --fg at
+  0.85 opacity.
 
-Film menu
-- Removed the status dots beside Illicit Gold and Chemical Cartels, and their
-  CSS. The meta line under each title already says "In production" and
-  "Released", so the dots repeated it in colour, and the red one read as an
-  error rather than a state.
+Docs
+- ROADMAP: the museum-shop item becomes a sequence, sample then photograph then
+  checkout, with the platform options and their real costs.
 
-Verified: build 32 pages, 150 references present. Zero dots in the menu, copy
-read back from the DOM.
+Verified: build 34 pages, 170 references present. Nine products, nine chips, a
+submit intercepted end to end, no overflow at 390, contrast clean on /shop,
+/contact and /museum.

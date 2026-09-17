@@ -1,104 +1,99 @@
 # ROADMAP — illicitshadows.com
 
-The standing checklist. Update in the same commit as the work. Items move to Done with a date, they
-are not deleted, so the history of what shipped stays readable.
+The standing checklist. Update in the same commit as the work. Items move to Done with a date
+rather than being deleted, so the history of what shipped stays readable.
 
-Rewritten 16 Sep against the source: items that the code had already made irrelevant were removed
-rather than carried, and the rest reordered by what actually blocks a launch.
+Rewritten 17 Sep: checked against the source, shipped items closed, the rest reordered by what
+blocks a launch.
 
 ---
 
 ## 1. Launch blockers
 
-Nothing else on this list matters until these are done.
-
-- [ ] **Squarespace redirect map.** Every existing `illicitshadows.com/news/...` URL 404s the moment
-      DNS moves, including the two posts the newsroom links to. Build the map before the cutover,
-      not after. Check `next.config.js` for shadowing rules before adding routes.
+- [ ] **Export the newsletter signups from Squarespace** before the site comes down. The list is the
+      one thing on that account that cannot be rebuilt, and the forms here now point at Formspree,
+      so nothing new is landing there. Export, then decide where the list lives.
+- [ ] **Squarespace redirect map.** Every `illicitshadows.com/news/...` URL 404s the moment DNS
+      moves. Both announcements are rebuilt here, so the map is mostly old-news-URL to new-post-URL.
+      Check `next.config.js` for shadowing rules before adding routes.
 - [ ] **DNS cutover to illicitshadows.com.**
 - [ ] **Delete the stale Vercel project** once the new one holds the domain, so two projects are not
       building on every push.
-- [x] **Form endpoints.** Contact and newsletter wired to Formspree 16 Sep and verified end to end.
-- [ ] ~~Form endpoints~~ (superseded). They say so honestly rather than discarding input, but a
-      live site with a dead contact form loses enquiries. One provider (Formspree, Basin, or a Vercel
-      function) covers both; then two lines of JSON. Decide whether the list lives with Illicit
-      Shadows or ICAIE, since that affects consent language and who may mail it.
-- [ ] **AI crawler stance in `robots.js`.** It currently allows everything except `/specimen`. The
-      site publishes original investigative text; whether that belongs in training corpora is a
-      decision to make once, before indexing, not after.
-- [ ] **OG images per page.** Every share currently inherits one default card. For an audience that
-      circulates links professionally, this is the highest-visibility small job left.
+- [ ] **AI crawler stance in `robots.js`.** Currently allows everything except `/specimen`. The site
+      publishes original investigative text; whether that belongs in training corpora is a decision
+      to make once, before indexing.
+- [ ] **OG images per page.** Every share inherits one default card. For an audience that circulates
+      links professionally, the highest-visibility small job left.
 
 ## 2. Credibility gaps
 
-Things a knowledgeable reader would notice, in the order they would notice them.
-
 - [ ] **YouTube titles and descriptions.** The playlist is still "Ep. 01 | CHEMICAL CARTELS", videos
       use "Ep.1, Dispatch N", and the channel description opens "ILLICIT SHADOWS is a docuseries".
-      The framing we removed from the site is intact one click away, which undercuts the positioning
-      more than anything else outstanding.
+      The framing removed from the site is intact one click away.
 - [ ] **Sources for the narration figures.** The eleven narrations quote hard numbers (50,000
       Canadian fentanyl deaths since 2016, $45-113bn laundered annually, a 775% CBSA increase, TD
-      Bank's $3bn penalty) with no attribution. On a site with a `/sources` index and a chip on every
-      statistic, this is the one place the standard lapses.
+      Bank's $3bn penalty) with no attribution, on a site with a `/sources` index and a chip on every
+      other statistic.
 - [ ] **`/sources` URLs.** Ten of eleven documents have no link. Status chips without links read as
       assertion rather than evidence.
-- [ ] **Publish dates for the eleven shorts.** All eleven have `published: null`, so `uploadDate` is
+- [ ] **Publish dates for the eleven shorts.** All eleven are `published: null`, so `uploadDate` is
       missing from the VideoObject markup and Google will not treat them as video results.
-- [ ] **Check the narration against the films.** Transcribed from the supplied scripts; two changes
-      were made (dropped "Next Dispatch" trailers, normalised punctuation) that should be confirmed
-      against what is actually spoken.
+- [ ] **Check the narration against the films.** Transcribed from the supplied scripts, with two
+      changes (dropped "Next Dispatch" trailers, normalised punctuation) worth confirming against
+      what is actually spoken.
 - [ ] **Recut the trailer.** Pre-gold, and says "docuseries" on screen.
 - [ ] **Copy pass on `public/museum-viewer.html`**: still says SEASON 2, GOLDEN HANDCUFFS, JANUARY
-      2027. It is canvas text inside the viewer, so it is invisible to a site-wide grep.
+      2027. Canvas text inside the viewer, so invisible to a site-wide grep.
 - [ ] **Runtime for The Next Wave.** The only short without one.
 - [ ] **Confirm one short title.** Cover art reads FENTANYL'S DIRTY PROFITS; `films.json` says
       "Dirty Profits".
-- [x] **Instagram** removed from the footer 16 Sep and replaced with LinkedIn
-      (linkedin.com/company/illicitshadows). The `Brand.instagram` icon is kept in Icons.jsx in case
-      the account is revived; the handle mismatch no longer matters.
-- [x] **Stripe Payment Links** created and live on the site, 17 Sep: six tiers plus a
-      customers-choose Contributor link, with a `/donate` landing page.
-- [ ] **Museum shop.** `/museum` carries a Shop MIS band pointing at contact. Shopify Buy Buttons if
-      there is physical stock; Lemon Squeezy or Gumroad if digital only. Decide alongside Donate:
-      one merchant account, one tax treatment, one checkout look.
+- [ ] **Decide where `/sources` is linked.** Nothing in the nav or footer points at it since the
+      footer changed; it is still built, in the sitemap, and cited from the statistics.
+
+## 3. Money and audience systems
+
+- [ ] **Turn the shop waitlist into a shop.** `/shop` is live as a waitlist: nine concept pieces,
+      no checkout, no money. Next steps in order: sample one cap, one tee and one bomber through
+      Printful or Printify (about $120, two weeks); photograph the real pieces and replace the
+      renders; then add checkout. Shopify Starter (about $5/mo, buy buttons) or Stripe Payment Links
+      with manual fulfilment are both lighter than full Shopify at $39/mo, which only earns its keep
+      with inventory and variants. Caps are the strongest item: best margin, most reliable
+      decoration. The bomber may not be viable through print on demand at all.
 - [ ] **Paid Helix access.** Enterprise access is a sales conversation and a login, not a checkout
-      button. Decide what is actually being sold before building anything.
+      button. Decide what is being sold before building anything.
 
 ## 4. Content the site is waiting on
 
-- [ ] **Real newsroom posts.** Four entries, all real but thin: one Illicit Shadows announcement, the
-      Newswire launch, the production start, the Bogota keynote. The Squarespace feed may fill the
-      rest on the news Action's first run; otherwise export them.
-- [ ] **First pages of The Umbra Circle** for `/books/preview`, plus the subscribe destination.
+- [ ] **More newsroom posts.** Five entries: two full announcements, the Newswire launch, the Bogota
+      keynote, plus the ICAIE feed.
+- [ ] **First pages of The Umbra Circle** for `/books/preview`.
 - [ ] **Brochure PDF** for the museum, and the **Substack preview link** for the book.
 - [ ] **Hall photographs or copy**, which unlocks the hall preview dialog and `/museum/[hall]` pages.
-- [ ] **Matched founder portraits** from a single shoot. The current pair is honest but mismatched in
-      crop, background and lighting.
+- [ ] **Matched founder portraits** from a single shoot. The current pair is mismatched in crop,
+      background and lighting.
 
 ## 5. Design decisions still open
 
 - [ ] **The three-pillar loop.** The connector says "three things", not "three things that feed each
-      other", which is the actual claim. A straight line cannot show a loop.
-- [ ] **Animated hero.** Mocked 15 Sep in three levels; draw-then-settle is the version to build.
-      Requirements travel with it: `prefers-reduced-motion` gets the finished state, arcs must follow
-      the mobile crop, the traced arcs are decorative not geographic.
-- [ ] **Red or yellow Chemical Cartels covers.** Owner decision 15 Sep: **stay red**. Both variants
-      are archived under `public/images/variants/`; revisit only if there is a reason.
-- [ ] **Museum arrangement.** Three orders were mocked 15 Sep (A, B, C) to fix a black section
-      running into a black section. The hairline divider shipped 16 Sep solved the symptom, so this
-      is now a composition question rather than a bug.
+      other", which is the actual claim.
+- [ ] **A donate block on `/museum` itself.** The museum lost its own donor section when the shared
+      band landed, so the thing being funded has no dedicated ask on its own page.
+- [ ] **Animated hero.** Mocked 15 Sep; draw-then-settle is the version to build.
+      `prefers-reduced-motion` gets the finished state, arcs follow the mobile crop, arcs are
+      decorative not geographic.
+- [ ] **Museum section order.** Three arrangements mocked 15 Sep (A, B, C). The hairline divider
+      fixed the symptom, so this is now composition rather than a bug.
 
 ## 6. Housekeeping
 
 - [ ] **Dead CSS.** `.band-raised`, `.minigrid`, `.ppanel`, `.work-*`, `.head{` and friends survive
-      from the pre-editorial layout. Harmless, but they have caused two real bugs by colliding with
-      editorial class names. Remove in a commit where nothing else moves.
-- [ ] **Image budget.** `public/images` is 25MB+. Serve responsive sizes for the largest covers
-      before launch.
-- [ ] **Accessibility pass on real assistive tech.** Automated contrast is clean across all fourteen
+      from the pre-editorial layout. They have caused real bugs by colliding with editorial class
+      names. Remove in a commit where nothing else moves.
+- [ ] **Image budget.** `public/images` is 25MB+. Responsive variants exist for heroes only; the
+      covers are still full-size everywhere.
+- [ ] **Accessibility pass on real assistive tech.** Automated contrast is clean across seventeen
       routes; focus order and screen-reader flow have not been checked with an actual reader.
-- [ ] **Mobile pass on real devices**, not just an emulated frame.
+- [ ] **Mobile pass on real devices**, not an emulated frame.
 - [ ] **Analytics.**
 
 ## 7. Later, if wanted
