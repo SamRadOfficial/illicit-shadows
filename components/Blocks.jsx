@@ -197,12 +197,14 @@ export function Footer({ site }) {
             <Link className="brand small" href="/">ILLICIT <b>SHADOWS</b></Link>
             <p className="foot-statement">Media<span>.</span> Knowledge<span>.</span> Intelligence<span>.</span></p>
             <p className="foot-line">Everything is connected.</p>
+            <a className="foot-li" href={site.social.linkedin} target="_blank" rel="noopener noreferrer">
+              {Brand.linkedin} Connect on LinkedIn
+            </a>
           </div>
           <nav className="foot-links" aria-label="Footer">
             <Link className="ed-link" href="/contact">Partner with us {Arrow.upRight}</Link>
             <Link className="ed-link" href="/sources">Explore our sources {Arrow.upRight}</Link>
             <Link className="ed-link" href="/about">About the platform {Arrow.upRight}</Link>
-            <a className="ed-link" href={site.social.linkedin} target="_blank" rel="noopener noreferrer">Connect on LinkedIn {Arrow.upRight}</a>
           </nav>
         </div>
         <div className="foot-bottom">

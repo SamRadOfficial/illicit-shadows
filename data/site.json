@@ -28,32 +28,33 @@
    {
     "label": "$100",
     "name": "Supporter",
-    "url": ""
+    "url": "https://donate.stripe.com/8x29ATdOo71F0j49dgdAk00"
    },
    {
     "label": "$500",
     "name": "Patron",
-    "url": ""
+    "url": "https://donate.stripe.com/14AaEXcKkfyb2rc758dAk01"
    },
    {
     "label": "$1,000",
-    "name": "Founding donor",
-    "url": ""
+    "name": "Benefactor",
+    "url": "https://donate.stripe.com/28E9AT4dO4Txgi2758dAk02"
    },
    {
     "label": "$10,000",
-    "name": "Hall sponsor",
-    "url": ""
+    "name": "Underwriter",
+    "url": "https://donate.stripe.com/5kQ14n5hS71F2rc0GKdAk03"
    },
    {
     "label": "$25,000",
-    "name": "Exhibition sponsor",
-    "url": ""
+    "name": "Founding donor",
+    "url": "https://donate.stripe.com/eVq3cv9y85XBe9U3SWdAk04"
    }
   ],
   "custom": {
-   "label": "Choose an amount",
-   "url": ""
+   "label": "Contributor",
+   "name": "Choose your amount",
+   "url": "https://donate.stripe.com/8x27sLdOo4TxaXI4X0dAk05"
   }
  }
 }

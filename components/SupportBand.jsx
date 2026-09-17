@@ -12,7 +12,7 @@ import { SupportTiers } from './SupportTiers';
  */
 /* Routes where the ask would interrupt rather than invite: a short film's narration, the museum
    viewer, and the book extract are all mid-experience. */
-const QUIET = [/^\/film\/[^/]+\/[^/]+/, /^\/museum\/enter/, /^\/books\/preview/];
+const QUIET = [/^\/film\/[^/]+\/[^/]+/, /^\/museum\/enter/, /^\/books\/preview/, /^\/donate/];
 
 export function SupportBand() {
   const path = usePathname() || '';
@@ -26,7 +26,7 @@ export function SupportBand() {
         <SupportTiers />
         <p className="support-fine">Donations are not tax deductible.</p>
       </div>
-      <Link className="ed-btn" href="/contact?interest=museum">Become a founding contributor {Arrow.upRight}</Link>
+      <Link className="ed-btn" href="/donate">Become a founding contributor {Arrow.upRight}</Link>
     </section>
   );
 }

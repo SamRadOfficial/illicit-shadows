@@ -23,7 +23,7 @@ export function SupportTiers() {
         ))}
         {custom && (
           <a className="tier is-live is-custom" href={custom.url} target="_blank" rel="noopener noreferrer">
-            <b>{custom.label}</b><span>Any amount</span>
+            <b>{custom.label}</b><span>{custom.name || 'Choose your amount'}</span>
           </a>
         )}
       </div>

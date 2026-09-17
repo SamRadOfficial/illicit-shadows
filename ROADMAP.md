@@ -57,12 +57,8 @@ Things a knowledgeable reader would notice, in the order they would notice them.
 - [x] **Instagram** removed from the footer 16 Sep and replaced with LinkedIn
       (linkedin.com/company/illicitshadows). The `Brand.instagram` icon is kept in Icons.jsx in case
       the account is revived; the handle mismatch no longer matters.
-- [ ] **Stripe Payment Links for the six giving tiers.** Owner decision 16 Sep: contributions stay
-      in Illicit Shadows, LLC, and the site says they are not tax deductible. Blocked on dashboard
-      access only. Create links for $100, $500, $1,000, $10,000, $25,000 and one
-      "customers choose what to pay"; set the call to action to Donate and the success URL to the
-      home page; paste them into `support.tiers[].url` and `support.custom.url`. Start the account
-      review early: Stripe adds checks for new donation accounts.
+- [x] **Stripe Payment Links** created and live on the site, 17 Sep: six tiers plus a
+      customers-choose Contributor link, with a `/donate` landing page.
 - [ ] **Museum shop.** `/museum` carries a Shop MIS band pointing at contact. Shopify Buy Buttons if
       there is physical stock; Lemon Squeezy or Gumroad if digital only. Decide alongside Donate:
       one merchant account, one tax treatment, one checkout look.

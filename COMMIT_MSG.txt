@@ -1,7 +1,25 @@
-Add the Stripe donate setup steps
+Live donate links, a /donate page, and footer and nav fixes
 
-- SETUP-DONATIONS-STEPS.md: the six links to create, the exact Stripe options
-  (call to action set to Donate, redirect back to the site, customers-choose for
-  the sixth), where to paste them, and how to verify.
+Donations
+- The six Stripe links are live in site.json: Supporter, Patron, Benefactor,
+  Underwriter, Founding donor, and the customers-choose Contributor.
+- New /donate page: hero, the six tiers on yellow, "where it goes" in three
+  parts (investigations, museum, products and programming), and a dark band for
+  underwriting and institutional partnerships. Added to the sitemap.
+- The support band and the museum CTA now point at /donate rather than the
+  contact form, and the band suppresses itself on /donate.
 
-No site changes in this commit.
+Contact
+- Removed "Expect a reply within a few working days" from under the button.
+- Fixed the confirmation: .cform-alert is a dark panel, but an .s-paper override
+  was forcing its text black, so on the cream contact page it was black on
+  near-black. Text is white on every surface now; measured 18.1:1.
+
+Header and footer
+- Contact in the nav is a yellow button rather than a text link.
+- "Connect on LinkedIn" becomes a bordered button under "Everything is
+  connected." in the footer, with the LinkedIn mark, and is removed from the
+  quiet link list.
+
+Verified: build 30 pages, 148 references present. All six tier URLs render,
+/donate checked at 1440 and 390 with no overflow.

@@ -110,9 +110,6 @@ export function ContactForm() {
 
       <div className="cform-foot">
         <button className="btn btn-y" type="submit" disabled={state === 'sending'}>{state === 'sending' ? 'Sending...' : 'Send message'}</button>
-        <p className="cform-note">
-          Expect a reply within a few working days.
-        </p>
       </div>
 
       {state === 'noendpoint' && <p className="cform-alert" role="status">The form is not connected
