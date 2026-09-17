@@ -1,26 +1,14 @@
-Add /shop as a waitlist, with the collection and a museum teaser
+Shop: five new pieces, back views, and a heading that will not go stale
 
-- New /shop: hero, the three-cap image as the lead, nine concept pieces, and a
-  waitlist that captures which pieces someone wants and their size. No checkout,
-  no money, nothing promised on a date: a pre-order is a contract, and none of
-  this has been manufactured.
-- Every image is labelled a design concept rather than a photograph, twice on
-  the page and again in the museum teaser. They are renders; print and
-  embroidery land differently, and the first run needs photographing before
-  anything is sold from these.
-- Waitlist posts to the newsletter endpoint with a subject naming the pieces, so
-  the list arrives sorted by demand. Honeypot and honest unconnected state, as
-  the other forms.
-- Museum shop band becomes a teaser: the caps image beside the copy, with a Shop
-  button.
-- Footer gains Shop after Donate. Not in the main nav: see the note below.
-- Fix: form field labels were --dim at 2.9:1 on the slate surface. Now --fg at
-  0.85 opacity.
+- Added the notebook, sling, MIS tote and Illicit Shadows tote to the
+  collection, taking it from nine pieces to thirteen. All appear as waitlist
+  options too.
+- Bombers and the Illicit Shadows tote now show front and back side by side.
+  Items with one view keep a single image, so the grid stays even.
+- "Nine pieces, one argument" becomes "Built from the same evidence": the old
+  heading needed editing every time a piece was added or dropped.
+- Removed "Nothing here has been produced yet"; "Design concepts" stays on the
+  lead image, in the collection note and on the museum teaser.
 
-Docs
-- ROADMAP: the museum-shop item becomes a sequence, sample then photograph then
-  checkout, with the platform options and their real costs.
-
-Verified: build 34 pages, 170 references present. Nine products, nine chips, a
-submit intercepted end to end, no overflow at 390, contrast clean on /shop,
-/contact and /museum.
+Verified: build 34 pages, 184 references present. Thirteen products, thirteen
+waitlist chips, three with back views, no 4xx, no overflow at 390.

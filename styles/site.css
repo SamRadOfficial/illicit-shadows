@@ -523,7 +523,9 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .shop-lead figcaption{margin-top:12px}
 .shopitems{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.6vw,34px)}
 .shopitems article{border-top:1px solid var(--rule);padding-top:16px}
-.shopitems img{width:100%;aspect-ratio:1;object-fit:cover;display:block;margin-bottom:14px;background:#111}
+.shop-views{display:grid;grid-template-columns:1fr;gap:6px;margin-bottom:14px}
+.shopitems article.has-back .shop-views{grid-template-columns:1fr 1fr}
+.shopitems img{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:#111}
 .shopitems h3{font-size:20px}
 .shopitems p{font-size:14px;margin-top:8px}
 .shopteaser{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,3.4vw,48px);align-items:center}

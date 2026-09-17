@@ -91,8 +91,7 @@ export default function Museum() {
           <h2>Take the museum<br /><em>home with you.</em></h2>
           <p>Every purchase funds the exhibitions, the research behind them, and free public access
             to the collection.</p>
-          <p className="fine">Design concepts. Nothing is on sale yet; the waitlist decides what gets
-            made first.</p>
+          <p className="fine">Design concepts. The waitlist decides what gets made first.</p>
           <div className="actions"><Link className="ed-btn" href="/shop">Shop {Arrow.upRight}</Link></div>
         </div>
       </section>

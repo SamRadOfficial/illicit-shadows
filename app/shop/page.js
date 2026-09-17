@@ -18,8 +18,12 @@ const PRODUCTS = [
   { name: 'Illicit Shadows tee', image: '/images/shop/tee-is', line: 'The wordmark, small and left.' },
   { name: 'Everything is connected tee', image: '/images/shop/tee-connected', line: 'Set in alert red.' },
   { name: 'Convergence network tee', image: '/images/shop/tee-network', line: 'The convergence map as a line drawing.' },
-  { name: 'MIS bomber', image: '/images/shop/bomber-mis', line: 'Embroidered eclipse on a black bomber.' },
-  { name: 'Illicit Shadows bomber', image: '/images/shop/bomber-is', line: 'Wordmark on the chest.' },
+  { name: 'MIS bomber', image: '/images/shop/bomber-mis', back: '/images/shop/bomber-mis-back', line: 'Embroidered eclipse at the chest, wordmark across the back.' },
+  { name: 'Illicit Shadows bomber', image: '/images/shop/bomber-is', back: '/images/shop/bomber-is-back', line: 'Wordmark front and back.' },
+  { name: 'MIS eclipse tote', image: '/images/shop/tote-mis', line: 'Heavy canvas, eclipse and full museum name.' },
+  { name: 'Illicit Shadows tote', image: '/images/shop/tote-is', back: '/images/shop/tote-is-back', line: 'Wordmark one side, the network the other.' },
+  { name: 'Illicit Shadows sling', image: '/images/shop/sling', line: 'Crossbody, for a notebook and a recorder.' },
+  { name: 'Everything is connected notebook', image: '/images/shop/notebook', line: 'Hardback, ribbon marker, the network on the cover.' },
 ];
 
 export default function Shop() {
@@ -33,20 +37,23 @@ export default function Shop() {
       <section className="wrap s s-ink">
         <figure className="shop-lead">
           <Pic base="/images/shop/hats-set" alt="Three MIS caps: Illicit Shadows, the eclipse, and Everything is connected" priority />
-          <figcaption className="fine">Design concepts. Nothing here has been produced yet.</figcaption>
+          <figcaption className="fine">Design concepts.</figcaption>
         </figure>
       </section>
 
       <section className="wrap s s-paper" id="collection">
         <div className="intro">
-          <div><span className="kicker">The first collection</span><h2>Nine pieces,<br /><em>one argument.</em></h2></div>
+          <div><span className="kicker">The first collection</span><h2>Built from<br /><em>the same evidence.</em></h2></div>
           <p>Every purchase will fund the investigations, the museum, and the programming around them,
             the same as a contribution.</p>
         </div>
         <div className="shopitems">
           {PRODUCTS.map(p => (
-            <article key={p.name}>
-              <Pic base={p.image} alt={`${p.name}, design concept`} />
+            <article key={p.name} className={p.back ? 'has-back' : undefined}>
+              <div className="shop-views">
+                <Pic base={p.image} alt={`${p.name}, front, design concept`} />
+                {p.back && <Pic base={p.back} alt={`${p.name}, back, design concept`} />}
+              </div>
               <h3>{p.name}</h3>
               <p>{p.line}</p>
             </article>
