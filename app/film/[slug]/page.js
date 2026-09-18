@@ -36,7 +36,6 @@ export default async function Investigation({ params }) {
             one at a time. A playlist button here opened a player people then had to dismiss. */}
         <div className="wide">
           <Pic base={f.image} alt={`${f.title} title card`} priority />
-          {!live && <span className="play-marker">In production</span>}
         </div>
         <div className="detail-meta">
           <span>{f.places.join(' · ')} · {f.years}</span>
@@ -64,7 +63,7 @@ export default async function Investigation({ params }) {
       {shorts.length > 0 && <section className="wrap s s-ink" id="shorts">
         <span className="kicker">{f.form}</span>
         <h2>{f.form === 'Eleven short films' ? 'Eleven ways into the story.' : 'The short films.'}</h2>
-        {/* Rows keep the 320px still and the labelled Play control outside the artwork (owner
+        {/* Rows keep the 320px still and the labeled Play control outside the artwork (owner
             decision, 14 Sep): the covers appear nowhere else and their titles are burned in. */}
         <div className="short-index">
           {shorts.map(s => (

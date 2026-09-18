@@ -5,7 +5,10 @@ import { Pic, Hero } from '../../components/Blocks';
 import { Arrow } from '../../components/Icons';
 import { Pillars } from '../../components/Pillars';
 export const metadata = {
-  ...og('about'), title: 'About' };
+  .../* per page: card, description, canonical */og('about', {
+    description: 'Illicit Shadows, LLC brings together documentary journalism, a knowledge institution, and a modeling system. Built with ICAIE and RADOC.',
+    path: '/about',
+  }), title: 'About' };
 
 const SECTORS = [
   ['Industry', ['Pharmaceuticals', 'Luxury retail', 'Automotive', 'Food, alcohol, tobacco', 'Electronics and e-commerce', 'Media and entertainment', 'Sports and frontier tech', 'Industry associations', 'Chambers of commerce']],

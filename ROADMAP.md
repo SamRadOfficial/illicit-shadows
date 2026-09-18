@@ -76,6 +76,9 @@ blocks a launch.
 
 ## 4. Content the site is waiting on
 
+- [ ] **Old Squarespace URLs beyond the sitemap.** The sitemap gave the real paths and they are in
+      `vercel.json`. Anything linked from a deck, a press release or the ICAIE site that is not in
+      the sitemap will still 404: send any you know of.
 - [ ] **More newsroom posts.** Five entries: two full announcements, the Newswire launch, the Bogota
       keynote, plus the ICAIE feed.
 - [ ] **First pages of The Umbra Circle** for `/books/preview`.
@@ -86,6 +89,9 @@ blocks a launch.
 
 ## 5. Design decisions still open
 
+- [ ] **Quotes for the Illicit Gold pre-production post.** Published 1 Sep as a draft with no
+      quotes, because attributing words to a named person requires those words. Two or three lines
+      each from Sam and David and it is finished.
 - [ ] **The three-pillar loop.** The connector says "three things", not "three things that feed each
       other", which is the actual claim.
 - [ ] **A donate block on `/museum` itself.** The museum lost its own donor section when the shared

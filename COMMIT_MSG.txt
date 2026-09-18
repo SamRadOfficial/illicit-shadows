@@ -1,9 +1,11 @@
-Shop: align the waitlist buttons across each row
+Intelligence: remove the status section
 
-- Product cards are flex columns with the control pinned to the bottom, so
-  cards stretch to the tallest in their row and the buttons line up whatever the
-  description length. Previously a two-line description pushed its button 14px
-  below its neighbours.
+- The "In development" block and its styles are gone.
 
-Verified: build 34 pages, 194 references present. Every row in all five groups
-checked at 1440 and 390: no row has buttons at differing offsets.
+The other changes from that review stay: "Helix briefing" rather than "Helix
+access" on the contact routes, and the softened build claims (Helix.AI "is being
+built to apply", reinforcement "will explore"). Those are now the only place the
+page signals that Helix is not yet an operational product.
+
+Verified: build 34 pages, 194 references present. Page alternates
+white, black, white, slate, white, slate, yellow.

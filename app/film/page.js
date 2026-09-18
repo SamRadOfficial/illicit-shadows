@@ -4,9 +4,13 @@ import site from '../../data/site.json';
 import films from '../../data/films.json';
 import slate from '../../data/slate.json';
 import { Pic, Hero } from '../../components/Blocks';
+import { VideoEmbed } from '../../components/VideoEmbed';
 import { Arrow, Play } from '../../components/Icons';
 export const metadata = {
-  ...og('film'), title: 'Film' };
+  .../* per page: card, description, canonical */og('film', {
+    description: 'Field investigations into illicit economies. Chemical Cartels is eleven short films on the fentanyl supply chain; Illicit Gold is in production for 2026-2027.',
+    path: '/film',
+  }), title: 'Film' };
 
 export default function Film() {
   const released = films.find(f => f.status === 'streaming');
@@ -81,15 +85,14 @@ export default function Film() {
       </section>
 
       <section className="wrap s s-slate compact feature" id="trailer">
-        <a className="wide" href={site.social.youtube} target="_blank" rel="noopener noreferrer">
-          <Pic base="/images/film-trailer" alt="Illicit Shadows official trailer" />
-          <span className="play-marker">{Play} YouTube</span>
-        </a>
+        <VideoEmbed modal image="/images/film-trailer" alt="Illicit Shadows official trailer"
+                    id={site.trailer?.youtubeId} title="Illicit Shadows: official trailer"
+                    channel={site.social.youtube} />
         <div>
           <span className="kicker">Official trailer / 2024 cut</span>
           <h2>A first look<br /><em>into the shadows.</em></h2>
           <p>Made before the gold shoot, the trailer introduces the fentanyl investigation and the wider world behind it.</p>
-          <a className="ed-link" href={site.social.youtube} target="_blank" rel="noopener noreferrer">Watch on YouTube {Arrow.upRight}</a>
+          <a className="ed-link" href={site.trailer?.url} target="_blank" rel="noopener noreferrer">Watch on YouTube {Arrow.upRight}</a>
         </div>
       </section>
     </>

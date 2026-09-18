@@ -255,7 +255,7 @@ export function Hero({ img, alt, eyebrow, title, lede, source, children, variant
 }
 
 /** Email signup. Honest placeholder until `site.forms.signup` is set: no reload, no discarded input. */
-export function Signup({ endpoint, center = false, subscribe = true }) {
+export function Signup({ endpoint, center = false, subscribe = true, interest, label, note }) {
   const [state, setState] = useState('');
   const [busy, setBusy] = useState(false);
   /* Same contract as the contact form: post with fetch, confirm in place, and never pretend an
@@ -264,9 +264,11 @@ export function Signup({ endpoint, center = false, subscribe = true }) {
     e.preventDefault();
     if (!endpoint) { setState('Signup opens at launch. Your address was not sent anywhere.'); return; }
     const form = e.currentTarget;
+    const data = new FormData(form);
+    if (interest) data.set('_subject', `Newsletter signup: ${interest}`);
     setBusy(true);
     try {
-      const res = await fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      const res = await fetch(endpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
       if (!res.ok) throw new Error(String(res.status));
       form.reset();
       setState('Thank you. Check your inbox to confirm.');
@@ -278,7 +280,9 @@ export function Signup({ endpoint, center = false, subscribe = true }) {
     <>
       <form className={`signup${center ? ' center' : ''}`} action={endpoint || undefined} method="post" onSubmit={onSubmit}>
         <input type="email" name="email" placeholder="Email address" aria-label="Email address" required />
-        <button type="submit" disabled={busy}>{busy ? 'Sending...' : 'Sign up for updates'}</button>
+        {/* The interest travels as a field as well as in the subject, so it survives any export. */}
+        {interest && <input type="hidden" name="interest" value={interest} />}
+        <button type="submit" disabled={busy}>{busy ? 'Sending...' : (label || 'Sign up for updates')}</button>
       </form>
       {state && <p className="signup-note" style={center ? { textAlign: 'center' } : undefined}>{state}</p>}
       {/* Email leads, subscribe follows. An email list is an audience you own and can take to a

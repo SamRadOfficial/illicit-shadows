@@ -1,13 +1,19 @@
 import Link from 'next/link';
 import { og } from './../lib/og';
 
-export const metadata = { ...og('home') };
 import site from '../data/site.json';
 import films from '../data/films.json';
 import books from '../data/books.json';
 import { Pic, Hero, Signup } from '../components/Blocks';
 import { Arrow } from '../components/Icons';
 import { Pillars } from '../components/Pillars';
+
+export const metadata = {
+  ...og('home', {
+    description: 'Investigations into the $6 trillion shadow economy: documentary films, a digital museum, and a predictive convergence system. ICAIE and RADOC.',
+    path: '/',
+  }),
+};
 
 const released = films.find(f => f.status === 'streaming');
 const inProduction = films.find(f => f.status === 'in-production');

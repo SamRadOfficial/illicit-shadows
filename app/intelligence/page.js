@@ -5,7 +5,10 @@ import { Arrow } from '../../components/Icons';
 import { CascadeMaps } from '../../components/CascadeMaps';
 import { Convergence } from '../../components/Convergence';
 export const metadata = {
-  ...og('intelligence'), title: 'Intelligence · MISTIC and Project Helix' };
+  .../* per page: card, description, canonical */og('intelligence', {
+    description: 'MISTIC and Project Helix: a predictive convergence system in development, modeling how criminal, political and economic networks reorganize after disruption.',
+    path: '/intelligence',
+  }), title: 'Intelligence · MISTIC and Project Helix' };
 
 const METHOD = [
   ['Gather', 'MIS assets, artifacts, and mapping enter the intelligence layer.'],

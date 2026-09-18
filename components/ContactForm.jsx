@@ -16,7 +16,7 @@ const ROUTES = [
   ['investment', 'Investment'],
   ['film', 'Film'],
   ['museum', 'Museum'],
-  ['helix', 'Helix'],
+  ['helix', 'Helix briefing'],
   ['advisory', 'Advisory and briefings'],
   ['press', 'Press enquiry'],
   ['other', 'Something else'],

@@ -517,6 +517,9 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .s .support-fine,.support-fine{margin-top:14px;font-family:var(--mono);font-size:10px;line-height:1.5;letter-spacing:.04em;opacity:.7}
 .cform-alert.is-ok{border-color:var(--ac)}
 
+.notify{margin-top:22px;max-width:420px}
+.notify .signup{margin-top:10px}
+
 /* Shop */
 .shop-lead{margin:0}
 .shop-lead img{width:100%;height:auto;display:block;border:1px solid var(--rule)}

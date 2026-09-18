@@ -4,13 +4,16 @@ import { Hero } from '../../components/Blocks';
 import { Arrow } from '../../components/Icons';
 import { ContactForm } from '../../components/ContactForm';
 export const metadata = {
-  ...og('contact'), title: 'Contact' };
+  .../* per page: card, description, canonical */og('contact', {
+    description: 'Work with Illicit Shadows: investment, film partnerships, the museum, Helix briefings, and advisory. Washington, DC.',
+    path: '/contact',
+  }), title: 'Contact' };
 
 const OFFERS = [
   ['Investment', 'Support our cause and mission.'],
   ['Film', 'Collaborate on an investigation or across the slate, as executive producer or sponsor.'],
   ['Museum', 'Back the Museum of Illicit Shadows as a founding donor or institutional partner.'],
-  ['Helix', 'Intelligence access and briefings for government, international organizations, and industry.'],
+  ['Helix briefing', 'A session on a specific exposure, for government, international organizations, and industry. Project Helix itself is in development.'],
   ['Advisory and briefings', 'Strategic guidance on illicit-economy exposure and convergence risk.'],
 ];
 

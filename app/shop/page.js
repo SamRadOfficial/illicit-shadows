@@ -5,12 +5,15 @@ import { ShopPicker } from '../../components/ShopPicker';
 import { Arrow } from '../../components/Icons';
 
 export const metadata = {
-  ...og('shop'),
+  .../* per page: card, description, canonical */og('shop', {
+    description: 'The first Museum of Illicit Shadows collection: caps, tees, outerwear and field kit. Nothing is on sale yet; join the waitlist.',
+    path: '/shop',
+  }),
   title: 'Shop',
   description: 'The first Museum of Illicit Shadows collection: caps, tees and outerwear. Join the waitlist.',
 };
 
-/* Concept designs, not stock. Each is labelled as such: nobody has held one of these yet, and the
+/* Concept designs, not stock. Each is labeled as such: nobody has held one of these yet, and the
    site should not imply otherwise. */
 
 

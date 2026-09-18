@@ -5,7 +5,10 @@ import books from '../../data/books.json';
 import { Pic, Hero, Signup } from '../../components/Blocks';
 import { Arrow } from '../../components/Icons';
 export const metadata = {
-  ...og('books'), title: 'Books' };
+  .../* per page: card, description, canonical */og('books', {
+    description: 'The Illicit Shadows Chronicles: geopolitical crime fiction by Sam Rad and David M. Luna. The Umbra Circle, book one, coming late 2026.',
+    path: '/books',
+  }), title: 'Books' };
 
 export default function Books() {
   const [one, ...rest] = books;
@@ -29,6 +32,11 @@ export default function Books() {
           <p className="fine">Washington, D.C. &middot; London &middot; Rome &middot; Mexico City</p>
           <p className="byline">By Sam Rad and David M. Luna</p>
           <Link className="ed-link" href={one.preview}>Read the full description {Arrow.upRight}</Link>
+          <div className="notify">
+            <p className="fine">Coming late 2026.</p>
+            <Signup endpoint={site.forms?.signup} subscribe={false}
+                    interest="The Umbra Circle launch" label="Notify me when Book 1 launches" />
+          </div>
         </div>
       </section>
 

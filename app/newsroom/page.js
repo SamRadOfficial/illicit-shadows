@@ -5,7 +5,10 @@ import icaie from '../../data/newsroom-icaie.json';
 import { Hero, Signup } from '../../components/Blocks';
 import { NewsIndex } from '../../components/NewsIndex';
 export const metadata = {
-  ...og('newsroom'), title: 'Newsroom' };
+  .../* per page: card, description, canonical */og('newsroom', {
+    description: 'Announcements, dispatches and press from the Illicit Shadows investigations, the Museum of Illicit Shadows, and ICAIE.',
+    path: '/newsroom',
+  }), title: 'Newsroom' };
 
 export default function Newsroom() {
   return (

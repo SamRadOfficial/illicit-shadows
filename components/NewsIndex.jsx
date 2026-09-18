@@ -28,7 +28,11 @@ function Meta({ n }) {
 export function NewsIndex({ items }) {
   const [source, setSource] = useState('all');
   const shown = items.filter(n => source === 'all' || n.source === source);
-  const [lead, ...rest] = shown;
+  /* The newsroom leads with our own work. Partner coverage still appears, below it, in date
+     order: the newest ICAIE item was otherwise taking the feature slot on our own site. */
+  const own = shown.find(n => n.source === 'illicit-shadows');
+  const lead = own || shown[0];
+  const rest = shown.filter(n => n !== lead);
   return (
     <>
       <div className="news-controls" role="group" aria-label="Filter newsroom by source">

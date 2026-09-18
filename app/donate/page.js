@@ -6,7 +6,10 @@ import { SupportTiers } from '../../components/SupportTiers';
 import { Arrow } from '../../components/Icons';
 
 export const metadata = {
-  ...og('donate'),
+  .../* per page: card, description, canonical */og('donate', {
+    description: 'Support the investigations, the Museum of Illicit Shadows, and the programming around them. Contributions from $100.',
+    path: '/donate',
+  }),
   title: 'Donate',
   description: 'Support the investigations, the Museum of Illicit Shadows, and the new products and programming built around them.',
 };

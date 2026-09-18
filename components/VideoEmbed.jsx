@@ -60,7 +60,7 @@ export function VideoEmbed({ id, list, image, alt, title, channel, className = '
     </button>
   );
 
-  /* Row variant: nothing sits on the artwork. The poster and a labelled Play control are returned
+  /* Row variant: nothing sits on the artwork. The poster and a labeled Play control are returned
      as siblings in a fragment so the parent grid can place them in different columns, and both
      open the same lightbox. Covers are the only place this art appears on the site. */
   const control = variant === 'row' ? (

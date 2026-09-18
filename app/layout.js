@@ -15,7 +15,7 @@ export const metadata = {
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
   },
   title: { default: 'Illicit Shadows', template: '%s · Illicit Shadows' },
-  description: site.boilerplate,
+  description: site.boilerplate,   // fallback only: every page sets its own
   openGraph: { siteName: 'Illicit Shadows', type: 'website', images: [{ url: '/og/home.jpg', width: 1200, height: 630 }] },
   twitter: { card: 'summary_large_image', images: ['/og/home.jpg'] },
 };
