@@ -128,87 +128,85 @@ SHARED = """
 
 RECOMMEND = 'B'
 
-TITLE = 'Founding Corporate Patron: a banner for /museum'
-INTRO = ('David\'s note: tiers, a donor recognition wall, and a route to "Start a conversation". '
-         'Three ways to say it. All three link to the contact form rather than to a checkout, '
-         'because institutional money arrives by agreement, not by card.')
+TITLE = 'Intelligence: one closing band'
+INTRO = ('Today the page ends with "Bring the network into view" and carries a separate Helix.AI beta '
+         'signup higher up. Three ways to merge them into one closing band, all on slate, all where '
+         'the current CTA sits.')
 
-TIERS = [('Diamond', 'Underwrites a hall'), ('Gold', 'Underwrites an exhibition'), ('Silver', 'Supports the programme')]
-WALL  = [('Corporate sponsors', ''), ('Foundations', ''), ('Individuals', '')]
+def band(inner, cls='s-slate'):
+    return f'<div class="s {cls} cpad">{inner}</div>'
 
-def band(inner, surface='s-slate'):
-    return f'<div class="s {surface} mpad">{inner}</div>'
-
-# A: one band, tiers named, no amounts
-tiers_a = ''.join(f'<div class="mt"><b>{n}</b><span>{d}</span></div>' for n, d in TIERS)
-PAGE_A = band(f'''<p class="kicker">Founding corporate patrons</p>
-<h2 class="mh">Put your name<br><em>on the record.</em></h2>
-<p class="mlede">Three levels of institutional support, each underwriting a named part of the museum.
-Recognition on the donor wall: corporate sponsors, foundations, and individuals.</p>
-<div class="mtiers">{tiers_a}</div>
-<a class="ed-btn">Start a conversation</a>''')
-
-# B: tiers plus the wall as a visible thing
-wall_b = ''.join(f'<div class="mw"><span>{n}</span><i>Reserved</i></div>' for n, _ in WALL)
-PAGE_B = band(f'''<div class="mgrid">
+PAGE_A = band('''<div class="cgrid">
   <div>
-    <p class="kicker">Founding corporate patrons</p>
-    <h2 class="mh">Underwrite<br><em>a hall.</em></h2>
-    <p class="mlede">Institutional support at three levels, each tied to a named part of the museum,
-    and recognised on the donor wall when the doors open in 2027.</p>
-    <a class="ed-btn">Start a conversation</a>
+    <h2 class="ch">Bring the network<br><em>into view.</em></h2>
+    <p class="cl">Advisory, briefings, and Helix.AI for governments, international organizations,
+    and industry.</p>
   </div>
-  <div>
-    <div class="mtiers col">{tiers_a}</div>
-    <p class="kicker wallk">The donor wall</p>
-    <div class="mwall">{wall_b}</div>
+  <div class="cact">
+    <a class="ed-btn">Request a briefing &#8599;</a>
+    <form class="cform2"><input type="email" placeholder="Email address"><button class="btn2">Notify me when the beta opens</button></form>
   </div>
 </div>''')
 
-# C: quiet line, no tiers on the page
-PAGE_C = band('''<div class="mgrid">
-  <div><p class="kicker">Institutional support</p>
-  <h2 class="mh">Founding corporate<br><em>patrons.</em></h2></div>
-  <div><p class="mlede">Corporate sponsors, foundations and individuals underwrite the halls, the
-  research behind them, and free public access. Levels and recognition are agreed case by case.</p>
-  <a class="ed-link">Start a conversation &#8599;</a></div>
-</div>''', 's-ink')
+PAGE_B = band('''<div class="cgrid">
+  <div>
+    <h2 class="ch">Bring the network<br><em>into view.</em></h2>
+    <p class="cl">Advisory and briefings for governments, international organizations, and industry,
+    today. Helix.AI is in development.</p>
+    <a class="ed-btn">Request a briefing &#8599;</a>
+  </div>
+  <div class="cbeta">
+    <p class="kicker">Helix.AI</p>
+    <p class="cb">Be there when the beta opens.</p>
+    <form class="cform2"><input type="email" placeholder="Email address"><button class="btn2">Notify me</button></form>
+  </div>
+</div>''')
+
+PAGE_C = band('''<h2 class="ch ctr">Bring the network into view.</h2>
+<p class="cl ctr">Advisory and briefings today. Helix.AI when the beta opens.</p>
+<div class="crow">
+  <a class="ed-btn">Request a briefing &#8599;</a>
+  <span class="cor">or</span>
+  <form class="cform2 inline"><input type="email" placeholder="Email address"><button class="btn2">Notify me about the beta</button></form>
+</div>''')
 
 SHARED = """
-.mpad{padding:38px 32px}
-.mh{font-size:clamp(28px,3.4vw,42px);margin:6px 0 12px}
-.mlede{font-size:16px;max-width:54ch;margin-bottom:22px}
-.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
-.mtiers{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
-.mtiers.col{flex-direction:column;gap:6px;margin-bottom:26px}
-.mt{border:1px solid var(--rule);padding:12px 16px;min-width:190px}
-.mt b{display:block;font-family:var(--disp);font-size:19px;letter-spacing:.02em}
-.mt span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;margin-top:3px}
-.wallk{margin-top:4px}
-.mwall{display:grid;gap:2px}
-.mw{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--rule);padding:9px 0;font-size:14.5px}
-.mw i{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.5}
-@media(max-width:820px){.mgrid{grid-template-columns:1fr;gap:28px}}
+.cpad{padding:40px 32px}
+.ch{font-size:clamp(28px,3.4vw,42px);margin:0 0 12px}
+.cl{font-size:16px;max-width:52ch;margin-bottom:20px}
+.cgrid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start}
+.cact{display:grid;gap:18px;justify-items:start}
+.cbeta{border-left:1px solid var(--rule);padding-left:28px}
+.cb{font-family:var(--disp);font-size:24px;line-height:1.1;margin:6px 0 16px;text-transform:uppercase}
+.cform2{display:grid;gap:8px;width:100%;max-width:340px}
+.cform2 input{background:rgba(0,0,0,.35);border:1px solid var(--rule);color:var(--fg);padding:12px 14px;font-size:15px}
+.btn2{background:none;border:1px solid var(--signal);color:var(--signal);font-family:var(--mono);
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:12px 14px;cursor:pointer}
+.btn2:hover{background:var(--signal);color:#0e1211}
+.ctr{text-align:center;margin-left:auto;margin-right:auto}
+.crow{display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:wrap}
+.cor{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
+.cform2.inline{grid-template-columns:1fr auto;max-width:520px}
+@media(max-width:820px){.cgrid{grid-template-columns:1fr;gap:28px}.cbeta{border-left:0;padding-left:0;border-top:1px solid var(--rule);padding-top:24px}}
 """
 
 OPTIONS = [
-    ('A', 'One band, tiers named',
-     'Diamond, Gold and Silver as a row, each saying what it underwrites rather than what it costs. '
-     'The donor wall is mentioned in the copy. Smallest build, and it reads as an ask rather than a '
-     'price list. It also names three tiers the site cannot yet honour: a Diamond patron will ask '
-     'what a hall costs, and there is no answer on the page.',
+    ('A', 'Two actions, stacked',
+     'The existing copy, with the beta field under the briefing button. Simplest merge, and the one '
+     'closest to what is there now. The two asks compete: a reader has to decide between a button '
+     'and a form with nothing telling them which applies to them.',
      PAGE_A, SHARED),
-    ('B', 'Tiers and the wall, side by side  &middot;  MY PICK',
-     'The same tiers, plus the donor wall shown as a real structure with its three categories '
-     'waiting to be filled. "Reserved" is honest while there are no names, and it makes the '
-     'recognition concrete, which is what a corporate funder is actually buying. Largest of the '
-     'three, and the one that becomes a real page once names exist.',
+    ('B', 'Split by what exists  &middot;  MY PICK',
+     'Left: advisory and briefings, available today, with the button. Right, behind a rule: Helix.AI, '
+     'in development, with the notify field. The division is the honest one, and it answers the '
+     'question the reviewer raised, what is real now versus what is coming, without a separate '
+     'status section.',
      PAGE_B, SHARED),
-    ('C', 'A quiet line, no tiers',
-     'States that corporate sponsors, foundations and individuals underwrite the work, and that '
-     'levels are agreed case by case. Promises nothing the site cannot deliver today, and it is the '
-     'version that needs no decisions about what Diamond means. Weakest as a prompt: a funder '
-     'reading it learns that support exists, not that they are being asked.',
+    ('C', 'Centred, one line, two routes',
+     'Compact and symmetrical, the briefing button and the beta field side by side under one '
+     'heading. Takes the least height, but centring breaks the left-aligned rhythm of every other '
+     'section, and the two routes read as equal when one is a sales conversation and the other is a '
+     'mailing list.',
      PAGE_C, SHARED),
 ]
 blocks, extra = [], []

@@ -1,14 +1,14 @@
-Museum: one action in the prototype section
+Intelligence: one closing band, split by what exists
 
-- Removed the exhibition-updates signup. The section now offers only "Enter the
-  museum concept", which is the thing to do there; two stacked yellow controls
-  read as one broken button anyway.
-- Dropped the Signup and site imports, which the page no longer uses.
+- The standalone Helix.AI beta section is gone. Its notify block now sits inside
+  the closing band, behind a rule, with the briefing on the left.
+- Copy follows the split: "Advisory and briefings for governments, international
+  organizations, and industry, today. Helix.AI is in development." That replaces
+  "Advisory, briefings, and Helix access", which implied something purchasable.
+- The notify form still posts interest=Helix.AI beta, so those signups stay
+  sorted from book and museum ones. Verified in the payload.
+- On mobile the rule becomes a top border and the two stack, briefing first.
 
-Note: the museum page now has no exhibition-openings signup at all. The Umbra
-Circle and Helix.AI notify blocks are unaffected. If you want exhibition updates
-captured somewhere, the patron section or the halls block are better homes than
-a prototype CTA.
-
-Verified: build 34 pages, 194 references present. One action in the section, no
-signup anywhere on the page.
+Verified: build 34 pages, 194 references present. Contrast measured against each
+element's real backdrop: nothing below 4.5, lowest is 10.6. No overflow at 390.
+Page alternates white, black, white, slate, white, slate, yellow.

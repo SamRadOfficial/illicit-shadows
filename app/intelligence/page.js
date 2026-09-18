@@ -47,21 +47,6 @@ export default function Intelligence() {
           mechanisms, which the brief marks TBD. */}
       {/* Two columns: the claim and the question on the left, the explanation on the right. A
           single measure left half the section empty. */}
-      <section className="wrap s s-slate two" id="beta">
-        <div>
-          <span className="kicker">Helix.AI</span>
-          <h2>Be there when<br /><em>the beta opens.</em></h2>
-        </div>
-        <div>
-          <p>Helix.AI is in development. Tell us where to write and we will let you know when the
-            beta opens; briefings are available in the meantime.</p>
-          <div className="notify">
-            <Signup endpoint={site.forms?.signup} subscribe={false}
-                    interest="Helix.AI beta" label="Notify me when the beta launches" />
-          </div>
-        </div>
-      </section>
-
       <section className="wrap s s-ink" id="helix">
         <div className="intro">
           <div><span className="kicker">Project Helix / Predictive convergence system</span><h2>From fragments<br /><em>to a system.</em></h2></div>
@@ -109,9 +94,24 @@ export default function Intelligence() {
         <div className="convergence-frame"><Convergence head={false} /></div>
       </section>
 
-      <section className="wrap s s-slate cta-band">
-        <div><h2>Bring the network into view.</h2><p>Advisory, briefings, and Helix access for governments, international organizations, and industry.</p></div>
-        <Link className="ed-btn" href="/contact?interest=helix">Request a briefing {Arrow.upRight}</Link>
+      {/* One closing band, split by what exists. Briefings are available today and are a sales
+          conversation; Helix.AI is in development and is a mailing list. Presenting them as equal
+          buttons implied the second was buyable. */}
+      <section className="wrap s s-slate" id="work-with-us">
+        <div className="closing">
+          <div>
+            <h2>Bring the network<br /><em>into view.</em></h2>
+            <p>Advisory and briefings for governments, international organizations, and industry,
+              today. Helix.AI is in development.</p>
+            <Link className="ed-btn" href="/contact?interest=helix">Request a briefing {Arrow.upRight}</Link>
+          </div>
+          <div className="closing-beta">
+            <span className="kicker">Helix.AI</span>
+            <p className="closing-h">Be there when the beta opens.</p>
+            <Signup endpoint={site.forms?.signup} subscribe={false}
+                    interest="Helix.AI beta" label="Notify me" />
+          </div>
+        </div>
       </section>
     </>
   );
