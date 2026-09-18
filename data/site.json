@@ -63,5 +63,9 @@
   "note": "Official trailer, 2024 cut. Predates the gold shoot.",
   "runtime": "4:21",
   "published": "2024-09-10"
+ },
+ "analytics": {
+  "ga4": "",
+  "note": "Measurement ID, G-XXXXXXXXXX. Empty means Google Analytics does not load at all."
  }
 }

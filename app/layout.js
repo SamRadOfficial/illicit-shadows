@@ -2,6 +2,9 @@ import '../styles/site.css';
 import site from '../data/site.json';
 import { Nav, Footer } from '../components/Blocks';
 import { SupportBand } from '../components/SupportBand';
+import { Analytics } from '../components/Analytics';
+import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata = {
   metadataBase: new URL(site.domain),
@@ -29,6 +32,12 @@ export default function RootLayout({ children }) {
         <main id="top">{children}</main>
         <SupportBand />
         <Footer site={site} />
+        {/* Vercel's own analytics need no configuration and set no cookies; they are enabled per
+            project in the Vercel dashboard. Google Analytics loads only when a measurement ID is
+            set and only on the live domain. */}
+        <VercelAnalytics />
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

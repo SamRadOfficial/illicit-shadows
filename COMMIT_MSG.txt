@@ -1,14 +1,22 @@
-Intelligence: one closing band, split by what exists
+Add Vercel Analytics, Speed Insights, and Google Analytics 4
 
-- The standalone Helix.AI beta section is gone. Its notify block now sits inside
-  the closing band, behind a rule, with the briefing on the left.
-- Copy follows the split: "Advisory and briefings for governments, international
-  organizations, and industry, today. Helix.AI is in development." That replaces
-  "Advisory, briefings, and Helix access", which implied something purchasable.
-- The notify form still posts interest=Helix.AI beta, so those signups stay
-  sorted from book and museum ones. Verified in the payload.
-- On mobile the rule becomes a top border and the two stack, briefing first.
+- @vercel/analytics and @vercel/speed-insights in the root layout. No
+  configuration, no cookies, enabled per project in the Vercel dashboard.
+  Verified both scripts load.
+- components/Analytics.jsx adds GA4, but only when data/site.json carries a
+  measurement ID. The field ships empty, so nothing Google-related loads until
+  someone sets it.
+- The GA snippet is guarded by hostname, not by NODE_ENV: a static export runs
+  identically in a local preview and on the Vercel preview host, and NODE_ENV is
+  'production' in a local build too. Verified with a test ID: the loader is
+  present, dataLayer is never configured off-domain, and no request reaches
+  Google.
+- IP anonymisation on, ad personalisation and Google signals off. The readers of
+  this site include people researching organized crime; sending less about them
+  is the right default.
 
-Verified: build 34 pages, 194 references present. Contrast measured against each
-element's real backdrop: nothing below 4.5, lowest is 10.6. No overflow at 390.
-Page alternates white, black, white, slate, white, slate, yellow.
+ROADMAP
+- Analytics closed; a new item covers switching them on, which is dashboard work
+  rather than code.
+
+Verified: build 34 pages, 194 references present.

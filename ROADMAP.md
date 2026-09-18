@@ -92,7 +92,16 @@ Where the site's credibility is thinnest, and the systems that turn attention in
       drawn from existing products and their technical claims are not validated.
 - [ ] **Contact management.** Enquiries arrive as email from Formspree and stop there: no record of
       who asked what or whether anyone replied. A shared inbox label works until a few a week.
-- [ ] **Analytics.**
+- [x] **Analytics** shipped 18 Sep: Vercel Analytics and Speed Insights (no configuration, no
+      cookies), plus Google Analytics 4 behind a switch.
+- [ ] **Turn on the analytics.** Two steps, both in dashboards rather than code:
+      1. **Vercel:** open the project, Analytics tab, Enable. Same for Speed Insights. Free tier
+         covers this traffic.
+      2. **Google Analytics:** create a GA4 property for illicitshadows.com, copy the measurement ID
+         (G-XXXXXXXXXX) into `analytics.ga4` in `data/site.json`, push. With that field empty,
+         Google Analytics does not load at all.
+      The GA snippet only fires on the live domain, so local previews and the Vercel preview host
+      are never counted. IP anonymisation is on and ad personalisation signals are off.
 - [ ] **Accessibility pass on real assistive tech.** Automated contrast is clean across seventeen
       routes; focus order and screen-reader flow have not been checked with an actual reader.
 - [ ] **Mobile pass on real devices**, not an emulated frame.
