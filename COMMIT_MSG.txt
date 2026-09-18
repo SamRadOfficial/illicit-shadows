@@ -1,17 +1,14 @@
-Museum: Founding Corporate Patrons
+Museum: one action in the prototype section
 
-- New #patrons section between Origins and the convergence map: three levels
-  named for what they underwrite (Diamond a hall, Gold an exhibition, Silver the
-  programming), the donor wall with its three categories marked Reserved, and a
-  Start a conversation button routing to /contact?interest=museum.
-- Slate, so it separates the two ink sections either side of it and leaves
-  yellow to the support band.
-- No amounts and no card checkout: the numbers are not set, and institutional
-  support is agreed rather than bought. This sits deliberately apart from the
-  individual ladder in the support band.
+- Removed the exhibition-updates signup. The section now offers only "Enter the
+  museum concept", which is the thing to do there; two stacked yellow controls
+  read as one broken button anyway.
+- Dropped the Signup and site imports, which the page no longer uses.
 
-Fix: an earlier partial insert had left a second copy of the section in the
-page. Both rendered. Removed.
+Note: the museum page now has no exhibition-openings signup at all. The Umbra
+Circle and Helix.AI notify blocks are unaffected. If you want exhibition updates
+captured somewhere, the patron section or the halls block are better homes than
+a prototype CTA.
 
-Verified: build 34 pages, 194 references present. One patron block, surfaces
-alternate correctly, contrast clean, no overflow at 390.
+Verified: build 34 pages, 194 references present. One action in the section, no
+signup anywhere on the page.

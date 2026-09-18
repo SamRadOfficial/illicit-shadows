@@ -17,6 +17,22 @@ Nothing here needs new content or new money. Most of it is one sitting each.
       Kit (free to 10,000). Then point the signup forms at it and leave Formspree handling contact
       and the shop waitlist. **The only item with a clock on it:** the list dies with the Squarespace
       account.
+- [ ] **Email on illicitshadows.com: test it Tuesday 22 September, before anything else.**
+      GoDaddy currently has **no MX records** for the domain, only a `_dmarc` TXT pointing at
+      GoDaddy's mail security. So `sam@illicitshadows.com` may not be receiving anything, and it is
+      the address on the contact page, in both newsroom posts, in every Stripe receipt, and in the
+      media-inquiries block of the press releases.
+      1. Send a message to it from an outside account. If it arrives, mail is fine and the rest of
+         this item is moot.
+      2. If it bounces, set up Google Workspace (about $7/user/month; free Gmail cannot host a
+         custom domain) and add at GoDaddy: `MX @ smtp.google.com` priority 1, and a TXT on `@` of
+         `v=spf1 include:_spf.google.com ~all`. Generate DKIM in the Workspace console under Apps,
+         Google Workspace, Gmail, Authenticate email, and publish it as `google._domainkey`.
+      3. The existing DMARC is `p=quarantine`, which is strict: until SPF and DKIM both pass,
+         legitimate mail can land in spam. Consider `p=none` for the first week. Its reports go to
+         `dmarc_rua@onsecureserver.net`, which is GoDaddy's address, not one you read.
+      4. Test in both directions: outside address in, and a reply back out.
+
 - [ ] **DNS cutover to illicitshadows.com: Tuesday 22 September 2026**, alongside the sam-rad.com
       switch. Order on the day:
       1. Confirm the newsletter list is exported and safe (done) and that any Squarespace content you

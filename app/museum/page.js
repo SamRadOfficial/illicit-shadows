@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { og } from '../../lib/og';
-import { Pic, Hero, Signup } from '../../components/Blocks';
-import site from '../../data/site.json';
+import { Pic, Hero } from '../../components/Blocks';
 import { Arrow } from '../../components/Icons';
 import { Convergence } from '../../components/Convergence';
 import { HallsEd } from '../../components/HallsEd';
@@ -41,10 +40,6 @@ export default function Museum() {
         <div>
           <p>The prototype is live today: a walkable model of the building, the rotunda and the hall
             positions. The exhibitions themselves open in phases from 2027.</p>
-          <div className="notify">
-            <Signup endpoint={site.forms?.signup} subscribe={false}
-                    interest="Museum exhibition openings" label="Get exhibition opening updates" />
-          </div>
           <Link className="ed-btn" href="/museum/enter">Enter the museum concept {Arrow.upRight}</Link>
         </div>
       </section>
