@@ -6,7 +6,7 @@ import { Pic, Hero, Signup } from '../../components/Blocks';
 import { Arrow } from '../../components/Icons';
 export const metadata = {
   .../* per page: card, description, canonical */og('books', {
-    description: 'The Illicit Shadows Chronicles: geopolitical crime fiction by Sam Rad and David M. Luna. The Umbra Circle, book one, coming late 2026.',
+    description: 'The Illicit Shadows Chronicles: geopolitical crime fiction by Sam Rad and David M. Luna. The Umbra Circle, book one, coming 2027.',
     path: '/books',
   }), title: 'Books' };
 
@@ -33,7 +33,6 @@ export default function Books() {
           <p className="byline">By Sam Rad and David M. Luna</p>
           <Link className="ed-link" href={one.preview}>Read the full description {Arrow.upRight}</Link>
           <div className="notify">
-            <p className="fine">Coming late 2026.</p>
             <Signup endpoint={site.forms?.signup} subscribe={false}
                     interest="The Umbra Circle launch" label="Notify me when Book 1 launches" />
           </div>

@@ -1,11 +1,26 @@
-Film: the Illicit Gold cover leads the section on mobile
+Greed Inc., 2027 for the book, MISTIC headline, Helix.AI beta signup
 
-- Below 820px the gold feature stacks image first, matching the museum and books
-  features, which were already image-first. /film was the outlier.
-- Done with flex column-reverse rather than a markup change: the section has
-  exactly two children, so no wrapper, no new grid rule, and desktop is
-  untouched.
+Films
+- "CCP Inc" becomes "Greed Inc." with the supplied cover art. The slug, the
+  image and the subtitle follow: "Infrastructure lending, state actors, and the
+  leverage it buys". No state is named anywhere on the page, and the old
+  ccp-inc art is deleted from public/images/upcoming.
 
-Verified: build 34 pages, 194 references present. Order read from the DOM at
-1440 (eyebrow, headline, image in its column), and image-first at 820, 390 and
-320.
+Books
+- The Umbra Circle is "Coming 2027" in the data, the page and the meta
+  description. Removed the second date line above the newsletter signup, so the
+  date is stated once.
+
+Intelligence
+- Only the headline changed: "A digital fusion center for strategic
+  intelligence." The two MISTIC paragraphs are restored to the original wording.
+- New Helix.AI beta section on the slate surface: "Be there when the beta
+  opens", with a notify signup posting interest=Helix.AI beta. Verified end to
+  end; the payload carries the interest field and the subject line.
+
+Note: the file public/images/upcoming/ccp-inc.jpg and .webp are deleted. A zip
+cannot carry a deletion, so run:
+  git rm public/images/upcoming/ccp-inc.jpg public/images/upcoming/ccp-inc.webp
+
+Verified: build 34 pages, 194 references present. Slate reads Greed Inc.; no CCP
+or Chinese Communist reference remains in the rendered pages.

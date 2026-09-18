@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { og } from '../../lib/og';
-import { Pic, Hero } from '../../components/Blocks';
+import { Pic, Hero, Signup } from '../../components/Blocks';
+import site from '../../data/site.json';
 import { Arrow } from '../../components/Icons';
 import { CascadeMaps } from '../../components/CascadeMaps';
 import { Convergence } from '../../components/Convergence';
@@ -33,7 +34,7 @@ export default function Intelligence() {
       {/* What this is: the institute first, then its project. Helix is one of MISTIC's projects,
           not the other way round, and the page did not say so anywhere. */}
       <section className="wrap s s-paper two" id="mistic">
-        <div><span className="kicker">MISTIC / The institute</span><h2>A fusion center for<br /><em>the shadow economy.</em></h2></div>
+        <div><span className="kicker">MISTIC / The institute</span><h2>A digital fusion center<br /><em>for strategic intelligence.</em></h2></div>
         <div>
           <p className="deck"><strong>Illicit Shadows Media, Technology, &amp; Innovation Convergence (MISTIC)</strong> is the institute behind the platform: a fusion center where field investigations, the museum's research, and predictive modeling are brought together.</p>
           <p>Helix.AI is one of its projects: the predictive convergence system that examines how criminal, political, and economic networks reorganize after disruption.</p>
@@ -46,6 +47,21 @@ export default function Intelligence() {
           mechanisms, which the brief marks TBD. */}
       {/* Two columns: the claim and the question on the left, the explanation on the right. A
           single measure left half the section empty. */}
+      <section className="wrap s s-slate two" id="beta">
+        <div>
+          <span className="kicker">Helix.AI</span>
+          <h2>Be there when<br /><em>the beta opens.</em></h2>
+        </div>
+        <div>
+          <p>Helix.AI is in development. Tell us where to write and we will let you know when the
+            beta opens; briefings are available in the meantime.</p>
+          <div className="notify">
+            <Signup endpoint={site.forms?.signup} subscribe={false}
+                    interest="Helix.AI beta" label="Notify me when the beta launches" />
+          </div>
+        </div>
+      </section>
+
       <section className="wrap s s-ink" id="helix">
         <div className="intro">
           <div><span className="kicker">Project Helix / Predictive convergence system</span><h2>From fragments<br /><em>to a system.</em></h2></div>

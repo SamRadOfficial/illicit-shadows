@@ -17,8 +17,18 @@ Nothing here needs new content or new money. Most of it is one sitting each.
       Kit (free to 10,000). Then point the signup forms at it and leave Formspree handling contact
       and the shop waitlist. **The only item with a clock on it:** the list dies with the Squarespace
       account.
-- [ ] **DNS cutover to illicitshadows.com.** Redirects, robots, canonicals and OG cards are all in
-      place; this is the last technical blocker and it is yours to trigger.
+- [ ] **DNS cutover to illicitshadows.com: Tuesday 22 September 2026**, alongside the sam-rad.com
+      switch. Order on the day:
+      1. Confirm the newsletter list is exported and safe (done) and that any Squarespace content you
+         still want is saved: once DNS moves, the old site is unreachable even if the account is live.
+      2. Add the domain in Vercel, set the A and CNAME records at the registrar, wait for the
+         certificate to issue.
+      3. Check the redirects: `/news`, `/news/icaie-and-radoc-begin-production-on-ep-01-fentanyl-cartels`,
+         `/episodes/ep-01-chemical-cartels`, `/episodes/ep-02-gold-trafficking`, `/trailer`, `/home`.
+         They run on Vercel, not in the export, so this is the first time they can be tested.
+      4. `node scripts/verify-deploy.mjs https://illicitshadows.com / /film /museum /shop /donate`
+      5. Submit the sitemap in Search Console and confirm the canonical resolves to the apex domain.
+      6. Only then delete the stale Vercel project.
 - [ ] **Delete the stale Vercel project** once the new one holds the domain.
 - [x] **Publish dates and runtimes** added 18 Sep from the YouTube export. All eleven now carry an uploadDate and duration in their VideoObject markup.
 - [x] **The Next Wave runtime** added 18 Sep: 1:55.
@@ -71,8 +81,20 @@ Where the site's credibility is thinnest, and the systems that turn attention in
 - [ ] **Hall photographs or copy**, which unlocks the hall preview dialog and `/museum/[hall]` pages.
 - [ ] **CRM**, once funders, underwriters and press are a pipeline rather than a handful of threads.
       Notion or Airtable (free), HubSpot free tier, or Attio (~$29/seat).
-- [ ] **Paid Helix access.** A sales conversation and a login, not a checkout button. Decide what is
-      being sold before building anything.
+- [ ] **Helix subscription database, and a signup for it.** David's proposal, 18 Sep: the fusion
+      center eventually links to a subscription database rather than only to briefings. Three
+      decisions before any build, in this order:
+      1. **What is in it.** The source index is already public. A paid tier has to offer something
+         the free `/sources` page does not: the graph, the scenario library, structured data, or
+         analyst access. Decide that before designing a paywall around it.
+      2. **Who it is for and what it costs.** Government, international organizations and industry
+         buy differently; a seat price and a procurement process are different products.
+      3. **Access, not checkout.** This is a login and a sales conversation, not a Stripe button.
+      The interest signup shipped 18 Sep: `/intelligence` now carries a Helix.AI beta notify block
+      posting `interest=Helix.AI beta`, so demand is being captured while the decisions above are
+      still open.
+- [ ] **Paid Helix access.** Superseded in part by the item above: this is the same question seen
+      from the commercial side.
 - [ ] **The three-pillar loop.** The connector says "three things", not "three things that feed each
       other", which is the actual claim.
 - [ ] **Animated hero.** Mocked 15 Sep; draw-then-settle is the version to build.

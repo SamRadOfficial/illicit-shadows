@@ -1,5 +1,9 @@
 # HANDOFF — illicitshadows.com
 
+> **Cutover: Tuesday 22 September 2026.** DNS moves to illicitshadows.com alongside sam-rad.com.
+> The runbook for the day is at the top of ROADMAP.md. Redirects only run on Vercel, so they cannot
+> be tested until the domain is live.
+
 Read this first. Update it in the same commit as any change it describes. A handoff updated "later" lies.
 
 ## Rules that keep getting broken (owner-adjudicated 14 Sep 2026)
