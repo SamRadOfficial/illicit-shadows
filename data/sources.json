@@ -139,5 +139,187 @@
     "films": [],
     "public": true,
     "verify_url": false
+  },
+  {
+    "id": "bellingcat-2025-10",
+    "title": "A Chinese Fentanyl Network in Japan",
+    "publisher": "Bellingcat and Nikkei",
+    "date": "2025-10",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "chemical-cartels"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "icaie-canada-convergence",
+    "title": "How Canada Became a Threat Convergence Focal Point",
+    "publisher": "ICAIE",
+    "date": "2026",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "chemical-cartels"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "oecd-gold-concentrates-2025",
+    "title": "Illicit Flows of Gold Concentrates in the Maritime Space",
+    "publisher": "OECD",
+    "date": "2025",
+    "url": "https://doi.org/10.1787/7536db96-en",
+    "status": "cited",
+    "films": [
+      "illicit-gold"
+    ],
+    "public": true,
+    "verify_url": false
+  },
+  {
+    "id": "fact-gold-2025",
+    "title": "Addressing Illegal Gold Mining in the Hemisphere: New Approaches for U.S. Policy",
+    "publisher": "FACT Coalition",
+    "date": "2025-08",
+    "url": "https://thefactcoalition.org/wp-content/uploads/2025/08/Gold-Mining-Policy-Report-FACT-ENG-V3.pdf",
+    "status": "cited",
+    "films": [
+      "illicit-gold"
+    ],
+    "public": true,
+    "verify_url": false
+  },
+  {
+    "id": "gijn-gold-supply-chain",
+    "title": "Investigating How Illegal Gold Gets Into the Legitimate Supply Chain",
+    "publisher": "Global Investigative Journalism Network",
+    "date": "2025",
+    "url": "https://gijn.org/stories/investigating-illegal-gold-mining-legitimate-supply-chain/",
+    "status": "cited",
+    "films": [
+      "illicit-gold"
+    ],
+    "public": true,
+    "verify_url": false
+  },
+  {
+    "id": "s3496-2026",
+    "title": "S.3496, United States Legal Gold and Mining Partnership Act",
+    "publisher": "119th Congress",
+    "date": "2026",
+    "url": "https://www.congress.gov/bill/119th-congress/senate-bill/3496/text/is",
+    "status": "cited",
+    "films": [
+      "illicit-gold"
+    ],
+    "public": true,
+    "verify_url": false
+  },
+  {
+    "id": "fbi-illicit-mining",
+    "title": "Illicit Mining: Threats to U.S. National Security and International Human Rights",
+    "publisher": "FBI",
+    "date": "2024",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "illicit-gold"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "cbp-illegal-mining",
+    "title": "Illegal Mining and Natural Resources Enforcement",
+    "publisher": "U.S. Customs and Border Protection",
+    "date": "2025",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "illicit-gold"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "treasury-rwanda-2025",
+    "title": "Treasury Sanctions Rwandan Gold Refinery and Network Enabling Illicit Conflict Minerals Trade",
+    "publisher": "U.S. Department of the Treasury",
+    "date": "2025",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "illicit-gold"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "nyt-weekly-tainted-gold",
+    "title": "How Tainted Gold May Have Ended Up in Your Phone",
+    "publisher": "The New York Times",
+    "date": "2026",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "illicit-gold"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "miami-switzerland-gold",
+    "title": "The Parts That Don’t Glitter: A Comparative Analysis Between Switzerland and the United States",
+    "publisher": "University of Miami International and Comparative Law Review",
+    "date": "2024",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "illicit-gold"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "amazon-crime-convergence",
+    "title": "Spotlighting Crime Convergence in Natural Environments in the Amazon",
+    "publisher": "ICAIE",
+    "date": "2026",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "illicit-gold"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "digging-dirty-gold",
+    "title": "Digging Into Dirty Gold Across the Americas",
+    "publisher": "InSight Crime",
+    "date": "2025",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "illicit-gold"
+    ],
+    "public": true,
+    "verify_url": true
+  },
+  {
+    "id": "latin-critical-minerals",
+    "title": "Argentina, Chile, Peru and Bolivia Forge Strategic Alliance on Critical Minerals",
+    "publisher": "Latin Gulf",
+    "date": "2026",
+    "url": "",
+    "status": "cited",
+    "films": [
+      "illicit-gold"
+    ],
+    "public": true,
+    "verify_url": true
   }
 ]

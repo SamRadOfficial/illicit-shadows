@@ -54,7 +54,9 @@ export default async function Investigation({ params }) {
             <div><dt>An investigation by</dt><dd>ICAIE + RADOC</dd></div>
             <div><dt>Executive producers</dt><dd>David M. Luna · Sam Rad</dd></div>
             <div><dt>Production</dt><dd>An Illicit Shadows Production</dd></div>
-            {live && <div><dt>Streaming</dt><dd>YouTube · {site.social.handle}</dd></div>}
+            {live && <div><dt>Streaming</dt><dd>
+              <a href={site.social.youtube} target="_blank" rel="noopener noreferrer">YouTube &middot; {site.social.handle} {Arrow.upRight}</a>
+            </dd></div>}
             {f.host && <div><dt>On camera</dt><dd>{f.host}</dd></div>}
           </dl>
         </div>
@@ -97,9 +99,15 @@ export default async function Investigation({ params }) {
         </div>
       </section>}
 
+      {/* Quiet by design: the statistics above already cite their sources; this is for anyone who
+          wants the whole list. */}
+      <section className="wrap s s-ink compact sourcesfoot">
+        <Link className="ed-link" href="/sources">Sources for this investigation {Arrow.upRight}</Link>
+      </section>
+
       <section className="wrap s s-ink" id="next">
         <div className="intro">
-          <div><span className="kicker">Continue exploring</span><h2>The other<br /><em>investigation.</em></h2></div>
+          <div><span className="kicker">Continue exploring</span><h2>The next<br /><em>investigation.</em></h2></div>
         </div>
         <div className="nextfilm">
           <Link href={`/film/${other.slug}`}><Pic base={other.image} alt={`${other.title}: ${other.subtitle}`} /></Link>

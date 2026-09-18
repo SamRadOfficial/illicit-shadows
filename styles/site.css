@@ -517,6 +517,13 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .s .support-fine,.support-fine{margin-top:14px;font-family:var(--mono);font-size:10px;line-height:1.5;letter-spacing:.04em;opacity:.7}
 .cform-alert.is-ok{border-color:var(--ac)}
 
+.legalname{font-family:var(--mono);font-size:11px;letter-spacing:.06em;margin-top:4px;opacity:.6}
+.credits dd a{display:inline-flex;align-items:center;gap:6px}
+.credits dd a svg{width:12px;height:12px}
+.sourcesfoot{padding-top:0}
+.sourcesfoot .ed-link{font-size:12.5px;opacity:.75}
+.sourcesfoot .ed-link:hover{opacity:1}
+.partners .cities{margin-top:12px;line-height:1.7;letter-spacing:.08em}
 .notify{margin-top:22px;max-width:420px}
 .notify .signup{margin-top:10px}
 
@@ -860,7 +867,7 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
 .tick li:before{content:"";position:absolute;left:0;top:17px;width:8px;height:1px;background:var(--ac)}
 .gov{margin-top:34px;border-top:1px solid var(--rule);padding-top:20px;max-width:62ch}
 
-.status-chip{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);border:1px solid var(--rule);padding:4px 9px;margin:0 0 10px}
+.s .status-chip,.status-chip{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--label,var(--ac));border:1px solid var(--rule);padding:4px 8px;margin:0 0 10px}
 .upcoming h3{font-size:22px}
 .upcoming p{font-size:14px;margin-top:8px}
 .method{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;padding:0;margin:0}

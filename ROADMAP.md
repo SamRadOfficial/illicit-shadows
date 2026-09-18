@@ -3,119 +3,83 @@
 The standing checklist. Update in the same commit as the work. Items move to Done with a date
 rather than being deleted, so the history of what shipped stays readable.
 
-Rewritten 17 Sep: checked against the source, shipped items closed, the rest reordered by what
-blocks a launch.
+Reorganised 18 Sep by horizon: what stands between the site and a live domain, what follows in the
+weeks after, and what waits for the work itself to exist. The YouTube cleanup closed this session.
 
 ---
 
-## 1. Launch blockers
+# SHORT TERM — before and around the DNS cutover
 
-- [ ] **Newsletter, contacts and CRM: decide where people live.** The Squarespace export is done:
-      one combined file, 117 unique addresses, deduped across both exports, with a status and a
-      consent basis per row (107 subscribed, 10 held back). Three related decisions, worth taking
-      together rather than one tool at a time:
-      1. **Newsletter.** Where the list lives and where broadcasts are sent. MailerLite (free to
-         1,000, my pick at this size), Buttondown (about $9/mo, best writing experience), or Kit
-         (free to 10,000, strongest automation). Formspree cannot do this: no broadcast, no
-         unsubscribe, no audience management.
-      2. **Contact management.** Enquiries currently arrive as email from Formspree and stop there,
-         so there is no record of who asked what, or whether anyone replied. At this volume a shared
-         label in the inbox works; past a few a week it does not.
-      3. **CRM, once there is a pipeline to manage.** Funders, underwriters, institutional partners
-         and press are different relationships with different histories. Options run from a Notion
-         or Airtable base (free, fine to a few hundred records, no email sync) to HubSpot's free
-         tier (real pipeline, email logging, heavier) to Attio (modern, about $29/seat).
-      Sequence: newsletter first, since the list is exported and nothing is capturing it; contacts
-      second; CRM only when the donor and underwriter conversations are real enough to track.
-- [x] **Redirect map** shipped 17 Sep, then rebuilt from the real Squarespace sitemap: every path
-      in it now resolves, either because the route exists unchanged or through a rule. Old
-      /episodes/ep-01 and ep-02 land on the right investigation.
-- [x] ~~Squarespace redirect map~~
-- [ ] **DNS cutover to illicitshadows.com.**
-- [ ] **Delete the stale Vercel project** once the new one holds the domain, so two projects are not
-      building on every push.
-- [x] **AI crawler stance** decided 17 Sep: the site stays open to crawlers, and the preview host is noindexed so it cannot compete with the real domain. Revisit if the position on AI training changes.
-- [x] ~~AI crawler stance in `robots.js`~~
-- [x] **OG images per page** shipped 17 Sep: twelve generated cards, wired per route, film covers used as-is.
-- [x] ~~OG images per page~~
-- [ ] **YouTube titles and descriptions.** The playlist is still "Ep. 01 | CHEMICAL CARTELS", videos
-      use "Ep.1, Dispatch N", and the channel description opens "ILLICIT SHADOWS is a docuseries".
-      The framing removed from the site is intact one click away.
+Nothing here needs new content or new money. Most of it is one sitting each.
+
+- [ ] **Newsletter tool, and import the list.** 117 addresses are exported and consent-split and
+      nothing is currently capturing new ones. MailerLite (free to 1,000), Buttondown (~$9/mo), or
+      Kit (free to 10,000). Then point the signup forms at it and leave Formspree handling contact
+      and the shop waitlist. **The only item with a clock on it:** the list dies with the Squarespace
+      account.
+- [ ] **DNS cutover to illicitshadows.com.** Redirects, robots, canonicals and OG cards are all in
+      place; this is the last technical blocker and it is yours to trigger.
+- [ ] **Delete the stale Vercel project** once the new one holds the domain.
+- [x] **Publish dates and runtimes** added 18 Sep from the YouTube export. All eleven now carry an uploadDate and duration in their VideoObject markup.
+- [x] **The Next Wave runtime** added 18 Sep: 1:55.
+- [x] **Title confirmed 18 Sep:** the cover art keeps FENTANYL'S DIRTY PROFITS.
+- [x] **Cartels subtitle confirmed 18 Sep:** the site wording stands.
+- [x] **`/sources` linked 18 Sep** from the foot of each investigation page.
+- [ ] **Old Squarespace URLs beyond the sitemap.** Anything linked from a deck, a press release or
+      the ICAIE site that was not in the sitemap will still 404.
+- [ ] **Quotes for the Illicit Gold pre-production post**, which is published without any.
+
+# MEDIUM TERM — the weeks after launch
+
+Where the site's credibility is thinnest, and the systems that turn attention into something.
+
 - [ ] **Sources for the narration figures.** The eleven narrations quote hard numbers (50,000
       Canadian fentanyl deaths since 2016, $45-113bn laundered annually, a 775% CBSA increase, TD
       Bank's $3bn penalty) with no attribution, on a site with a `/sources` index and a chip on every
-      other statistic.
+      other statistic. **The largest remaining gap between what the site claims and what it shows.**
 - [ ] **`/sources` URLs.** Ten of eleven documents have no link. Status chips without links read as
       assertion rather than evidence.
-- [ ] **Publish dates for the eleven shorts.** All eleven are `published: null`, so `uploadDate` is
-      missing from the VideoObject markup and Google will not treat them as video results.
 - [ ] **Check the narration against the films.** Transcribed from the supplied scripts, with two
-      changes (dropped "Next Dispatch" trailers, normalised punctuation) worth confirming against
-      what is actually spoken.
-- [ ] **Recut the trailer.** Pre-gold, and says "docuseries" on screen.
-- [x] **Museum viewer copy** fixed 17 Sep: Illicit Gold and 2026-2027 replace Golden Handcuffs and January 2027; Shadowverse references removed.
-- [x] ~~Copy pass on the museum viewer~~
-- [ ] **Runtime for The Next Wave.** The only short without one.
-- [ ] **Confirm one short title.** Cover art reads FENTANYL'S DIRTY PROFITS; `films.json` says
-      "Dirty Profits".
-- [ ] **Decide where `/sources` is linked.** Nothing in the nav or footer points at it since the
-      footer changed; it is still built, in the sitemap, and cited from the statistics.
-
-## 3. Money and audience systems
-
-- [ ] **Turn the shop waitlist into a shop.** `/shop` is a waitlist: 18 concept pieces, selection on
-      each card, no checkout. Next in order: sample one cap, one tee and one bomber through Printful
-      or Printify (about $120, two weeks); photograph the real pieces and replace the renders; then
-      add checkout, either Shopify Starter (about $5/mo) or Stripe Payment Links with manual
-      fulfilment. Caps are the strongest item; the bomber may not be viable through print on demand.
-      The Faraday sleeve and the pen are concepts drawn from existing products (SLNT, Fisher Bullet)
-      and their technical claims are not validated: do not repeat performance claims until a
-      supplier confirms them.
-- [ ] **Paid Helix access.** Enterprise access is a sales conversation and a login, not a checkout
-      button. Decide what is being sold before building anything.
-
-## 4. Content the site is waiting on
-
-- [ ] **Old Squarespace URLs beyond the sitemap.** The sitemap gave the real paths and they are in
-      `vercel.json`. Anything linked from a deck, a press release or the ICAIE site that is not in
-      the sitemap will still 404: send any you know of.
-- [ ] **More newsroom posts.** Five entries: two full announcements, the Newswire launch, the Bogota
-      keynote, plus the ICAIE feed.
-- [ ] **First pages of The Umbra Circle** for `/books/preview`.
-- [ ] **Brochure PDF** for the museum, and the **Substack preview link** for the book.
-- [ ] **Hall photographs or copy**, which unlocks the hall preview dialog and `/museum/[hall]` pages.
-- [ ] **Matched founder portraits** from a single shoot. The current pair is mismatched in crop,
-      background and lighting.
-
-## 5. Design decisions still open
-
-- [ ] **Quotes for the Illicit Gold pre-production post.** Published 1 Sep as a draft with no
-      quotes, because attributing words to a named person requires those words. Two or three lines
-      each from Sam and David and it is finished.
-- [ ] **The three-pillar loop.** The connector says "three things", not "three things that feed each
-      other", which is the actual claim.
-- [ ] **A donate block on `/museum` itself.** The museum lost its own donor section when the shared
-      band landed, so the thing being funded has no dedicated ask on its own page.
-- [ ] **Animated hero.** Mocked 15 Sep; draw-then-settle is the version to build.
-      `prefers-reduced-motion` gets the finished state, arcs follow the mobile crop, arcs are
-      decorative not geographic.
-- [ ] **Museum section order.** Three arrangements mocked 15 Sep (A, B, C). The hairline divider
-      fixed the symptom, so this is now composition rather than a bug.
-
-## 6. Housekeeping
-
-- [ ] **Dead CSS.** `.band-raised`, `.minigrid`, `.ppanel`, `.work-*`, `.head{` and friends survive
-      from the pre-editorial layout. They have caused real bugs by colliding with editorial class
-      names. Remove in a commit where nothing else moves.
-- [ ] **Image budget.** `public/images` is 25MB+. Responsive variants exist for heroes only; the
-      covers are still full-size everywhere.
+      changes worth confirming against what is actually spoken.
+- [ ] **Turn the shop waitlist into a shop.** Sample one cap, one tee and one bomber (~$120, two
+      weeks), photograph the real pieces, replace the renders, then add checkout: Shopify Starter
+      (~$5/mo) or Stripe Payment Links with manual fulfillment. Caps are the strongest item; the
+      bomber may not be viable through print on demand. The Faraday sleeve and pen are concepts
+      drawn from existing products and their technical claims are not validated.
+- [ ] **Contact management.** Enquiries arrive as email from Formspree and stop there: no record of
+      who asked what or whether anyone replied. A shared inbox label works until a few a week.
+- [ ] **Analytics.**
 - [ ] **Accessibility pass on real assistive tech.** Automated contrast is clean across seventeen
       routes; focus order and screen-reader flow have not been checked with an actual reader.
 - [ ] **Mobile pass on real devices**, not an emulated frame.
-- [ ] **Analytics.**
+- [ ] **Recut the trailer.** Pre-gold, and says "docuseries" on screen.
+- [ ] **More newsroom posts.** Five entries today, and the ICAIE feed refreshes itself.
+- [ ] **A donate block on `/museum` itself.** The museum lost its own donor section when the shared
+      band landed, so the thing being funded has no dedicated ask on its own page.
+- [ ] **Dead CSS.** `.band-raised`, `.minigrid`, `.ppanel`, `.work-*`, `.head{` and friends survive
+      from the pre-editorial layout and have caused real bugs by colliding with editorial class
+      names. Remove in a commit where nothing else moves.
+- [ ] **Image budget.** `public/images` is 25MB+. Responsive variants exist for heroes only; covers
+      are full-size everywhere.
 
-## 7. Later, if wanted
+# LONG TERM — waits on the work, the money, or a decision
 
+- [ ] **Matched founder portraits** from a single shoot. The current pair is mismatched in crop,
+      background and lighting.
+- [ ] **First pages of The Umbra Circle** for `/books/preview`.
+- [ ] **Brochure PDF** for the museum, and the **Substack preview link** for the book.
+- [ ] **Hall photographs or copy**, which unlocks the hall preview dialog and `/museum/[hall]` pages.
+- [ ] **CRM**, once funders, underwriters and press are a pipeline rather than a handful of threads.
+      Notion or Airtable (free), HubSpot free tier, or Attio (~$29/seat).
+- [ ] **Paid Helix access.** A sales conversation and a login, not a checkout button. Decide what is
+      being sold before building anything.
+- [ ] **The three-pillar loop.** The connector says "three things", not "three things that feed each
+      other", which is the actual claim.
+- [ ] **Animated hero.** Mocked 15 Sep; draw-then-settle is the version to build.
+      `prefers-reduced-motion` gets the finished state, arcs follow the mobile crop, arcs are
+      decorative not geographic.
+- [ ] **Museum section order.** Three arrangements mocked 15 Sep. The hairline divider fixed the
+      symptom, so this is composition rather than a bug.
 - [ ] `/press` page: coverage, press kit, interview contact.
 - [ ] `/museum/[hall]` detail pages with the artifact orbit viewer.
 - [ ] Founder bio pages, or expanded `/about` entries.

@@ -102,7 +102,7 @@
         "slug": "american-fallout",
         "image": "/images/short-american-fallout",
         "youtubeId": "vt9S1lEpFv8",
-        "published": null,
+        "published": "2025-12-03",
         "transcript": [
           "What if the deadliest war in America isn't being fought overseas, but right here on our streets?",
           "Across the country, a chemical weapon is claiming lives faster than any bullet. It's not launched by missiles or drones. It's packaged, shipped, and sold, one dose at a time.",
@@ -124,7 +124,7 @@
         "slug": "illicit-beachhead",
         "image": "/images/short-illicit-beachhead",
         "youtubeId": "zKrvfUUTSEo",
-        "published": null,
+        "published": "2025-12-16",
         "transcript": [
           "What happens when a crisis is so devastating that a nation's communities become a beachhead for transnational organized crime?",
           "We trace the chemical trail north, straight into Canada, a nation grappling with the fentanyl crisis, which has made communities like Vancouver's Downtown East Side critical frontlines.",
@@ -145,7 +145,7 @@
         "slug": "invisible-source",
         "image": "/images/short-invisible-source",
         "youtubeId": "M3HgYp-WgYk",
-        "published": null,
+        "published": "2025-12-30",
         "transcript": [
           "What happens when the deadliest drug crisis in North America begins thousands of miles away in Asia, inside a legitimate global supply chain?",
           "To understand the North American fentanyl crisis, we must follow the chemical trail back to its source: China.",
@@ -166,7 +166,7 @@
         "slug": "the-cartels",
         "image": "/images/short-the-cartels",
         "youtubeId": "pDnvwQZ8Ejs",
-        "published": null,
+        "published": "2026-01-13",
         "transcript": [
           "What happens when a nation caught in the crossfire becomes the crucible for the world's most dangerous synthetic drug?",
           "If China supplies the chemicals, Mexico cooks the poison for greater profits.",
@@ -189,7 +189,7 @@
         "slug": "leaky-port",
         "image": "/images/short-leaky-port",
         "youtubeId": "ElrDqCaapxs",
-        "published": null,
+        "published": "2026-01-20",
         "transcript": [
           "What happens when the infrastructure built to power your economy becomes the very doorway traffickers use to flood it with poison?",
           "Canada's infrastructure, designed for legitimate trade, is being weaponized against us. Nowhere is this clearer than at our major port complexes.",
@@ -208,7 +208,7 @@
         "slug": "lab-next-door",
         "image": "/images/short-lab-next-door",
         "youtubeId": "xHNn7feTpi4",
-        "published": null,
+        "published": "2026-01-27",
         "transcript": [
           "What happens when the cartel's next fentanyl lab isn't hidden in the mountains of Mexico, but in the house across the street?",
           "The threat is no longer distant. Transnational criminal organizations are no longer just importing finished products; they are building manufacturing labs right here, in North America's suburbs.",
@@ -227,7 +227,7 @@
         "slug": "parcel-pipeline",
         "image": "/images/short-parcel-pipeline",
         "youtubeId": "-jgtf8B6LC4",
-        "published": null,
+        "published": "2026-02-03",
         "transcript": [
           "What if the most dangerous drugs in the world aren't smuggled in by trucks or boats, but arrive on your doorstep in an ordinary package?",
           "Not all trafficking looks like what we see on the border. Fentanyl and its precursors are increasingly delivered via global mail systems, disguised as e-commerce shipments, nutritional supplements, or electronics.",
@@ -247,7 +247,7 @@
         "slug": "syndicates",
         "image": "/images/short-syndicates",
         "youtubeId": "L3M0PUEUDIk",
-        "published": null,
+        "published": "2026-02-16",
         "transcript": [
           "What happens when more than 600 criminal organizations stop competing, and start collaborating?",
           "The criminal underworld in Canada is not fragmented; it is an integrated ecosystem. Over 600 organized crime groups operate within Canadian borders and Indigenous First Nation territories, networked across 48 countries.",
@@ -260,13 +260,13 @@
       },
       {
         "n": 9,
-        "title": "Dirty Profits",
+        "title": "Fentanyl's Dirty Profits",
         "sub": "Real estate, casinos, money laundering",
         "runtime": "2:00",
         "slug": "dirty-profits",
         "image": "/images/short-dirty-profits",
         "youtubeId": "PLkm-271W4U",
-        "published": null,
+        "published": "2026-03-11",
         "transcript": [
           "What happens when the safest place to hide dirty money is inside the national economy itself?",
           "Today, Canada is a financial safe haven and one of the weak links in the international financial system for bad actors.",
@@ -288,11 +288,11 @@
         "n": 10,
         "title": "Arctic Frontlines",
         "sub": "Indigenous communities and the Arctic",
-        "runtime": "1:45",
+        "runtime": "1:46",
         "slug": "arctic-frontlines",
         "image": "/images/short-arctic-frontlines",
         "youtubeId": "Go8qltzPKWA",
-        "published": null,
+        "published": "2026-03-11",
         "transcript": [
           "What happens when North America's oldest trade routes become its newest war zones?",
           "Criminal networks are masters at exploiting borders, especially complicated ones. And increasingly, they're targeting Indigenous territories, which are becoming the forgotten frontlines of a shadow war.",
@@ -313,7 +313,7 @@
         "title": "The Next Wave",
         "image": "/images/short-next-wave",
         "youtubeId": "xzhe6ZEZ0kw",
-        "published": null,
+        "published": "2026-03-11",
         "sub": "Carfentanil and the illicit chemical pipeline",
         "transcript": [
           "What happens when the next generation of synthetic opioids becomes even harder to detect, and exponentially more lethal?",
@@ -324,7 +324,8 @@
           "Detection is extraordinarily difficult because trafficking and evasive methods are constantly evolving. Most fentanyl exports now move through microtraffickers using courier and mailing services to ship directly to consumers.",
           "The fentanyl crisis is a sophisticated and very profitable cog in an expanding ecosystem of criminality. Unless North America can develop coordinated cross-border responses and drug prevention strategies, these criminal networks will continue to use our own infrastructure, and our weaknesses, against us.",
           "But for the world's most powerful cartels, drugs are just one line of business. They have realized that the ultimate way to wash dirty money is to turn it into clean commodities. They are trading white powder for solid gold."
-        ]
+        ],
+        "runtime": "1:55"
       }
     ],
     "youtubeId": null,

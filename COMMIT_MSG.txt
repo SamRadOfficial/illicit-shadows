@@ -1,11 +1,12 @@
-Intelligence: remove the status section
+"The next investigation", and a smaller status chip
 
-- The "In development" block and its styles are gone.
+- The Continue exploring heading reads "The next investigation."
+- The status chip is 9.5px mono, down from body size.
 
-The other changes from that review stay: "Helix briefing" rather than "Helix
-access" on the contact routes, and the softened build claims (Helix.AI "is being
-built to apply", reinforcement "will explore"). Those are now the only place the
-page signals that Helix is not yet an operational product.
+The chip had never been small: it is a <p class="status-chip">, and `.s p`
+outranks a bare class, so the 10px rule had been losing silently since it was
+written. Same trap as .support-fine and .pview-label. HANDOFF now records it,
+with the three classes it has already caught.
 
-Verified: build 34 pages, 194 references present. Page alternates
-white, black, white, slate, white, slate, yellow.
+Verified: build 34 pages, 194 references present. Chip 9.5px in both places it
+appears, contrast 13.9 on ink and 5.1 on cream.

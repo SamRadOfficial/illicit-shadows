@@ -58,6 +58,7 @@ export default function About() {
               <Pic base={t.photo} alt={t.name} />
               <span className="kicker">{t.anchor.replace(' Anchor', '')}</span>
               <h3>{t.name}</h3>
+              {t.legalName && <p className="legalname">{t.legalName}</p>}
               <p>{t.bio}</p>
             </article>
           ))}
@@ -97,13 +98,17 @@ export default function About() {
           <article>
             <span className="plogo plogo-big"><Pic base="/logos/icaie-square" ext="png" alt="ICAIE, International Coalition Against Illicit Economies" /></span>
             <h3>ICAIE</h3>
-            <p>International Coalition Against Illicit Economies. Confronting illicit trade, crime, and threat finance. Washington, DC.</p>
+            <p>International Coalition Against Illicit Economies. Confronting illicit trade, crime,
+              and threat finance.</p>
+            <p className="fine cities">Washington, DC</p>
             <a className="ed-link" href="https://icaie.com" target="_blank" rel="noopener noreferrer">icaie.com {Arrow.upRight}</a>
           </article>
           <article>
             <span className="plogo plogo-big plogo-text"><span className="radoc" aria-label="RADOC"><b>RAD</b><em>OC</em></span></span>
             <h3>RAD Original Creations</h3>
-            <p>A media and narrative studio creating stories to shape better futures. Co-producers of Illicit Shadows. New York and London.</p>
+            <p>A media and narrative studio creating stories to shape better futures. Co-producers of
+              Illicit Shadows.</p>
+            <p className="fine cities">New York<br />London</p>
             <a className="ed-link" href="https://radoc.co" target="_blank" rel="noopener noreferrer">radoc.co {Arrow.upRight}</a>
           </article>
         </div>

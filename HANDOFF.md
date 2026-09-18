@@ -314,6 +314,10 @@ where a page still needs them. The system:
   on every page. Do not add a second donor section to a page: the museum's own was removed when this
   landed, and the CTA bands on `/intelligence`, `/about` and `/contact` were moved to slate so that
   **yellow means the support band and nothing else**. Verified: exactly one `.s-yellow` per route.
+- **`.s p` outranks a bare class.** Any chip, label or note written as a `<p class="x">` inside a
+  section needs `.s .x` to win: `.status-chip`, `.support-fine` and `.pview-label` each shipped at
+  body size before this was noticed, because the rule looked right and silently lost. When a new
+  class seems to have no effect, check specificity before rewriting it.
 - **Small labels use `--label`, not `--ac`.** The cream accent `#FF3030` is a *display* colour: at
   11px it measures 3.2:1 on cream, under the bar. Every surface now sets `--label` (signal yellow on
   dark, `#C81414` on cream) and kickers, numerals, cites, chips and status lines read it. Links use
