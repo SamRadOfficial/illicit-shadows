@@ -1119,6 +1119,10 @@ section.wrap.s.compact{padding-top:36px;padding-bottom:36px}
   .book-teaser{grid-template-columns:130px 1fr}
   .nextfilm{grid-template-columns:1fr}
   .pillar-grid,.pair,.feature,.feature.reverse,.two,.museum-feature,.reading-pair,.three,.upcoming,.method,.halls-ed,.origins,.two-features,.book-feature,.sequels,.signup-band,.founders,.partners,.contact-layout,.reading,.nextcard-ed{grid-template-columns:1fr}
+  /* /film's gold feature is text-then-image in the markup, while the museum and books features are
+     image-first. On a phone the cover is the reason to stop scrolling, so it leads here too.
+     column-reverse rather than a markup change: the section has exactly two children. */
+  .feature.reverse{display:flex;flex-direction:column-reverse}
   .wire-teaser{border-left:0;padding-left:0;border-top:1px solid var(--rule);padding-top:28px}
   .cta-band,.next-strip{flex-direction:column;align-items:flex-start}
   .method,.method.stats{grid-template-columns:1fr 1fr;gap:20px}

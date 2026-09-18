@@ -1,12 +1,11 @@
-"The next investigation", and a smaller status chip
+Film: the Illicit Gold cover leads the section on mobile
 
-- The Continue exploring heading reads "The next investigation."
-- The status chip is 9.5px mono, down from body size.
+- Below 820px the gold feature stacks image first, matching the museum and books
+  features, which were already image-first. /film was the outlier.
+- Done with flex column-reverse rather than a markup change: the section has
+  exactly two children, so no wrapper, no new grid rule, and desktop is
+  untouched.
 
-The chip had never been small: it is a <p class="status-chip">, and `.s p`
-outranks a bare class, so the 10px rule had been losing silently since it was
-written. Same trap as .support-fine and .pview-label. HANDOFF now records it,
-with the three classes it has already caught.
-
-Verified: build 34 pages, 194 references present. Chip 9.5px in both places it
-appears, contrast 13.9 on ink and 5.1 on cream.
+Verified: build 34 pages, 194 references present. Order read from the DOM at
+1440 (eyebrow, headline, image in its column), and image-first at 820, 390 and
+320.
