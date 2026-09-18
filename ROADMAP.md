@@ -43,6 +43,24 @@ Nothing here needs new content or new money. Most of it is one sitting each.
 
 Where the site's credibility is thinnest, and the systems that turn attention into something.
 
+- [ ] **A news ticker on `/newsroom`.** David's note, 18 Sep: daily coverage of organized crime,
+      illicit trade, trafficking and money laundering, plus ICAIE, RADOC and future partners.
+      Feasible, with one constraint worth knowing before it is promised: **Reuters requires a paid
+      licence and Google News has no public API.** What works without a contract is RSS, which the
+      ICAIE feed already proves: `scripts/fetch-news.mjs` runs on a schedule, so a second source is
+      mostly configuration.
+      Build order:
+      1. Partner feeds first: ICAIE (running), RADOC, and any partner that publishes RSS. These are
+         the ones you are entitled to republish and the ones that matter reputationally.
+      2. Open sources next: UNODC, FATF, OECD, Europol and INTERPOL all publish feeds, and GDELT
+         covers wire-level volume free. Between them that is a real ticker.
+      3. Licensed wires only if the volume justifies the cost.
+      Two decisions before building: **how much of each item to show** (headline and link is safe,
+      full summaries are a copyright question), and **whether aggregated items sit on `/newsroom`
+      alongside your own posts or on a separate page**. Mixing them risks a reader taking a Reuters
+      headline for an Illicit Shadows claim, which the current newsroom avoids by stamping each item
+      with its organization.
+
 - [ ] **Sources for the narration figures.** The eleven narrations quote hard numbers (50,000
       Canadian fentanyl deaths since 2016, $45-113bn laundered annually, a 775% CBSA increase, TD
       Bank's $3bn penalty) with no attribution, on a site with a `/sources` index and a chip on every

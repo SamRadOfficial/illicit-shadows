@@ -126,107 +126,89 @@ SHARED = """
 @media(max-width:820px){.dd-inner{grid-template-columns:1fr}.subnav{flex-wrap:wrap;gap:12px}}
 """
 
-RECOMMEND = 'C'
+RECOMMEND = 'B'
 
-TITLE = 'Choosing pieces on the waitlist'
-INTRO = ('The current list is thirteen chips in a row, and it only gets worse as pieces are added. '
-         'Three ways to make the choice legible at thirty items, using real product names.')
+TITLE = 'Founding Corporate Patron: a banner for /museum'
+INTRO = ('David\'s note: tiers, a donor recognition wall, and a route to "Start a conversation". '
+         'Three ways to say it. All three link to the contact form rather than to a checkout, '
+         'because institutional money arrives by agreement, not by card.')
 
-GROUPS = [
-    ('Caps', [('MIS eclipse cap','hat-mis'), ('Illicit Shadows cap','hat-is'), ('Everything is connected cap','hat-connected')]),
-    ('Tees', [('MIS eclipse tee','tee-mis'), ('Illicit Shadows tee','tee-is'), ('Everything is connected tee','tee-connected'), ('Convergence network tee','tee-network')]),
-    ('Outerwear', [('MIS bomber','bomber-mis'), ('Illicit Shadows bomber','bomber-is')]),
-    ('Bags and goods', [('MIS eclipse tote','tote-mis'), ('Illicit Shadows tote','tote-is'), ('Illicit Shadows sling','sling'), ('Everything is connected notebook','notebook')]),
-]
+TIERS = [('Diamond', 'Underwrites a hall'), ('Gold', 'Underwrites an exhibition'), ('Silver', 'Supports the programme')]
+WALL  = [('Corporate sponsors', ''), ('Foundations', ''), ('Individuals', '')]
 
-def thumb(slug):
-    return img(f'/images/shop/{slug}.jpg')
+def band(inner, surface='s-slate'):
+    return f'<div class="s {surface} mpad">{inner}</div>'
 
-# A: grouped checkboxes
-rows = ''
-for name, items in GROUPS:
-    chips = ''.join(f'<label class="wchip"><input type="checkbox"><span>{n}</span></label>' for n, _ in items)
-    rows += f'<div class="wgroup"><p class="wgh">{name}</p><div class="wchips">{chips}</div></div>'
-PAGE_A = f'<div class="s s-slate wpad"><div class="wgroups">{rows}</div>{{FOOT}}</div>'
+# A: one band, tiers named, no amounts
+tiers_a = ''.join(f'<div class="mt"><b>{n}</b><span>{d}</span></div>' for n, d in TIERS)
+PAGE_A = band(f'''<p class="kicker">Founding corporate patrons</p>
+<h2 class="mh">Put your name<br><em>on the record.</em></h2>
+<p class="mlede">Three levels of institutional support, each underwriting a named part of the museum.
+Recognition on the donor wall: corporate sponsors, foundations, and individuals.</p>
+<div class="mtiers">{tiers_a}</div>
+<a class="ed-btn">Start a conversation</a>''')
 
-# B: thumbnail grid
-cards = ''
-for name, items in GROUPS:
-    cards += f'<p class="wgh">{name}</p><div class="wgrid">'
-    for n, slug in items:
-        cards += (f'<label class="wcard"><input type="checkbox">'
-                  f'<img src="{thumb(slug)}" alt=""><span>{n}</span><i class="wtick">&#10003;</i></label>')
-    cards += '</div>'
-PAGE_B = f'<div class="s s-slate wpad">{cards}{{FOOT}}</div>'
+# B: tiers plus the wall as a visible thing
+wall_b = ''.join(f'<div class="mw"><span>{n}</span><i>Reserved</i></div>' for n, _ in WALL)
+PAGE_B = band(f'''<div class="mgrid">
+  <div>
+    <p class="kicker">Founding corporate patrons</p>
+    <h2 class="mh">Underwrite<br><em>a hall.</em></h2>
+    <p class="mlede">Institutional support at three levels, each tied to a named part of the museum,
+    and recognised on the donor wall when the doors open in 2027.</p>
+    <a class="ed-btn">Start a conversation</a>
+  </div>
+  <div>
+    <div class="mtiers col">{tiers_a}</div>
+    <p class="kicker wallk">The donor wall</p>
+    <div class="mwall">{wall_b}</div>
+  </div>
+</div>''')
 
-# C: choose on the product itself, form just collects size and email
-picks = ''
-for name, items in GROUPS[:2]:
-    for n, slug in items[:2]:
-        picks += (f'<article class="pcard"><img src="{thumb(slug)}" alt="">'
-                  f'<h3>{n}</h3><p>Design concept.</p>'
-                  f'<button class="padd">Add to waitlist</button></article>')
-PAGE_C = (f'<div class="s s-paper wpad"><p class="wgh">The collection, with the control on each piece</p>'
-          f'<div class="pgrid">{picks}</div></div>'
-          f'<div class="s s-slate wpad"><p class="wsum"><b>3 pieces selected</b> '
-          f'<span>MIS eclipse cap, Illicit Shadows cap, MIS eclipse tee</span> '
-          f'<a href="#">Clear</a></p>{{FOOT}}</div>')
-
-FOOT = ('<div class="wfoot"><label class="wfield"><span>Email</span><input type="email"></label>'
-        '<label class="wfield"><span>Size</span><select><option>Select</option><option>M</option></select></label>'
-        '<button class="btn btn-y">Join the waitlist</button></div>')
-PAGE_A = PAGE_A.replace('{FOOT}', FOOT)
-PAGE_B = PAGE_B.replace('{FOOT}', FOOT)
-PAGE_C = PAGE_C.replace('{FOOT}', FOOT)
+# C: quiet line, no tiers on the page
+PAGE_C = band('''<div class="mgrid">
+  <div><p class="kicker">Institutional support</p>
+  <h2 class="mh">Founding corporate<br><em>patrons.</em></h2></div>
+  <div><p class="mlede">Corporate sponsors, foundations and individuals underwrite the halls, the
+  research behind them, and free public access. Levels and recognition are agreed case by case.</p>
+  <a class="ed-link">Start a conversation &#8599;</a></div>
+</div>''', 's-ink')
 
 SHARED = """
-.wpad{padding:34px 30px}
-.wgh{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--label,var(--ac));margin:0 0 12px}
-.wgroups{display:grid;grid-template-columns:1fr 1fr;gap:26px 34px}
-.wgroup{border-top:1px solid var(--rule);padding-top:14px}
-.wchips{display:flex;flex-direction:column;gap:2px}
-.wchip{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:15px;cursor:pointer}
-.wchip input{width:15px;height:15px;accent-color:var(--signal)}
-.wgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:26px}
-.wcard{position:relative;display:block;cursor:pointer;border:1px solid var(--rule);padding:8px}
-.wcard img{width:100%;aspect-ratio:1;object-fit:cover;display:block;margin-bottom:8px}
-.wcard span{display:block;font-size:12.5px;line-height:1.35}
-.wcard input{position:absolute;left:14px;top:14px;width:16px;height:16px;accent-color:var(--signal);z-index:2}
-.wtick{display:none}
-.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.pcard img{width:100%;aspect-ratio:1;object-fit:cover;display:block;margin-bottom:10px}
-.pcard h3{font-size:16px;margin:0}
-.pcard p{font-size:13px;margin:6px 0 12px;opacity:.75}
-.padd{background:none;border:1px solid var(--ac);color:var(--fg);font-family:var(--mono);font-size:10.5px;
-  letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;cursor:pointer;width:100%}
-.wsum{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;border-bottom:1px solid var(--rule);
-  padding-bottom:16px;margin:0 0 20px;font-size:14.5px}
-.wsum span{opacity:.8}
-.wsum a{color:var(--label,var(--ac));font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.12em}
-.wfoot{display:grid;grid-template-columns:1fr 180px auto;gap:16px;align-items:end;margin-top:26px;
-  border-top:1px solid var(--rule);padding-top:22px}
-.wfield span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;opacity:.85}
-.wfield input,.wfield select{width:100%;background:rgba(0,0,0,.35);border:1px solid var(--rule);color:var(--fg);padding:11px 13px;font-size:15px}
+.mpad{padding:38px 32px}
+.mh{font-size:clamp(28px,3.4vw,42px);margin:6px 0 12px}
+.mlede{font-size:16px;max-width:54ch;margin-bottom:22px}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.mtiers{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.mtiers.col{flex-direction:column;gap:6px;margin-bottom:26px}
+.mt{border:1px solid var(--rule);padding:12px 16px;min-width:190px}
+.mt b{display:block;font-family:var(--disp);font-size:19px;letter-spacing:.02em}
+.mt span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;margin-top:3px}
+.wallk{margin-top:4px}
+.mwall{display:grid;gap:2px}
+.mw{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--rule);padding:9px 0;font-size:14.5px}
+.mw i{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.5}
+@media(max-width:820px){.mgrid{grid-template-columns:1fr;gap:28px}}
 """
 
 OPTIONS = [
-    ('A', 'Grouped checkboxes',
-     'The same chips, broken into caps, tees, outerwear, bags and goods, set as a checklist rather '
-     'than a cloud. Cheapest to build, scans in a second, and thirty items stay readable because '
-     'the groups do the work. No pictures, so someone who has not scrolled the collection is '
-     'choosing from names alone.',
+    ('A', 'One band, tiers named',
+     'Diamond, Gold and Silver as a row, each saying what it underwrites rather than what it costs. '
+     'The donor wall is mentioned in the copy. Smallest build, and it reads as an ask rather than a '
+     'price list. It also names three tiers the site cannot yet honour: a Diamond patron will ask '
+     'what a hall costs, and there is no answer on the page.',
      PAGE_A, SHARED),
-    ('B', 'Thumbnail picker',
-     'Every piece as a small image with a checkbox. Easiest to choose from, and the one that best '
-     'survives a catalogue of thirty. It also repeats the collection grid directly above it, so the '
-     'page shows each product twice, and it is the heaviest of the three on a phone.',
+    ('B', 'Tiers and the wall, side by side  &middot;  MY PICK',
+     'The same tiers, plus the donor wall shown as a real structure with its three categories '
+     'waiting to be filled. "Reserved" is honest while there are no names, and it makes the '
+     'recognition concrete, which is what a corporate funder is actually buying. Largest of the '
+     'three, and the one that becomes a real page once names exist.',
      PAGE_B, SHARED),
-    ('C', 'Choose on the product, not in a list  &middot;  MY PICK',
-     'The control moves onto each product card in the collection, and the form keeps only the '
-     'summary, size and email. The selection happens where the person is already looking, the page '
-     'stops listing every item twice, and adding a thirtieth piece changes nothing about the form. '
-     'It needs the selection to be shared between the grid and the form, which is a little more '
-     'work than the other two and is the reason to choose it deliberately.',
+    ('C', 'A quiet line, no tiers',
+     'States that corporate sponsors, foundations and individuals underwrite the work, and that '
+     'levels are agreed case by case. Promises nothing the site cannot deliver today, and it is the '
+     'version that needs no decisions about what Diamond means. Weakest as a prompt: a funder '
+     'reading it learns that support exists, not that they are being asked.',
      PAGE_C, SHARED),
 ]
 blocks, extra = [], []

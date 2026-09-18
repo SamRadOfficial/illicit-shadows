@@ -68,6 +68,36 @@ export default function Museum() {
         </div>
       </section>
 
+      {/* Institutional support, deliberately separate from the individual ladder in the support
+          band: no card checkout, no amounts, everything agreed by conversation. Slate because it
+          sits between two ink sections and yellow belongs to the support band alone. */}
+      <section className="wrap s s-slate" id="patrons">
+        <div className="patron">
+          <div>
+            <span className="kicker">Founding corporate patrons</span>
+            <h2>Underwrite<br /><em>a hall.</em></h2>
+            <p>Institutional support at three levels, each tied to a named part of the museum, and
+              recognized on the donor wall when the doors open in 2027.</p>
+            <Link className="ed-btn" href="/contact?interest=museum">Start a conversation {Arrow.upRight}</Link>
+          </div>
+          <div>
+            <div className="ptiers">
+              {[['Diamond', 'Underwrites a hall'],
+                ['Gold', 'Underwrites an exhibition'],
+                ['Silver', 'Supports the programming']].map(([n, d]) => (
+                <div className="ptier" key={n}><b>{n}</b><span>{d}</span></div>
+              ))}
+            </div>
+            <span className="kicker pwallk">The donor wall</span>
+            <div className="pwall">
+              {['Corporate sponsors', 'Foundations', 'Individuals'].map(n => (
+                <div key={n}><span>{n}</span><i>Reserved</i></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="wrap s s-paper" id="convergence">
         <div className="intro">
           <div><span className="kicker">Crime convergence</span><h2>Everything <em>is connected.</em></h2></div>
