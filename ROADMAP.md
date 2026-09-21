@@ -76,6 +76,15 @@ Where the site's credibility is thinnest, and the systems that turn attention in
       alongside your own posts or on a separate page**. Mixing them risks a reader taking a Reuters
       headline for an Illicit Shadows claim, which the current newsroom avoids by stamping each item
       with its organization.
+      **Rename `/newsroom` to `/news` at the same time, if the ticker is built.** Today the section
+      is announcements and partner coverage, which is what "newsroom" means; a live wire of
+      third-party headlines is closer to "news". Doing it with the ticker rather than separately
+      keeps it to one migration. What it touches: the route, the nav label, `og()` path and
+      canonical, the sitemap, the three post URLs, the YouTube descriptions that link to
+      `/newsroom`, and both published posts, which link to each other. Add a permanent redirect
+      `/newsroom/:path*` to `/news/:path*`, and note that the existing `/news` and `/news/:slug`
+      redirects to `/newsroom` in `vercel.json` must be removed in the same commit or the two rules
+      will loop.
 
 - [ ] **Sources for the narration figures.** The eleven narrations quote hard numbers (50,000
       Canadian fentanyl deaths since 2016, $45-113bn laundered annually, a 775% CBSA increase, TD
@@ -94,14 +103,20 @@ Where the site's credibility is thinnest, and the systems that turn attention in
       who asked what or whether anyone replied. A shared inbox label works until a few a week.
 - [x] **Analytics** shipped 18 Sep: Vercel Analytics and Speed Insights (no configuration, no
       cookies), plus Google Analytics 4 behind a switch.
-- [ ] **Turn on the analytics.** Two steps, both in dashboards rather than code:
-      1. **Vercel:** open the project, Analytics tab, Enable. Same for Speed Insights. Free tier
-         covers this traffic.
-      2. **Google Analytics:** create a GA4 property for illicitshadows.com, copy the measurement ID
-         (G-XXXXXXXXXX) into `analytics.ga4` in `data/site.json`, push. With that field empty,
-         Google Analytics does not load at all.
-      The GA snippet only fires on the live domain, so local previews and the Vercel preview host
-      are never counted. IP anonymisation is on and ad personalisation signals are off.
+- [x] **Vercel Analytics and Speed Insights** enabled 18 Sep. Cookieless, no consent banner needed.
+- [ ] **Google Analytics 4.** The code is shipped and dormant: `components/Analytics.jsx` loads
+      nothing while `analytics.ga4` is empty in `data/site.json`. To turn it on:
+      1. Create a GA4 property for Illicit Shadows, platform Web, stream URL
+         `https://illicitshadows.com`. Copy the measurement ID, `G-XXXXXXXXXX`.
+      2. Paste it into `analytics.ga4` in `data/site.json`, commit, push.
+      3. Verify in GA's **Realtime** view, not the main reports, which lag a day. It only fires on
+         the live domain, so a Vercel preview URL will correctly show nothing.
+      **Decide the consent question first.** GA4 sets cookies, and an EU-based operator normally
+      needs a banner for that; Vercel's numbers are cookieless and need none. If traffic and
+      referrers are all that is wanted, Vercel alone covers it and this item can be closed unbuilt.
+      Reasons to do it anyway: Search Console integration, and funders who expect GA numbers.
+      Already set in the snippet when it does run: IP anonymization on, ad personalization and
+      Google signals off.
 - [ ] **Accessibility pass on real assistive tech.** Automated contrast is clean across seventeen
       routes; focus order and screen-reader flow have not been checked with an actual reader.
 - [ ] **Mobile pass on real devices**, not an emulated frame.

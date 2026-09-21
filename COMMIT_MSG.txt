@@ -1,22 +1,19 @@
-Add Vercel Analytics, Speed Insights, and Google Analytics 4
+Metadata: a real homepage title, and og:site_name on every page
 
-- @vercel/analytics and @vercel/speed-insights in the root layout. No
-  configuration, no cookies, enabled per project in the Vercel dashboard.
-  Verified both scripts load.
-- components/Analytics.jsx adds GA4, but only when data/site.json carries a
-  measurement ID. The field ships empty, so nothing Google-related loads until
-  someone sets it.
-- The GA snippet is guarded by hostname, not by NODE_ENV: a static export runs
-  identically in a local preview and on the Vercel preview host, and NODE_ENV is
-  'production' in a local build too. Verified with a test ID: the loader is
-  present, dataLayer is never configured off-domain, and no request reaches
-  Google.
-- IP anonymisation on, ad personalisation and Google signals off. The readers of
-  this site include people researching organized crime; sending less about them
-  is the right default.
+- Homepage title was the bare brand, "Illicit Shadows", which gives a search
+  engine nothing to match against. Now "Illicit Shadows: Investigating the Global
+  Shadow Economy", 56 characters, inside what Google displays. Set as an
+  absolute title so the site-wide "%s · Illicit Shadows" template does not
+  repeat the brand.
+- og:site_name was missing everywhere a page set its own card. og() replaced the
+  layout's openGraph object wholesale, dropping siteName, and the newsroom and
+  dispatch templates built their own without it. All three now carry it; posts
+  and dispatches are also marked og:type article.
 
-ROADMAP
-- Analytics closed; a new item covers switching them on, which is dashboard work
-  rather than code.
+The Google snippet the owner is seeing ("MIS is a first-of-its-kind virtual
+museum...") is not this metadata. It is either Google's copy of the Squarespace
+site, which has not been recrawled since DNS moved, or Google rewriting the
+description from on-page text, which it does for most queries.
 
-Verified: build 34 pages, 194 references present.
+Verified: build 34 pages, 194 references present. 30 of 30 public pages carry
+og:site_name.

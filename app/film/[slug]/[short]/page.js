@@ -13,7 +13,7 @@ function find(slug, short) { const film = films.find(x => x.slug === slug); retu
 export async function generateMetadata({ params }) {
   const { slug, short } = await params; const [film, s] = find(slug, short);
   if (!s) return {};
-  return { title: `${s.title} · ${film.title}`, description: s.sub || film.subtitle, openGraph: { images: [`${s.image}.jpg`] } };
+  return { title: `${s.title} · ${film.title}`, description: s.sub || film.subtitle, openGraph: { siteName: 'Illicit Shadows', type: 'article', images: [`${s.image}.jpg`] } };
 }
 
 export default async function Short({ params }) {

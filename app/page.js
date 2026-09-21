@@ -9,7 +9,10 @@ import { Arrow } from '../components/Icons';
 import { Pillars } from '../components/Pillars';
 
 export const metadata = {
+  // `absolute` so the site-wide "%s · Illicit Shadows" template does not repeat the brand.
+  title: { absolute: 'Illicit Shadows: Investigating the Global Shadow Economy' },
   ...og('home', {
+    title: 'Illicit Shadows: Investigating the Global Shadow Economy',
     description: 'Investigations into the $6 trillion shadow economy: documentary films, a digital museum, and a predictive convergence system. ICAIE and RADOC.',
     path: '/',
   }),

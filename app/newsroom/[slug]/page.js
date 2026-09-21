@@ -37,7 +37,7 @@ export async function generateMetadata({ params }) {
   const image = p.image ? `${p.image}.${p.imageExt || 'jpg'}` : '/og/newsroom.jpg';
   return {
     title: p.title, description: p.summary,
-    openGraph: { title: p.title, description: p.summary, images: [{ url: image }] },
+    openGraph: { siteName: 'Illicit Shadows', type: 'article', title: p.title, description: p.summary, images: [{ url: image }] },
     twitter: { card: 'summary_large_image', images: [image] },
   };
 }
