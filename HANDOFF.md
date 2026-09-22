@@ -318,6 +318,14 @@ where a page still needs them. The system:
   on every page. Do not add a second donor section to a page: the museum's own was removed when this
   landed, and the CTA bands on `/intelligence`, `/about` and `/contact` were moved to slate so that
   **yellow means the support band and nothing else**. Verified: exactly one `.s-yellow` per route.
+- **museum-viewer.html owns its input, and /museum/enter must never scroll.** The viewer once sat
+  in a normal page with content above and below; in first-person mode it did not capture the wheel
+  or the arrow and space keys, so they scrolled the site and the camera drifted with it. Now the
+  viewer cancels the default action for wheel, scroll keys and touch drags in every mode (the
+  `scroll-guard` blocks near `</head>` and `</body>`), and `ImmersiveLock` fixes the frame to the
+  viewport and locks page scrolling while it is mounted. Do not put content above or below the
+  viewer on that route. Three.js loads from a CDN, so the scene cannot be checked in a sandbox
+  that blocks it; verify on the live site.
 - **`.s p` outranks a bare class.** Any chip, label or note written as a `<p class="x">` inside a
   section needs `.s .x` to win: `.status-chip`, `.support-fine` and `.pview-label` each shipped at
   body size before this was noticed, because the rule looked right and silently lost. When a new

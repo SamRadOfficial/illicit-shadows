@@ -1,6 +1,31 @@
-MISTIC kicker: "Institute · Lab · Fusion center"
+Museum prototype: stop the viewer scrolling the site
 
-- Shortened from "Institute · Research lab · Fusion center" so it sits on one line
-  on phones. The paragraph beneath still says "research lab" in full.
+The bug: /museum/enter put the 3D viewer inside a normal page, with a hero above
+it and a band and the footer below. In first-person mode the viewer did not
+capture the wheel, the arrow keys, space or page keys, so they fell through and
+scrolled the website. The view shifted under the camera and navigation ended up
+pointing at the ceiling.
 
-Verified: one line at 390 and 360; wraps only at 320.
+Viewer (public/museum-viewer.html)
+- Wheel, scroll keys (Space, arrows, PageUp/Down, Home, End) and touch drags now
+  have their default action cancelled in every mode, not only the overview.
+  Movement keys still reach the game: this cancels the scroll, it does not stop
+  the event.
+- html and body are overflow:hidden with overscroll-behavior:none.
+- The viewer takes keyboard focus on load and on any click.
+
+Page (app/museum/enter, components/ImmersiveLock.jsx)
+- The viewer fills the screen below the nav, fixed, with nothing above or below
+  it to scroll to. ImmersiveLock locks page scrolling while mounted and restores
+  it when the visitor leaves.
+- The hero and the back-to-museum band are gone; the viewer has its own title
+  bar, and the nav stays visible for leaving.
+
+Verified: host page scrollY stays 0 after twelve wheel ticks and eight keys on
+desktop, and after three long touch drags on a phone; scrolling is restored on
+/museum after leaving. The 3D scene itself could not be checked here: Three.js
+loads from a CDN this sandbox blocks, identically before and after the change.
+Check on the live site.
+
+Deploy: this changes public/museum-viewer.html, so the ASSETS zip for public/ is
+needed as well as the source zip.

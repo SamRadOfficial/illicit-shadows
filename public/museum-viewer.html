@@ -74,14 +74,6 @@
   #reader p{font-size:14px;line-height:1.7;color:#d8d5cc;max-width:60ch;margin-bottom:12px}
   #reader .rule{height:2px;margin:26px 0;background:repeating-linear-gradient(90deg,var(--red) 0 8px,transparent 8px 14px)}
   #reader .status{display:inline-block;font-size:11px;letter-spacing:.1em;padding:4px 8px;border:1px solid #333;color:var(--ash);margin-top:6px}
-  #reader .src{font-size:12px;color:#bdbab2;line-height:1.55}
-  #reader .chip{display:inline-block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:2px 6px;margin-right:6px;border:1px solid #444;color:#8a8a86}
-  #reader .chip.cited{border-color:var(--yellow);color:var(--yellow)} #reader .chip.in-development{border-color:var(--red);color:var(--red)}
-  #reader a{color:var(--yellow)} #reader a.btn{display:inline-block;background:var(--yellow);color:#000;text-decoration:none;font-family:var(--display);font-size:16px;letter-spacing:.06em;text-transform:uppercase;padding:10px 16px;margin-top:6px}
-  #reader ol.films{list-style:none;margin:14px 0;border-top:1px solid #222} #reader ol.films li a{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;padding:9px 0;border-bottom:1px solid #222;text-decoration:none;color:#fff}
-  #reader ol.films b{font-weight:500;color:#fff} #reader ol.films i{font-style:normal;font-size:12px;color:var(--yellow);margin-left:auto} #reader ol.films span{flex-basis:100%;font-size:12px;color:#8a8a86}
-  #reader .yt{position:relative;padding-top:56.25%;margin:14px 0;background:#000} #reader .yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-  #reader ul.tiers{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0} #reader ul.tiers a{display:block;border:1px solid #333;padding:10px 12px;text-decoration:none;color:#fff} #reader ul.tiers a:hover{border-color:var(--yellow)} #reader ul.tiers b{display:block;font-family:var(--display);font-size:22px;color:var(--yellow)} #reader ul.tiers span{font-size:11.5px;color:#8a8a86}
   #reader button{margin-top:30px;font-family:var(--display);font-size:18px;letter-spacing:.06em;text-transform:uppercase;background:var(--yellow);color:#000;border:0;padding:14px 20px;cursor:pointer}
   #reader button:focus-visible,#step:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
@@ -98,12 +90,12 @@
   }
   @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
 </style>
-</head>
+<style id="scroll-guard">html,body{margin:0;height:100%;overflow:hidden;overscroll-behavior:none;touch-action:none}</style></head>
 <body>
 <canvas id="stage"></canvas>
 
 <div id="site">
-  <header><div class="brand"><b>MIS</b> · MUSEUM OF ILLICIT SHADOWS</div><div class="sub">Site model · digital matrix · Phase I opening 2027 · Phase II 2028</div><div class="tag">#EVERYTHINGISCONNECTED</div></header>
+  <header><div class="brand"><b>MIS</b> · MUSEUM OF ILLICIT SHADOWS</div><div class="sub">Site model · digital matrix · Phase I 2027 · Phase II 2028</div><div class="tag">#EVERYTHINGISCONNECTED</div></header>
   <div id="gl-wrap">
     <canvas id="gl"></canvas>
     <div id="labels"></div>
@@ -151,110 +143,80 @@ const C = { yellow:0xFFD400, red:0xE11D1D, orange:0xFF8A00, bone:0xF2EFE6,
 
 // ---------- Content: exhibition halls (from brochure, Phase I / Phase II) ----------
 // Angles run clockwise around the rotunda; every hall opens onto it.
-// ---------- Video sources ----------
-// Drop a direct MP4 URL into screenMp4 to play it on the theater screen as a video texture.
-// Until then the screen shows the film card, and the reader panel links to the site pages and the trailer.
-const VIDEO = { trailerYouTube:'LimC48lcTls', screenMp4:'' };
-const SITE = 'https://illicitshadows.com';
-const FILMS = [
-  ['American Fallout','How fentanyl became a weapon of war.','2:01','american-fallout'],
-  ['The Illicit Beachhead',"Canada's fentanyl frontlines.",'2:12','illicit-beachhead'],
-  ['The Invisible Source','Fentanyl precursors in China.','2:33','invisible-source'],
-  ['The Cartels',"Mexico's role in the fentanyl supply chain.",'2:58','the-cartels'],
-  ['The Leaky Port',"Vancouver and fentanyl's maritime gateway.",'2:30','leaky-port'],
-  ['The Lab Next Door','Suburban synthesis operations.','2:36','lab-next-door'],
-  ['The Parcel Pipeline','How fentanyl arrives by mail.','2:42','parcel-pipeline'],
-  ['The Syndicates','Cartels, TCOs, and Hells Angels.','2:09','syndicates'],
-  ["Fentanyl's Dirty Profits",'Real estate, casinos, money laundering.','2:00','dirty-profits'],
-  ['Arctic Frontlines','Indigenous communities and the Arctic.','1:46','arctic-frontlines'],
-  ['The Next Wave','Carfentanil and the illicit chemical pipeline.','1:55','next-wave'],
-];
-const DONOR_TIERS = [
-  ['$100','Supporter','https://donate.stripe.com/8x29ATdOo71F0j49dgdAk00'],
-  ['$500','Patron','https://donate.stripe.com/14AaEXcKkfyb2rc758dAk01'],
-  ['$1,000','Benefactor','https://donate.stripe.com/28E9AT4dO4Txgi2758dAk02'],
-  ['$10,000','Underwriter','https://donate.stripe.com/5kQ14n5hS71F2rc0GKdAk03'],
-  ['$25,000','Founding donor','https://donate.stripe.com/eVq3cv9y85XBe9U3SWdAk04'],
-  ['Any amount','Contributor','https://donate.stripe.com/8x27sLdOo4TxaXI4X0dAk05'],
-];
-
-// ---------- Content: exhibition halls ----------
-// Exhibit = { t:title, b:body, src:visible source line, status:'cited'|'illustrative'|'in development', html:optional block }
-// Statistics carry their source on the placard and in the reader (site rule: the source sits next to the number).
 const HALLS = [
   { id:'narcotics', level:1, angle:-90, accent:0x4fb3ff, shape:'cluster',
     title:'Narcotics & Chemical Cartels', short:'Narcotics',
-    intro:'The fentanyl supply chain runs from Chinese precursor companies through cartel labs in Mexico and Canada to North American streets, with illicit financing following the drug every step of the way. Chemical Cartels, eleven short films, follows the trail.',
+    intro:'Chemical cartels no longer need fields. Precursor chemicals bought legally on one continent become synthetic drugs on another, and the supply chain hides in ordinary commerce.',
     exhibits:[
-      { t:'The precursor pipeline', b:'Industrial chemicals with legitimate uses leave licensed producers in China and arrive at clandestine labs in Mexico and Canada. The Invisible Source and The Lab Next Door follow that trail from export paperwork to suburban synthesis.', src:'Chemical Cartels (ICAIE + RADOC, 2025-2026): The Invisible Source; The Lab Next Door', status:'cited' },
-      { t:'One every seven minutes', b:'The films open with the human cost: from the Tenderloin to Kensington to the coal towns of West Virginia, one American dies of a fentanyl overdose roughly every seven minutes.', src:'Chemical Cartels, Dispatch 1: American Fallout (ICAIE, Dec 2025)', status:'cited' },
-      { t:'The parcel pipeline', b:'Distribution moved from the corner to the platform. Vancouver became a maritime gateway, the postal system a courier, and the proceeds flowed into real estate and casinos. Three films: The Leaky Port, The Parcel Pipeline, Fentanyl\u2019s Dirty Profits.', src:'Chemical Cartels (ICAIE + RADOC, 2025-2026)', status:'cited' }]},
+      ['The precursor pipeline','Industrial chemicals with legitimate uses are diverted into clandestine labs. Follow one shipment from a licensed broker to a jungle press, and see where the paperwork stopped asking questions.'],
+      ['Synthetic scale','A laboratory the size of a garage can produce what once needed a plantation. This gallery shows how synthetic opioids collapsed the distance between manufacture and overdose.'],
+      ['From corner to platform','Distribution moved online. Encrypted messaging, social feeds and parcel services replaced the street corner, and the logistics of legal e-commerce became the logistics of narcotics.']]},
 
   { id:'theater', level:1, angle:-30, accent:0xE11D1D, shape:'screen',
     title:'Illicit Shadows Theater', short:'Theater',
-    intro:'Field investigations into illicit economies. Chemical Cartels is now streaming as eleven short films. Illicit Gold, the pilot, is in production for 2026-2027 in Colombia, Brazil and Switzerland.',
+    intro:'The investigative docuseries plays here. Each episode is a journey into a shadowy underworld where geo-security, malign influence, economic manipulation and human struggle converge with corruption and criminality.',
     exhibits:[
-      { t:'Now streaming: Chemical Cartels', b:'How fentanyl became a weapon of war. Eleven short films, watchable now, from the precursor trade to the labs, the ports and the street.', src:'illicitshadows.com/film/chemical-cartels', status:'cited', html:'films' },
-      { t:'In production: Illicit Gold', b:'Gold from the Amazon is dug by the poor, taxed by armed groups, laundered through a refining chokepoint, and sold into markets that cannot tell where it came from. Once it is refined, no routine assay can establish where it was mined. Colombia, Brazil, Switzerland. 2026-2027.', src:'illicitshadows.com/film/illicit-gold', status:'cited', html:'gold' },
-      { t:'Official trailer', b:'Made before the gold shoot, the 2024 trailer introduces the fentanyl investigation and the wider world behind it.', src:'YouTube · @illicit_shadows', status:'cited', html:'trailer' }]},
+      ['Now screening: Season 1','Illicit Shadows, the docuseries hosted by Sam Rad, connects the hubs and nodes of seemingly unrelated criminal activity, from the Amazon to the free-trade zones and financial havens of the West.'],
+      ['In production: Golden Handcuffs','Season 2 follows illicit gold from wildcat garimpos and cartel corridors in Colombia and Brazil to the refineries of Switzerland, and asks how tainted metal ends up in a phone, a bar or a coin.'],
+      ['Behind the investigation','How the series is reported: field access, proprietary detection data, on-record sources, and the discipline of giving every named company the chance to respond.']]},
 
   { id:'fakes', level:1, angle:30, accent:0xC9A84C, shape:'bag',
     title:'Fakes! Counterfeits & Pirated Goods', short:'Fakes!',
-    intro:'Counterfeiting is not a victimless discount. It funds organized networks, exploits labor, and puts fake medicines, parts and electronics into circulation. Hall content is in curation for Phase I; the exhibits below are illustrative.',
+    intro:'Counterfeiting is not a victimless discount. It funds organized networks, exploits labour, and puts fake medicines, parts and electronics into circulation.',
     exhibits:[
-      { t:'The counterfeit runway', b:'Luxury fakes are the visible surface of a much larger trade. The same routes and shell companies that move a handbag move pesticides, brake pads and chargers.', src:'Illustrative. Sourced exhibit in curation.', status:'illustrative' },
-      { t:'Pirated pharma', b:'Counterfeit medicines can contain nothing, or something worse. This gallery will trace how fake pills enter clinics and online pharmacies.', src:'Illustrative. Sourced exhibit in curation.', status:'illustrative' },
-      { t:'Free trade zones', b:'Zones designed for frictionless commerce also offer frictionless relabeling. Goods change identity between ports.', src:'Illustrative. Sourced exhibit in curation.', status:'illustrative' }]},
+      ['The counterfeit runway','Luxury fakes are the visible surface of a much larger trade. The same routes and shell companies that move a handbag move pesticides, brake pads and chargers.'],
+      ['Pirated pharma','Counterfeit medicines can contain nothing, or something worse. This gallery traces how fake pills enter clinics and online pharmacies.'],
+      ['Free trade zones','Zones designed for frictionless commerce also offer frictionless relabelling. Learn how goods change identity between ports.']]},
 
   { id:'history', level:1, angle:90, accent:0xF2EFE6, shape:'timeline',
     title:'History of Criminalities & Evolution of Illicit Markets', short:'History',
-    intro:'Illicit markets are as old as borders. This hall walks the timeline from smuggling routes to encrypted marketplaces. Timeline content is in curation for Phase I.',
+    intro:'Illicit markets are as old as borders. This hall walks the timeline from smuggling routes to encrypted marketplaces, and shows how each new market inherits the last one\u2019s playbook.',
     exhibits:[
-      { t:'1 · Routes and smugglers', b:'Tariffs created the first smugglers. Long before cartels, the incentive was the same: move a good across a line where its price changes.', src:'Illustrative. Sourced timeline in curation.', status:'illustrative' },
-      { t:'2 · Prohibition and the syndicate', b:'Banning a popular product built the modern criminal organization: distribution networks, protection, and the laundering of profit into legitimate business.', src:'Illustrative. Sourced timeline in curation.', status:'illustrative' },
-      { t:'3 · The pivot to gold', b:'As enforcement against drug trafficking intensified in the early 2000s, criminal groups pivoted toward gold mining. By 2016 the value of illegal gold exports from Colombia and Peru had surpassed that of cocaine exports.', src:'World Gold Council, Silence Is Golden (Nov 2024), via FACT Coalition (2025)', status:'cited' }]},
+      ['1 · Routes and smugglers','Tariffs created the first smugglers. Long before cartels, the incentive was the same: move a good across a line where its price changes.'],
+      ['2 · Prohibition and the syndicate','Banning a popular product built the modern criminal organization: distribution networks, protection, and the laundering of profit into legitimate business.'],
+      ['3 · The digital marketplace','Darknet markets, crypto rails and social platforms made illicit trade global, anonymous and scalable. The playbook did not change; the reach did.']]},
 
   { id:'environment', level:1, angle:150, accent:0x3fbf6a, shape:'gold',
     title:'Environmental Crimes', short:'Environment',
-    intro:'Illegal gold mining is where crime convergence is easiest to see: one operation can destroy a forest, poison a river, finance an armed group and launder its proceeds through world markets. This hall draws on the Illicit Gold research corpus.',
+    intro:'Illegal mining, logging and wildlife trafficking are where crime convergence is easiest to see: one operation can destroy a forest, poison a river, finance an armed group and launder its proceeds through world markets.',
     exhibits:[
-      { t:'Dirty gold', b:'In Brazil, informal mines account for about 90 percent of gold production, and more than 2,000 tons of mercury have been released in recent decades. Illegal mining on Indigenous lands in Brazil grew by roughly 625 percent over the past decade.', src:'FACT Coalition, Addressing Illegal Gold Mining in the Western Hemisphere (2025), citing Malm (1998) and MapBiomas (2025)', status:'cited' },
-      { t:'Mercury', b:'People living in Amazon mining areas show mercury levels two to six times above safe limits. Every year more than 30 tons of mercury end up in Amazonian rivers and lakes, and nearly 60 percent of fish sold in Puerto Maldonado markets exceeded international safety limits in a 2013 study.', src:'FACT Coalition (2025); JGGA Illegal Mining Report (2026), citing Global Initiative (2017) and Carnegie Institution (2013)', status:'cited' },
-      { t:'Refined, untraceable', b:'Peru accounts for an estimated 44 percent of South America\u2019s illicit gold trade; its illicit gold exports reached 77 metric tons in 2023, worth about $4.83 billion. Once refined, the metal is commingled and papered until it looks like anyone else\u2019s. A New York Times investigation found gold originating at a Clan del Golfo mine in the U.S. Mint\u2019s supply chain; the Mint says the United States is its primary source and that it is taking steps to better track its gold.', src:'Instituto Peruano de Econom\u00eda (2024), via FACT Coalition (2025); The New York Times, Apr 26, 2026', status:'cited' }]},
+      ['Dirty gold','Wildcat garimpos strip riverbanks and release mercury into the Amazon. The gold they produce is melted, mixed and papered until it looks like anyone else\u2019s.'],
+      ['Timber and wildlife','Protected species and old-growth timber move along the same corridors as drugs and weapons, often in the same trucks.'],
+      ['The convergence','Mining camps pay armed groups for protection, criminal networks control the supply of fuel and machinery, and the profit leaves through refineries and banks. Everything is connected.']]},
 
   { id:'shop', level:1, angle:210, accent:0xFFD400, shape:'book',
     title:'MIS Museum Shop', short:'Shop',
-    intro:'Books, dialogues and the founding contributor program. The museum is free to enter; its research and exhibitions are supported by contributors and partners.',
+    intro:'Books, dialogues and the founding donor programme. The museum is free to enter; its research and exhibitions are supported by donors and partners.',
     exhibits:[
-      { t:'The Umbra Circle', b:'A Mexican diplomat is assassinated in London. Two museum founders follow the trail into a web of espionage and intrigue, and find The Umbra Circle: a secret network of politicians, financiers, and organized crime groups manipulating world systems for power and profit. Sam Rad and David M. Luna. Coming 2027.', src:'illicitshadows.com/books', status:'cited', html:'books' },
-      { t:'Founding contributors', b:'Support the public mission as a founding contributor. Contributions underwrite the exhibition halls and the investigative films. Donations are not tax deductible.', src:'illicitshadows.com/donate', status:'cited', html:'donate' },
-      { t:'Partners', b:'MIS is built by Illicit Shadows, LLC with the International Coalition Against Illicit Economies (ICAIE) in Washington, DC and RAD Original Creations (RADOC).', src:'illicitshadows.com/about', status:'cited', html:'about' }]},
+      ['The Umbra Circle','The novel that enters the narrative universe of the Illicit Shadows Chronicles. Read the overview on illicitshadows.com.'],
+      ['Become a founding donor','MIS online is under construction. Founding donors underwrite the exhibition halls and the investigative docuseries, and are recognized in the rotunda.'],
+      ['Partners','MIS is built with the International Coalition Against Illicit Economies (ICAIE) in Washington, DC and RAD Original Creations in New York, DC and London.']]},
 
   // ---- Phase II (Level 2, 2028) ----
   { id:'trafficking', level:2, angle:-90, accent:0x9aa6b2, shape:'holo',
     title:'Human Trafficking & Forced Labor', short:'Trafficking',
-    intro:'Forced labor sits inside supply chains for fish, bricks, textiles and minerals. Phase II traces recruitment, debt bondage and the businesses that profit. Thread Count, in development, covers cotton, garments and the labor behind the label.',
-    exhibits:[{ t:'Hall in development', b:'Opens with the second digital matrix level in 2028. Research and curation are underway with partner organizations.', src:'Phase II · 2028', status:'in development' }]},
+    intro:'Forced labour sits inside supply chains for fish, bricks, textiles and minerals. Phase II traces recruitment, debt bondage and the businesses that profit.',
+    exhibits:[['Hall in development','Opens with the second digital matrix level in 2028. Research and curation are underway with partner organizations.']]},
   { id:'convergence', level:2, angle:-30, accent:0xFFD400, shape:'wheel',
     title:'Threat Convergence', short:'Convergence',
-    intro:'The museum\u2019s thesis in one room: contraband artifacts suspended in linked spheres around a globe. Illicit economies erode societal trust, governance and democracy, environmental security and economic development at the same time, through the same criminal activities.',
-    exhibits:[{ t:'The impacts wheel', b:'Five domains, one engine. The $6 trillion shadow economy registers in every sector at once: narcotics, critical minerals, environmental crime, forced labor, corruption, money laundering, supply chains, state-linked influence, sanctions evasion, terror finance, arms trafficking, counterfeits.', src:'$6 trillion: ICAIE (2026)', status:'cited' }]},
+    intro:'The museum\u2019s thesis in one room. Illicit economies erode societal trust, governance and democracy, environmental security and economic development at the same time, through the same criminal activities.',
+    exhibits:[['The impacts wheel','Five domains, one engine. Walk into the wheel to see how a single illicit market registers in every sector at once.']]},
   { id:'corruption', level:2, angle:30, accent:0x7dd3c0, shape:'holo',
     title:'Corruption & Money Laundering', short:'Corruption',
-    intro:'Nothing in the shadow economy works without someone to look away and somewhere to put the money. Kleptocrats, shell companies and trade-based laundering.',
-    exhibits:[{ t:'Hall in development', b:'Opens with the second digital matrix level in 2028.', src:'Phase II · 2028', status:'in development' }]},
+    intro:'Nothing in the illicit economy works without someone to look away and somewhere to put the money. Kleptocrats, shell companies and trade-based laundering.',
+    exhibits:[['Hall in development','Opens with the second digital matrix level in 2028.']]},
   { id:'antiquities', level:2, angle:90, accent:0xd98c4a, shape:'holo',
     title:'Stolen Antiquities, Fine Art & Cultural Heritage', short:'Antiquities',
     intro:'Looted heritage travels through auction houses and free ports. Phase II follows objects from excavation to the collection.',
-    exhibits:[{ t:'Hall in development', b:'Opens with the second digital matrix level in 2028.', src:'Phase II · 2028', status:'in development' }]},
+    exhibits:[['Hall in development','Opens with the second digital matrix level in 2028.']]},
   { id:'tobacco', level:2, angle:150, accent:0xb5b5b5, shape:'holo',
     title:'Illegal Tobacco & Alcohol', short:'Tobacco',
-    intro:'Low risk, high margin: illicit tobacco and alcohol fund organized crime and terrorism while undercutting public health. Smoke Screen, in development, covers the illicit tobacco trade and what it funds.',
-    exhibits:[{ t:'Hall in development', b:'Opens with the second digital matrix level in 2028.', src:'Phase II · 2028', status:'in development' }]},
+    intro:'Low risk, high margin: illicit tobacco and alcohol fund organized crime and terrorism while undercutting public health.',
+    exhibits:[['Hall in development','Opens with the second digital matrix level in 2028.']]},
   { id:'cyber', level:2, angle:210, accent:0x5ad1ff, shape:'holo',
     title:'Cybercrime & Online Scams', short:'Cyber',
-    intro:'Scam compounds, ransomware and fraud-as-a-service. The newest hall and the one growing fastest.',
-    exhibits:[{ t:'Hall in development', b:'Opens with the second digital matrix level in 2028.', src:'Phase II · 2028', status:'in development' }]},
+    intro:'Scam compounds, ransomware and fraud-as-a-service. The newest hall of the illicit economy and the one growing fastest.',
+    exhibits:[['Hall in development','Opens with the second digital matrix level in 2028.']]},
 ];
 
 const ROT_R = 15;          // rotunda radius
@@ -307,7 +269,6 @@ function fitFont(g, text, maxW, size, family, weight=''){
   for (let sz=size; sz>18; sz-=4){ g.font = `${weight} ${sz}px ${family}`.trim(); const longest = Math.max(...text.split(' ').map(w=>g.measureText(w).width)); if (longest <= maxW) return sz; }
   return 18;
 }
-function fitLine(g, text, maxW, size, family, weight=''){ for (let sz=size; sz>18; sz-=4){ g.font=`${weight} ${sz}px ${family}`.trim(); if (g.measureText(text).width <= maxW) return sz; } return 18; }
 function hex(n){ return '#' + n.toString(16).padStart(6,'0'); }
 
 const floorTex = tex(512, 512, (g,w,h)=>{
@@ -362,7 +323,7 @@ function makeWheelTex(){ return tex(2048, 2048, (g,w,h)=>{
   g.fillStyle='#E11D1D'; g.font=`500 48px ${MONO}`; g.fillText('CRIME CONVERGENCE', cx, cy+170);
 }); }
 
-function placardTex(title, body, accent, phase, src, status) {
+function placardTex(title, body, accent, phase) {
   return tex(1024, 768, (g,w,h)=>{
     g.fillStyle='#080808'; g.fillRect(0,0,w,h);
     g.fillStyle = hex(accent); g.fillRect(0,0,w,14);
@@ -370,14 +331,8 @@ function placardTex(title, body, accent, phase, src, status) {
     g.fillStyle='#8a8a86'; g.font=`500 26px ${MONO}`; g.fillText(phase, 48, 70);
     g.fillStyle='#FFD400'; const ts = fitFont(g, title.toUpperCase(), w-96, 74, DISPLAY);
     let y = wrap(g, title.toUpperCase(), 48, 190, w-96, ts*1.08);
-    g.fillStyle='#F2EFE6'; g.font=`30px ${MONO}`;
-    wrap(g, body, 48, y+24, w-96, 42);
-    // provenance footer: status chip + source line
-    g.fillStyle='#111'; g.fillRect(0, h-132, w, 132);
-    g.fillStyle = status==='cited' ? '#FFD400' : (status==='illustrative' ? '#8a8a86' : '#E11D1D');
-    g.font=`500 22px ${MONO}`; g.fillText((status||'').toUpperCase(), 48, h-96);
-    g.fillStyle='#bdbab2'; g.font=`22px ${MONO}`;
-    wrap(g, 'Source: ' + (src||''), 48, h-62, w-96, 28);
+    g.fillStyle='#F2EFE6'; g.font=`32px ${MONO}`;
+    wrap(g, body, 48, y+30, w-96, 46);
   });
 }
 function muralTex(title, phase, accent) {
@@ -409,38 +364,6 @@ const hotspots = [];    // {pos:Vector3, level, hall, exhibitIndex, mesh}
 const spinners = [];    // animated meshes
 
 function box(w,h,d,mat,x,y,z){ const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat); m.position.set(x,y,z); return m; }
-
-// --- Globe of illuminated trade routes ---
-// Route hubs as lat/lon; arcs lift off the surface and glow. Routes follow the investigations:
-// Amazon gold to Switzerland, Dubai and India; Colombia to the US; China precursors to Mexico and Canada; Vancouver in.
-const HUBS = { amazon:[-3,-60], colombia:[6,-74], peru:[-12,-77], venezuela:[8,-66], switzerland:[46.8,8.2], dubai:[25,55], india:[19,73], usa:[39,-98], mexico:[23,-102], china:[31,121], canada:[49,-123], drc:[-4,22], sudan:[15,32], london:[51.5,-0.1] };
-const ROUTES = [['amazon','switzerland'],['peru','india'],['peru','dubai'],['colombia','usa'],['venezuela','dubai'],['china','mexico'],['china','canada'],['mexico','usa'],['canada','usa'],['drc','dubai'],['sudan','dubai'],['switzerland','london'],['switzerland','usa']];
-function ll(lat, lon, r){ const p=THREE.MathUtils.degToRad(90-lat), t=THREE.MathUtils.degToRad(lon+180); return new THREE.Vector3(-r*Math.sin(p)*Math.cos(t), r*Math.cos(p), r*Math.sin(p)*Math.sin(t)); }
-function makeGlobe(r, glow){
-  const G = new THREE.Group();
-  G.add(new THREE.Mesh(new THREE.SphereGeometry(r, 48, 32), new THREE.MeshStandardMaterial({ color:0x050505, roughness:.9, metalness:.1 })));
-  G.add(new THREE.Mesh(new THREE.SphereGeometry(r*1.002, 24, 16), new THREE.MeshBasicMaterial({ color:0x2a2a2a, wireframe:true, transparent:true, opacity:.35 })));
-  const routeMat = new THREE.MeshStandardMaterial({ color:0xFFD400, emissive:0xFFB000, emissiveIntensity:1.6*glow, roughness:.4 });
-  const hubMat = new THREE.MeshStandardMaterial({ color:0xE11D1D, emissive:0xE11D1D, emissiveIntensity:1.2*glow });
-  Object.values(HUBS).forEach(([la,lo])=>{ const h=new THREE.Mesh(new THREE.SphereGeometry(r*.045,10,8), hubMat); h.position.copy(ll(la,lo,r*1.005)); G.add(h); });
-  ROUTES.forEach(([a,b])=>{ const A=ll(...HUBS[a], r), B=ll(...HUBS[b], r); const mid=A.clone().add(B).multiplyScalar(.5); const d=A.distanceTo(B); mid.setLength(r + d*.35);
-    const curve = new THREE.QuadraticBezierCurve3(A, mid, B); G.add(new THREE.Mesh(new THREE.TubeGeometry(curve, 48, r*.02, 6, false), routeMat)); });
-  const gl = new THREE.PointLight(0xffb000, .9*glow, r*6, 2); G.add(gl);
-  const halo = new THREE.Mesh(new THREE.SphereGeometry(r*1.12, 32, 24), new THREE.MeshBasicMaterial({ color:0xff8a00, transparent:true, opacity:.06*glow, blending:THREE.AdditiveBlending, depthWrite:false, side:THREE.BackSide })); G.add(halo);
-  return G;
-}
-function miniArtifact(kind){
-  const gr = new THREE.Group();
-  switch(kind){
-    case 'gold': for (let i=0;i<3;i++){ const b=new THREE.Mesh(new THREE.BoxGeometry(.28,.08,.14), new THREE.MeshStandardMaterial({ color:0xE0B44A, metalness:1, roughness:.2, emissive:0x6a4200, emissiveIntensity:.3 })); b.position.y=i*.09-.1; b.rotation.y=i*.4; gr.add(b);} break;
-    case 'pill': { const p=new THREE.Mesh(new THREE.CylinderGeometry(.08,.08,.3,12), mat(0x4fb3ff,{ emissive:0x4fb3ff, emissiveIntensity:.5 })); p.rotation.z=.8; gr.add(p); break; }
-    case 'bag': { gr.add(new THREE.Mesh(new THREE.BoxGeometry(.3,.22,.12), mat(0xC9A84C,{ roughness:.35 }))); const h=new THREE.Mesh(new THREE.TorusGeometry(.09,.015,6,20), mat(0xC9A84C,{ metalness:.9 })); h.position.y=.17; gr.add(h); break; }
-    case 'cobalt': gr.add(new THREE.Mesh(new THREE.DodecahedronGeometry(.18,0), mat(0x2b5bd6,{ emissive:0x1a3aa0, emissiveIntensity:.5, roughness:.3, metalness:.6 }))); break;
-    case 'tobacco': for (let i=0;i<3;i++){ const c=new THREE.Mesh(new THREE.BoxGeometry(.16,.24,.06), mat(i%2?0xb5b5b5:0xE11D1D)); c.position.x=(i-1)*.18; gr.add(c);} break;
-    default: { const c=new THREE.Mesh(new THREE.BoxGeometry(.24,.02,.24), mat(0x0e2a12,{ emissive:0x5ad1ff, emissiveIntensity:.35 })); gr.add(c); const die=new THREE.Mesh(new THREE.BoxGeometry(.1,.03,.1), mat(0x5ad1ff,{ emissive:0x5ad1ff, emissiveIntensity:.9 })); die.position.y=.025; gr.add(die); }
-  }
-  return gr;
-}
 
 // --- Rotunda ---
 function buildRotunda() {
@@ -515,12 +438,11 @@ function buildRotunda() {
   const ring = new THREE.Group(); ring.position.y = LEVEL_Y[2]+3.6; g.add(ring);
   const torus = new THREE.Mesh(new THREE.TorusGeometry(4.2, .28, 24, 128), new THREE.MeshStandardMaterial({ color:0xff5a00, emissive:0xff4a00, emissiveIntensity:1.1, roughness:.3 })); ring.add(torus);
   const corona = new THREE.Mesh(new THREE.TorusGeometry(4.2, .9, 24, 128), new THREE.MeshBasicMaterial({ color:0xff5500, transparent:true, opacity:.14, blending:THREE.AdditiveBlending, depthWrite:false })); ring.add(corona);
-  ring.rotation.x = Math.PI/2 - .35; ring.rotation.z = .2;   // the eclipse becomes a tilted orbit around the globe
-  spinners.push({ m:ring, s:.12, axis:'z' });
-  // THE GLOBE — suspended globe of illuminated trade routes (site: "The Eclipse Rotunda")
-  const globe = makeGlobe(2.6, 1.0); globe.position.y = LEVEL_Y[2]+3.6; g.add(globe); spinners.push({ m:globe, s:.08 });
+  const disc = new THREE.Mesh(new THREE.CircleGeometry(4.0, 96), new THREE.MeshBasicMaterial({ color:0x000000, side:THREE.DoubleSide })); ring.add(disc);
   const misTex = tex(512,256,(g2,w,h)=>{ g2.clearRect(0,0,w,h); g2.fillStyle='#FFD400'; g2.font=`160px ${MONO}`; g2.textAlign='center'; g2.fillText('M I S', w/2, 190); });
-  const misLabel = new THREE.Mesh(new THREE.PlaneGeometry(3.2, 1.6), new THREE.MeshBasicMaterial({ map:misTex, transparent:true, side:THREE.DoubleSide, depthWrite:false })); misLabel.position.set(0, LEVEL_Y[2]+.4, 0); g.add(misLabel); spinners.push({ m:misLabel, s:.3 });
+  const misLabel = new THREE.Mesh(new THREE.PlaneGeometry(5, 2.5), new THREE.MeshBasicMaterial({ map:misTex, transparent:true, side:THREE.DoubleSide })); misLabel.position.z=.02; ring.add(misLabel);
+  const misBack = misLabel.clone(); misBack.position.z=-.02; misBack.rotation.y=Math.PI; ring.add(misBack);
+  spinners.push({ m:ring, s:.12, axis:'y' });
   const glow = new THREE.PointLight(0xff7a00, 1.5, 34, 1.7); glow.position.y = LEVEL_Y[2]+3.6; g.add(glow);
   const glow2 = new THREE.PointLight(0xffd400, .8, 30, 2); glow2.position.y = 5; g.add(glow2);
 
@@ -551,7 +473,7 @@ function mat(color, o={}){ return new THREE.MeshStandardMaterial(Object.assign({
 const GLASS = new THREE.MeshStandardMaterial({ color:0xdfe8ff, transparent:true, opacity:.14, roughness:.05, metalness:.2, side:THREE.DoubleSide, depthWrite:false });
 function vitrine(g, x, z, w=1.4, hgt=1.6, d=1.4, y=1.0){ const v = new THREE.Mesh(new THREE.BoxGeometry(w, hgt, d), GLASS); v.position.set(x, y+hgt/2, z); g.add(v); const e = new THREE.LineSegments(new THREE.EdgesGeometry(v.geometry), new THREE.LineBasicMaterial({ color:0x3a3a3a })); e.position.copy(v.position); g.add(e); }
 function label3d(g, text, x, y, z, ry=Math.PI, w=1.6, color='#FFD400'){
-  const t = tex(512,128,(g2,W,H)=>{ g2.clearRect(0,0,W,H); g2.fillStyle=color; fitLine(g2, text, W-40, 72, DISPLAY); g2.textAlign='center'; g2.fillText(text, W/2, 88); });
+  const t = tex(512,128,(g2,W,H)=>{ g2.clearRect(0,0,W,H); g2.fillStyle=color; fitFont(g2, text, W-40, 72, DISPLAY); g2.textAlign='center'; g2.fillText(text, W/2, 88); });
   const m = new THREE.Mesh(new THREE.PlaneGeometry(w, w/4), new THREE.MeshBasicMaterial({ map:t, transparent:true })); m.position.set(x,y,z); m.rotation.y=ry; g.add(m); return m;
 }
 function addProps(h, g){
@@ -571,7 +493,7 @@ function addProps(h, g){
       break; }
     case 'theater': {
       // poster frames along the side walls
-      const titles = ['SEASON 1 · CRIME CONVERGENCE','GOLDEN HANDCUFFS','THE SHADOWVERSE','EVERYTHING IS CONNECTED'];
+      const titles = ['SEASON 1 · CRIME CONVERGENCE','ILLICIT GOLD','THE SHADOWVERSE','EVERYTHING IS CONNECTED'];
       titles.forEach((t,i)=>{ const side = i%2?1:-1, z = 4+Math.floor(i/2)*6; const fr = box(.08, 2.2, 1.5, mat(0x050505), side*(HALL_W/2-.25), 2.6, z); g.add(fr);
         const pt = tex(600,880,(g2,W,H)=>{ g2.fillStyle='#0b0b0b'; g2.fillRect(0,0,W,H); g2.fillStyle='#E11D1D'; g2.fillRect(40,40,W-80,6); g2.fillStyle='#fff'; g2.textAlign='center'; const sz=fitFont(g2,t,W-80,110,DISPLAY); const words=t.split(' · '); let y=380; words.forEach(w=>{ g2.fillText(w, W/2, y); y+=sz*1.05; }); g2.fillStyle='#FFD400'; g2.font=`500 30px ${MONO}`; g2.fillText('ILLICIT SHADOWS', W/2, H-70); });
         const po = new THREE.Mesh(new THREE.PlaneGeometry(1.4, 2.05), new THREE.MeshStandardMaterial({ map:pt, emissive:0xffffff, emissiveMap:pt, emissiveIntensity:.35 })); po.position.set(side*(HALL_W/2-.2), 2.6, z); po.rotation.y = side<0 ? Math.PI/2 : -Math.PI/2; g.add(po); });
@@ -599,7 +521,7 @@ function addProps(h, g){
       // tailings mound, felled logs, a mercury pool and gold under glass
       const mound = new THREE.Mesh(new THREE.ConeGeometry(2.2, 1.7, 32, 1), mat(0x5a3d2a,{ roughness:1 })); mound.position.set(-3.4, .85, D*.62); g.add(mound);
       for (let i=0;i<4;i++){ const lg=new THREE.Mesh(new THREE.CylinderGeometry(.22,.26,3.2,12), mat(0x4a3220,{ roughness:1 })); lg.rotation.z=Math.PI/2; lg.rotation.y=.4+i*.15; lg.position.set(3.4, .25+ (i>2?.45:0), D*.7 + (i%3)*.55); g.add(lg); }
-      const pool = new THREE.Mesh(new THREE.CircleGeometry(1.5, 48), new THREE.MeshStandardMaterial({ color:0x9aa2aa, metalness:.8, roughness:.12, emissive:0x0d1420, emissiveIntensity:.5 })); pool.rotation.x=-Math.PI/2; pool.position.set(0,.03,D*.42); g.add(pool);
+      const pool = new THREE.Mesh(new THREE.CircleGeometry(1.5, 48), new THREE.MeshStandardMaterial({ color:0xb9c0c8, metalness:.7, roughness:.12, emissive:0x1a2230, emissiveIntensity:.6 })); pool.rotation.x=-Math.PI/2; pool.position.set(0,.03,D*.42); g.add(pool);
       const rim = new THREE.Mesh(new THREE.RingGeometry(1.5,1.62,48), mat(0x2a2a2a)); rim.rotation.x=-Math.PI/2; rim.position.set(0,.035,D*.42); g.add(rim);
       const bars = new THREE.Group(); bars.position.set(3.2, 1.0, D*.35);
       for (let i=0;i<6;i++){ const b=new THREE.Mesh(new THREE.BoxGeometry(.55,.16,.26), new THREE.MeshStandardMaterial({ color:0xE0B44A, metalness:1, roughness:.2, emissive:0x6a4200, emissiveIntensity:.25 })); b.position.set((i%3-1)*.6, Math.floor(i/3)*.17, 0); b.rotation.y=(i%2)*.15; bars.add(b); }
@@ -611,22 +533,17 @@ function addProps(h, g){
       const shelfMat = mat(0x141414);
       for (let r=0;r<4;r++){ g.add(box(5, .06, .4, shelfMat, -3.3, .9+r*.85, D-1.2)); for (let i=0;i<12;i++){ if (Math.random()<.15) continue; const bk=new THREE.Mesh(new THREE.BoxGeometry(.28,.55+Math.random()*.2,.32), mat([0xE11D1D,0xFFD400,0x1a1a1a,0x333333,0x8a1a1a][Math.floor(Math.random()*5)],{ roughness:.7 })); bk.position.set(-5.6+i*.42, 1.2+r*.85, D-1.2); g.add(bk); } }
       const lect = box(.8,1.1,.6, M.black, 3.3,.55,D*.55); g.add(lect);
-      const cover = tex(512,768,(g2,W,H)=>{ g2.fillStyle='#E11D1D'; g2.fillRect(0,0,W,H); g2.fillStyle='#000'; g2.fillRect(28,28,W-56,H-56); g2.fillStyle='#fff'; g2.textAlign='center'; fitFont(g2,'THE UMBRA',W-90,120,DISPLAY); g2.fillText('THE UMBRA', W/2, 330); g2.fillStyle='#FFD400'; g2.fillText('CIRCLE', W/2, 460); g2.fillStyle='#8a8a86'; g2.font=`500 28px ${MONO}`; g2.fillText('ILLICIT SHADOWS CHRONICLES · COMING 2027', W/2, H-90); });
+      const cover = tex(512,768,(g2,W,H)=>{ g2.fillStyle='#E11D1D'; g2.fillRect(0,0,W,H); g2.fillStyle='#000'; g2.fillRect(28,28,W-56,H-56); g2.fillStyle='#fff'; g2.textAlign='center'; fitFont(g2,'THE UMBRA',W-90,120,DISPLAY); g2.fillText('THE UMBRA', W/2, 330); g2.fillStyle='#FFD400'; g2.fillText('CIRCLE', W/2, 460); g2.fillStyle='#8a8a86'; g2.font=`500 28px ${MONO}`; g2.fillText('A NOVEL OF THE SHADOWVERSE', W/2, H-90); });
       const book = new THREE.Mesh(new THREE.BoxGeometry(.62,.9,.1), [mat(0x1a1a1a),mat(0x1a1a1a),mat(0x1a1a1a),mat(0x1a1a1a),new THREE.MeshStandardMaterial({ map:cover }),mat(0xE11D1D)]); book.position.set(3.3,1.6,D*.55); book.rotation.x=-.3; book.rotation.y=Math.PI; g.add(book); spinners.push({ m:book, s:.4, bob:true, base:1.6 });
-      const donor = tex(1400,700,(g2,W,H)=>{ g2.fillStyle='#0a0a0a'; g2.fillRect(0,0,W,H); g2.fillStyle='#FFD400'; g2.textAlign='center'; fitLine(g2,'FOUNDING CONTRIBUTORS',W-100,150,DISPLAY); g2.fillText('FOUNDING CONTRIBUTORS', W/2, 190); g2.fillStyle='#E11D1D'; for (let x=100;x<W-100;x+=40) g2.fillRect(x,240,24,6); g2.fillStyle='#8a8a86'; g2.font=`500 34px ${MONO}`; g2.fillText('Supporter $100 · Patron $500 · Benefactor $1,000', W/2, 340); g2.fillText('Underwriter $10,000 · Founding donor $25,000', W/2, 400); g2.fillStyle='#F2EFE6'; g2.font=`500 40px ${MONO}`; g2.fillText('illicitshadows.com/donate', W/2, 520); });
+      const donor = tex(1400,700,(g2,W,H)=>{ g2.fillStyle='#0a0a0a'; g2.fillRect(0,0,W,H); g2.fillStyle='#FFD400'; g2.textAlign='center'; fitFont(g2,'FOUNDING DONORS',W-100,150,DISPLAY); g2.fillText('FOUNDING DONORS', W/2, 190); g2.fillStyle='#E11D1D'; for (let x=100;x<W-100;x+=40) g2.fillRect(x,240,24,6); g2.fillStyle='#8a8a86'; g2.font=`500 34px ${MONO}`; g2.fillText('Your name here. MIS online is under construction and coming in 2027.', W/2, 340); g2.fillText('Founding donors underwrite the exhibition halls and the docuseries.', W/2, 400); g2.fillStyle='#F2EFE6'; g2.font=`500 40px ${MONO}`; g2.fillText('contact@entertheshadowverse.com', W/2, 520); });
       const dw = new THREE.Mesh(new THREE.PlaneGeometry(5, 2.5), new THREE.MeshStandardMaterial({ map:donor, emissive:0xffffff, emissiveMap:donor, emissiveIntensity:.4 })); dw.position.set(HALL_W/2-.22, 3, D*.5); dw.rotation.y=-Math.PI/2; g.add(dw);
       break; }
     case 'convergence': {
       // five domain spheres orbiting the wheel
       const doms=[[0x6b4a3a],[0x3d3b6e],[0x5a2b2b],[0x2d5a3a],[0x2f5266]];
       const orb = new THREE.Group(); orb.position.set(0, 3.2, D*.5);
-      const cg = makeGlobe(1.1, 0.5); orb.add(cg);
-      const arts = ['gold','pill','bag','cobalt','tobacco','chip'];
-      arts.forEach((k,i)=>{ const a=i/arts.length*Math.PI*2; const sph=new THREE.Mesh(new THREE.SphereGeometry(.62,24,18), GLASS); sph.position.set(Math.cos(a)*3.2, Math.sin(i*1.7)*.4, Math.sin(a)*3.2); orb.add(sph);
-        const ring=new THREE.Mesh(new THREE.TorusGeometry(.66,.02,8,48), mat(doms[i%5][0],{ emissive:doms[i%5][0], emissiveIntensity:1 })); ring.position.copy(sph.position); ring.rotation.x=Math.PI/2; orb.add(ring);
-        const art = miniArtifact(k); art.position.copy(sph.position); orb.add(art); spinners.push({ m:art, s:.8 });
-        const ln=new THREE.Mesh(new THREE.CylinderGeometry(.015,.015,3.2-1.1-.62,6), mat(0xFFD400,{ emissive:0xFFD400, emissiveIntensity:.8 })); ln.position.set(Math.cos(a)*2.15, sph.position.y/2, Math.sin(a)*2.15); ln.lookAt(sph.position); ln.rotateX(Math.PI/2); orb.add(ln); });
-      g.add(orb); spinners.push({ m:orb, s:.15 });
+      doms.forEach((d,i)=>{ const a=i/5*Math.PI*2; const s=new THREE.Mesh(new THREE.SphereGeometry(.5,24,18), mat(d[0],{ emissive:d[0], emissiveIntensity:.8 })); s.position.set(Math.cos(a)*3, 0, Math.sin(a)*3); orb.add(s); const ln=new THREE.Mesh(new THREE.CylinderGeometry(.02,.02,3,6), mat(0xFFD400,{ emissive:0xFFD400, emissiveIntensity:.8 })); ln.position.set(Math.cos(a)*1.5,0,Math.sin(a)*1.5); ln.rotation.z=Math.PI/2; ln.rotation.y=-a; orb.add(ln); });
+      g.add(orb); spinners.push({ m:orb, s:.2 });
       break; }
     default: {
       // Phase II halls: a single holographic crate stack marking where exhibits will stand
@@ -682,13 +599,13 @@ function buildHall(h) {
     const trim = new THREE.Mesh(new THREE.BoxGeometry(1.24, .04, 1.24), new THREE.MeshStandardMaterial({ color:h.accent, emissive:h.accent, emissiveIntensity:.8 })); trim.position.set(x, 1.0, z); g.add(trim);
     const art = artifact(h.shape, h.accent); art.position.set(x, 1.6, z); g.add(art); spinners.push({ m:art, s:.5, bob:true, base:1.6 });
     // placard stand angled toward the walkway
-    const pt = placardTex(ex.t, ex.b.slice(0, 150) + (ex.b.length>150?'…':''), h.accent, phase, ex.src, ex.status);
+    const pt = placardTex(ex[0], ex[1].slice(0, 140) + (ex[1].length>140?'…':''), h.accent, phase);
     const pl = new THREE.Mesh(new THREE.PlaneGeometry(1.5, 1.125), new THREE.MeshStandardMaterial({ map:pt, roughness:.8, emissive:0xffffff, emissiveMap:pt, emissiveIntensity:.45 }));
     const px = x + (x<0 ? .9 : -.9);
     pl.rotation.order = 'YXZ'; pl.position.set(px, 1.1, z-.9); pl.rotation.y = Math.PI + (x<0 ? -.6 : .6); pl.rotation.x = -.5; g.add(pl);
     const stand = box(.08, 1.0, .08, M.black, px, .5, z-.8); g.add(stand);
     g.updateMatrixWorld(true);
-    hotspots.push({ kind:'exhibit', pos:new THREE.Vector3(x,0,z).applyMatrix4(g.matrixWorld), level:h.level, hall:h, idx:i, label:'Inspect: ' + ex.t.replace(/^\d+ · /,'') });
+    hotspots.push({ kind:'exhibit', pos:new THREE.Vector3(x,0,z).applyMatrix4(g.matrixWorld), level:h.level, hall:h, idx:i, label:'Inspect: ' + ex[0].replace(/^\d+ · /,'') });
   });
 
   addProps(h, g);
@@ -697,16 +614,14 @@ function buildHall(h) {
   if (holo) {
     const frame = new THREE.Mesh(new THREE.BoxGeometry(HALL_W-.5, 6.2, HALL_D-.5), new THREE.MeshBasicMaterial({ color:h.accent, wireframe:true, transparent:true, opacity:.12 }));
     frame.position.set(0, 3.1, HALL_D/2-.5); g.add(frame);
-    const sign = new THREE.Mesh(new THREE.PlaneGeometry(4, .9), new THREE.MeshBasicMaterial({ map:tex(1024,230,(g2,w,hh)=>{ g2.fillStyle='#E11D1D'; g2.fillRect(0,0,w,hh); g2.fillStyle='#fff'; fitLine(g2, 'UNDER CONSTRUCTION · 2028', w-80, 120, DISPLAY); g2.textAlign='center'; g2.fillText('UNDER CONSTRUCTION · 2028', w/2, 158); }) }));
+    const sign = new THREE.Mesh(new THREE.PlaneGeometry(4, .9), new THREE.MeshBasicMaterial({ map:tex(1024,230,(g2,w,hh)=>{ g2.fillStyle='#E11D1D'; g2.fillRect(0,0,w,hh); g2.fillStyle='#fff'; fitFont(g2, 'UNDER CONSTRUCTION 2028', w-80, 120, DISPLAY); g2.textAlign='center'; g2.fillText('UNDER CONSTRUCTION · 2028', w/2, 158); }) }));
     sign.position.set(0, 5.2, .3); g.add(sign);
   }
 
   // Theater: seating + screen
   if (h.id==='theater') {
-    const screen = new THREE.Mesh(new THREE.PlaneGeometry(9, 4.2), new THREE.MeshStandardMaterial({ map:tex(1800,840,(g2,w,hh)=>{ g2.fillStyle='#050505'; g2.fillRect(0,0,w,hh); g2.fillStyle='#fff'; fitLine(g2, 'ILLICIT SHADOWS', w-160, 260, DISPLAY); g2.textAlign='center'; g2.fillText('ILLICIT SHADOWS', w/2, 380); g2.fillStyle='#FFD400'; g2.font=`500 60px ${MONO}`; g2.fillText('CHEMICAL CARTELS · NOW STREAMING · ELEVEN SHORT FILMS', w/2, 520); g2.fillStyle='#E11D1D'; g2.fillText('ILLICIT GOLD · IN PRODUCTION · 2026-2027', w/2, 620); }), emissive:0xffffff, emissiveIntensity:.5, emissiveMap:null }));
+    const screen = new THREE.Mesh(new THREE.PlaneGeometry(9, 4.2), new THREE.MeshStandardMaterial({ map:tex(1800,840,(g2,w,hh)=>{ g2.fillStyle='#050505'; g2.fillRect(0,0,w,hh); g2.fillStyle='#fff'; fitFont(g2, 'ILLICIT SHADOWS', w-120, 260, DISPLAY); g2.textAlign='center'; g2.fillText('ILLICIT SHADOWS', w/2, 380); g2.fillStyle='#FFD400'; g2.font=`500 60px ${MONO}`; g2.fillText('ILLICIT GOLD · IN PRODUCTION · 2026-2027', w/2, 520); g2.fillStyle='#E11D1D'; g2.fillText('COLOMBIA · BRAZIL · SWITZERLAND', w/2, 620); }), emissive:0xffffff, emissiveIntensity:.5, emissiveMap:null }));
     screen.material.emissiveMap = screen.material.map;
-    if (VIDEO.screenMp4) { const v = document.createElement('video'); v.src = VIDEO.screenMp4; v.crossOrigin='anonymous'; v.loop = true; v.muted = true; v.playsInline = true; v.autoplay = true;
-      const vt = new THREE.VideoTexture(v); vt.encoding = THREE.sRGBEncoding; screen.material.map = vt; screen.material.emissiveMap = vt; screen.material.needsUpdate = true; v.play().catch(()=>{}); }
     screen.position.set(0, 3.4, HALL_D-.5); screen.rotation.y=Math.PI; g.add(screen);
     mural.visible = false;
     const seatMat = new THREE.MeshStandardMaterial({ color:0x26080a, roughness:.95 });
@@ -821,24 +736,13 @@ function interact(){
   openReader(nearest.hall, nearest.idx);
 }
 const reader = document.getElementById('reader');
-function readerBlock(kind){
-  if (kind==='films') return `<ol class="films">` + FILMS.map(f=>`<li><a href="${SITE}/film/chemical-cartels/${f[3]}" target="_blank" rel="noopener"><b>${f[0]}</b><span>${f[1]}</span><i>${f[2]}</i></a></li>`).join('') + `</ol><p><a class="btn" href="${SITE}/film/chemical-cartels" target="_blank" rel="noopener">Watch the films</a></p>`;
-  if (kind==='trailer') return `<div class="yt"><iframe src="https://www.youtube.com/embed/${VIDEO.trailerYouTube}" title="Illicit Shadows official trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
-  if (kind==='gold') return `<p><a class="btn" href="${SITE}/film/illicit-gold" target="_blank" rel="noopener">Inside Illicit Gold</a></p>`;
-  if (kind==='books') return `<p><a class="btn" href="${SITE}/books" target="_blank" rel="noopener">Enter the trilogy</a></p>`;
-  if (kind==='about') return `<p><a class="btn" href="${SITE}/about" target="_blank" rel="noopener">About the platform</a></p>`;
-  if (kind==='donate') return `<ul class="tiers">` + DONOR_TIERS.map(t=>`<li><a href="${t[2]}" target="_blank" rel="noopener"><b>${t[0]}</b><span>${t[1]}</span></a></li>`).join('') + `</ul>`;
-  return '';
-}
 function openReader(h, idx){
   const ex = h.exhibits[idx];
   document.getElementById('rPhase').textContent = (h.level===1 ? 'Phase I · 2027 · 1st digital matrix level' : 'Phase II · 2028 · 2nd digital matrix level');
   document.getElementById('rTitle').textContent = h.title;
-  let html = `<p>${h.intro}</p><div class="rule"></div><h3>${ex.t}</h3><p>${ex.b}</p>`;
-  html += `<p class="src"><span class="chip ${ex.status.replace(' ','-')}">${ex.status}</span> Source: ${ex.src}</p>`;
-  html += readerBlock(ex.html);
-  if (h.exhibits.length>1) html += `<div class="rule"></div><p style="color:#8a8a86;font-size:12.5px">Also in this hall: ${h.exhibits.filter((_,i)=>i!==idx).map(e=>e.t.replace(/^\d+ · /,'')).join(' · ')}</p>`;
-  html += `<p style="color:#8a8a86;font-size:12px"><a href="${SITE}/sources" target="_blank" rel="noopener">Sources for these investigations</a></p>`;
+  let html = `<p>${h.intro}</p><div class="rule"></div><h3>${ex[0]}</h3><p>${ex[1]}</p>`;
+  if (h.exhibits.length>1) html += `<div class="rule"></div><p style="color:#8a8a86;font-size:12.5px">Also in this hall: ${h.exhibits.filter((_,i)=>i!==idx).map(e=>e[0].replace(/^\d+ · /,'')).join(' · ')}</p>`;
+  if (h.level===2) html += `<span class="status">Hall in development</span>`;
   document.getElementById('rBody').innerHTML = html;
   reader.classList.add('on'); readerOpen = true; promptEl.classList.remove('on');
   if (locked) document.exitPointerLock();
@@ -980,5 +884,25 @@ window.siteRender = siteRender;
 requestAnimationFrame(siteRender);
 })();
 </script>
-</body>
+<script id="scroll-guard-js">
+(function(){
+  // Wheel: never scroll the host page, whatever mode the viewer is in.
+  window.addEventListener('wheel', function(e){ e.preventDefault(); }, { passive:false, capture:true });
+  // Keys that browsers treat as scrolling. Movement keys still reach the game's own handlers,
+  // because this only cancels the default action; it does not stop propagation.
+  var SCROLL_KEYS = { Space:1, ArrowUp:1, ArrowDown:1, ArrowLeft:1, ArrowRight:1,
+                      PageUp:1, PageDown:1, Home:1, End:1 };
+  window.addEventListener('keydown', function(e){
+    var t = e.target && e.target.tagName;
+    if (t === 'INPUT' || t === 'TEXTAREA') return;
+    if (SCROLL_KEYS[e.code]) e.preventDefault();
+  }, { capture:true });
+  // Touch: stop drags outside the joystick from scrolling the host page on phones.
+  window.addEventListener('touchmove', function(e){ e.preventDefault(); }, { passive:false });
+  // Take keyboard focus as soon as the viewer loads or is clicked, so keys go to the game and
+  // not to the page around it.
+  window.addEventListener('load', function(){ try { window.focus(); } catch(_){} });
+  window.addEventListener('pointerdown', function(){ try { window.focus(); } catch(_){} }, { capture:true });
+})();
+</script></body>
 </html>
