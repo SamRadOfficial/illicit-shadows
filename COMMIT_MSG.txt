@@ -1,31 +1,19 @@
-Museum prototype: stop the viewer scrolling the site
+Museum renders: the exterior on the homepage, and a corrected interior
 
-The bug: /museum/enter put the 3D viewer inside a normal page, with a hero above
-it and a band and the footer below. In first-person mode the viewer did not
-capture the wheel, the arrow keys, space or page keys, so they fell through and
-scrolled the website. The view shifted under the camera and navigation ended up
-pointing at the ceiling.
+Homepage
+- The Museum of Illicit Shadows section now leads with the exterior render: the
+  black facade and the gold eclipse ring at the entrance. It replaces the
+  Threat Convergence hall image, which was an interior shown before the reader
+  had seen the building.
 
-Viewer (public/museum-viewer.html)
-- Wheel, scroll keys (Space, arrows, PageUp/Down, Home, End) and touch drags now
-  have their default action cancelled in every mode, not only the overview.
-  Movement keys still reach the game: this cancels the scroll, it does not stop
-  the event.
-- html and body are overflow:hidden with overscroll-behavior:none.
-- The viewer takes keyboard focus on load and on any click.
+Interior render (public/images/museum-rotunda-helix)
+- Installed, not yet placed. The supplied image labelled the theater panel
+  "SHADOWVERSE · A TOTAL IMMERSION", the retired name. Rather than crop it out,
+  which also cost the Chemical Cartels and Threat Convergence panels and pushed
+  the Helix sculpture off center, the lettering was replaced with
+  "ILLICIT SHADOWS · THEATER", matching the hall list in data/halls.json, on the
+  panel's own colour with a soft edge.
+- The hall names on the other panels already match the site's halls.
 
-Page (app/museum/enter, components/ImmersiveLock.jsx)
-- The viewer fills the screen below the nav, fixed, with nothing above or below
-  it to scroll to. ImmersiveLock locks page scrolling while mounted and restores
-  it when the visitor leaves.
-- The hero and the back-to-museum band are gone; the viewer has its own title
-  bar, and the nav stays visible for leaving.
-
-Verified: host page scrollY stays 0 after twelve wheel ticks and eight keys on
-desktop, and after three long touch drags on a phone; scrolling is restored on
-/museum after leaving. The 3D scene itself could not be checked here: Three.js
-loads from a CDN this sandbox blocks, identically before and after the change.
-Check on the live site.
-
-Deploy: this changes public/museum-viewer.html, so the ASSETS zip for public/ is
-needed as well as the source zip.
+Verified: build 34 pages, 194 references present. Exterior loads on the homepage
+at 1440 and 390.

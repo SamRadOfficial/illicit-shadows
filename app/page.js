@@ -68,7 +68,7 @@ export default function Home() {
 
       <section className="wrap s s-paper museum-feature" id="museum-t">
         <Link className="museum-photo" href="/museum">
-          <Pic base="/images/museum-convergence" alt="Threat Convergence hall: contraband artifacts suspended in linked spheres around a globe" />
+          <Pic base="/images/museum-exterior" alt="The Museum of Illicit Shadows at night: a black stone facade with a glowing gold eclipse ring at the entrance" />
           <span className="photo-cap">Digital museum concept · Phase I planned for 2027</span>
         </Link>
         <div>
