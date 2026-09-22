@@ -1,19 +1,6 @@
-Metadata: a real homepage title, and og:site_name on every page
+MISTIC kicker: "Institute · Lab · Fusion center"
 
-- Homepage title was the bare brand, "Illicit Shadows", which gives a search
-  engine nothing to match against. Now "Illicit Shadows: Investigating the Global
-  Shadow Economy", 56 characters, inside what Google displays. Set as an
-  absolute title so the site-wide "%s · Illicit Shadows" template does not
-  repeat the brand.
-- og:site_name was missing everywhere a page set its own card. og() replaced the
-  layout's openGraph object wholesale, dropping siteName, and the newsroom and
-  dispatch templates built their own without it. All three now carry it; posts
-  and dispatches are also marked og:type article.
+- Shortened from "Institute · Research lab · Fusion center" so it sits on one line
+  on phones. The paragraph beneath still says "research lab" in full.
 
-The Google snippet the owner is seeing ("MIS is a first-of-its-kind virtual
-museum...") is not this metadata. It is either Google's copy of the Squarespace
-site, which has not been recrawled since DNS moved, or Google rewriting the
-description from on-page text, which it does for most queries.
-
-Verified: build 34 pages, 194 references present. 30 of 30 public pages carry
-og:site_name.
+Verified: one line at 390 and 360; wraps only at 320.

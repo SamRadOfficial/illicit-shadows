@@ -34,10 +34,10 @@ export default function Intelligence() {
       {/* What this is: the institute first, then its project. Helix is one of MISTIC's projects,
           not the other way round, and the page did not say so anywhere. */}
       <section className="wrap s s-paper two" id="mistic">
-        <div><span className="kicker">MISTIC / The institute</span><h2>A digital fusion center<br /><em>for strategic intelligence.</em></h2></div>
+        <div><span className="kicker">MISTIC / Institute &middot; Lab &middot; Fusion center</span><h2>A digital fusion center<br /><em>for strategic intelligence.</em></h2></div>
         <div>
-          <p className="deck"><strong>Illicit Shadows Media, Technology, &amp; Innovation Convergence (MISTIC)</strong> is the institute behind the platform: a fusion center where field investigations, the museum's research, and predictive modeling are brought together.</p>
-          <p>Helix.AI is one of its projects: the predictive convergence system that examines how criminal, political, and economic networks reorganize after disruption.</p>
+          <p className="deck"><strong>Illicit Shadows Media, Technology, &amp; Innovation Convergence (MISTIC)</strong> is the institute behind the platform.</p>
+          <p>Its research lab is where Helix.AI is built. Its fusion center is where those capabilities are put into practice: field investigations, the museum's research, and predictive modeling, brought together.</p>
         </div>
       </section>
 
