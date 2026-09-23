@@ -1,11 +1,14 @@
-Homepage hero: one link beneath the signup
+Homepage hero: one call to action
 
-- Removed "Meet the platform". It only jumped to the section directly below the
-  hero, which scrolling already does.
-- "Watch the investigations" stays as the single link under Get updates: the one
-  route from the hero to the films, and the click the hero A/B comparison is
-  measured against.
-- The #platform anchor on the section is kept, so any old links to it still land.
+- Removed "Watch the investigations". The hero now carries a single action, the
+  email field and Get updates. The films, museum and platform are one scroll
+  away, and Film is in the nav.
+- Removed the now-unused .hero-links style.
 
-Verified: build 34 pages, 193 references present. One link in the hero at 1440
-and 390; no overflow.
+ROADMAP
+- The hero A/B item is rewritten for the new baseline: judge option B on hero
+  signups against the lower signup, and on how many homepage visitors reach
+  /film, since the hero no longer links there.
+
+Verified: build 34 pages, 193 references present. No links in the hero, signup
+present, no overflow at 1440 or 390.

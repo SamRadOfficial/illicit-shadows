@@ -563,7 +563,6 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .signup.signup-hero button:focus-visible,.signup.signup-hero input:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
 .signup-ok{display:inline-flex;align-items:center;height:50px;padding:0 18px;border:1px solid var(--signal);
   color:var(--signal);font-family:var(--mono);font-size:14px;letter-spacing:.08em;margin:0}
-.hero-links{margin-top:18px;gap:26px}
 .hero .signup-note{margin-top:10px;color:#fff}
 .notify{margin-top:22px;max-width:420px}
 .notify .signup{margin-top:10px}

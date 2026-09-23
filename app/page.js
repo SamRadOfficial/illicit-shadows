@@ -29,14 +29,11 @@ export default function Home() {
             eyebrow="Media. Knowledge. Intelligence."
             title={<>The dark forces shaping the <span className="y">global criminal underworld</span></>}
             lede="We investigate the $6 trillion shadow economy, expose the systems behind it, and model how its networks adapt.">
-        {/* Option A, 23 Sep: signing up is the primary action; watching and the platform are links.
-            Option B (keep Watch as the button, signup row beneath) is on the roadmap to compare. */}
+        {/* One call to action: signing up. The films, the museum and the platform are all one scroll
+            away, so the hero does not repeat them. Option B is on the roadmap. */}
         <div className="hero-signup">
           <Signup endpoint={site.forms?.signup} subscribe={false} variant="hero"
                   interest="Homepage hero" label="Get updates" />
-        </div>
-        <div className="actions hero-links">
-          <Link className="ed-link" href="/film">Watch the investigations {Arrow.upRight}</Link>
         </div>
       </Hero>
 

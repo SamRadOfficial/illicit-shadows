@@ -59,13 +59,14 @@ Nothing here needs new content or new money. Most of it is one sitting each.
 
 Where the site's credibility is thinnest, and the systems that turn attention into something.
 
-- [ ] **Compare the homepage hero signup against option B.** Option A shipped 23 Sep: the email
-      field and Get updates are the primary action, with Watch the investigations and Meet the
-      platform as links beneath. Option B keeps Watch the investigations as the yellow button and
-      puts the signup in its own row beneath, behind a thin rule, with the line "New dispatches,
-      museum openings and the book, first." Mockup: previews/hero-signup.html. Hero signups post
-      `interest=Homepage hero`, so after a few weeks compare the signup count against clicks on
-      Watch the investigations (Vercel Analytics shows those) before deciding whether to switch.
+- [ ] **Compare the homepage hero signup against option B.** Since 23 Sep the hero has a single call
+      to action: the email field and Get updates, with no links beneath (the films, museum and
+      platform are one scroll away). Option B keeps Watch the investigations as the yellow button
+      with the signup in its own row beneath, behind a thin rule, and the line "New dispatches,
+      museum openings and the book, first." Mockup: previews/hero-signup.html. Judge it on hero
+      signups (`interest=Homepage hero`) against the signups from the section lower on the page,
+      and on how many visitors reach /film from the homepage (Vercel Analytics). If the film page
+      traffic from home drops sharply, B gives watching its button back.
 - [ ] **Make "Everything is connected" prominent in the page body.** It is the site's signature,
       but an audit on 23 Sep found it only as the small footer line on 24 of 29 pages. Likely
       homes: the homepage "Three ways in" intro, the Intelligence page's convergence map (its
