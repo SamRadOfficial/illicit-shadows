@@ -255,8 +255,9 @@ export function Hero({ img, alt, eyebrow, title, lede, source, children, variant
 }
 
 /** Email signup. Honest placeholder until `site.forms.signup` is set: no reload, no discarded input. */
-export function Signup({ endpoint, center = false, subscribe = true, interest, label, note }) {
+export function Signup({ endpoint, center = false, subscribe = true, interest, label, note, variant }) {
   const [state, setState] = useState('');
+  const [done, setDone] = useState(false);
   const [busy, setBusy] = useState(false);
   /* Same contract as the contact form: post with fetch, confirm in place, and never pretend an
      address was stored when it was not. */
@@ -271,20 +272,22 @@ export function Signup({ endpoint, center = false, subscribe = true, interest, l
       const res = await fetch(endpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
       if (!res.ok) throw new Error(String(res.status));
       form.reset();
-      setState('Thank you. Check your inbox to confirm.');
+      setState("You're on the list.");
+      setDone(true);
     } catch {
       setState('That did not send. Try again in a moment.');
     } finally { setBusy(false); }
   };
   return (
     <>
-      <form className={`signup${center ? ' center' : ''}`} action={endpoint || undefined} method="post" onSubmit={onSubmit}>
+      {done && variant === 'hero' ? <p className="signup-ok" role="status">&#10003; {state}</p> :
+      <form className={`signup${center ? ' center' : ''}${variant ? ' signup-' + variant : ''}`} action={endpoint || undefined} method="post" onSubmit={onSubmit}>
         <input type="email" name="email" placeholder="Email address" aria-label="Email address" required />
         {/* The interest travels as a field as well as in the subject, so it survives any export. */}
         {interest && <input type="hidden" name="interest" value={interest} />}
         <button type="submit" disabled={busy}>{busy ? 'Sending...' : (label || 'Sign up for updates')}</button>
-      </form>
-      {state && <p className="signup-note" style={center ? { textAlign: 'center' } : undefined}>{state}</p>}
+      </form>}
+      {state && !(done && variant === 'hero') && <p className="signup-note" style={center ? { textAlign: 'center' } : undefined}>{state}</p>}
       {/* Email leads, subscribe follows. An email list is an audience you own and can take to a
           distributor or a funder; a YouTube subscriber belongs to YouTube. Off in the hero, where a
           third call to action is a tie rather than a hierarchy. */}

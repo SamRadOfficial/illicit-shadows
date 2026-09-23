@@ -125,8 +125,10 @@ than a footer link.
 
 Recorded so nobody re-litigates them.
 
-- **#EverythingIsConnected** may appear beyond the footer. It closes newsroom posts and YouTube
-  descriptions.
+- **"Everything is connected" is the signature, and it stays prominent throughout the site** (owner,
+  23 Sep 2026). Not only in the footer: it should appear in the body of the key pages, where a
+  reader actually sees it, and it closes newsroom posts and YouTube descriptions. An audit that day
+  found it only in the small footer line on 24 of 29 pages.
 - **Counters in copy** are allowed where they are true and load-bearing: "eleven dispatches" is on
   the site and in every video description. Avoid them in headings, which is where they rot: "Nine
   pieces, one argument" had to be rewritten the day a tenth piece arrived.

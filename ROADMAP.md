@@ -59,6 +59,18 @@ Nothing here needs new content or new money. Most of it is one sitting each.
 
 Where the site's credibility is thinnest, and the systems that turn attention into something.
 
+- [ ] **Compare the homepage hero signup against option B.** Option A shipped 23 Sep: the email
+      field and Get updates are the primary action, with Watch the investigations and Meet the
+      platform as links beneath. Option B keeps Watch the investigations as the yellow button and
+      puts the signup in its own row beneath, behind a thin rule, with the line "New dispatches,
+      museum openings and the book, first." Mockup: previews/hero-signup.html. Hero signups post
+      `interest=Homepage hero`, so after a few weeks compare the signup count against clicks on
+      Watch the investigations (Vercel Analytics shows those) before deciding whether to switch.
+- [ ] **Make "Everything is connected" prominent in the page body.** It is the site's signature,
+      but an audit on 23 Sep found it only as the small footer line on 24 of 29 pages. Likely
+      homes: the homepage "Three ways in" intro, the Intelligence page's convergence map (its
+      heading is currently hidden there), and a larger, yellow treatment of the footer line so it
+      reads as a sign-off rather than fine print. Mock up before building.
 - [ ] **A news ticker on `/newsroom`.** David's note, 18 Sep: daily coverage of organized crime,
       illicit trade, trafficking and money laundering, plus ICAIE, RADOC and future partners.
       Feasible, with one constraint worth knowing before it is promised: **Reuters requires a paid

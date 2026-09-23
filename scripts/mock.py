@@ -126,98 +126,100 @@ SHARED = """
 @media(max-width:820px){.dd-inner{grid-template-columns:1fr}.subnav{flex-wrap:wrap;gap:12px}}
 """
 
-import math
 RECOMMEND = 'B'
-TITLE = 'Intelligence page: the intelligence cycle'
-INTRO = ('Five stages, each tagged with the part of the platform that does the work: the films collect, '
-         'Project Helix processes and analyzes, and the films and the museum disseminate. Framed as '
-         'tactical and strategic intelligence. Helix is tagged in development, as it is everywhere else.')
+TITLE = 'Homepage hero: Get updates'
+INTRO = ('The header stays as it is, with Contact. The email field and yellow Get updates button go in '
+         'the hero, posting to the same form as the signup lower on the page. Each option shows the '
+         'hero, the state after submitting, and a phone.')
 
-STAGES = [
- ('01', 'Planning and Direction', 'Set the questions: which networks, which routes, which harms.', []),
- ('02', 'Collection', 'Field reporting, sources, filings and interviews.', ['Films']),
- ('03', 'Processing', 'Structure the evidence into a graph of actors, routes and money.', ['Project Helix']),
- ('04', 'Analysis and Production', 'Model how the network behaves and adapts under pressure.', ['Project Helix']),
- ('05', 'Dissemination', 'Put the findings in front of the people who can act on them.', ['Films', 'Museum']),
-]
-TAGC = {'Films':'#FFD400', 'Project Helix':'#7FB8FF', 'Museum':'#FF6A5C'}
-def tags(ts):
-    return ''.join(f'<span class="ctag" style="--c:{TAGC[t]}">{t}{" · in development" if t=="Project Helix" else ""}</span>' for t in ts)
+HERO_IMG = img('/images/hero-globe.jpg')
+NAV = ('<div class="nv"><div class="nvw"><div class="bd">ILLICIT <b>SHADOWS</b></div>'
+       '<nav class="lk"><a>Film &#8964;</a><a>Intelligence</a><a>Museum</a><a>Books</a><a>Newsroom</a><a>About</a></nav>'
+       '<a class="navy">Contact &#8599;</a></div></div>')
+HEAD = ('<p class="k">Media. Knowledge. Intelligence.</p><h1>The dark forces shaping the '
+        '<span>global criminal underworld</span></h1><p class="ld">We investigate the $6 trillion shadow '
+        'economy, expose the systems behind it, and model how its networks adapt.</p>')
+FORM = '<form class="sg"><input type="email" placeholder="Email address"><button class="yb">Get updates</button></form>'
+OK = '<div class="okb">&#10003; You\'re on the list.</div>'
 
-HEAD = ('<p class="kicker">The intelligence cycle</p><h2 class="ch2">Tactical and strategic<br><em>intelligence.</em></h2>'
-        '<p class="clede">Every investigation runs the same five stages. Each is carried by a different part of the platform.</p>')
+def hero(inner, mob=False):
+    cls = 'hr m' if mob else 'hr'
+    return f'<div class="{cls}" style="background-image:linear-gradient(90deg,#080909 38%,rgba(8,9,9,.35) 70%,rgba(8,9,9,.1)),url({HERO_IMG})"><div class="hin">{HEAD}{inner}</div></div>'
+def phone(inner):
+    return (f'<div class="ph"><div class="nv m"><div class="nvw"><div class="bd">ILLICIT <b>SHADOWS</b></div>'
+            f'<span class="hb">&#9776;</span></div></div>{hero(inner, True)}</div>')
 
-# A: horizontal strip
-strip=''.join(f'<div class="cs"><span class="cn">{n}</span><h3>{t}</h3><p>{d}</p><div class="ctags">{tags(ts)}</div></div>' for n,t,d,ts in STAGES)
-PAGE_A = f'<div class="s s-ink cpadx">{HEAD}<div class="cstrip">{strip}</div></div>'
+# A: the signup replaces the yellow button; the two existing actions become links
+actsA = f'{FORM}<div class="lnks"><a class="ed">Watch the investigations &#8599;</a><a class="ed">Meet the platform &#8595;</a></div>'
+okA   = f'{OK}<div class="lnks"><a class="ed">Watch the investigations &#8599;</a><a class="ed">Meet the platform &#8595;</a></div>'
+PAGE_A = ('<p class="cap">Desktop</p><div class="stage">'+NAV+hero(actsA)+'</div>'
+          '<p class="cap">After submitting</p><div class="stage">'+NAV+hero(okA)+'</div>'
+          '<p class="cap">Phone</p>'+phone(actsA))
 
-# B: the classic ring, center label, stages round it
-def ring():
-    cx,cy,r=300,300,210
-    parts=[f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#3a4242" stroke-width="2"/>']
-    for i in range(5):
-        a=-math.pi/2+i*2*math.pi/5; b=a+2*math.pi/5
-        x1,y1=cx+r*math.cos(a+.2),cy+r*math.sin(a+.2); x2,y2=cx+r*math.cos(b-.2),cy+r*math.sin(b-.2)
-        parts.append(f'<path d="M{x1:.1f},{y1:.1f} A{r},{r} 0 0 1 {x2:.1f},{y2:.1f}" fill="none" stroke="#FFD400" stroke-width="2.5" marker-end="url(#ah)"/>')
-    for i,(n,t,d,ts) in enumerate(STAGES):
-        a=-math.pi/2+i*2*math.pi/5; x,y=cx+r*math.cos(a),cy+r*math.sin(a)
-        parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="30" fill="#080909" stroke="#FFD400" stroke-width="2"/>'
-                     f'<text x="{x:.1f}" y="{y+6:.1f}" text-anchor="middle" font-family="Anton" font-size="20" fill="#FFD400">{n}</text>')
-    parts.append(f'<text x="{cx}" y="{cy-20}" text-anchor="middle" font-family="Anton" font-size="30" fill="#fff">TACTICAL</text>'
-                 f'<text x="{cx}" y="{cy+6}" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" fill="#b9bdbd" letter-spacing="3">AND STRATEGIC</text>'
-                 f'<text x="{cx}" y="{cy+44}" text-anchor="middle" font-family="Anton" font-size="30" fill="#FFD400">INTELLIGENCE</text>')
-    return ('<svg viewBox="0 0 600 600" class="cring"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" '
-            'markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#FFD400"/></marker></defs>'
-            + ''.join(parts) + '</svg>')
-legend=''.join(f'<div class="cl"><span class="cn">{n}</span><div><h3>{t}</h3><p>{d}</p><div class="ctags">{tags(ts)}</div></div></div>' for n,t,d,ts in STAGES)
-PAGE_B = f'<div class="s s-ink cpadx">{HEAD}<div class="cgrid2">{ring()}<div class="clist">{legend}</div></div></div>'
+# B: keep the existing buttons, add the signup as its own labelled row beneath
+rowB = ('<div class="acts"><a class="wbtn">Watch the investigations &#8599;</a><a class="ed">Meet the platform &#8595;</a></div>'
+        f'<div class="sgrow"><p class="sgl">New dispatches, museum openings and the book, first.</p>{FORM}</div>')
+okB = ('<div class="acts"><a class="wbtn">Watch the investigations &#8599;</a><a class="ed">Meet the platform &#8595;</a></div>'
+       f'<div class="sgrow"><p class="sgl">New dispatches, museum openings and the book, first.</p>{OK}</div>')
+PAGE_B = ('<p class="cap">Desktop</p><div class="stage">'+NAV+hero(rowB)+'</div>'
+          '<p class="cap">After submitting</p><div class="stage">'+NAV+hero(okB)+'</div>'
+          '<p class="cap">Phone</p>'+phone(rowB))
 
-# C: stages down the left, the platform across the top, a matrix of who does what
-cols=['Films','Project Helix','Museum']
-hdr=''.join(f'<th><span class="ctag" style="--c:{TAGC[c]}">{c}</span></th>' for c in cols)
-rows=''.join(f'<tr><td class="ct"><span class="cn">{n}</span> {t}</td>' + ''.join(f'<td class="cm">{"&#9679;" if c in ts else ""}</td>' for c in cols) + '</tr>' for n,t,d,ts in STAGES)
-PAGE_C = f'<div class="s s-ink cpadx">{HEAD}<table class="cmx"><thead><tr><th></th>{hdr}</tr></thead><tbody>{rows}</tbody></table><p class="fine cnote">Project Helix is in development.</p></div>'
+# C: signup first and yellow; Watch becomes an outlined button beside it
+rowC = f'<div class="acts">{FORM}<a class="obtn">Watch the investigations &#8599;</a></div>'
+okC  = f'<div class="acts">{OK}<a class="obtn">Watch the investigations &#8599;</a></div>'
+PAGE_C = ('<p class="cap">Desktop</p><div class="stage">'+NAV+hero(rowC)+'</div>'
+          '<p class="cap">After submitting</p><div class="stage">'+NAV+hero(okC)+'</div>'
+          '<p class="cap">Phone</p>'+phone(rowC))
 
 SHARED = """
-.cpadx{padding:40px 32px}
-.cpadx::before{display:none!important}.cpadx{background:#080909;color:#fff;position:relative}
-.ch2{font-size:clamp(30px,3.6vw,46px);margin:6px 0 10px}
-.clede{font-size:16px;max-width:56ch;margin-bottom:28px;opacity:.9}
-.cn{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--signal)}
-.ctags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.ctag{display:inline-block;border:1px solid var(--c);color:var(--c);font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px}
-.cstrip{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;position:relative}
-.cs{border-top:2px solid var(--signal);padding-top:12px}
-.cs h3{font-size:19px;margin:6px 0 8px;text-transform:uppercase}
-.cs p{font-size:13.5px;opacity:.85}
-.cgrid2{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
-.cring{width:100%;max-width:460px;display:block}
-.clist{display:grid;gap:16px}
-.cl{display:grid;grid-template-columns:34px 1fr;gap:10px;border-top:1px solid #2a3131;padding-top:12px}
-.cl h3{font-size:17px;margin:0 0 4px;text-transform:uppercase}
-.cl p{font-size:13.5px;opacity:.85;margin:0}
-.cmx{width:100%;border-collapse:collapse}
-.cmx th{text-align:left;padding:10px 12px;border-bottom:1px solid #2a3131}
-.cmx td{padding:14px 12px;border-bottom:1px solid #1d2323}
-.cmx .ct{font-family:var(--disp);font-size:20px;text-transform:uppercase}
-.cmx .cm{color:var(--signal);font-size:20px}
-.cnote{margin-top:14px;opacity:.7}
+.cap{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9aa;margin:22px 0 8px}
+.stage{background:#080909;border:1px solid #232a2a;overflow:hidden;width:1200px;max-width:100%}
+.nv{background:#000;border-bottom:2px solid #E11D1D}
+.nvw{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;height:72px;padding:0 24px}
+.nv.m .nvw{grid-template-columns:1fr auto;height:62px;padding:0 18px}
+.bd{font-weight:800;font-size:21px;letter-spacing:.03em;color:#fff;white-space:nowrap}.bd b{color:#FFD400}
+.lk{display:flex;justify-content:center;gap:18px;font-size:15px}.lk a{color:#fff;font-weight:500}
+.navy{background:#FFD400;color:#000;font-weight:700;font-size:13.5px;padding:11px 18px;white-space:nowrap}
+.hb{color:#fff;font-size:24px}
+.hr{background-size:cover;background-position:right center;padding:56px 40px 60px;min-height:470px}
+.hr.m{padding:34px 20px 40px;min-height:0;background-position:70% center}
+.hin{max-width:520px}
+.k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#FFD400}
+h1{font-family:var(--disp);text-transform:uppercase;color:#fff;font-size:52px;line-height:.98;margin:12px 0 16px}
+.hr.m h1{font-size:36px}
+h1 span{color:#FFD400}
+.ld{color:#fff;font-size:16.5px;line-height:1.55;margin-bottom:24px;opacity:.95}
+.sg{display:flex;max-width:440px}
+.sg input{flex:1;min-width:0;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.35);border-right:0;color:#fff;padding:0 14px;font-size:15px;height:48px}
+.yb{background:#FFD400;color:#000;border:0;padding:0 20px;height:48px;font-weight:700;font-size:14.5px;white-space:nowrap}
+.okb{display:inline-flex;align-items:center;height:48px;padding:0 18px;border:1px solid #FFD400;color:#FFD400;font-family:var(--mono);font-size:13.5px;letter-spacing:.08em}
+.lnks{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
+.ed{color:#fff;font-size:14.5px;font-weight:600;border-bottom:1px solid #FFD400;padding-bottom:4px}
+.acts{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.wbtn{background:#FFD400;color:#000;font-weight:700;font-size:14.5px;padding:14px 20px}
+.obtn{border:1px solid rgba(255,255,255,.55);color:#fff;font-weight:600;font-size:14.5px;padding:0 18px;height:48px;display:inline-flex;align-items:center}
+.sgrow{margin-top:26px;border-top:1px solid rgba(255,255,255,.18);padding-top:18px;max-width:460px}
+.sgl{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#d8dcdc;margin-bottom:10px}
+.ph{width:390px;border:10px solid #1a1d1d;border-radius:34px;overflow:hidden;background:#080909}
+.ph .sg{max-width:none}.ph .acts{gap:14px}
 """
 
 OPTIONS = [
- ('A','A horizontal strip',
-  'Five columns left to right, each with the stage, one line of what happens, and the platform tag. Reads '
-  'fastest and fits the page rhythm, but a straight line loses the point of a cycle: that dissemination '
-  'feeds the next round of planning.', PAGE_A, SHARED),
- ('B','The ring  &middot;  MY PICK',
-  'The classic cycle diagram, five nodes around a loop with "Tactical and Strategic Intelligence" at the '
-  'center, and the stages explained beside it with their tags. It is the shape analysts already recognize, '
-  'which is the argument for using it on a page aimed at government and industry. It is also the strongest '
-  'brief for a ChatGPT-generated graphic.', PAGE_B, SHARED),
- ('C','A matrix',
-  'Stages down the side, films, Project Helix and the museum across the top, a dot where each one does the '
-  'work. The clearest answer to "what does each part actually do", and the least visual. Better as a '
-  'supporting table than as the section itself.', PAGE_C, SHARED),
+ ('A','Signup replaces the yellow button',
+  'The email field and Get updates take the primary spot; Watch the investigations and Meet the '
+  'platform become the two links beneath. The strongest push to sign up, and the cleanest hero. The '
+  'cost is that watching, the one thing a first-time visitor can do immediately, drops to a link.',
+  PAGE_A, SHARED),
+ ('B','Keep the buttons, add a signup row  &middot;  MY PICK',
+  'The hero keeps Watch the investigations as its yellow button, then a separate row beneath, behind '
+  'a thin rule, with a line on what people get and the email field. Two clear jobs, watch now or hear '
+  'first, and the label tells people why to sign up, which lifts signups more than a bare field.',
+  PAGE_B, SHARED),
+ ('C','Signup and Watch side by side',
+  'Field and yellow Get updates first, Watch the investigations as an outlined button beside it. '
+  'Compact, one row on desktop, but on a phone the two stack and the hero gets long, and two strong '
+  'actions next to each other compete.', PAGE_C, SHARED),
 ]
 blocks, extra = [], []
 for key, title, note, body, rule in OPTIONS:

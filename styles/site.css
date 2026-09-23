@@ -553,6 +553,20 @@ footer{border-top:2px solid var(--alert);padding:40px 0 48px;background:var(--pa
 .s .mistic-lead{font-family:var(--disp);font-size:clamp(19px,1.9vw,24px);line-height:1.2;text-transform:uppercase;margin:0 0 16px;max-width:32ch}
 .mistic-text{max-width:760px}
 .mistic-text .deck{margin-bottom:14px}
+/* Homepage hero signup: one field and the yellow button, on the dark hero, then two links. */
+.hero-signup{margin-top:26px;max-width:460px}
+.signup.signup-hero{display:flex;flex-direction:row;align-items:stretch;gap:0;margin:0;max-width:460px}
+.signup.signup-hero input{flex:1 1 auto;width:auto;min-width:0;height:50px;padding:0 14px;font-size:15.5px;background:rgba(0,0,0,.55);
+  border:1px solid rgba(255,255,255,.4);border-right:0;color:#fff}
+.signup.signup-hero input::placeholder{color:#b9bdbd}
+.signup.signup-hero button{flex:0 0 auto;width:auto;height:50px;padding:0 22px;background:var(--signal);color:#000;border:0;font-weight:700;
+  font-size:15px;white-space:nowrap;cursor:pointer}
+.signup.signup-hero button:hover{background:#fff}
+.signup.signup-hero button:focus-visible,.signup.signup-hero input:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+.signup-ok{display:inline-flex;align-items:center;height:50px;padding:0 18px;border:1px solid var(--signal);
+  color:var(--signal);font-family:var(--mono);font-size:14px;letter-spacing:.08em;margin:0}
+.hero-links{margin-top:18px;gap:26px}
+.hero .signup-note{margin-top:10px;color:#fff}
 .notify{margin-top:22px;max-width:420px}
 .notify .signup{margin-top:10px}
 

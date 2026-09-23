@@ -8,6 +8,9 @@ Read this first. Update it in the same commit as any change it describes. A hand
 
 ## Rules that keep getting broken (owner-adjudicated 14 Sep 2026)
 
+- **"Everything is connected" stays prominent throughout the site.** It is the signature, not a
+  footnote. When adding or reworking a page, give it a visible place in the body, not only the
+  footer line. As of 23 Sep it is in the body only on /museum, the shop and the newsroom posts.
 These override BRIEF.md and PLAYBOOK.md where they conflict.
 
 - **HUNTER BILL is non-public.** Never in copy, alt text, or a commit message.
