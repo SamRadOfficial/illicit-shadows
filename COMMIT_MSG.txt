@@ -1,26 +1,9 @@
-Homepage hero: Get updates as the primary action (option A)
+Intelligence: restore the fusion center heading
 
-- The hero's yellow button is now an email field and Get updates, posting to
-  the same Formspree signup endpoint as the rest of the site, tagged
-  interest=Homepage hero. Watch the investigations and Meet the platform become
-  the two links beneath.
-- After submitting, the form is replaced by "✓ You're on the list."
-- Every signup on the site now says "You're on the list." instead of "Thank
-  you. Check your inbox to confirm." Formspree stores the address; nothing sends
-  a confirmation email, so the old message promised something that never came.
-- The header is unchanged: Contact stays as the yellow nav button.
+- The MISTIC section is back to two columns: kicker "MISTIC / Institute · Lab
+  · Fusion center" and the heading "A digital fusion center for strategic
+  intelligence." on the left, the two MISTIC paragraphs on the right.
+- "See the converging threat dots. Connect them. Make them matter." stays out.
+- Removed the unused single-column .mistic-text rules.
 
-Bugs caught while building it
-- The variant class was first named "hero", which collided with the page's own
-  .hero section styles and gave the form the hero's height. Renamed signup-hero.
-- The base .signup stacks its children in a column and gives the button full
-  width, which squashed the field to 29px. The hero variant sets its own row
-  direction and widths.
-
-ROADMAP
-- Option B recorded as the alternative to compare, with how to judge it: hero
-  signups against clicks on Watch the investigations.
-
-Verified: build 34 pages, 193 references present. Field and button on one row at
-1440, 390 and 320; submission carries interest=Homepage hero and shows the
-success state; the Books signup now says "You're on the list."
+Verified: build 34 pages, 193 references present. No overflow at 1440 or 390.
