@@ -13,7 +13,7 @@ export function HallsEd() {
   return (
     <>
       <div className="intro">
-        <div><span className="kicker">The collection / Planned exhibition halls</span><h2>Choose a way <em>inside.</em></h2></div>
+        <div><span className="kicker">Exhibition halls</span><h2>Choose a way <em>inside.</em></h2></div>
         <div className="phase" role="group" aria-label="Exhibition phase">
           {halls.map(h => (
             <button type="button" key={h.phase} aria-pressed={phase === h.phase} onClick={() => setPhase(h.phase)}>

@@ -1,12 +1,5 @@
-Film: release dates on every dispatch and on the Chemical Cartels list
+Museum: halls kicker reads "Exhibition halls"
 
-- Each dispatch page's meta line now reads "Released December 16, 2025 · 2:12 ·
-  China · Mexico · Canada · United States" (was "Released · 2:12 · ...").
-- Each row on /film/chemical-cartels shows its release date under the title.
-- Dates come from films.json (the YouTube publish dates), formatted
-  American-style by a new releaseDate() helper in lib/og.js. It formats in UTC,
-  so the build machine's timezone cannot shift a date by a day. Marked up as
-  <time datetime> for search engines.
-
-Verified: all 11 dispatch pages show the date that matches films.json; the list
-shows all 11; no overflow at 390.
+- Replaces "The collection / Planned exhibition halls".
+- Phase buttons unchanged from the previous commit: "Phase I" and "Phase II",
+  without years.
