@@ -137,7 +137,7 @@ text, so `.convscroll` holds it at 760px and **pans** rather than shrinking, and
 an "Open full size" link to the SVG itself. If the graphic is ever replaced, re-check both: the
 dimensions in `Convergence.jsx` and whether the new one is legible at 390px.
 
-`images/helix-ai` is the Project Helix network art (filename predates the rename), used on home and `/intelligence`. It replaced
+`images/project-helix` is the Project Helix network art (replaced `helix-ai` on 23 Sep), used on home and `/intelligence`. It replaced
 `hero-globe` in those two slots; `hero-globe` still backs the heroes.
 
 `.pb`, the play button, has **no intrinsic size**. Every context that uses it must set width, height
