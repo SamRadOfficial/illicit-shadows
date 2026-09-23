@@ -1,6 +1,8 @@
+import { canonical } from '../../lib/og';
 import sources from '../../data/sources.json';
 import films from '../../data/films.json';
-export const metadata = { title: 'Sources', description: 'The evidentiary spine of Illicit Shadows: every published source behind the films, the halls, and the model.' };
+export const metadata = {
+  ...canonical('/sources'), title: 'Sources', description: 'The evidentiary spine of the Illicit Shadows investigations: every report, filing and article the films and the museum draw on, with its status.' };
 
 const filmTitle = id => films.find(f => f.slug === id || f.oldSlug === id)?.title || id;
 

@@ -1,9 +1,12 @@
+import { canonical } from '../../../lib/og';
 import Link from 'next/link';
 import site from '../../../data/site.json';
 import books from '../../../data/books.json';
 import { Pic, Signup } from '../../../components/Blocks';
 import { Arrow } from '../../../components/Icons';
-export const metadata = { title: 'The Umbra Circle · Preview' };
+export const metadata = {
+  ...canonical('/books/preview'), title: 'The Umbra Circle · Preview',
+  description: 'The Umbra Circle, book one of the Illicit Shadows Chronicles by Sam Rad and David M. Luna: a criminal board of directors, exposed through the museum itself.' };
 
 export default function Preview() {
   const one = books[0];

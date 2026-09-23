@@ -5,7 +5,7 @@ import { Arrow } from '../../components/Icons';
 import { ContactForm } from '../../components/ContactForm';
 export const metadata = {
   .../* per page: card, description, canonical */og('contact', {
-    description: 'Work with Illicit Shadows: investment, film partnerships, the museum, Helix briefings, and advisory. Washington, DC.',
+    description: 'Work with Illicit Shadows: investment, film partnerships, the museum, Helix briefings, and advisory. Based in Washington, DC.',
     path: '/contact',
   }), title: 'Contact' };
 

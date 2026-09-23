@@ -1,8 +1,10 @@
+import { canonical } from '../../../lib/og';
 import { ImmersiveLock } from '../../../components/ImmersiveLock';
 
 export const metadata = {
+  ...canonical('/museum/enter'),
   title: 'Enter the Museum',
-  description: 'A walkable 3D prototype of the Museum of Illicit Shadows: the rotunda, the hall positions, and the routes between them.',
+  description: 'Walk the Museum of Illicit Shadows: a 3D prototype of the building, the rotunda, and the hall positions. Exhibitions open in phases from 2027.',
 };
 
 /* The viewer fills the screen below the nav and the page behind it does not scroll. The old

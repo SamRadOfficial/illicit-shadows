@@ -1,19 +1,29 @@
-Museum renders: the exterior on the homepage, and a corrected interior
+Metadata audit: canonicals everywhere, real descriptions on every page
 
-Homepage
-- The Museum of Illicit Shadows section now leads with the exterior render: the
-  black facade and the gold eclipse ring at the entrance. It replaces the
-  Threat Convergence hall image, which was an interior shown before the reader
-  had seen the building.
+Audited all 30 public pages for title, description, canonical, og and twitter
+tags. Fixed:
 
-Interior render (public/images/museum-rotunda-helix)
-- Installed, not yet placed. The supplied image labelled the theater panel
-  "SHADOWVERSE · A TOTAL IMMERSION", the retired name. Rather than crop it out,
-  which also cost the Chemical Cartels and Threat Convergence panels and pushed
-  the Helix sculpture off center, the lettering was replaced with
-  "ILLICIT SHADOWS · THEATER", matching the hall list in data/halls.json, on the
-  panel's own colour with a soft edge.
-- The hall names on the other panels already match the site's halls.
+- **20 pages had no canonical.** Every investigation, dispatch, newsroom post,
+  and the preview, enter and sources pages now emit one. Without them the
+  preview host and the live domain look like duplicate copies of each other.
+- **Descriptions were 28 to 56 characters** on the film and dispatch pages,
+  which is far below what a search result shows. Investigations now lead with
+  the subtitle and continue into the synopsis; dispatches name the film, the
+  position in the sequence and the subject. All clamped to 155 on a word
+  boundary.
+- **Newsroom post titles ran to 160 characters.** The meta title is now trimmed
+  to 40 plus the site suffix; the full headline still appears on the page.
+- Removed two stale second descriptions, on /donate and /shop, that were
+  overriding the good ones written below them, and gave /books/preview its own
+  description instead of the site boilerplate.
+- New helpers in lib/og.js: canonical(path) and clamp(text, max).
 
-Verified: build 34 pages, 194 references present. Exterior loads on the homepage
-at 1440 and 390.
+Two left deliberately: the Fentanyl's Dirty Profits dispatch title is 66
+characters, six over what Google displays, and /specimen has no canonical
+because it is the internal type specimen and is disallowed in robots.
+
+Nothing in the built metadata says "docuseries". The live domain still serves
+Squarespace, which is where that wording is coming from.
+
+Verified: build 34 pages, 194 references present. Zero duplicate titles or
+descriptions across the site.

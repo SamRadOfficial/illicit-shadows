@@ -3,6 +3,7 @@ import own from '../../../data/newsroom.json';
 import icaie from '../../../data/newsroom-icaie.json';
 import { Arrow } from '../../../components/Icons';
 import { Pic } from '../../../components/Blocks';
+import { canonical, clamp } from '../../../lib/og';
 
 const POSTS = [...own, ...icaie].filter(n => n.slug && n.body);
 const fmt = d => {
@@ -35,10 +36,13 @@ export async function generateMetadata({ params }) {
   const p = POSTS.find(x => x.slug === slug);
   if (!p) return {};
   const image = p.image ? `${p.image}.${p.imageExt || 'jpg'}` : '/og/newsroom.jpg';
+  // 40 leaves room for the " \u00b7 Illicit Shadows" the title template appends.
+  const title = clamp(p.title, 40);
+  const description = clamp(p.summary);
   return {
-    title: p.title, description: p.summary,
-    openGraph: { siteName: 'Illicit Shadows', type: 'article', title: p.title, description: p.summary, images: [{ url: image }] },
-    twitter: { card: 'summary_large_image', images: [image] },
+    title, description, ...canonical(`/newsroom/${p.slug}`),
+    openGraph: { siteName: 'Illicit Shadows', type: 'article', title, description, images: [{ url: image }] },
+    twitter: { card: 'summary_large_image', title, description, images: [image] },
   };
 }
 

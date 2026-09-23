@@ -5,6 +5,7 @@ import { Pic } from '../../../../components/Blocks';
 import { Arrow } from '../../../../components/Icons';
 import { VideoEmbed } from '../../../../components/VideoEmbed';
 import { VideoJsonLd } from '../../../../components/Schema';
+import { canonical, clamp } from '../../../../lib/og';
 
 export function generateStaticParams() {
   return films.flatMap(f => (f.segments || []).filter(s => s.slug).map(s => ({ slug: f.slug, short: s.slug })));
@@ -13,7 +14,9 @@ function find(slug, short) { const film = films.find(x => x.slug === slug); retu
 export async function generateMetadata({ params }) {
   const { slug, short } = await params; const [film, s] = find(slug, short);
   if (!s) return {};
-  return { title: `${s.title} · ${film.title}`, description: s.sub || film.subtitle, openGraph: { siteName: 'Illicit Shadows', type: 'article', images: [`${s.image}.jpg`] } };
+  const n = (film.segments || []).filter(x => x.slug).findIndex(x => x.slug === s.slug) + 1;
+  const description = clamp(`${s.sub ? s.sub + '. ' : ''}Dispatch ${n} of ${(film.segments || []).filter(x => x.slug).length} from ${film.title}, an investigation by ICAIE and RADOC into ${film.subtitle.toLowerCase()}.`);
+  return { title: `${s.title} · ${film.title}`, description, ...canonical(`/film/${film.slug}/${s.slug}`), openGraph: { siteName: 'Illicit Shadows', type: 'article', images: [`${s.image}.jpg`] } };
 }
 
 export default async function Short({ params }) {
