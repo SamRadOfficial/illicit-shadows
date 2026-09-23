@@ -37,7 +37,6 @@ export default function Home() {
         </div>
         <div className="actions hero-links">
           <Link className="ed-link" href="/film">Watch the investigations {Arrow.upRight}</Link>
-          <a className="ed-link" href="#platform">Meet the platform {Arrow.down}</a>
         </div>
       </Hero>
 

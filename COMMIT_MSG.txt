@@ -1,9 +1,11 @@
-Intelligence: restore the fusion center heading
+Homepage hero: one link beneath the signup
 
-- The MISTIC section is back to two columns: kicker "MISTIC / Institute · Lab
-  · Fusion center" and the heading "A digital fusion center for strategic
-  intelligence." on the left, the two MISTIC paragraphs on the right.
-- "See the converging threat dots. Connect them. Make them matter." stays out.
-- Removed the unused single-column .mistic-text rules.
+- Removed "Meet the platform". It only jumped to the section directly below the
+  hero, which scrolling already does.
+- "Watch the investigations" stays as the single link under Get updates: the one
+  route from the hero to the films, and the click the hero A/B comparison is
+  measured against.
+- The #platform anchor on the section is kept, so any old links to it still land.
 
-Verified: build 34 pages, 193 references present. No overflow at 1440 or 390.
+Verified: build 34 pages, 193 references present. One link in the hero at 1440
+and 390; no overflow.
