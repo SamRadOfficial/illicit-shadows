@@ -1,5 +1,5 @@
-Museum: halls kicker reads "Exhibition halls"
+Museum: drop "The exhibitions themselves open in phases from 2027."
 
-- Replaces "The collection / Planned exhibition halls".
-- Phase buttons unchanged from the previous commit: "Phase I" and "Phase II",
-  without years.
+- The prototype section now reads "The prototype is live today: a walkable model
+  of the building, the rotunda and the hall positions."
+- ROADMAP's restore-the-dates item updated to include it.

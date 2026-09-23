@@ -39,7 +39,7 @@ export default function Museum() {
         <div><span className="kicker">The building / Interactive prototype</span><h2>Find your way<br /><em>through the shadows.</em></h2></div>
         <div>
           <p>The prototype is live today: a walkable model of the building, the rotunda and the hall
-            positions. The exhibitions themselves open in phases from 2027.</p>
+            positions.</p>
           <Link className="ed-btn" href="/museum/enter">Enter the museum concept {Arrow.upRight}</Link>
         </div>
       </section>

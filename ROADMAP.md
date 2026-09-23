@@ -145,6 +145,14 @@ Where the site's credibility is thinnest, and the systems that turn attention in
 
 # LONG TERM — waits on the work, the money, or a decision
 
+- [ ] **Put the museum dates back once the trademark is approved.** Removed 23 Sep so the site
+      makes no public commitment to a timeline before the trademark is secured. When it is:
+      1. Phase buttons on /museum back to "Phase I · 2027" and "Phase II · 2028"
+         (components/HallsEd.jsx; the years are still in data/halls.json).
+      2. The prototype section's "The exhibitions themselves open in phases from 2027." was removed
+         23 Sep; decide whether it returns. The patrons section still says "when the doors open in
+         2027", so the page states one timeline consistently either way.
+      3. Slide 3 of the Instagram carousel also says "Exhibitions open in phases from 2027".
 - [ ] **Matched founder portraits** from a single shoot. The current pair is mismatched in crop,
       background and lighting.
 - [ ] **First pages of The Umbra Circle** for `/books/preview`.
