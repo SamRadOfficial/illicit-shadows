@@ -17,7 +17,7 @@ export function HallsEd() {
         <div className="phase" role="group" aria-label="Exhibition phase">
           {halls.map(h => (
             <button type="button" key={h.phase} aria-pressed={phase === h.phase} onClick={() => setPhase(h.phase)}>
-              Phase {h.phase === 1 ? 'I' : 'II'} · {h.year}
+              Phase {h.phase === 1 ? 'I' : 'II'}
             </button>
           ))}
         </div>
@@ -32,7 +32,6 @@ export function HallsEd() {
           </article>
         ))}
       </div>
-      <p className="fine">Exhibition renderings are concepts, not photographs of a built space.</p>
     </>
   );
 }

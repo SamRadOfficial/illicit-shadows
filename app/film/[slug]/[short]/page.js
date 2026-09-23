@@ -5,7 +5,7 @@ import { Pic } from '../../../../components/Blocks';
 import { Arrow } from '../../../../components/Icons';
 import { VideoEmbed } from '../../../../components/VideoEmbed';
 import { VideoJsonLd } from '../../../../components/Schema';
-import { canonical, clamp } from '../../../../lib/og';
+import { canonical, clamp, releaseDate } from '../../../../lib/og';
 
 export function generateStaticParams() {
   return films.flatMap(f => (f.segments || []).filter(s => s.slug).map(s => ({ slug: f.slug, short: s.slug })));
@@ -37,7 +37,7 @@ export default async function Short({ params }) {
         {/* In-page lightbox rather than a link out: the film should play here. */}
         <VideoEmbed modal className="wide ep-player" big id={s.youtubeId} image={s.image} alt={`${s.title} title card`} title={s.title} channel={film.youtube || site.social.youtube} />
         <div className="detail-meta">
-          <span>Released{s.runtime ? ` · ${s.runtime}` : ''} · {film.places.join(' · ')}</span>
+          <span>Released {s.published ? <time dateTime={s.published}>{releaseDate(s.published)}</time> : null}{s.runtime ? ` · ${s.runtime}` : ''} · {film.places.join(' · ')}</span>
           <a className="ed-link" href={s.youtubeId ? `https://www.youtube.com/watch?v=${s.youtubeId}` : site.social.youtube} target="_blank" rel="noopener noreferrer">Watch on YouTube {Arrow.upRight}</a>
         </div>
       </section>

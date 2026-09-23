@@ -1,16 +1,12 @@
-Intelligence: hero line removed, buyer cards evened out
+Film: release dates on every dispatch and on the Chemical Cartels list
 
-- Removed "Causal AI on a global risk graph" from the hero; the sentence above it
-  already says causal AI. The phrase stays in the flywheel.
-- Buyer cards: one-word headings (Corporate, Government, International), who-
-  lines of 48 to 51 characters, and descriptions of 114 to 118, so every row runs
-  the same number of lines.
-- The cards share grid rows (subgrid), so the heading, who-line and description
-  line up across all three even when a width changes the wrapping. Stacked on
-  phones.
-- "Law enforcement" moves into the Government who-line; the International
-  description now ends "so programs, due diligence and policy land where they
-  matter."
+- Each dispatch page's meta line now reads "Released December 16, 2025 · 2:12 ·
+  China · Mexico · Canada · United States" (was "Released · 2:12 · ...").
+- Each row on /film/chemical-cartels shows its release date under the title.
+- Dates come from films.json (the YouTube publish dates), formatted
+  American-style by a new releaseDate() helper in lib/og.js. It formats in UTC,
+  so the build machine's timezone cannot shift a date by a day. Marked up as
+  <time datetime> for search engines.
 
-Verified: rows aligned at 1440, 1100 and 900 with equal line counts in each; no
-overflow at 390.
+Verified: all 11 dispatch pages show the date that matches films.json; the list
+shows all 11; no overflow at 390.

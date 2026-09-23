@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { og, canonical, clamp } from '../../../lib/og';
+import { releaseDate, og, canonical, clamp } from '../../../lib/og';
 import site from '../../../data/site.json';
 import films from '../../../data/films.json';
 import { Pic, Prov } from '../../../components/Blocks';
@@ -79,6 +79,7 @@ export default async function Investigation({ params }) {
                           alt={`${s.title} title card`} title={s.title} channel={f.youtube || site.social.youtube} />
               <div className="vrow-body">
                 <h3><Link href={`/film/${f.slug}/${s.slug}`}>{s.title}</Link></h3>
+                {s.published && <p className="vrow-date"><time dateTime={s.published}>{releaseDate(s.published)}</time></p>}
                 {s.sub && <p>{s.sub}.</p>}
                 <Link className="ed-link" href={`/film/${f.slug}/${s.slug}`}>{s.transcript ? 'Narration and details' : 'Details'} {Arrow.upRight}</Link>
               </div>
