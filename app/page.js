@@ -13,7 +13,7 @@ export const metadata = {
   title: { absolute: 'Illicit Shadows: Investigating the Global Shadow Economy' },
   ...og('home', {
     title: 'Illicit Shadows: Investigating the Global Shadow Economy',
-    description: 'Investigations into the $6 trillion shadow economy: documentary films, a digital museum, and a predictive convergence system. ICAIE and RADOC.',
+    description: 'Media, knowledge, and intelligence. We investigate the $6 trillion shadow economy, expose the systems behind it, and model how its networks adapt.',
     path: '/',
   }),
 };
