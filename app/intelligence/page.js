@@ -37,7 +37,7 @@ export default function Intelligence() {
         <div><span className="kicker">MISTIC / Institute &middot; Lab &middot; Fusion center</span><h2>A digital fusion center<br /><em>for strategic intelligence.</em></h2></div>
         <div>
           <p className="deck"><strong>Illicit Shadows Media, Technology, &amp; Innovation Convergence (MISTIC)</strong> is the institute behind the platform.</p>
-          <p>Its research lab is where Helix.AI is built. Its fusion center is where those capabilities are put into practice: field investigations, the museum's research, and predictive modeling, brought together.</p>
+          <p>Its research lab builds Helix.AI. Its fusion center applies that work, combining field investigations, museum research, and predictive modeling into a single picture of how illicit networks operate.</p>
         </div>
       </section>
 

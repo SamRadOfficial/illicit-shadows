@@ -1,13 +1,12 @@
-Home description matches the hero
+MISTIC copy: subject first, active verbs
 
-- "Media, knowledge, and intelligence. We investigate the $6 trillion shadow
-  economy, expose the systems behind it, and model how its networks adapt." 146
-  characters, inside what Google displays, and identical to the line a visitor
-  reads at the top of the page.
-- Title unchanged: "Illicit Shadows: Investigating the Global Shadow Economy",
-  which carries the words people actually search.
-- The site-wide fallback in data/site.json now matches, so any page that does
-  not set its own description says the same thing.
+- "Its research lab builds Helix.AI. Its fusion center applies that work,
+  combining field investigations, museum research, and predictive modeling into
+  a single picture of how illicit networks operate."
+- Replaces "is where Helix.AI is built" and "is where those capabilities are put
+  into practice". The fusion center applies the lab's work, not a finished
+  system, which keeps the sentence consistent with Helix.AI being in
+  development.
+- The full name stays on first mention, since the kicker uses only the acronym.
 
-Verified: build 34 pages, 194 references present. Audit clean: no duplicate
-titles or descriptions, and the description reaches og and twitter too.
+Verified: build 34 pages, 194 references present. Copy read back from the DOM.
