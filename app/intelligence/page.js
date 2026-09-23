@@ -14,7 +14,7 @@ export const metadata = {
 const METHOD = [
   ['Gather', 'MIS assets, artifacts, and mapping enter the intelligence layer.'],
   ['Connect', 'A global graph links actors, routes, and flows.'],
-  ['Model', 'Helix.AI applies structural causal modeling and adaptive feedback.'],
+  ['Model', 'The Helix model applies structural causal modeling and adaptive feedback.'],
   ['Test', 'Reinforcement explores cascading adaptation paths.'],
 ];
 
@@ -37,7 +37,7 @@ export default function Intelligence() {
         <div><span className="kicker">MISTIC / Institute &middot; Lab &middot; Fusion center</span><h2>A digital fusion center<br /><em>for strategic intelligence.</em></h2></div>
         <div>
           <p className="deck"><strong>Illicit Shadows Media, Technology, &amp; Innovation Convergence (MISTIC)</strong> is the institute behind the platform.</p>
-          <p>Its research lab builds Helix.AI. Its fusion center applies that work, combining field investigations, museum research, and predictive modeling into a single picture of how illicit networks operate.</p>
+          <p>Its research lab builds Project Helix. Its fusion center applies that work, combining field investigations, museum research, and predictive modeling into a single picture of how illicit networks operate.</p>
         </div>
       </section>
 
@@ -57,7 +57,7 @@ export default function Intelligence() {
           {METHOD.map(([t, d], i) => <li key={t}><span className="n">{String(i + 1).padStart(2, '0')}</span><h3>{t}</h3><p>{d}</p></li>)}
         </ol>
         <figure className="helix-art" style={{ marginTop: 40 }}>
-          <Pic base="/images/helix-ai" alt="Conceptual Helix.AI diagram showing overlapping domains, shared network nodes, dependencies, and an illustrative adaptation path after disruption." />
+          <Pic base="/images/helix-ai" alt="Conceptual Project Helix diagram showing overlapping domains, shared network nodes, dependencies, and an illustrative adaptation path after disruption." />
           <figcaption className="fine">
             Conceptual system view. The connections illustrate a concept, not measured data or a
             validated forecast. <a href="/images/helix-ai.jpg" target="_blank" rel="noopener noreferrer">Open full size</a>
@@ -95,21 +95,21 @@ export default function Intelligence() {
       </section>
 
       {/* One closing band, split by what exists. Briefings are available today and are a sales
-          conversation; Helix.AI is in development and is a mailing list. Presenting them as equal
+          conversation; Project Helix is in development and is a mailing list. Presenting them as equal
           buttons implied the second was buyable. */}
       <section className="wrap s s-slate" id="work-with-us">
         <div className="closing">
           <div>
             <h2>Bring the network<br /><em>into view.</em></h2>
             <p>Advisory and briefings for governments, international organizations, and industry,
-              today. Helix.AI is in development.</p>
+              today. Project Helix is in development.</p>
             <Link className="ed-btn" href="/contact?interest=helix">Request a briefing {Arrow.upRight}</Link>
           </div>
           <div className="closing-beta">
-            <span className="kicker">Helix.AI</span>
+            <span className="kicker">Project Helix</span>
             <p className="closing-h">Be there when the beta opens.</p>
             <Signup endpoint={site.forms?.signup} subscribe={false}
-                    interest="Helix.AI beta" label="Notify me" />
+                    interest="Project Helix beta" label="Notify me" />
           </div>
         </div>
       </section>

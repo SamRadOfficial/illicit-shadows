@@ -7,15 +7,18 @@ import { Arrow } from './Icons';
  * interactive children), the action word is the heading, the product is the entry label.
  */
 const PILLARS = [
-  { n: '01 / Media', action: 'Watch', href: '/film', image: '/images/dividers/film-field-investigations',
-    alt: 'A documentary camera and field notebook at a port', label: 'Field investigations',
-    copy: 'Follow the drugs, money, and people moving through the global shadow economy.', entry: 'Illicit Shadows films' },
-  { n: '02 / Knowledge', action: 'Explore', href: '/museum', image: '/images/museum-rotunda',
-    alt: 'The Eclipse Rotunda: a suspended globe of illuminated trade routes', label: 'Public knowledge',
-    copy: 'Discover how illicit markets connect, and what they leave behind.', entry: 'Museum of Illicit Shadows' },
-  { n: '03 / Intelligence', action: 'Model', href: '/intelligence', image: '/images/dividers/intelligence-network-analysis',
-    alt: 'An evidence wall of port photographs linked by gold string', label: 'Predictive convergence system',
-    copy: 'Examine how criminal, political, and economic networks adapt under pressure.', entry: 'Project Helix' },
+  { n: '01 / Field investigations', action: 'Media', href: '/film', image: '/images/dividers/film-field-investigations',
+    alt: 'A documentary camera and field notebook at a port', label: 'Find the story',
+    copy: 'Follow the data trails, illicit pathways, and dirty money flows behind the global illicit economy. Reported from the field.',
+    entry: 'Illicit Shadows films' },
+  { n: '02 / Museum of Illicit Shadows', action: 'Knowledge', href: '/museum', image: '/images/museum-exterior',
+    alt: 'The Museum of Illicit Shadows at night, a gold eclipse ring at the entrance', label: 'Discover the connections',
+    copy: 'A first-of-its-kind virtual museum on the harms of crime convergence and illicit economies to communities and international security.',
+    entry: 'Museum of Illicit Shadows (MIS)' },
+  { n: '03 / Project Helix', action: 'Intelligence', href: '/intelligence', image: '/images/dividers/intelligence-network-analysis',
+    alt: 'An evidence wall of port photographs linked by gold string', label: 'Model what comes next',
+    copy: 'Turns fragmented intelligence into systemic foresight: how criminal, political, and economic networks reorganize after a disruption.',
+    entry: 'Project Helix: Predictive Convergence System' },
 ];
 
 export function Pillars({ compact = false }) {
@@ -23,7 +26,8 @@ export function Pillars({ compact = false }) {
     <>
       {!compact && (
         <div className="intro">
-          <div><span className="kicker">MISTIC</span><h2>One platform.<br /><em>Three ways in.</em></h2></div>
+          <div><span className="kicker">MISTIC / Fighting networks with networks</span><h2>One platform.<br /><em>Three ways in.</em></h2></div>
+          <p>See the converging threat dots. Connect them. Make them matter.</p>
         </div>
       )}
       <div className="pillar-grid">

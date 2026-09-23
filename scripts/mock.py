@@ -126,88 +126,98 @@ SHARED = """
 @media(max-width:820px){.dd-inner{grid-template-columns:1fr}.subnav{flex-wrap:wrap;gap:12px}}
 """
 
+import math
 RECOMMEND = 'B'
+TITLE = 'Intelligence page: the intelligence cycle'
+INTRO = ('Five stages, each tagged with the part of the platform that does the work: the films collect, '
+         'Project Helix processes and analyzes, and the films and the museum disseminate. Framed as '
+         'tactical and strategic intelligence. Helix is tagged in development, as it is everywhere else.')
 
-TITLE = 'Intelligence: one closing band'
-INTRO = ('Today the page ends with "Bring the network into view" and carries a separate Helix.AI beta '
-         'signup higher up. Three ways to merge them into one closing band, all on slate, all where '
-         'the current CTA sits.')
+STAGES = [
+ ('01', 'Planning and Direction', 'Set the questions: which networks, which routes, which harms.', []),
+ ('02', 'Collection', 'Field reporting, sources, filings and interviews.', ['Films']),
+ ('03', 'Processing', 'Structure the evidence into a graph of actors, routes and money.', ['Project Helix']),
+ ('04', 'Analysis and Production', 'Model how the network behaves and adapts under pressure.', ['Project Helix']),
+ ('05', 'Dissemination', 'Put the findings in front of the people who can act on them.', ['Films', 'Museum']),
+]
+TAGC = {'Films':'#FFD400', 'Project Helix':'#7FB8FF', 'Museum':'#FF6A5C'}
+def tags(ts):
+    return ''.join(f'<span class="ctag" style="--c:{TAGC[t]}">{t}{" · in development" if t=="Project Helix" else ""}</span>' for t in ts)
 
-def band(inner, cls='s-slate'):
-    return f'<div class="s {cls} cpad">{inner}</div>'
+HEAD = ('<p class="kicker">The intelligence cycle</p><h2 class="ch2">Tactical and strategic<br><em>intelligence.</em></h2>'
+        '<p class="clede">Every investigation runs the same five stages. Each is carried by a different part of the platform.</p>')
 
-PAGE_A = band('''<div class="cgrid">
-  <div>
-    <h2 class="ch">Bring the network<br><em>into view.</em></h2>
-    <p class="cl">Advisory, briefings, and Helix.AI for governments, international organizations,
-    and industry.</p>
-  </div>
-  <div class="cact">
-    <a class="ed-btn">Request a briefing &#8599;</a>
-    <form class="cform2"><input type="email" placeholder="Email address"><button class="btn2">Notify me when the beta opens</button></form>
-  </div>
-</div>''')
+# A: horizontal strip
+strip=''.join(f'<div class="cs"><span class="cn">{n}</span><h3>{t}</h3><p>{d}</p><div class="ctags">{tags(ts)}</div></div>' for n,t,d,ts in STAGES)
+PAGE_A = f'<div class="s s-ink cpadx">{HEAD}<div class="cstrip">{strip}</div></div>'
 
-PAGE_B = band('''<div class="cgrid">
-  <div>
-    <h2 class="ch">Bring the network<br><em>into view.</em></h2>
-    <p class="cl">Advisory and briefings for governments, international organizations, and industry,
-    today. Helix.AI is in development.</p>
-    <a class="ed-btn">Request a briefing &#8599;</a>
-  </div>
-  <div class="cbeta">
-    <p class="kicker">Helix.AI</p>
-    <p class="cb">Be there when the beta opens.</p>
-    <form class="cform2"><input type="email" placeholder="Email address"><button class="btn2">Notify me</button></form>
-  </div>
-</div>''')
+# B: the classic ring, center label, stages round it
+def ring():
+    cx,cy,r=300,300,210
+    parts=[f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#3a4242" stroke-width="2"/>']
+    for i in range(5):
+        a=-math.pi/2+i*2*math.pi/5; b=a+2*math.pi/5
+        x1,y1=cx+r*math.cos(a+.2),cy+r*math.sin(a+.2); x2,y2=cx+r*math.cos(b-.2),cy+r*math.sin(b-.2)
+        parts.append(f'<path d="M{x1:.1f},{y1:.1f} A{r},{r} 0 0 1 {x2:.1f},{y2:.1f}" fill="none" stroke="#FFD400" stroke-width="2.5" marker-end="url(#ah)"/>')
+    for i,(n,t,d,ts) in enumerate(STAGES):
+        a=-math.pi/2+i*2*math.pi/5; x,y=cx+r*math.cos(a),cy+r*math.sin(a)
+        parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="30" fill="#080909" stroke="#FFD400" stroke-width="2"/>'
+                     f'<text x="{x:.1f}" y="{y+6:.1f}" text-anchor="middle" font-family="Anton" font-size="20" fill="#FFD400">{n}</text>')
+    parts.append(f'<text x="{cx}" y="{cy-20}" text-anchor="middle" font-family="Anton" font-size="30" fill="#fff">TACTICAL</text>'
+                 f'<text x="{cx}" y="{cy+6}" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" fill="#b9bdbd" letter-spacing="3">AND STRATEGIC</text>'
+                 f'<text x="{cx}" y="{cy+44}" text-anchor="middle" font-family="Anton" font-size="30" fill="#FFD400">INTELLIGENCE</text>')
+    return ('<svg viewBox="0 0 600 600" class="cring"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" '
+            'markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#FFD400"/></marker></defs>'
+            + ''.join(parts) + '</svg>')
+legend=''.join(f'<div class="cl"><span class="cn">{n}</span><div><h3>{t}</h3><p>{d}</p><div class="ctags">{tags(ts)}</div></div></div>' for n,t,d,ts in STAGES)
+PAGE_B = f'<div class="s s-ink cpadx">{HEAD}<div class="cgrid2">{ring()}<div class="clist">{legend}</div></div></div>'
 
-PAGE_C = band('''<h2 class="ch ctr">Bring the network into view.</h2>
-<p class="cl ctr">Advisory and briefings today. Helix.AI when the beta opens.</p>
-<div class="crow">
-  <a class="ed-btn">Request a briefing &#8599;</a>
-  <span class="cor">or</span>
-  <form class="cform2 inline"><input type="email" placeholder="Email address"><button class="btn2">Notify me about the beta</button></form>
-</div>''')
+# C: stages down the left, the platform across the top, a matrix of who does what
+cols=['Films','Project Helix','Museum']
+hdr=''.join(f'<th><span class="ctag" style="--c:{TAGC[c]}">{c}</span></th>' for c in cols)
+rows=''.join(f'<tr><td class="ct"><span class="cn">{n}</span> {t}</td>' + ''.join(f'<td class="cm">{"&#9679;" if c in ts else ""}</td>' for c in cols) + '</tr>' for n,t,d,ts in STAGES)
+PAGE_C = f'<div class="s s-ink cpadx">{HEAD}<table class="cmx"><thead><tr><th></th>{hdr}</tr></thead><tbody>{rows}</tbody></table><p class="fine cnote">Project Helix is in development.</p></div>'
 
 SHARED = """
-.cpad{padding:40px 32px}
-.ch{font-size:clamp(28px,3.4vw,42px);margin:0 0 12px}
-.cl{font-size:16px;max-width:52ch;margin-bottom:20px}
-.cgrid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start}
-.cact{display:grid;gap:18px;justify-items:start}
-.cbeta{border-left:1px solid var(--rule);padding-left:28px}
-.cb{font-family:var(--disp);font-size:24px;line-height:1.1;margin:6px 0 16px;text-transform:uppercase}
-.cform2{display:grid;gap:8px;width:100%;max-width:340px}
-.cform2 input{background:rgba(0,0,0,.35);border:1px solid var(--rule);color:var(--fg);padding:12px 14px;font-size:15px}
-.btn2{background:none;border:1px solid var(--signal);color:var(--signal);font-family:var(--mono);
-  font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:12px 14px;cursor:pointer}
-.btn2:hover{background:var(--signal);color:#0e1211}
-.ctr{text-align:center;margin-left:auto;margin-right:auto}
-.crow{display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:wrap}
-.cor{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
-.cform2.inline{grid-template-columns:1fr auto;max-width:520px}
-@media(max-width:820px){.cgrid{grid-template-columns:1fr;gap:28px}.cbeta{border-left:0;padding-left:0;border-top:1px solid var(--rule);padding-top:24px}}
+.cpadx{padding:40px 32px}
+.cpadx::before{display:none!important}.cpadx{background:#080909;color:#fff;position:relative}
+.ch2{font-size:clamp(30px,3.6vw,46px);margin:6px 0 10px}
+.clede{font-size:16px;max-width:56ch;margin-bottom:28px;opacity:.9}
+.cn{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--signal)}
+.ctags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.ctag{display:inline-block;border:1px solid var(--c);color:var(--c);font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px}
+.cstrip{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;position:relative}
+.cs{border-top:2px solid var(--signal);padding-top:12px}
+.cs h3{font-size:19px;margin:6px 0 8px;text-transform:uppercase}
+.cs p{font-size:13.5px;opacity:.85}
+.cgrid2{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+.cring{width:100%;max-width:460px;display:block}
+.clist{display:grid;gap:16px}
+.cl{display:grid;grid-template-columns:34px 1fr;gap:10px;border-top:1px solid #2a3131;padding-top:12px}
+.cl h3{font-size:17px;margin:0 0 4px;text-transform:uppercase}
+.cl p{font-size:13.5px;opacity:.85;margin:0}
+.cmx{width:100%;border-collapse:collapse}
+.cmx th{text-align:left;padding:10px 12px;border-bottom:1px solid #2a3131}
+.cmx td{padding:14px 12px;border-bottom:1px solid #1d2323}
+.cmx .ct{font-family:var(--disp);font-size:20px;text-transform:uppercase}
+.cmx .cm{color:var(--signal);font-size:20px}
+.cnote{margin-top:14px;opacity:.7}
 """
 
 OPTIONS = [
-    ('A', 'Two actions, stacked',
-     'The existing copy, with the beta field under the briefing button. Simplest merge, and the one '
-     'closest to what is there now. The two asks compete: a reader has to decide between a button '
-     'and a form with nothing telling them which applies to them.',
-     PAGE_A, SHARED),
-    ('B', 'Split by what exists  &middot;  MY PICK',
-     'Left: advisory and briefings, available today, with the button. Right, behind a rule: Helix.AI, '
-     'in development, with the notify field. The division is the honest one, and it answers the '
-     'question the reviewer raised, what is real now versus what is coming, without a separate '
-     'status section.',
-     PAGE_B, SHARED),
-    ('C', 'Centred, one line, two routes',
-     'Compact and symmetrical, the briefing button and the beta field side by side under one '
-     'heading. Takes the least height, but centring breaks the left-aligned rhythm of every other '
-     'section, and the two routes read as equal when one is a sales conversation and the other is a '
-     'mailing list.',
-     PAGE_C, SHARED),
+ ('A','A horizontal strip',
+  'Five columns left to right, each with the stage, one line of what happens, and the platform tag. Reads '
+  'fastest and fits the page rhythm, but a straight line loses the point of a cycle: that dissemination '
+  'feeds the next round of planning.', PAGE_A, SHARED),
+ ('B','The ring  &middot;  MY PICK',
+  'The classic cycle diagram, five nodes around a loop with "Tactical and Strategic Intelligence" at the '
+  'center, and the stages explained beside it with their tags. It is the shape analysts already recognize, '
+  'which is the argument for using it on a page aimed at government and industry. It is also the strongest '
+  'brief for a ChatGPT-generated graphic.', PAGE_B, SHARED),
+ ('C','A matrix',
+  'Stages down the side, films, Project Helix and the museum across the top, a dot where each one does the '
+  'work. The clearest answer to "what does each part actually do", and the least visual. Better as a '
+  'supporting table than as the section itself.', PAGE_C, SHARED),
 ]
 blocks, extra = [], []
 for key, title, note, body, rule in OPTIONS:

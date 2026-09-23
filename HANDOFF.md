@@ -137,7 +137,7 @@ text, so `.convscroll` holds it at 760px and **pans** rather than shrinking, and
 an "Open full size" link to the SVG itself. If the graphic is ever replaced, re-check both: the
 dimensions in `Convergence.jsx` and whether the new one is legible at 390px.
 
-`images/helix-ai` is the Helix.AI network art, used on home and `/intelligence`. It replaced
+`images/helix-ai` is the Project Helix network art (filename predates the rename), used on home and `/intelligence`. It replaced
 `hero-globe` in those two slots; `hero-globe` still backs the heroes.
 
 `.pb`, the play button, has **no intrinsic size**. Every context that uses it must set width, height
@@ -260,7 +260,7 @@ subject line and the tags. A `slate-note` under the grid says these are subjects
 productions, because six covers make a research agenda look like a commissioned slate.
 
 **Cascade maps**, `images/cascade/`, five SVGs driven by `/intelligence` structure (14 Sep): hero, the Institute, **Project Helix as two columns** (the
-Helix.AI visual left, the four layers right), a break band, then the cascade in its own section.
+Project Helix visual left, the four layers right), a break band, then the cascade in its own section.
 The divider matters: without it the worked example read as part of the Helix description.
 
 `components/CascadeMaps.jsx`: a stepper, so
@@ -378,7 +378,7 @@ where a page still needs them. The system:
   lightbox on every short, the per-short pages with narration and a next-film cover card, the
   clickable timeline inside the cascade maps, the year ranges on both investigations, the
   `books-hero` on `/books`, and the live 3D viewer on `/museum/enter`.
-- `/intelligence` opens on the institute, then the project: **MISTIC is the fusion center, Helix.AI
+- `/intelligence` opens on the institute, then the project: **MISTIC is the fusion center, Project Helix
   is one of its projects.** Keep that order; the page previously led with Helix and never said what
   MISTIC was.
 - **Newsroom is two sources in one list.** `data/newsroom.json` holds Illicit Shadows' own posts

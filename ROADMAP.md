@@ -148,8 +148,8 @@ Where the site's credibility is thinnest, and the systems that turn attention in
       2. **Who it is for and what it costs.** Government, international organizations and industry
          buy differently; a seat price and a procurement process are different products.
       3. **Access, not checkout.** This is a login and a sales conversation, not a Stripe button.
-      The interest signup shipped 18 Sep: `/intelligence` now carries a Helix.AI beta notify block
-      posting `interest=Helix.AI beta`, so demand is being captured while the decisions above are
+      The interest signup shipped 18 Sep: `/intelligence` now carries a Project Helix beta notify block
+      posting `interest=Project Helix beta` (renamed from Helix.AI 22 Sep), so demand is being captured while the decisions above are
       still open.
 - [ ] **Paid Helix access.** Superseded in part by the item above: this is the same question seen
       from the commercial side.

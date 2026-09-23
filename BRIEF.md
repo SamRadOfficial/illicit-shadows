@@ -85,10 +85,12 @@ These were live decisions during the build. They are not open.
 - **Investigation one: Chemical Cartels**, eleven dispatches, released Dec 2025 to Mar 2026.
 - **Investigation two: Illicit Gold**, *The rush to cash in on the criminal shadows of El Dorado*,
   in production 2026-2027. Never "Golden Handcuffs".
-- **MISTIC is the institute behind the platform. Its research lab is where Helix.AI is built. Its
+- **MISTIC is the institute behind the platform. Its research lab builds Project Helix. Its
   fusion center is where those capabilities are put into practice.** Each noun has one job: the
   institute is the organization, the lab is where the work is built, the fusion center is where it
-  is used. Project Helix is the predictive convergence system; Helix.AI is the software that runs it.
+  is used. Project Helix is the predictive convergence system, and "the Helix model" is the software.
+  **"Helix.AI" is retired**: it autolinks as a URL and collides with existing companies, including
+  one that forecasts information threats.
   Do not use "institute", "lab" and "fusion center" as synonyms.
 - **Helix is in development.** Not a product anyone can log into, no subscription. The paid thing is
   a **briefing**, delivered by people.
