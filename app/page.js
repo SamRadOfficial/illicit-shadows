@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <>
       <Hero img="/images/hero-globe" mobilePos="22% center" alt="A gold-lit globe on black, trade routes arcing between continents"
-            eyebrow="Making the invisible undeniable"
+            eyebrow="Media. Knowledge. Intelligence."
             title={<>The dark forces shaping the <span className="y">global criminal underworld</span></>}
             lede="We investigate the $6 trillion shadow economy, expose the systems behind it, and model how its networks adapt.">
         <div className="actions">

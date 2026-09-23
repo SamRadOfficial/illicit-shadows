@@ -1,15 +1,7 @@
-Intelligence: new Project Helix graphic
+Homepage hero eyebrow: "Media. Knowledge. Intelligence."
 
-- The Project Helix diagram on /intelligence is replaced with the updated
-  graphic: the title now reads PROJECT HELIX, and the "Conceptual system view"
-  label and legend are kept, as the brief asks.
-- New file images/project-helix (.jpg, .webp), full resolution since it is a
-  labelled diagram and "Open full size" links straight to it.
-- The old images/helix-ai files are deleted: the filename carried the retired
-  Helix.AI name. A zip cannot carry a deletion, so run:
-    git rm public/images/helix-ai.jpg public/images/helix-ai.webp
-- Only this graphic is implemented. The intelligence-cycle graphics in the same
-  package are not used yet.
+- Replaces "Making the invisible undeniable". The triad now opens the page and
+  is explained two scrolls later, where the three panels are headed Media,
+  Knowledge and Intelligence.
 
-Verified: build 34 pages, 193 references present. New image loads at 1440 and
-390; the old path now returns 404, so no page still points at it.
+Verified: build 34 pages, 193 references present. One line at 1440 and 390.
