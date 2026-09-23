@@ -12,7 +12,7 @@ import { SupportTiers } from './SupportTiers';
  */
 /* Routes where the ask would interrupt rather than invite: a short film's narration, the museum
    viewer, and the book extract are all mid-experience. */
-const QUIET = [/^\/film\/[^/]+\/[^/]+/, /^\/museum\/enter/, /^\/books\/preview/, /^\/donate/];
+const QUIET = [/^\/film\/[^/]+\/[^/]+/, /^\/museum\/enter/, /^\/books\/preview/, /^\/donate/, /^\/intelligence/];
 
 export function SupportBand() {
   const path = usePathname() || '';

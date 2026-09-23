@@ -1,14 +1,17 @@
-Homepage hero: one call to action
+Intelligence: option C live, two closing actions
 
-- Removed "Watch the investigations". The hero now carries a single action, the
-  email field and Get updates. The films, museum and platform are one scroll
-  away, and Film is in the nav.
-- Removed the now-unused .hero-links style.
+- /intelligence now composes the sections in option C: MISTIC, the decision
+  intelligence flywheel, who it is for, how Helix works, the Rotterdam scenario,
+  what the model is for, the convergence map, and the close. White, black,
+  white, black, white, slate, white, slate.
+- Hero: "Project Helix · Decision intelligence", the causal AI line, and
+  "Causal AI on a global risk graph".
+- The close keeps two actions: Request a briefing, and Investors: Request the
+  data room (to Contact, tagged investment). The Project Helix beta signup is
+  removed; ROADMAP notes to bring it back when there is a beta date.
+- No donate band on this page.
+- Meta description updated to the causal AI and decision intelligence line.
+- The page is now a thin ORDER list over components/IntelSections.jsx.
 
-ROADMAP
-- The hero A/B item is rewritten for the new baseline: judge option B on hero
-  signups against the lower signup, and on how many homepage visitors reach
-  /film, since the hero no longer links there.
-
-Verified: build 34 pages, 193 references present. No links in the hero, signup
-present, no overflow at 1440 or 390.
+Verified: build 34 pages, 193 references present. Order and surfaces read from
+the DOM; no overflow at 1440 or 390.
