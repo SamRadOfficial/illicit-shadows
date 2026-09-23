@@ -23,7 +23,6 @@ export function IntelHero() {
           eyebrow="Project Helix · Decision intelligence"
           title={<>Model what<br />the network<br /><span className="y">does next.</span></>}
           lede="Project Helix is a causal AI system that predicts how illicit networks adapt when they are disrupted.">
-      <p className="hero-sub">Causal AI on a global risk graph</p>
       <div className="actions">
         <a className="ed-btn" href="#cascade">Explore a scenario {Arrow.down}</a>
         <Link className="ed-link" href="/contact?interest=helix">Request a briefing {Arrow.upRight}</Link>
@@ -116,10 +115,10 @@ export function IntelConvergence({ s }) {
 const BUYERS = [
   ['Corporate', 'Banks, commodity traders, logistics and insurers',
    'Which counterparties, routes and suppliers become exposed when a network is disrupted, before the fine or the seizure.'],
-  ['Government and law enforcement', 'Ministries, customs, financial intelligence units and police',
+  ['Government', 'Law enforcement, customs, ministries and regulators',
    'Where an interdiction will push activity next, so enforcement follows the displacement rather than the last route.'],
-  ['International organizations', 'Multilaterals, development banks and investigative partners',
-   'How illicit flows reorganize across borders and sectors, to target programs, due diligence and policy.'],
+  ['International', 'Multilaterals, development banks and investigators',
+   'How illicit flows reorganize across borders and sectors, so programs, due diligence and policy land where they matter.'],
 ];
 
 export function IntelBuyers({ s }) {
