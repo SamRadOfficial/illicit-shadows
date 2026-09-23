@@ -1,4 +1,24 @@
-Intelligence: MISTIC kicker simplified
+Declutter: remove the floating right-hand intro paragraphs
 
-- "MISTIC / Institute · Lab · Fusion center" becomes "MISTIC". The paragraph
-  beside it already names the institute, the lab and the fusion center.
+Audited all 12 sections that set a loose paragraph to the right of the headline.
+
+Cut, because they repeated the headline or the content directly below:
+- /intelligence: "From fragments to a system", the flywheel, the Rotterdam
+  scenario, and "Pressure travels across domains"
+- /museum: "Everything is connected" (the map is right there)
+- /books: "The circle widens" (the two book cards say it)
+- /about: "The threats are converging" and "Across sectors. Across borders."
+
+Trimmed, because they carry something nothing else does:
+- /intelligence buyers: one sentence, "Mapping who is connected is not enough.
+  Helix shows where activity moves next."
+- /film slate: the concept-cover disclaimer moves under the headline as a small
+  note.
+- /donate: "Checkout is handled by Stripe; you will be returned here afterwards"
+  moves under the tiers as fine print; "Every level funds the same work" goes.
+- /shop: "Add the pieces you want and we will make those first. No payment is
+  taken."
+
+Verified: build 34 pages, 193 references present. Two right-hand paragraphs
+remain, both intended. Moved notes measure 11.4 and 10.0 contrast. No overflow
+on any of 13 routes at 1440 or 390.

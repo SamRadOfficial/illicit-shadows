@@ -52,8 +52,6 @@ export function IntelHelix({ s }) {
 <section className={`wrap s ${s}`} id="helix">
         <div className="intro">
           <div><span className="kicker">Project Helix / Predictive convergence system</span><h2>From fragments<br /><em>to a system.</em></h2></div>
-          <p>Most intelligence forecasts discrete events. Helix models the adaptation that follows:
-            if a disruption occurs at one node, how do the others reorganize to compensate?</p>
         </div>
         <ol className="method">
           {METHOD.map(([t, d], i) => <li key={t}><span className="n">{String(i + 1).padStart(2, '0')}</span><h3>{t}</h3><p>{d}</p></li>)}
@@ -76,7 +74,6 @@ export function IntelCascade({ s }) {
 <section className={`wrap s ${s}`} id="cascade">
         <div className="intro">
           <div><span className="kicker">Illustrative model · Hypothetical scenario</span><h2>One disruption.<br /><em>Many consequences.</em></h2></div>
-          <p>Follow the Rotterdam example from an initial shock to redirected routes, financial activity, and downstream effects. Use the timeline on the map to move between stages.</p>
         </div>
         <CascadeMaps />
       </section>
@@ -109,7 +106,6 @@ export function IntelConvergence({ s }) {
 <section className={`wrap s ${s}`} id="convergence">
         <div className="intro">
           <div><span className="kicker">Crime convergence</span><h2>Pressure travels<br /><em>across domains.</em></h2></div>
-          <p>Illicit markets connect governance, security, economies, and communities. This is the wider system Helix seeks to model.</p>
         </div>
         <div className="convergence-frame"><Convergence head={false} /></div>
       </section>
@@ -131,9 +127,7 @@ export function IntelBuyers({ s }) {
     <section className={`wrap s ${s}`} id="buyers">
       <div className="intro">
         <div><span className="kicker">Who it is for</span><h2>Decisions that<br /><em>cannot wait.</em></h2></div>
-        <p>Our platform turns fragmented intelligence into systemic foresight: how criminal, political,
-          and economic networks reorganize after a disruption. Mapping who is connected is not enough;
-          Helix shows where activity moves next, so each buyer can act ahead of the network.</p>
+        <p>Mapping who is connected is not enough. Helix shows where activity moves next.</p>
       </div>
       <div className="buyers">
         {BUYERS.map(([t, w, d], i) => (
@@ -152,8 +146,6 @@ export function IntelFlywheel({ s }) {
     <section className={`wrap s ${s}`} id="flywheel">
       <div className="intro">
         <div><span className="kicker">How the platform compounds</span><h2>The decision intelligence<br /><em>flywheel.</em></h2></div>
-        <p>Each part of Illicit Shadows feeds the next. The films gather evidence no one else has, the
-          museum turns it into a structured record, and Project Helix turns that record into decisions.</p>
       </div>
       <div className="fwgrid">
         <svg viewBox="-210 0 1140 720" className="fw" role="img" aria-label="Decision intelligence flywheel: films collect evidence, the museum structures it, Project Helix turns it into decision intelligence, and buyers set the next questions."><defs><marker id="fwa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#FFD400" /></marker></defs><path d="M461.7,131.6 A250,250 0 0 1 608.6,386.1" fill="none" stroke="#FFD400" strokeWidth="3" markerEnd="url(#fwa)" /><path d="M506.9,562.3 A250,250 0 0 1 213.1,562.3" fill="none" stroke="#FFD400" strokeWidth="3" markerEnd="url(#fwa)" /><path d="M111.4,386.1 A250,250 0 0 1 258.3,131.6" fill="none" stroke="#FFD400" strokeWidth="3" markerEnd="url(#fwa)" /><g><circle cx="360.0" cy="110.0" r="86" fill="#0b0f0f" stroke="#FFD400" strokeWidth="2" />

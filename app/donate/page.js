@@ -30,10 +30,9 @@ export default function Donate() {
       <section className="wrap s s-yellow" id="give">
         <div className="intro">
           <div><span className="kicker">Choose a level</span><h2>Become a founding<br /><em>contributor.</em></h2></div>
-          <p>Every level funds the same work. Checkout is handled by Stripe; you will be taken there
-            and returned here afterwards.</p>
         </div>
         <SupportTiers />
+        <p className="fine intro-note">Checkout is handled by Stripe; you will be returned here afterwards.</p>
         <p className="support-fine">Donations are not tax deductible. Illicit Shadows, LLC.</p>
       </section>
 

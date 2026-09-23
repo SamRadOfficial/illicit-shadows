@@ -34,8 +34,7 @@ export default function Shop() {
       <section className="wrap s s-paper" id="collection">
         <div className="intro">
           <div><span className="kicker">The first collection</span><h2>Designed<br /><em>to shine.</em></h2></div>
-          <p>Add the pieces you would want and we will make those first. No payment is taken; every
-            purchase will fund the investigations, the museum, and the programming around them.</p>
+          <p>Add the pieces you want and we will make those first. No payment is taken.</p>
         </div>
         <ShopPicker />
       </section>

@@ -42,8 +42,6 @@ export default function Books() {
       <section className="wrap s s-ink" id="widens">
         <div className="intro">
           <div><span className="kicker">The story continues</span><h2>The circle<br /><em>widens.</em></h2></div>
-          <p>Books two and three are in development: the state actor that let them build it, and an
-            older, colder alliance waking south of the equator.</p>
         </div>
         {/* Full width, nothing over it, description beneath: the composition already spreads all
             three books across the frame. */}

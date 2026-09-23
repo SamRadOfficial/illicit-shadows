@@ -96,7 +96,6 @@ export default function Museum() {
       <section className="wrap s s-paper" id="convergence">
         <div className="intro">
           <div><span className="kicker">Crime convergence</span><h2>Everything <em>is connected.</em></h2></div>
-          <p>Five domains, one system. The map the museum is built to explain.</p>
         </div>
         <Convergence head={false} />
       </section>

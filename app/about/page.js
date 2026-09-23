@@ -73,7 +73,6 @@ export default function About() {
       <section className="wrap s s-slate">
         <div className="intro">
           <div><span className="kicker">Why now</span><h2>The threats<br /><em>are converging.</em></h2></div>
-          <p>Our understanding needs to connect as quickly as the networks do.</p>
         </div>
         <div className="argument">
           {WHY.map(([h, d], i) => <article key={h}><span>{String(i + 1).padStart(2, '0')}</span><h3>{h}</h3><p>{d}</p></article>)}
@@ -83,7 +82,6 @@ export default function About() {
       <section className="wrap s s-ink" id="partners">
         <div className="intro">
           <div><span className="kicker">Who we serve</span><h2>Across sectors.<br /><em>Across borders.</em></h2></div>
-          <p>The institutions and industries our work is built for.</p>
         </div>
         <div className="sectors">
           {SECTORS.map(([name, items]) => (

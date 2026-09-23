@@ -67,8 +67,8 @@ export default function Film() {
 
       <section className="wrap s s-paper" id="development">
         <div className="intro">
-          <div><span className="kicker">The research agenda</span><h2>Stories <em>taking shape.</em></h2></div>
-          <p>Subjects under research. These concept covers describe investigations in development; they are not production announcements.</p>
+          <div><span className="kicker">The research agenda</span><h2>Stories <em>taking shape.</em></h2>
+            <p className="fine intro-note">Concept covers for investigations in development, not production announcements.</p></div>
         </div>
         <div className="upcoming">
           {slate.map(x => (
