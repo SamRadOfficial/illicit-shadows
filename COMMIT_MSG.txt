@@ -1,10 +1,6 @@
-Pillars: product names as the closing labels
+Media panel: "Field investigations" stamp, films line leads the copy
 
-- Knowledge: "Museum of Illicit Shadows (MIS)", replacing "Enter the museum".
-- Intelligence: "Project Helix: Predictive Convergence System", replacing "Meet
-  Project Helix".
-- The Knowledge copy was already trimmed to three lines, matching Media and
-  Intelligence.
-
-Verified: build 34 pages, 193 references present. All three copy blocks run three
-lines at 1440 and 390, and the three labels sit on one baseline.
+- Stamp back to "01 / Field investigations".
+- Copy opens "Films reported from the field." then "Follow the data trails,
+  illicit pathways, and dirty money flows behind the global illicit economy."
+- All three panels now run three lines again, at 1440 and 390.
